@@ -1,0 +1,120 @@
+//=================================================================================    
+// Creature: Hell GateKeeper
+//=================================================================================
+"aarena_hell_dog"
+{
+	// General
+	//----------------------------------------------------------------
+	"BaseClass"					"npc_dota_creature" 								// Class of entity of link to.
+	"Model"						"models/heroes/warlock/warlock_demon.vmdl"			// Model.
+	"ModelScale"				"1.8"
+	"Level"						"25"
+	"IsAncient"					"1"
+	"ConsideredHero"        	"1"
+	"CanBeDominated"			"0"
+			
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"warlock_golem_flaming_fists"						// Ability 1
+	"Ability2"					"warlock_golem_permanent_immolation"				// Ability 2
+	"Ability3"					"skill_bag_of_gold"									// Ability 3
+	"Ability4"					"warlock_rain_of_chaos"								// Ability 4
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"99"												// Physical protection.
+	"MagicalResistance"			"99"												// Magical protection (percentage).
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"500"												// Damage range min.
+	"AttackDamageMax"			"800"												// Damage range max.
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackRate"				"0.35"												// Speed of attack.
+	"AttackAnimationPoint"		"0.35"												// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"300"												// Range within a target can be acquired.
+	"AttackRange"				"328"												// Range within a target can be attacked.
+	"ProjectileModel"			"" 													// Particle system model for projectile.
+	"ProjectileSpeed"			"0"													// Speed of projectile.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"17890"												// Experience earn.
+	"BountyGoldMin"				"1050"												// Gold earned min.
+	"BountyGoldMax"				"6000"												// Gold earned max.
+
+	// Bounds
+	//----------------------------------------------------------------
+	"RingRadius"				"110"
+	"HealthBarOffset"			"400"
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"							// Type of locomotion - ground, air
+	"MovementSpeed"				"275"												// Speed
+	"MovementTurnRate"			"0.8"												// Turning rate.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"65000"												// Base health - this is set via roshan_halloween_base_health ConVar
+	"StatusHealthRegen"			"35"												// Health regeneration rate.
+	"StatusMana"				"5000"												// Base mana.
+	"StatusManaRegen"			"150"												// Mana regeneration rate.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1400"		// Range of vision during day light.
+	"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+
+	// Inventory
+	//----------------------------------------------------------------
+	"HasInventory"				"0"
+	
+	// Wearable
+	//----------------------------------------------------------------
+	"Creature"
+	{
+		"OffensiveAbilities"
+		{
+				"Ability1"                
+				{
+					"Name"				"warlock_rain_of_chaos"
+					"AOE"                "1"
+					"Radius"             "600"
+					"MinimumTargets"     "1"
+					"Debuff"             "1"
+				}
+		         
+		}
+
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"			"6502" //---Doom Eternal Fire Back
+			}
+			"Wearable2"
+			{
+				"ItemDef"			"5056" //---Regalia_of_the_Bonelord_Shoulder
+			}
+			"Wearable3"
+			{
+				"ItemDef"			"369" //---Hand finger of death
+			}
+			"Wearable4"
+			{
+				"ItemDef"			"6396" //---harbingerwar_belt
+			}
+			
+			
+		}
+	}
+}

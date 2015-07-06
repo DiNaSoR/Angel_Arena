@@ -1,0 +1,22 @@
+// Dota Abilities Override File
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"witch_doctor_maledict"
+	{
+		"AbilityCastRange"				"950"
+	}
+
+
+	// -----------------------------------------------------
+	// 						ITEMS
+	// -----------------------------------------------------
+
+	"item_courier"
+	{
+		"ItemPurchasable"				"1"
+		"ItemDroppable"					"1"
+	}
+
+}

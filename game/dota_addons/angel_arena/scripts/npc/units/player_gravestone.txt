@@ -1,0 +1,17 @@
+"player_gravestone"
+{
+	"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+	"Model"						"models/props_structures/gravestone005.vmdl"	// Model.
+	"IsAncient"					"1"
+	"IsInvulnerable"			"1"
+	"ModelScale"				"1"
+	"HasInventory"				"0"
+	"Level"						"1"
+	"AbilityLayout"				"4"
+	"Ability1"					"gravestone"
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"VisionDaytimeRange"		"0"	
+	"VisionNighttimeRange"		"0"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+}

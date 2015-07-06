@@ -1,0 +1,46 @@
+//=================================================================================================================
+// Ability: Gold of Bag
+//=================================================================================================================
+	"skill_bag_of_gold"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"item_hand_of_midas"
+	
+	// Preaching
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"particle" 				"particles/units/heroes/hero_legion_commander/legion_commander_duel_victory.vpcf"
+		"particle" 				"particles/units/heroes/hero_legion_commander/legion_commander_duel_buff.vpcf"
+		"soundfile" 			"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+		"model"     			"models/particle/legion_duel_banner.vmdl"
+	}
+	
+	// When Owner Died
+	//-------------------------------------------------------------------------------------------------------------
+	"OnOwnerDied"
+	{
+	"CreateItem"
+			{
+			"Target"
+				{
+					"Center" 			"CASTER"
+					"Flags"				"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}	
+					"ItemName"			"item_bag_of_gold"
+					"ItemCount"			"10"
+					"SpawnRadius"		"150"
+					"ItemChargeCount"	"500"
+					"AutoUse"			"0"
+					"Use"				"1"
+					"LaunchHeight"		"1000"
+					"LaunchDistance"	"?50 150"
+					"LaunchDuration"	"0.5"
+				
+			}
+	
+	}
+}
