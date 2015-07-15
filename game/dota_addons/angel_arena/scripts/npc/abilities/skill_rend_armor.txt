@@ -1,0 +1,85 @@
+//=================================================================================================================
+// Rend Armor 
+//=================================================================================================================
+"skill_rend_armor"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"skill_rend_armor"
+	"MaxLevel" 						"4"
+	
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+	"precache"
+		{
+			"soundfile" 	"sounds/rendarmorimpact.vsnd"
+			//"particle"  	"particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_explosion_trail.vpcf"
+			
+		}
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.3"
+	"AbilityCooldown"				"12"
+	"AbilityManaCost"				"50 160 240 370"
+	"AbilityDuration"               "30"	
+	//"AbilityDamage"					"100 200 300 400"
+
+    "AbilitySpecial"
+	{		
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}
+		"02"
+		{  
+			"var_type"				"FIELD_INTEGER"
+			"armor_reduction"		"-6 -12 -18 -24"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_skill_rend_armor"
+			"AbilityDamage"		"400"
+		}
+		"FireSound"
+		{
+			"EffectName"		"angel_arena.rendarmorimpact"
+			"Target"			"TARGET"
+		}
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_explosion_trail.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "TARGET"
+		}
+	
+	}
+
+	"Modifiers"    				
+	{  							
+		"modifier_skill_rend_armor"  
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+			"IsHidden"					"0"
+			"Duration"					"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor_reduction"
+			}
+			"EffectName"		"particles/items2_fx/medallion_of_courage.vpcf"
+			"EffectAttachType"	"follow_overhead"
+		}
+	}
+}

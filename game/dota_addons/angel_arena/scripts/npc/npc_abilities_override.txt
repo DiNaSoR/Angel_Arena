@@ -3,9 +3,10 @@
 {
 	"Version"		"1"
 
-	"witch_doctor_maledict"
+	"attribute_bonus"
 	{
-		"AbilityCastRange"				"950"
+		"MaxLevel" "100"
+
 	}
 
 
@@ -15,8 +16,33 @@
 
 	"item_courier"
 	{
-		"ItemPurchasable"				"1"
-		"ItemDroppable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
 	}
-
+	
+	"item_flying_courier"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_recipe_travel_boots"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_recipe_travel_boots_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_travel_boots"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"travel_boots_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 }

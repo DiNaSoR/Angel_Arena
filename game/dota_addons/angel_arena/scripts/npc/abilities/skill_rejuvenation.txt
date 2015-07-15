@@ -1,0 +1,88 @@
+//=================================================================================================================
+//	Rejuvenation
+//=================================================================================================================
+//Heals a target friendly unit for xxxx health over 10 seconds for xxx mana. 1 second cooldown, 700 range. 
+//Does not stack with cleric's regen skill.
+"skill_rejuvenation"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"skill_rejuvenation"
+	"MaxLevel" 						"4"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"1"
+	"AbilityCastRange"				"700"
+	"AbilityManaCost"				"60 250 340 510"
+
+	"precache"
+	{
+		"particle"				"particles/generic_gameplay/rune_regeneration.vpcf"
+		"particle"				"particles/units/heroes/hero_warlock/warlock_shadow_word_buff_f.vpcf"
+		"particle"				"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"heal_amount"		"560 980 1600 2350"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"duration"			"20.0"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_Huskar.Inner_Vitality"
+			"Target" 			"TARGET"
+		}
+		"ApplyModifier"
+		{
+			"Target" 			"TARGET" 
+			"ModifierName"		"regeneration_modifier"
+		}	
+	}
+
+	"Modifiers"
+	{
+		"regeneration_modifier"			//same as the cleric regeneration spell
+		{
+			"IsBuff"					"1"
+			"Duration"					"%duration"
+			"EffectName"				"particles/generic_gameplay/rune_regeneration.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"ThinkInterval"				"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"abilities/rejuvenation.lua"
+					"Function"			"rejuvenation"
+				}
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+				 	"EffectName"		"particles/units/heroes/hero_warlock/warlock_shadow_word_buff_f.vpcf"
+				 	"EffectAttachType"	"follow_origin"
+				 	"Target" 			"TARGET"
+				}
+			}			
+		}
+	}
+}

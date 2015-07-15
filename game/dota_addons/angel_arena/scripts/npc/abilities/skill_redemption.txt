@@ -1,0 +1,65 @@
+//=================================================================================================================
+// Redemption
+//=================================================================================================================
+"skill_redemption"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"             		"ability_datadriven"
+	"AbilityTextureName"			"skill_redemption"
+	"MaxLevel" 						"3"
+	
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType" 		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"600"
+	"AbilityCastPoint"				"1"
+	"AbilityCooldown"				"60 90 120"
+	"AbilityManaCost"				"200 400 600"
+    	
+    	"AbilitySpecial"
+    	{
+    		"01"
+    		{
+    			"var_type"			"FIELD_INTEGER"
+    			"hp"				"200 400 600"
+    		}
+    		"02"
+    		{
+    			"var_type"			"FIELD_INTEGER"
+    			"mana"				"100 200 300"
+    		}
+    	}
+
+    	"precache"
+    	{
+    		"particle"	"particles/frostivus_gameplay/wraith_king_heal.vpcf"
+    		"particle"	"particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf"
+    		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
+    	}
+
+    	// Special
+    	//-------------------------------------------------------------------------------------------------------------
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"Target"
+			{
+				"Center"  				"TARGET"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"  // You may use "targetKey" completions here.
+				"Types" 				"DOTA_UNIT_TARGET_BASIC"
+				"Flags"					"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+				"ExcludeFlags"			"DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+			}
+			"ScriptFile"				"abilities/redemption.lua"
+			"Function"					"redemption"
+		}
+	}
+}

@@ -52,7 +52,7 @@
 	// Movement
 	//----------------------------------------------------------------
 	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"							// Type of locomotion - ground, air
-	"MovementSpeed"				"275"												// Speed
+	"MovementSpeed"				"375"												// Speed
 	"MovementTurnRate"			"0.8"												// Turning rate.
 
 	// Status
@@ -64,21 +64,21 @@
 
 	// Team
 	//----------------------------------------------------------------
-	"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+	"TeamName"					"DOTA_TEAM_NEUTRALS"								// Team name.
 	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
 	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 	// Vision
 	//----------------------------------------------------------------
-	"VisionDaytimeRange"		"1400"		// Range of vision during day light.
-	"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+	"VisionDaytimeRange"		"1400"												// Range of vision during day light.
+	"VisionNighttimeRange"		"1400"												// Range of vision at night time.
 
 	// Inventory
 	//----------------------------------------------------------------
 	"HasInventory"				"0"
 	
-	// Wearable
+	// Creature Behavior
 	//----------------------------------------------------------------
 	"Creature"
 	{
@@ -94,7 +94,9 @@
 				}
 		         
 		}
-
+	
+	// Creature Wearable
+	//----------------------------------------------------------------
 		"AttachWearables"
 		{
 			"Wearable1"

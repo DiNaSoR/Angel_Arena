@@ -77,26 +77,26 @@
 	// Creature Data
 	//----------------------------------------------------------------
 
-	"vscripts"		"creep_ai.lua"
+	"vscripts"		"AI/creep_ai.lua"
 
 	"Creature"
 	{
 		
 		"DisableClumpingBehavior"   "1"
+
 		"OffensiveAbilities"
 		{
-		    "Ability2"                
+		    "Ability1"                
 		    {
 		        "Name"				"slark_pounce"
 		        "Damage"            "1"
 		    }
-		}
-		"DefensiveAbilities"
-		{
-		   "Ability1"                
+		    "Ability2"                
 		    {
 		        "Name"                	"undying_tombstone"
-		        "UseAtHealthPercent"  	"50"
+		        "MinimumTargets"		"2"
+		        "AOE"                	"1"
+				"Radius"             	"600"
 		    }
 		}
 	}

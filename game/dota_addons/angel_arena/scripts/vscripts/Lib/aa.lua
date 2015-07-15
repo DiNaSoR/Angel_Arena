@@ -26,7 +26,8 @@ CUSTOM_BUYBACK_COST_ENABLED = false      	-- Should we use a custom buyback cost
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false  	-- Should we use a custom buyback time?
 BUYBACK_ENABLED = false                 	-- Should we allow people to buyback when they die?
 
-DISABLE_FOG_OF_WAR_ENTIRELY = false			-- Should we disable fog of war entirely for both teams?
+ENABLED_FOG_OF_WAR_ENTIRELY = false
+DISABLE_FOG_OF_WAR_ENTIRELY = true			-- Should we disable fog of war entirely for both teams?
 --USE_STANDARD_DOTA_BOT_THINKING = false		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY = true		-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
@@ -35,22 +36,45 @@ TOP_BAR_VISIBLE = true						-- Should we display the top bar score/count at all?
 SHOW_KILLS_ON_TOPBAR = true					-- Should we display kills only on the top bar? (No denies, suicides, kills by neutrals)  Requires USE_CUSTOM_TOP_BAR_VALUES
 
 ENABLE_TOWER_BACKDOOR_PROTECTION = false	-- Should we enable backdoor protection for our towers?
-REMOVE_ILLUSIONS_ON_DEATH = false			-- Should we remove all illusions if the main hero dies?
+REMOVE_ILLUSIONS_ON_DEATH = true			-- Should we remove all illusions if the main hero dies?
 DISABLE_GOLD_SOUNDS = false					-- Should we disable the gold sound when players get gold?
 
 END_GAME_ON_KILLS = true					-- Should the game end after a certain number of kills?
-KILLS_TO_END_GAME_FOR_TEAM = 1				-- How many kills for a team should signify an end of game?
+KILLS_TO_END_GAME_FOR_TEAM = 50				-- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = false				-- Should we allow heroes to have custom levels?
 MAX_LEVEL = 25								-- What level should we let heroes get to?
 USE_CUSTOM_XP_VALUES = false				-- Should we use custom XP values to level up heroes, or the default Dota numbers?
+
+FOUNTAIN_CONSTANT_MANA_REGEN = -1       	-- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
+FOUNTAIN_PERCENTAGE_MANA_REGEN = 20     	-- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.
+FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 20   	-- What should we use for the percentage fountain health regen?  Use -1 to keep the default dota behavior.
+
+tHeroes 		= {}
+tPlayers 		= {}
+nPlayers 		= 0
+--[[Future 1v1 duel test system
+nPlayers 		= 0
+nHeroCount    	= 0
+nDeathHeroes  	= 0
+nDeathCreeps  	= 0
+tPlayers 		= {}
+tHeroes 		= {}
+
+PRE_DUEL_TIME = 5
+IsDuelOccured = false
+IsDuel        = false
+
+ARENA_TELEPORT_COORD_TOP = Vector(5897.54, 4892.11, 17.3543)
+ARENA_TELEPORT_COORD_BOT = Vector(5897.54, 2880, 17.3543)
+ARENA_CENTER_COORD       = Vector(5897.54, 3904, 17.3543)]]
 
 --------------------------------------------------------------
 -- Angel Arena Class
 --------------------------------------------------------------
 if	GameMode == nil then
 	GameMode = class({})
-	print("Angel Arena 0.8")
+	print("Angel Arena 0.9")
 end
 
 --------------------------------------------------------------
@@ -62,6 +86,9 @@ function 	GameMode:InitGameMode()
 				print( "[Main] Angel Arena GameMode is loaded." )
 				
 				self:ReadGameConfiguration()
+				
+				--GameRules:SetThink("thinking", self)
+				--GameRules:SetThink( "OnThink", self )
 				GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
 				GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
 				GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
@@ -78,6 +105,7 @@ function 	GameMode:InitGameMode()
 				GameRules:SetCreepMinimapIconScale( MINIMAP_CREEP_ICON_SIZE )
 				GameRules:SetRuneMinimapIconScale( MINIMAP_RUNE_ICON_SIZE )
 				
+				
 				InitLogFile( "log/AngelArena.txt","")
 				-- OTHERS
 				
@@ -85,7 +113,7 @@ function 	GameMode:InitGameMode()
 				--GameRules:GetGameModeEntity():SetThink( "PopUpThink", self, "PopUpTimer", 2 )
 				--GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
 				
-				
+				self.spellList = {"skill_bag_of_gold"}
 				
 				
 				-- ALL LISTEN
@@ -99,7 +127,7 @@ function 	GameMode:InitGameMode()
 				ListenToGameEvent('npc_spawned', Dynamic_Wrap(GameMode, 'OnNPCSpawned'), self)
 				ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(GameMode, 'OnGameRulesStateChange'), self)
 				--ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(GameMode, 'OnPlayerLearnedAbility'), self)
-				--ListenToGameEvent( 'dota_player_pick_hero', Dynamic_Wrap( GameMode, 'OnPlayerPicked' ), self )
+				ListenToGameEvent( 'dota_player_pick_hero', Dynamic_Wrap( GameMode, 'OnPlayerPickHero' ), self )
 				--ListenToGameEvent('player_disconnect', Dynamic_Wrap(GameMode, 'OnDisconnect'), self)
 				
 				--[[ Possible Use	
@@ -186,6 +214,15 @@ function GameMode:CaptureGameMode()
 				mode:SetUseCustomHeroLevels ( USE_CUSTOM_HERO_LEVELS )
 				mode:SetCustomHeroMaxLevel ( MAX_LEVEL )
 				mode:SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
+				mode:SetUnseenFogOfWarEnabled( ENABLED_FOG_OF_WAR_ENTIRELY )
+				mode:SetFountainConstantManaRegen( FOUNTAIN_CONSTANT_MANA_REGEN )
+    			mode:SetFountainPercentageHealthRegen( FOUNTAIN_PERCENTAGE_HEALTH_REGEN )
+    			mode:SetFountainPercentageManaRegen( FOUNTAIN_PERCENTAGE_MANA_REGEN )
+
+				---------------------------NEW FOR DUEL 1v1---------------------
+				--mode:SetThink("onThink", self)
+
+				
 				
 				mode:SetAnnouncerDisabled(false)
 				mode:SetBuybackEnabled(true)
@@ -213,6 +250,61 @@ function GameMode:PostLoadPrecache()
 end
 
 --------------------------------------------------------------
+-- Thinking
+--------------------------------------------------------------
+--[[function GameMode:onThink()
+    for i = 1, #tHeroes do
+        local hero = tHeroes[i]
+        --hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
+        --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
+    end 
+    --table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+end]]
+-------------------------------------------------------------------
+function PrintTable(title,table)
+	print(title)
+	for k,v in pairs(table) do
+		print(k,v)
+	end
+	print("--------------------End of table--------------------------")
+end
+
+function OnHeroDeath(keys)
+    PrintTable("OnHeroDeath",keys)
+    local hero = EntIndexToHScript(keys.entindex_killed)
+    local ownerHero = hero:GetPlayerOwner()
+    local attacker = EntIndexToHScript(keys.entindex_attacker)
+    if ownerHero then
+        Timers:CreateTimer(0.1,function() ownerHero:SetKillCamUnit(nil) end) 
+    end
+end
+--------------------------------------------------------------
+-- OnPlayerPickHero
+--------------------------------------------------------------
+function GameMode:OnPlayerPickHero(keys)
+    PrintTable("OnPlayerPickHero",keys)
+    local player = EntIndexToHScript(keys.player)
+    local playerID = player:GetPlayerID()
+    local hero = EntIndexToHScript(keys.heroindex)
+
+    --hero.creeps = 0
+    --hero.bosses = 0
+    --hero.deaths = 0
+    --hero.rating = 0
+   -- hero.lumber = 3
+   -- FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
+    
+    table.insert(tHeroes, hero)
+    
+    --nHeroCount = nHeroCount + 1
+    
+   -- player:SetTeam(DOTA_TEAM_GOODGUYS)
+   -- PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS,true)
+    --hero:SetTeam(DOTA_TEAM_GOODGUYS)
+    
+
+end
+--------------------------------------------------------------
 -- ReadGameConfiguration
 -- Read and assign configurable keyvalues if applicable
 --------------------------------------------------------------
@@ -238,7 +330,7 @@ end
 --------------------------------------------------------------
 function GameMode:OnNPCSpawned(keys)
 	--print("Angel Arena NPC Spawned")
-	local index = keys.entindex
+	--[[local index = keys.entindex
 	local unit = EntIndexToHScript(index)
 	local npc = EntIndexToHScript(keys.entindex)
 	
@@ -259,7 +351,7 @@ function GameMode:OnNPCSpawned(keys)
 	elseif npc:IsRealHero() and npc.grave then
 		-- remove the player grave
 		UTIL_Remove(npc.grave)
-	end
+	end]]
 end
 
 --------------------------------------------------------------
@@ -274,9 +366,9 @@ function GameMode:OnHeroInGame(hero)
 	--[[ Starting Gold
 	hero:SetGold(0, false)]]
 
-	--[[ Initialize custom stats
+	-- Initialize custom stats
 	hero.spellPower = 0
-	hero.healingPower = 0]]
+	hero.healingPower = 0
 
 	--[[ Initialize stat allocation
 	hero.STR = 0
@@ -327,7 +419,7 @@ end
 --------------------------------------------------------------
 function GameMode:OnItemPickedUp(keys)
 	print ( 'Angel Arena OnItemPickedUp' )
-	--DeepPrintTable(keys)
+	--DeepPrintTable(keys)	
 end
 
 
@@ -335,13 +427,13 @@ end
 -- OnItemPurchased
 -- An item was purchased by a player
 --------------------------------------------------------------
-function GameMode:OnItemPurchased( keys )
-	print ( 'Angel Arena OnItemPurchased' )
-	DeepPrintTable(keys)
+function GameMode:OnItemPurchased(keys)
+	--print ( 'Angel Arena OnItemPurchased' )
+	--DeepPrintTable(keys)
 
 	-- The playerID of the hero who is buying something
-	local plyID = keys.PlayerID
-	if not plyID then return end
+	local playerID = keys.PlayerID
+	if not playerID then return end
 
 	-- The name of the item purchased
 	local itemName = keys.itemname 
@@ -356,8 +448,8 @@ end
 -- An ability was used by a player
 --------------------------------------------------------------
 function GameMode:OnAbilityUsed(keys)
-	print('Angel Arena AbilityUsed')
-	DeepPrintTable(keys)
+	--print('Angel Arena AbilityUsed')
+	--DeepPrintTable(keys)
 
 	local player = EntIndexToHScript(keys.PlayerID)
 	local abilityname = keys.abilityname
@@ -368,8 +460,8 @@ end
 -- A non-player entity (necro-book, chen creep, etc) used an ability
 --------------------------------------------------------------
 function GameMode:OnNonPlayerUsedAbility(keys)
-	print('Angel Arena OnNonPlayerUsedAbility')
-	DeepPrintTable(keys)
+	--print('Angel Arena OnNonPlayerUsedAbility')
+	--DeepPrintTable(keys)
 
 	local abilityname=  keys.abilityname
 end
@@ -379,8 +471,8 @@ end
 -- A player changed their name
 --------------------------------------------------------------
 function GameMode:OnPlayerChangedName(keys)
-	print('Angel Arena OnPlayerChangedName')
-	DeepPrintTable(keys)
+	--print('Angel Arena OnPlayerChangedName')
+	--DeepPrintTable(keys)
 
 	local newName = keys.newname
 	local oldName = keys.oldName
@@ -392,7 +484,7 @@ end
 -- A player leveled up
 --------------------------------------------------------------
 function GameMode:OnPlayerLevelUp(keys)
-	print ('Angel Arena OnPlayerLevelUp')
+	--print ('Angel Arena OnPlayerLevelUp')
 	--DeepPrintTable(keys)
 
 	local player = EntIndexToHScript(keys.player)
@@ -490,6 +582,7 @@ end
 function GameMode:OnFirstPlayerLoaded()
 	print("Angel Arena First Player has loaded")
 
+
 end
 
 --------------------------------------------------------------
@@ -497,6 +590,7 @@ end
 --This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
 --------------------------------------------------------------
 function GameMode:OnAllPlayersLoaded()
+
 
 end
 
@@ -542,91 +636,103 @@ end
 -- This function is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 --------------------------------------------------------------
 function GameMode:OnGameInProgress()
+	GameRules:SendCustomMessage("#aa_welcome_msg", 0, 0)
+	GameRules:SendCustomMessage("#aa_Duel_5v5", 0, 0)
 	print("Angel Arena The game has officially begun")
 	print("Angel Arena popupStart working calling Pop-up MSG to Players")
 	ShowGenericPopup( "#aarena_instructions_title", "#aarena_instructions_body", "", "", DOTA_SHOWGENERICPOPUP_TINT_SCREEN )
-	Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
-		function()
-		print("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-		return 30.0 -- Rerun this timer every 30 game-time seconds 
-	end)
+
+	--Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+	--	function()
+	--	print("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
+	--	return 30.0 -- Rerun this timer every 30 game-time seconds 
+	--end)
+-------------------------------------------------------------------------------------------
+	Timers:CreateTimer({
+    endTime = 10, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
+    callback = function() Duel5v5()
+    --callback = function StartDuels()
+      print ("Hello. Duel after 25sec")
+      print ("teleport disabled")
+            teleportEnt = Entities:FindByName(nil, "arenateleport")
+    		teleportEnt:Disable()
+      return 1
+    end
+    })
+-------------------------------------------------------------------------------------------
 end
 
 --------------------------------------------------------------
 -- OnConnectFull
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 --------------------------------------------------------------
-function GameMode:OnConnectFull(keys)
+function GameMode:OnConnectFull(event)
 	print ('Angel Arena OnConnectFull')
-	--DeepPrintTable(keys)
-	GameMode:CaptureGameMode()
+	PrintTable("OnConnectFull",event)
+	local entIndex = event.index+1
+	local player = EntIndexToHScript(entIndex)
+	local playerID = player:GetPlayerID()
 	
-	local entIndex = keys.index+1
-	-- The Player entity of the joining user
-	local ply = EntIndexToHScript(entIndex)
-	
-	-- The Player ID of the joining player
-	local playerID = ply:GetPlayerID()
-	
+
 	-- Update the user ID table with this user
-	self.vUserIds[keys.userid] = ply
-
-	-- Update the Steam ID table
-	self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = ply
+	self.vUserIds[event.userid] = player
 	
+	table.insert(tPlayers,player)
+    nPlayers = nPlayers + 1  
+	-- Update the Steam ID table
+	--self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
+	GameMode:CaptureGameMode()
 end
-
-
---------------------------------------------------------------
--- OnThink
---------------------------------------------------------------
--- Evaluate the state of the game
---function GameMode:OnThink()
---	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
---		print( "[Main] Angel Arena script is running." )
---	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
---		return nil
---	end
---	return 30
---end
-
-
---------------------------------------------------------------
--- PopUpThink
---------------------------------------------------------------			
-			-- This will make the pop up apper
---[[function	GameMode:PopUpThink()
-		if 	GameRules:State_Get() == DOTA_GAMERULES_STATE_PRE_GAME then
-			self.popupStart()
-			return nil
-		end
-			return 1
-end]]
-
---------------------------------------------------------------
--- popupStart
--- Here to Create the popup msg
---------------------------------------------------------------
---[[function 	GameMode:popupStart()
-			
-end]]
 
 --------------------------------------------------------------
 -- OnEntityKilled
 --------------------------------------------------------------
-function GameMode:OnEntityKilled( keys )
+function GameMode:OnEntityKilled(keys)
 	--print( '[BAREBONES] OnEntityKilled Called' )
 	--DeepPrintTable( keys )
 	
 	-- The Unit that was Killed
-	local killedUnit = EntIndexToHScript( keys.entindex_killed )
-	local unitName = killedUnit:GetUnitName()
+	local killedUnit = EntIndexToHScript(keys.entindex_killed)
+	--local unitName = killedUnit:GetUnitName()
+	local attacker = EntIndexToHScript(keys.entindex_attacker)
+	--local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
+	
 	-- The Killing entity
 	local killerEntity = nil
 
 	if keys.entindex_attacker ~= nil then
 		killerEntity = EntIndexToHScript( keys.entindex_attacker )
 	end
+
+	--if killedUnit:IsRealHero() then
+	--	OnHeroDeath(keys)
+	--end
+
+
+	-- dont delete this salah keep it for the future
+
+
+	-- Adding point to Heroes
+	--[[if string.match(unitName, "_creep") then
+	   	print("Its a Creep who died")
+        nDeathCreeps = nDeathCreeps + 1
+        if ownedHeroAtt then
+        	print("Adding 1 point to player - ".. ownedHeroAtt:GetName())
+            ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
+        end
+    elseif string.match(unitName, "_boss") then
+        nDeathCreeps = nDeathCreeps + 1
+        if ownedHeroAtt then
+            ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
+            ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
+            if attacker:GetPlayerOwner() then
+                PopupNumbers(attacker:GetPlayerOwner() ,killedUnit, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+            end
+        end
+    else
+   		print("No adding point its not creep or boss ")
+    end ]]
 
 	--if killedUnit and ( killedUnit:GetTeamNumber()==DOTA_TEAM_NEUTRALS or killedUnit:GetTeamNumber()==DOTA_TEAM_BADGUYS ) and killedUnit:IsCreature() then
 		-- Item Drops
@@ -677,10 +783,162 @@ function GameMode:OnEntityKilled( keys )
 			GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, self.nDireKills )
 			GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, self.nRadiantKills )
 		end
+		print("On Hero Death key started")
+		OnHeroDeath(keys)
 	end
 
 end
 
+
+
+
+
 --------------------------------------------------------------
--- New Stuff goes here
---------------------------------------------------------------	
+-- Duel 5 v 5 mass teleport
+--------------------------------------------------------------
+function Duel5v5()
+    local point =  Vector(6720, 7104, 128)
+    --local player = EntIndexToHScript(player)
+    --local playerID = player:GetPlayerID()
+    --local hero = EntIndexToHScript(heroindex)
+
+    --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+    --local hero = player:GetAssignedHero()
+	--local player = EntIndexToHScript(keys.player)
+	--local level = keys.level
+
+
+	--get the player's ID
+    --local pID = player:GetPlayerID()
+
+    --get the hero handle
+    --local hero = player:GetAssignedHero()
+    
+    --get the players current stat points
+    --local statsUnspent = hero:GetAbilityPoints()
+
+    --spot_heaven = Vector(5897.54, 3904, 17.3543)
+    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_NOTEAM)
+    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
+    print("Duel 5v5")
+    EmitGlobalSound("angel_arena.duelstartmusic")
+    --healus(keys)
+    Healus( keys )
+
+    --hero:SetHealth(hero:GetMaxHealth())
+	--hero:SetMana(hero:GetMaxMana())
+	--ResetAllAbilitiesCooldown(hero)
+	--hero:ability:EndCooldown()
+
+    --mass teleport
+    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
+        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
+            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
+            FindClearSpaceForUnit(entHero, point, false)
+            SendToConsole("dota_camera_center")
+            entHero:Stop()
+        end
+    end
+
+    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
+        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS then
+            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
+            FindClearSpaceForUnit(entHero, point, false)
+            SendToConsole("dota_camera_center")
+            entHero:Stop()
+        end
+    end
+
+    -- Show Quest
+    angelDeul = SpawnEntityFromTableSynchronous( "quest", { name = "angelDeul", title = "#angelDeulTimer" } )
+
+    questTimeEnd = GameRules:GetGameTime() + 5 --Time to Finish the quest
+
+    --bar system
+    angeldeulKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
+        show_progress_bar = true,
+        progress_bar_hue_shift = -119
+    } )
+    angelDeul:AddSubquest( angeldeulKillCountSubQuest )
+    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 30 ) --text on the quest timer at start
+    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 30 ) --text on the quest timer
+    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 30 ) --value on the bar at start
+    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 30 ) --value on the bar
+    
+    Timers:CreateTimer(0.9, function()
+        angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() )
+        angeldeulKillCountSubQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() ) --update the bar with the time passed        
+        if (questTimeEnd - GameRules:GetGameTime())<=0 and angelDeul ~= nil then --finish the quest
+        	print("30 Sec finished")
+            EmitGlobalSound("Tutorial.Quest.complete_01") --on game_sounds_music_tutorial, check others
+            UTIL_RemoveImmediate( angelDeul )
+            angelDeul = nil
+            angeldeulKillCountSubQuest = nil
+            --print("Dummy killed")
+            chest_spot_arena = Vector(6720, 7104, 128)
+    		local chestarena = CreateUnitByName("npc_chest_gold", chest_spot_arena, true, nil, nil, DOTA_TEAM_NOTEAM)
+    		teleportoutsidethearena()
+
+        end
+        return 1        
+    end
+    )
+    
+
+    GameRules:SendCustomMessage("FIGHT FOR GLORY.", 0, 0)
+end
+
+
+--------------------------------------------------------------
+-- Teleport outside the Arena [sub to Duel5v5]
+--------------------------------------------------------------
+function teleportoutsidethearena()
+	
+	DuelCounter = 15
+    Timers:CreateTimer(function()
+        if DuelCounter == 0 then
+           print("teleport enabled")
+    		teleportEnt = Entities:FindByName(nil, "arenateleport")
+    		teleportEnt:Enable()
+            return nil
+        else
+            ShowCenterMessage(tostring(DuelCounter),1)
+            DuelCounter = DuelCounter - 1
+            return 1
+        end
+    end)
+end
+
+
+function Healus(keys)
+	--PrintTable("healus",keys)
+    --local point =  Vector(6720, 7104, 128)
+    --local player = EntIndexToHScript(player)
+    --local playerID = player:GetPlayerID()
+    --local hero = EntIndexToHScript(heroindex)
+
+    --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
+    --local hero = player:GetAssignedHero()
+	local player = EntIndexToHScript(keys.player)
+	--local level = keys.level
+
+
+	--get the player's ID
+    --local pID = player:GetPlayerID()
+
+    --get the hero handle
+    local hero = player:GetAssignedHero()
+    
+    --get the players current stat points
+    --local statsUnspent = hero:GetAbilityPoints()
+
+    --spot_heaven = Vector(5897.54, 3904, 17.3543)
+    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_NOTEAM)
+    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
+    print("Heal us")
+    --EmitGlobalSound("angel_arena.duelstartmusic")
+
+    hero:SetHealth(hero:GetMaxHealth())
+	hero:SetMana(hero:GetMaxMana())
+	ResetAllAbilitiesCooldown(hero)
+end

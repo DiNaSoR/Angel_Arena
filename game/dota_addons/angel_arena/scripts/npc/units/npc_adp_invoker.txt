@@ -24,7 +24,7 @@
 	//----------------------------------------------------------------
 		"Ability1"					"invoker_quas"
 		"Ability2"					"invoker_wex"
-		"Ability3"					""
+		"Ability3"					"skill_invoker_tornado"
 		"Ability4"					""
 		"Ability5"					"skill_bag_of_gold"
 		"Ability6"					""
@@ -53,7 +53,7 @@
 
 	// Status
 	//----------------------------------------------------------------
-	"StatusHealth"				"1"									// Base health.
+	"StatusHealth"				"65000"									// Base health.
 	"StatusHealthRegen"			"5.0"									// Health regeneration rate.
 	"StatusMana"				"3000"									// Base mana.
 	"StatusManaRegen"			"30.0"									// Mana regeneration rate.
@@ -90,11 +90,10 @@
 		{
 				"Ability1"                
 				{
-					"Name"				"warlock_rain_of_chaos"
-					"AOE"                "1"
-					"Radius"             "600"
-					"MinimumTargets"     "1"
-					"Debuff"             "1"
+					"Name"				"skill_invoker_tornado"
+					"AOE"				"1"
+					"Radius"			"600"
+					"MinimumTargets"	"1"
 				}
 		         
 		}

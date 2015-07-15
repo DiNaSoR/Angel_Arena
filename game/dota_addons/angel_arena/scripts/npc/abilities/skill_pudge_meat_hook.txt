@@ -39,7 +39,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"hook_speed"			"4600.0"
+			"hook_speed"			"8600.0"
 		}
 		"02"
 		{
