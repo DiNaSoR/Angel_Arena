@@ -26,8 +26,8 @@ CUSTOM_BUYBACK_COST_ENABLED = false      	-- Should we use a custom buyback cost
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false  	-- Should we use a custom buyback time?
 BUYBACK_ENABLED = false                 	-- Should we allow people to buyback when they die?
 
-ENABLED_FOG_OF_WAR_ENTIRELY = false
-DISABLE_FOG_OF_WAR_ENTIRELY = true			-- Should we disable fog of war entirely for both teams?
+ENABLED_FOG_OF_WAR_ENTIRELY = true
+--DISABLE_FOG_OF_WAR_ENTIRELY = false			-- Should we disable fog of war entirely for both teams?
 --USE_STANDARD_DOTA_BOT_THINKING = false		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY = true		-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
@@ -231,7 +231,7 @@ function GameMode:CaptureGameMode()
 				--mode:SetBotThinkingEnabled( USE_STANDARD_DOTA_BOT_THINKING )
 				mode:SetTowerBackdoorProtectionEnabled( ENABLE_TOWER_BACKDOOR_PROTECTION )
 
-				mode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
+				--mode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
 				mode:SetGoldSoundDisabled( DISABLE_GOLD_SOUNDS )
 				mode:SetRemoveIllusionsOnDeath( REMOVE_ILLUSIONS_ON_DEATH )
 
@@ -330,7 +330,7 @@ end
 --------------------------------------------------------------
 function GameMode:OnNPCSpawned(keys)
 	--print("Angel Arena NPC Spawned")
-	--[[local index = keys.entindex
+	local index = keys.entindex
 	local unit = EntIndexToHScript(index)
 	local npc = EntIndexToHScript(keys.entindex)
 	
@@ -339,11 +339,11 @@ function GameMode:OnNPCSpawned(keys)
 		--print("Index: "..index.." Name: "..unit:GetName().." Created time: "..GameRules:GetGameTime().." at x= "..unit:GetOrigin().x.." y= "..unit:GetOrigin().y)
 	end
 
-	if npc:IsHero() then
+	--[[if npc:IsHero() then
 		npc.strBonus = 0
         npc.intBonus = 0
         npc.agilityBonus = 0
-    end
+    end]]
 
 	if npc:IsRealHero() and npc.bFirstSpawned == nil then
 			npc.bFirstSpawned = true
@@ -351,7 +351,7 @@ function GameMode:OnNPCSpawned(keys)
 	elseif npc:IsRealHero() and npc.grave then
 		-- remove the player grave
 		UTIL_Remove(npc.grave)
-	end]]
+	end
 end
 
 --------------------------------------------------------------
@@ -649,14 +649,14 @@ function GameMode:OnGameInProgress()
 	--end)
 -------------------------------------------------------------------------------------------
 	Timers:CreateTimer({
-    endTime = 10, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
+    endTime = 600, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
     callback = function() Duel5v5()
     --callback = function StartDuels()
       print ("Hello. Duel after 25sec")
       print ("teleport disabled")
             teleportEnt = Entities:FindByName(nil, "arenateleport")
     		teleportEnt:Disable()
-      return 1
+      return 600
     end
     })
 -------------------------------------------------------------------------------------------
@@ -822,8 +822,6 @@ function Duel5v5()
     --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
     print("Duel 5v5")
     EmitGlobalSound("angel_arena.duelstartmusic")
-    --healus(keys)
-    Healus( keys )
 
     --hero:SetHealth(hero:GetMaxHealth())
 	--hero:SetMana(hero:GetMaxMana())
@@ -852,7 +850,7 @@ function Duel5v5()
     -- Show Quest
     angelDeul = SpawnEntityFromTableSynchronous( "quest", { name = "angelDeul", title = "#angelDeulTimer" } )
 
-    questTimeEnd = GameRules:GetGameTime() + 5 --Time to Finish the quest
+    questTimeEnd = GameRules:GetGameTime() + 60 --Time to Finish the quest
 
     --bar system
     angeldeulKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
@@ -860,10 +858,10 @@ function Duel5v5()
         progress_bar_hue_shift = -119
     } )
     angelDeul:AddSubquest( angeldeulKillCountSubQuest )
-    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 30 ) --text on the quest timer at start
-    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 30 ) --text on the quest timer
-    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 30 ) --value on the bar at start
-    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 30 ) --value on the bar
+    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 60 ) --text on the quest timer at start
+    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 60 ) --text on the quest timer
+    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 60 ) --value on the bar at start
+    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 60 ) --value on the bar
     
     Timers:CreateTimer(0.9, function()
         angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() )
@@ -910,7 +908,7 @@ function teleportoutsidethearena()
 end
 
 
-function Healus(keys)
+--[[function Healus(event)
 	--PrintTable("healus",keys)
     --local point =  Vector(6720, 7104, 128)
     --local player = EntIndexToHScript(player)
@@ -919,7 +917,7 @@ function Healus(keys)
 
     --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
     --local hero = player:GetAssignedHero()
-	local player = EntIndexToHScript(keys.player)
+	local player = EntIndexToHScript(index)
 	--local level = keys.level
 
 
@@ -941,4 +939,4 @@ function Healus(keys)
     hero:SetHealth(hero:GetMaxHealth())
 	hero:SetMana(hero:GetMaxMana())
 	ResetAllAbilitiesCooldown(hero)
-end
+end]]
