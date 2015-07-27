@@ -26,8 +26,8 @@ CUSTOM_BUYBACK_COST_ENABLED = false      	-- Should we use a custom buyback cost
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = false  	-- Should we use a custom buyback time?
 BUYBACK_ENABLED = false                 	-- Should we allow people to buyback when they die?
 
-ENABLED_FOG_OF_WAR_ENTIRELY = true
---DISABLE_FOG_OF_WAR_ENTIRELY = false			-- Should we disable fog of war entirely for both teams?
+ENABLED_FOG_OF_WAR_ENTIRELY = false
+DISABLE_FOG_OF_WAR_ENTIRELY = true			-- Should we disable fog of war entirely for both teams?
 --USE_STANDARD_DOTA_BOT_THINKING = false		-- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY = true		-- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
@@ -172,6 +172,12 @@ function 	GameMode:InitGameMode()
 					[9] = "#A46900"
 				}
 				
+				-- Barebones_spew
+				 local spew = 0
+				  if BAREBONES_DEBUG_SPEW then
+				    spew = 1
+				  end
+				  Convars:RegisterConvar('barebones_spew', tostring(spew), 'Set to 1 to start spewing barebones debug info.  Set to 0 to disable.', 0)
 				
 				-- Spawn Locations and Area Activations
 
@@ -185,14 +191,10 @@ function 	GameMode:InitGameMode()
 
 				 -- Demon Area
 				GameMode.demon_imp_spawnLocations = Entities:FindAllByName("npc_demon_imp_spawner")
-
 				GameMode.DemonAreaCreeps = {} -- Keep a list of all creeps in the area
 
 
 				print('Angel Arena Done loading the gamemode!\n\n')
-				
-				
-			
 end
 
 mode = nil
@@ -219,9 +221,6 @@ function GameMode:CaptureGameMode()
     			mode:SetFountainPercentageHealthRegen( FOUNTAIN_PERCENTAGE_HEALTH_REGEN )
     			mode:SetFountainPercentageManaRegen( FOUNTAIN_PERCENTAGE_MANA_REGEN )
 
-				---------------------------NEW FOR DUEL 1v1---------------------
-				--mode:SetThink("onThink", self)
-
 				
 				
 				mode:SetAnnouncerDisabled(false)
@@ -231,7 +230,7 @@ function GameMode:CaptureGameMode()
 				--mode:SetBotThinkingEnabled( USE_STANDARD_DOTA_BOT_THINKING )
 				mode:SetTowerBackdoorProtectionEnabled( ENABLE_TOWER_BACKDOOR_PROTECTION )
 
-				--mode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
+				mode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
 				mode:SetGoldSoundDisabled( DISABLE_GOLD_SOUNDS )
 				mode:SetRemoveIllusionsOnDeath( REMOVE_ILLUSIONS_ON_DEATH )
 
@@ -310,15 +309,15 @@ end
 --------------------------------------------------------------
 function GameMode:ReadGameConfiguration()
 	self.SpawnInfoKV = LoadKeyValues( "scripts/kv/spawn_info.kv" )
-	
+	GameRules.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
+
 	--self.ItemInfoKV = LoadKeyValues( "scripts/kv/item_info.kv" )
-	--GameRules.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
 	--GameRules.DemonWaves = LoadKeyValues("scripts/kv/demon_waves.kv")
 
 	--GameRules.ItemKV = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 	--GameRules.Tooltips = LoadKeyValues("resource/addon_english.txt") --VOLVO WHY
 
-	--DeepPrintTable(GameRules.DropTable)
+	DeepPrintTable(GameRules.DropTable)
 
 	-- separate in different lists to make it more manageable (not needed)
 	--[[self:ReadGoblinAreaSpawnConfiguration( self.SpawnInfoKV["GoblinArea"] )]]
@@ -417,9 +416,10 @@ end
 -- OnItemPickedUp
 -- An item was picked up off the ground
 --------------------------------------------------------------
-function GameMode:OnItemPickedUp(keys)
-	print ( 'Angel Arena OnItemPickedUp' )
+function GameMode:OnItemPickedUp(event)
+	--print ( 'Angel Arena OnItemPickedUp' )
 	--DeepPrintTable(keys)	
+	goldpickup(event)
 end
 
 
@@ -479,6 +479,7 @@ function GameMode:OnPlayerChangedName(keys)
 end
 
 
+
 --------------------------------------------------------------
 -- OnPlayerLevelUp
 -- A player leveled up
@@ -498,7 +499,7 @@ function GameMode:OnPlayerLevelUp(keys)
     local hero = player:GetAssignedHero()
     
     --get the players current stat points
-    local statsUnspent = hero:GetAbilityPoints()
+    --local statsUnspent = hero:GetAbilityPoints()
 
     --[[ Rules to assign stat points:
 		1-19 = 3
@@ -542,7 +543,7 @@ function GameMode:OnPlayerLevelUp(keys)
 	end]]
 
 	--update the statsUnspent variable to send
-	statsUnspent = hero:GetAbilityPoints()
+	--statsUnspent = hero:GetAbilityPoints()
 
     --[[Fire Game Event to our UI
     print("Got " .. statsUnspent .. " Ability Points to spend! Firing game event")
@@ -629,37 +630,17 @@ function GameMode:OnGameRulesStateChange(keys)
 	end
 end
 
-
 --------------------------------------------------------------
 -- OnGameInProgress
 -- This function is called once and only once when the game completely begins (about 0:00 on the clock).
 -- This function is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 --------------------------------------------------------------
 function GameMode:OnGameInProgress()
-	GameRules:SendCustomMessage("#aa_welcome_msg", 0, 0)
-	GameRules:SendCustomMessage("#aa_Duel_5v5", 0, 0)
 	print("Angel Arena The game has officially begun")
-	print("Angel Arena popupStart working calling Pop-up MSG to Players")
-	ShowGenericPopup( "#aarena_instructions_title", "#aarena_instructions_body", "", "", DOTA_SHOWGENERICPOPUP_TINT_SCREEN )
-
-	--Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
-	--	function()
-	--	print("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-	--	return 30.0 -- Rerun this timer every 30 game-time seconds 
-	--end)
--------------------------------------------------------------------------------------------
-	Timers:CreateTimer({
-    endTime = 600, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
-    callback = function() Duel5v5()
-    --callback = function StartDuels()
-      print ("Hello. Duel after 25sec")
-      print ("teleport disabled")
-            teleportEnt = Entities:FindByName(nil, "arenateleport")
-    		teleportEnt:Disable()
-      return 600
-    end
-    })
--------------------------------------------------------------------------------------------
+	--print("Angel Arena popupStart working calling Pop-up MSG to Players")
+	welcomemsg()
+	aastartpop()
+	firedueltimer()
 end
 
 --------------------------------------------------------------
@@ -667,8 +648,8 @@ end
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 --------------------------------------------------------------
 function GameMode:OnConnectFull(event)
-	print ('Angel Arena OnConnectFull')
-	PrintTable("OnConnectFull",event)
+	--print ('Angel Arena OnConnectFull')
+	--PrintTable("OnConnectFull",event)
 	local entIndex = event.index+1
 	local player = EntIndexToHScript(entIndex)
 	local playerID = player:GetPlayerID()
@@ -708,56 +689,11 @@ function GameMode:OnEntityKilled(keys)
 	--	OnHeroDeath(keys)
 	--end
 
-
-	-- dont delete this salah keep it for the future
-
-
-	-- Adding point to Heroes
-	--[[if string.match(unitName, "_creep") then
-	   	print("Its a Creep who died")
-        nDeathCreeps = nDeathCreeps + 1
-        if ownedHeroAtt then
-        	print("Adding 1 point to player - ".. ownedHeroAtt:GetName())
-            ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
-        end
-    elseif string.match(unitName, "_boss") then
-        nDeathCreeps = nDeathCreeps + 1
-        if ownedHeroAtt then
-            ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
-            ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
-            if attacker:GetPlayerOwner() then
-                PopupNumbers(attacker:GetPlayerOwner() ,killedUnit, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
-            end
-        end
-    else
-   		print("No adding point its not creep or boss ")
-    end ]]
-
-	--if killedUnit and ( killedUnit:GetTeamNumber()==DOTA_TEAM_NEUTRALS or killedUnit:GetTeamNumber()==DOTA_TEAM_BADGUYS ) and killedUnit:IsCreature() then
-		-- Item Drops
-		
-
-		--local level = killedUnit:GetLevel()
-		-- Increase by 10% for each party member
-		--local party_bonus = 1 + ( GameRules.PLAYER_COUNT * 0.1 )
-		--local xp = ( 20 + level * 5 ) * party_bonus
-
-		--Popup XP
-		--PopupExperience(killedUnit,math.floor(xp))
-
-		--Popup Gold
-		--PopupGoldGain(killedUnit,GameMode:GetBountyFor(unitName))
-
-		--print("Killed Creature, XP gain: "..xp)
-
-		-- Grant XP in AoE
-		--local heroesNearby = FindUnitsInRadius( DOTA_TEAM_GOODGUYS, killedUnit:GetOrigin(), nil, 1000, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER,false)
-		--for _,hero in pairs(heroesNearby) do
-		--	if hero:IsRealHero() then
-		--		hero:AddExperience(math.floor(xp), false, true)
-		--	end
-		--end
+	 if killedUnit:IsCreature() or killedUnit:IsCreep() then
+	 	print ("KILLEDKILLER: " .. killedUnit:GetName() .. " -- " .. killerEntity:GetName())
+	 	DebugPrint("KILLED, KILLER: " .. killedUnit:GetName() .. " -- " .. killerEntity:GetName())
+        RollDrops(killedUnit)
+    end
 
 	if killedUnit and killedUnit:IsRealHero() then 
 
@@ -788,155 +724,3 @@ function GameMode:OnEntityKilled(keys)
 	end
 
 end
-
-
-
-
-
---------------------------------------------------------------
--- Duel 5 v 5 mass teleport
---------------------------------------------------------------
-function Duel5v5()
-    local point =  Vector(6720, 7104, 128)
-    --local player = EntIndexToHScript(player)
-    --local playerID = player:GetPlayerID()
-    --local hero = EntIndexToHScript(heroindex)
-
-    --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-    --local hero = player:GetAssignedHero()
-	--local player = EntIndexToHScript(keys.player)
-	--local level = keys.level
-
-
-	--get the player's ID
-    --local pID = player:GetPlayerID()
-
-    --get the hero handle
-    --local hero = player:GetAssignedHero()
-    
-    --get the players current stat points
-    --local statsUnspent = hero:GetAbilityPoints()
-
-    --spot_heaven = Vector(5897.54, 3904, 17.3543)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_NOTEAM)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
-    print("Duel 5v5")
-    EmitGlobalSound("angel_arena.duelstartmusic")
-
-    --hero:SetHealth(hero:GetMaxHealth())
-	--hero:SetMana(hero:GetMaxMana())
-	--ResetAllAbilitiesCooldown(hero)
-	--hero:ability:EndCooldown()
-
-    --mass teleport
-    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
-        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
-            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-            FindClearSpaceForUnit(entHero, point, false)
-            SendToConsole("dota_camera_center")
-            entHero:Stop()
-        end
-    end
-
-    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
-        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS then
-            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-            FindClearSpaceForUnit(entHero, point, false)
-            SendToConsole("dota_camera_center")
-            entHero:Stop()
-        end
-    end
-
-    -- Show Quest
-    angelDeul = SpawnEntityFromTableSynchronous( "quest", { name = "angelDeul", title = "#angelDeulTimer" } )
-
-    questTimeEnd = GameRules:GetGameTime() + 60 --Time to Finish the quest
-
-    --bar system
-    angeldeulKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
-        show_progress_bar = true,
-        progress_bar_hue_shift = -119
-    } )
-    angelDeul:AddSubquest( angeldeulKillCountSubQuest )
-    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 60 ) --text on the quest timer at start
-    angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 60 ) --text on the quest timer
-    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, 60 ) --value on the bar at start
-    angeldeulKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, 60 ) --value on the bar
-    
-    Timers:CreateTimer(0.9, function()
-        angelDeul:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() )
-        angeldeulKillCountSubQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() ) --update the bar with the time passed        
-        if (questTimeEnd - GameRules:GetGameTime())<=0 and angelDeul ~= nil then --finish the quest
-        	print("30 Sec finished")
-            EmitGlobalSound("Tutorial.Quest.complete_01") --on game_sounds_music_tutorial, check others
-            UTIL_RemoveImmediate( angelDeul )
-            angelDeul = nil
-            angeldeulKillCountSubQuest = nil
-            --print("Dummy killed")
-            chest_spot_arena = Vector(6720, 7104, 128)
-    		local chestarena = CreateUnitByName("npc_chest_gold", chest_spot_arena, true, nil, nil, DOTA_TEAM_NOTEAM)
-    		teleportoutsidethearena()
-
-        end
-        return 1        
-    end
-    )
-    
-
-    GameRules:SendCustomMessage("FIGHT FOR GLORY.", 0, 0)
-end
-
-
---------------------------------------------------------------
--- Teleport outside the Arena [sub to Duel5v5]
---------------------------------------------------------------
-function teleportoutsidethearena()
-	
-	DuelCounter = 15
-    Timers:CreateTimer(function()
-        if DuelCounter == 0 then
-           print("teleport enabled")
-    		teleportEnt = Entities:FindByName(nil, "arenateleport")
-    		teleportEnt:Enable()
-            return nil
-        else
-            ShowCenterMessage(tostring(DuelCounter),1)
-            DuelCounter = DuelCounter - 1
-            return 1
-        end
-    end)
-end
-
-
---[[function Healus(event)
-	--PrintTable("healus",keys)
-    --local point =  Vector(6720, 7104, 128)
-    --local player = EntIndexToHScript(player)
-    --local playerID = player:GetPlayerID()
-    --local hero = EntIndexToHScript(heroindex)
-
-    --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-    --local hero = player:GetAssignedHero()
-	local player = EntIndexToHScript(index)
-	--local level = keys.level
-
-
-	--get the player's ID
-    --local pID = player:GetPlayerID()
-
-    --get the hero handle
-    local hero = player:GetAssignedHero()
-    
-    --get the players current stat points
-    --local statsUnspent = hero:GetAbilityPoints()
-
-    --spot_heaven = Vector(5897.54, 3904, 17.3543)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_NOTEAM)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
-    print("Heal us")
-    --EmitGlobalSound("angel_arena.duelstartmusic")
-
-    hero:SetHealth(hero:GetMaxHealth())
-	hero:SetMana(hero:GetMaxMana())
-	ResetAllAbilitiesCooldown(hero)
-end]]

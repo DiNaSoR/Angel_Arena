@@ -85,7 +85,7 @@
 						"ItemCount"			"10"
 						"SpawnRadius"		"150"
 						"ItemChargeCount"	"500"
-						"AutoUse"			"0"
+						"AutoUse"			"1"
 						"Use"				"1"
 						"LaunchHeight"		"1000"
 						"LaunchDistance"	"?50 150"
@@ -130,9 +130,9 @@
 						"ItemName"			"item_bag_of_gold"
 						"ItemCount"			"30"
 						"SpawnRadius"		"150"
-						"ItemChargeCount"	"500"
+						//"ItemChargeCount"	"500"
 						"AutoUse"			"1"
-						"Use"				"0"
+						//"Use"				"0"
 						"LaunchHeight"		"1000"
 						"LaunchDistance"	"?50 150"
 						"LaunchDuration"	"0.5"
@@ -527,6 +527,26 @@
 				}
 				"EffectName"		"particles/items2_fx/medallion_of_courage.vpcf"
 				"EffectAttachType"	"follow_overhead"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Creep Respawn - Respawn this unit after a set ammount of time
+	//=================================================================================================================
+	"creep_respawn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" //| DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"item_hand_of_midas"
+	
+		"OnOwnerDied"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"spawn.lua"
+				"Function"				"RespawnCreep"
 			}
 		}
 	}

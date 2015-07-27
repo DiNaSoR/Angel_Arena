@@ -9,8 +9,8 @@
 {
   horizontal-align: left;
   vertical-align: bottom;
-  margin-bottom: 150px;
-  margin-left: 100px;
+  margin-bottom: 270px;
+  margin-left: 10px;
   flow-children: right;
 }
 
@@ -21,7 +21,9 @@
   text-transform: uppercase;
   font-size: 80px;
   color: #cccccc;
-  text-shadow: 8px 8px 1px #000000;
+  text-shadow: 3px 3px 3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000;
+  font-weight: bold;
+  
 }
 
 .SeqImg
@@ -32,8 +34,7 @@
 
 #CustomBg
 {
-	margin-left: -900px;
-	margin-top: -250px;
+
 }
 
 #gamemode

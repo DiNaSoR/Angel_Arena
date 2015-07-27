@@ -34,7 +34,7 @@
 					"ItemCount"			"10"
 					"SpawnRadius"		"150"
 					"ItemChargeCount"	"500"
-					"AutoUse"			"0"
+					"AutoUse"			"1"
 					"Use"				"1"
 					"LaunchHeight"		"1000"
 					"LaunchDistance"	"?50 150"

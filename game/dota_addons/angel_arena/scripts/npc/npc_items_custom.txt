@@ -59,8 +59,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityName"					"item_bag_of_gold"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-		//"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/gold_bag.vmdl"
 		"ItemKillable"					"0"
 		
@@ -78,7 +78,7 @@
 		"ItemStackable"					"1"
 		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"1"
+		"ItemInitialCharges"			"0"
 		"ItemKillable"					"0"
 		"ItemCastOnPickup"				"1"
 	}

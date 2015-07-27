@@ -559,7 +559,7 @@
 		"ModelScale"				"0.7"
 		"Level"						"10"
 		
-		"UseNeutralCreepBehavior" 	"0"
+		"UseNeutralCreepBehavior" 	"1"
 	
 		"precache"
 		{
@@ -568,8 +568,10 @@
 				
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					"undying_tombstone"			// Ability 1.
-		"Ability2"					"slark_pounce"			// Ability 2.
+		//"Ability1"					"undying_tombstone"			// Ability 1.
+		"Ability1"					"slark_pounce"			// Ability 2.
+		"Ability2"					"creep_respawn"			// Ability 3.
+		
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -640,13 +642,13 @@
 			        "Name"				"slark_pounce"
 			        "Damage"            "1"
 			    }
-			    "Ability2"                
-			    {
-			        "Name"                	"undying_tombstone"
-			        "MinimumTargets"		"2"
-			        "AOE"                	"1"
-					"Radius"             	"600"
-			    }
+			    //"Ability2"                
+			   // {
+			   //     "Name"                	"undying_tombstone"
+			   //     "MinimumTargets"		"2"
+			   //     "AOE"                	"1"
+				//	"Radius"             	"600"
+			    //}
 			}
 		}
 	}

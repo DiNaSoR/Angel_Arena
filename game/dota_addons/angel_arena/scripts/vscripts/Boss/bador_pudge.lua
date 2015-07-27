@@ -146,14 +146,15 @@ end
 --//	Rot
 --//--------------------------------------------------------------------------------------
 function RotDem()
+local allEnemies = FindUnitsInRadius( DOTA_TEAM_NOTEAM, thisEntity:GetOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
 
 			--print( "[Bador] Rot Start" )
-		if rot:IsFullyCastable() then
+		if #allEnemies > 1 and rot:IsFullyCastable() then
 				--print("[Bador] Rot and Dism ready")
 				--print("[Bador] Rot searching units")
-			local allEnemies = FindUnitsInRadius( DOTA_TEAM_NOTEAM, thisEntity:GetOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
+			--local allEnemies = FindUnitsInRadius( DOTA_TEAM_NOTEAM, thisEntity:GetOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
 
-				if #allEnemies > 1 then
+				--if #allEnemies > 1 then
 					--print("[Bador] Rot found units cast NOW")
 					order =
 					{
@@ -164,14 +165,22 @@ function RotDem()
 						AbilityIndex 	= rot:entindex(),
 					}
 					ExecuteOrderFromTable( order )
-				else 
+				elseif rot:GetToggleState() == true then
+						rot:ToggleAbility()
+					--print("Rot Toggle off")
+					
+
 					--print("[Bador] Rot No units found to cast the spell on")
 					--return 2
-				end
-		else
-			--print( "[Bador] Rot or Dism not ready" )
+				--end
+			else
+
+		--else
+
+
+			--print( "[Bador] no enemis around" )
 		end	
-	return 1
+	return 3
 end
 
 

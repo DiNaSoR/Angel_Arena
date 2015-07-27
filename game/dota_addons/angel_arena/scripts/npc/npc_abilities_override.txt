@@ -10,17 +10,26 @@
 	}
 
 
+
+
 	// -----------------------------------------------------
 	// 						ITEMS
 	// -----------------------------------------------------
 
-	"item_courier"
+
+
+	"item_force_staff"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_flying_courier"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
 	
-	"item_flying_courier"
+	"item_blink"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"

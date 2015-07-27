@@ -1,3 +1,18 @@
+function Healall()
+        local allHeroes = HeroList:GetAllHeroes()
+        for _,hero in pairs(allHeroes) do 
+                hero:SetMana(hero:GetMaxMana()) 
+                hero:SetHealth(hero:GetMaxHealth())
+                
+                for i=0,15 do 
+                        local ability = hero:GetAbilityByIndex(i)
+                        if ability then 
+                                        ability:EndCooldown() 
+                        end 
+                end
+        end
+end
+
 function Basetonorthport(trigger)
 
         if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
@@ -12,6 +27,7 @@ function Basetonorthport(trigger)
                 -- Refocus the camera of said player to the position of the teleported hero.
 
                 SendToConsole("dota_camera_center")
+                
         end
         
         if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then 
