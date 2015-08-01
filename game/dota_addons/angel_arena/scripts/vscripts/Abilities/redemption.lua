@@ -10,6 +10,7 @@ function redemption(event)
 			--target_hero:RespawnUnit() --doesn't actually respawn heroes, the 'Killed by' still remains.
 			target_hero:SetTimeUntilRespawn(0)
 
+
 			--need to wait a bit for the hero to respawn	   
 			Timers:CreateTimer({
 		    	endTime = 0.1,
@@ -18,14 +19,17 @@ function redemption(event)
 		    		EmitSoundOn("Hero_Chen.HandOfGodHealHero", target_hero)
 		    		target_hero:ModifyHealth(health_difference, nil, false, 0)
 					target_hero:ReduceMana(mana_difference)
-    				particle = ParticleManager:CreateParticle("particles/frostivus_gameplay/wraith_king_heal.vpcf", PATTACH_OVERHEAD_FOLLOW, target_hero)
+    				particle = ParticleManager:CreateParticle("particles/neutral_fx/roshan_death_aegis_trail.vpcf", PATTACH_OVERHEAD_FOLLOW, target_hero)
     				ParticleManager:SetParticleControl(particle, 0, target_hero:GetAbsOrigin())
-    				ParticleManager:SetParticleControl(particle, 1, target_hero:GetAbsOrigin())
-    				ParticleManager:SetParticleControl(particle, 2, target_hero:GetAbsOrigin())
-    				ParticleManager:SetParticleControl(particle, 3, target_hero:GetAbsOrigin())
+    				particle = ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, target_hero)
+    				ParticleManager:SetParticleControl(particle, 0, target_hero:GetAbsOrigin())
     				particle = ParticleManager:CreateParticle("particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf", PATTACH_ABSORIGIN_FOLLOW, target_hero)
     				ParticleManager:SetParticleControl(particle, 0, target_hero:GetAbsOrigin())
     				ParticleManager:SetParticleControl(particle, 1, target_hero:GetAbsOrigin())
+    				particle = ParticleManager:CreateParticle("particles/items_fx/aegis_respawn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target_hero)
+    				ParticleManager:SetParticleControl(particle, 0, target_hero:GetAbsOrigin())
+
+    				
 
     		 	end
 		  	})

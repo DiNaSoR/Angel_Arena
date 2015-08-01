@@ -1,128 +1,6 @@
 "DOTAUnits"
 {
 	//=================================================================================    
-	// Creature: Hell GateKeeper
-	//=================================================================================
-	"aarena_hell_dog"
-	{
-		// General
-		//----------------------------------------------------------------
-		"BaseClass"					"npc_dota_creature" 								// Class of entity of link to.
-		"Model"						"models/heroes/warlock/warlock_demon.vmdl"			// Model.
-		"ModelScale"				"1.8"
-		"Level"						"25"
-		"IsAncient"					"1"
-		"ConsideredHero"        	"1"
-		"CanBeDominated"			"0"
-				
-		// Abilities
-		//----------------------------------------------------------------
-		"Ability1"					"warlock_golem_flaming_fists"						// Ability 1
-		"Ability2"					"warlock_golem_permanent_immolation"				// Ability 2
-		"Ability3"					"skill_bag_of_gold"									// Ability 3
-		"Ability4"					"warlock_rain_of_chaos"								// Ability 4
-	
-		// Armor
-		//----------------------------------------------------------------
-		"ArmorPhysical"				"99"												// Physical protection.
-		"MagicalResistance"			"99"												// Magical protection (percentage).
-	
-		// Attack
-		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"500"												// Damage range min.
-		"AttackDamageMax"			"800"												// Damage range max.
-		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"0.35"												// Speed of attack.
-		"AttackAnimationPoint"		"0.35"												// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"300"												// Range within a target can be acquired.
-		"AttackRange"				"328"												// Range within a target can be attacked.
-		"ProjectileModel"			"" 													// Particle system model for projectile.
-		"ProjectileSpeed"			"0"													// Speed of projectile.
-	
-		// Bounty
-		//----------------------------------------------------------------
-		"BountyXP"					"17890"												// Experience earn.
-		"BountyGoldMin"				"1050"												// Gold earned min.
-		"BountyGoldMax"				"6000"												// Gold earned max.
-	
-		// Bounds
-		//----------------------------------------------------------------
-		"RingRadius"				"110"
-		"HealthBarOffset"			"400"
-	
-		// Movement
-		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"							// Type of locomotion - ground, air
-		"MovementSpeed"				"375"												// Speed
-		"MovementTurnRate"			"0.8"												// Turning rate.
-	
-		// Status
-		//----------------------------------------------------------------
-		"StatusHealth"				"65000"												// Base health - this is set via roshan_halloween_base_health ConVar
-		"StatusHealthRegen"			"35"												// Health regeneration rate.
-		"StatusMana"				"5000"												// Base mana.
-		"StatusManaRegen"			"150"												// Mana regeneration rate.
-	
-		// Team
-		//----------------------------------------------------------------
-		"TeamName"					"DOTA_TEAM_NEUTRALS"								// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
-		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		
-		// Vision
-		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1400"												// Range of vision during day light.
-		"VisionNighttimeRange"		"1400"												// Range of vision at night time.
-	
-		// Inventory
-		//----------------------------------------------------------------
-		"HasInventory"				"0"
-		
-		// Creature Behavior
-		//----------------------------------------------------------------
-		"Creature"
-		{
-			"OffensiveAbilities"
-			{
-					"Ability1"                
-					{
-						"Name"				"warlock_rain_of_chaos"
-						"AOE"                "1"
-						"Radius"             "600"
-						"MinimumTargets"     "1"
-						"Debuff"             "1"
-					}
-			         
-			}
-		
-		// Creature Wearable
-		//----------------------------------------------------------------
-			"AttachWearables"
-			{
-				"Wearable1"
-				{
-					"ItemDef"			"6502" //---Doom Eternal Fire Back
-				}
-				"Wearable2"
-				{
-					"ItemDef"			"5056" //---Regalia_of_the_Bonelord_Shoulder
-				}
-				"Wearable3"
-				{
-					"ItemDef"			"369" //---Hand finger of death
-				}
-				"Wearable4"
-				{
-					"ItemDef"			"6396" //---harbingerwar_belt
-				}
-				
-				
-			}
-		}
-	}
-	//=================================================================================    
 	// Tower: Bad Guys Tower Def
 	//=================================================================================
 	"bad_guys_def_tower"
@@ -215,17 +93,6 @@
 		"VisionDaytimeRange"		"1900"										// Range of vision during day light.
 		"VisionNighttimeRange"		"800"										// Range of vision at night time.
 	}
-	//=================================================================================    
-	// Camera Passive Duel Arena
-	//=================================================================================
-	"camera_guy"
-		{
-			"BaseClass"					"npc_dota_creature"
-			"Model"						"models/development/invisiblebox.vmdl"
-			"Level"						"1"
-			
-			"Ability1"					"camera_passive"
-		}
 	//=================================================================================    
 	// Tower: Good Guys Tower Def
 	//=================================================================================
@@ -447,6 +314,651 @@
 			}
 		}
 	}
+	//=================================================================================
+	// Boss: ADP10 Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/invoker/invoker.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/heroes/invoker/invoker.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					"invoker_quas"
+			"Ability2"					"invoker_wex"
+			"Ability3"					"skill_invoker_tornado"
+			"Ability4"					""
+			"Ability5"					"skill_bag_of_gold"
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"19"									// Physical protection.
+		"MagicalResistance"			"95"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"500"									// Damage range min.
+		"AttackDamageMax"			"800"									// Damage range max.
+		"AttackRate"				"0.25"									// Speed of attack.
+		"AttackAnimationPoint"		"0.2"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"skill_invoker_tornado"
+						"AOE"				"1"
+						"Radius"			"600"
+						"MinimumTargets"	"1"
+					}
+			         
+			}
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"48" //---Invoker's Cape
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"89" //---Invoker's Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"98" //---Head
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"99" //---hair
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"100" //---bracer
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"305" //---belt
+				}
+			}
+		}
+	}
+	//=================================================================================
+	// Boss: ADP10 Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/invoker/invoker.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/heroes/invoker/invoker.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					"invoker_quas"
+			"Ability2"					"invoker_wex"
+			"Ability3"					"skill_invoker_tornado"
+			"Ability4"					""
+			"Ability5"					"skill_bag_of_gold"
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"19"									// Physical protection.
+		"MagicalResistance"			"95"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"500"									// Damage range min.
+		"AttackDamageMax"			"800"									// Damage range max.
+		"AttackRate"				"0.25"									// Speed of attack.
+		"AttackAnimationPoint"		"0.2"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"skill_invoker_tornado"
+						"AOE"				"1"
+						"Radius"			"600"
+						"MinimumTargets"	"1"
+					}
+			         
+			}
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"48" //---Invoker's Cape
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"89" //---Invoker's Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"98" //---Head
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"99" //---hair
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"100" //---bracer
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"305" //---belt
+				}
+			}
+		}
+	}
+	//=================================================================================
+	// Boss: ADP10 Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/invoker/invoker.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/heroes/invoker/invoker.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					"invoker_quas"
+			"Ability2"					"invoker_wex"
+			"Ability3"					"skill_invoker_tornado"
+			"Ability4"					""
+			"Ability5"					"skill_bag_of_gold"
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"19"									// Physical protection.
+		"MagicalResistance"			"95"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"500"									// Damage range min.
+		"AttackDamageMax"			"800"									// Damage range max.
+		"AttackRate"				"0.25"									// Speed of attack.
+		"AttackAnimationPoint"		"0.2"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"skill_invoker_tornado"
+						"AOE"				"1"
+						"Radius"			"600"
+						"MinimumTargets"	"1"
+					}
+			         
+			}
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"48" //---Invoker's Cape
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"89" //---Invoker's Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"98" //---Head
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"99" //---hair
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"100" //---bracer
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"305" //---belt
+				}
+			}
+		}
+	}
+	//=================================================================================
+	// Boss: ADP10 Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/invoker/invoker.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/heroes/invoker/invoker.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					"invoker_quas"
+			"Ability2"					"invoker_wex"
+			"Ability3"					"skill_invoker_tornado"
+			"Ability4"					""
+			"Ability5"					"skill_bag_of_gold"
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"19"									// Physical protection.
+		"MagicalResistance"			"95"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"500"									// Damage range min.
+		"AttackDamageMax"			"800"									// Damage range max.
+		"AttackRate"				"0.25"									// Speed of attack.
+		"AttackAnimationPoint"		"0.2"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"skill_invoker_tornado"
+						"AOE"				"1"
+						"Radius"			"600"
+						"MinimumTargets"	"1"
+					}
+			         
+			}
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"48" //---Invoker's Cape
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"89" //---Invoker's Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"98" //---Head
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"99" //---hair
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"100" //---bracer
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"305" //---belt
+				}
+			}
+		}
+	}
+	//=================================================================================
+	// Boss: ADP10 Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/invoker/invoker.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/heroes/invoker/invoker.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					"invoker_quas"
+			"Ability2"					"invoker_wex"
+			"Ability3"					"skill_invoker_tornado"
+			"Ability4"					""
+			"Ability5"					"skill_bag_of_gold"
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"19"									// Physical protection.
+		"MagicalResistance"			"95"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"500"									// Damage range min.
+		"AttackDamageMax"			"800"									// Damage range max.
+		"AttackRate"				"0.25"									// Speed of attack.
+		"AttackAnimationPoint"		"0.2"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"600"									// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"1500"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"skill_invoker_tornado"
+						"AOE"				"1"
+						"Radius"			"600"
+						"MinimumTargets"	"1"
+					}
+			         
+			}
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"48" //---Invoker's Cape
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"89" //---Invoker's Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"98" //---Head
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"99" //---hair
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"100" //---bracer
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"305" //---belt
+				}
+			}
+		}
+	}
 	//=================================================================================================================
 	// Chest Gold
 	//=================================================================================================================
@@ -486,67 +998,6 @@
 		"VisionDaytimeRange"		"1400"												// Range of vision during day light.
 		"VisionNighttimeRange"		"1400"												// Range of vision at night time.
 	}
-	//=================================================================================
-	// wave_Creep
-	//=================================================================================
-	"1_wave_creep" 
-	{
-		"BaseClass" "npc_dota_creature" 
-		"Model" "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_c.vmdl" 
-		"SoundSet" "n_creep_Melee" 
-		"ModelScale" "1" 
-		"Level" "1" 
-		 
-	
-		"Ability1" "" 
-		"Ability2" "" 
-		"Ability3" "" 
-		"Ability4" "" 
-		"Ability5" "" 
-		"Ability6" "" 
-		"Ability7" "" 
-		"Ability8" "" 
-		 
-		"ArmorPhysical" "2" 
-		"MagicalResistance" "0" 
-		 
-		"AttackCapabilities" "DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" "15" 
-		"AttackDamageMax" "15" 
-		"AttackRate" "1.55" 
-		"AttackAnimationPoint" "0.3" 
-		"AttackAcquisitionRange" "10000" 
-		"AttackRange" "100" 
-		"ProjectileModel" "" 
-		"ProjectileSpeed" "" 
-		 
-		"BountyXP" "25" 
-		"BountyGoldMin" "4" 
-		"BountyGoldMax" "4" 
-		 
-		"MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
-		"MovementSpeed" "300" 
-		"MovementTurnRate" "0.8" 
-		 
-		"StatusHealth" "130" 
-		"StatusHealthRegen" "0" 
-		"StatusMana" "0" 
-		"StatusManaRegen" "0" 
-		 
-		"TeamName" "DOTA_TEAM_BADGUYS" 
-		"CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_STRONG"
-		"UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-		 
-		"VisionDaytimeRange" "10000" 
-		"VisionNighttimeRange" "10000" 
-		 
-		"HasInventory" "0" 
-	
-		"PathfindingSearchDepthScale" "0.3"
-		
-	
-	}
 	//=================================================================================	
 	// Creature: Demon imp
 	//=================================================================================
@@ -568,9 +1019,9 @@
 				
 		// Abilities
 		//----------------------------------------------------------------
-		//"Ability1"					"undying_tombstone"			// Ability 1.
+		"Ability2"					"undying_tombstone"			// Ability 1.
 		"Ability1"					"slark_pounce"			// Ability 2.
-		"Ability2"					"creep_respawn"			// Ability 3.
+		"Ability3"					"creep_respawn"			// Ability 3.
 		
 	
 		// Armor
@@ -593,16 +1044,16 @@
 	
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"8"			// Experience earn.
+		"BountyXP"					"200"			// Experience earn.
 		"BountyGoldMin"				"80"			// Gold earned min.
 		"BountyGoldMax"				"120"			// Gold earned max.
 	
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"365"		// Base health.
-		"StatusHealthRegen"			"0.1"		// Health regeneration rate.
-		"StatusMana"				"300"			// Base mana.
-		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusHealth"				"2365"		// Base health.
+		"StatusHealthRegen"			"4"		// Health regeneration rate.
+		"StatusMana"				"1300"			// Base mana.
+		"StatusManaRegen"			"4"			// Mana regeneration rate.
 	
 		// Team
 		//----------------------------------------------------------------
@@ -642,13 +1093,13 @@
 			        "Name"				"slark_pounce"
 			        "Damage"            "1"
 			    }
-			    //"Ability2"                
-			   // {
-			   //     "Name"                	"undying_tombstone"
-			   //     "MinimumTargets"		"2"
-			   //     "AOE"                	"1"
-				//	"Radius"             	"600"
-			    //}
+			    "Ability2"                
+			    {
+			        "Name"                	"undying_tombstone"
+			        "MinimumTargets"		"2"
+			        "AOE"                	"1"
+					"Radius"             	"600"
+			    }
 			}
 		}
 	}
@@ -673,8 +1124,8 @@
 				
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					"undying_tombstone"			// Ability 1.
-		"Ability2"					"slark_pounce"			// Ability 2.
+		//"Ability1"					"undying_tombstone"			// Ability 1.
+		"Ability1"					"slark_pounce"			// Ability 2.
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -696,16 +1147,16 @@
 	
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"8"			// Experience earn.
+		"BountyXP"					"200"			// Experience earn.
 		"BountyGoldMin"				"80"			// Gold earned min.
 		"BountyGoldMax"				"120"			// Gold earned max.
 	
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"365"		// Base health.
-		"StatusHealthRegen"			"0.1"		// Health regeneration rate.
-		"StatusMana"				"300"			// Base mana.
-		"StatusManaRegen"			"0"			// Mana regeneration rate.
+		"StatusHealth"				"2365"		// Base health.
+		"StatusHealthRegen"			"4"		// Health regeneration rate.
+		"StatusMana"				"1300"			// Base mana.
+		"StatusManaRegen"			"4"			// Mana regeneration rate.
 	
 		// Team
 		//----------------------------------------------------------------
@@ -745,13 +1196,13 @@
 			        "Name"				"slark_pounce"
 			        "Damage"            "1"
 			    }
-			    "Ability2"                
-			    {
-			        "Name"                	"undying_tombstone"
-			        "MinimumTargets"		"2"
-			        "AOE"                	"1"
-					"Radius"             	"600"
-			    }
+			    //"Ability2"                
+			    //{
+			   //     "Name"                	"undying_tombstone"
+			   //     "MinimumTargets"		"2"
+			   //     "AOE"                	"1"
+				//	"Radius"             	"600"
+			    //}
 			}
 		}
 	}
@@ -926,6 +1377,128 @@
 			}
 		}
 	}
+	//=================================================================================    
+	// Creature: Hell GateKeeper
+	//=================================================================================
+	"aarena_hell_dog"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature" 								// Class of entity of link to.
+		"Model"						"models/heroes/warlock/warlock_demon.vmdl"			// Model.
+		"ModelScale"				"1.8"
+		"Level"						"25"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+				
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"warlock_golem_flaming_fists"						// Ability 1
+		"Ability2"					"warlock_golem_permanent_immolation"				// Ability 2
+		"Ability3"					"skill_bag_of_gold"									// Ability 3
+		"Ability4"					"warlock_rain_of_chaos"								// Ability 4
+	
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"99"												// Physical protection.
+		"MagicalResistance"			"99"												// Magical protection (percentage).
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"500"												// Damage range min.
+		"AttackDamageMax"			"800"												// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0.35"												// Speed of attack.
+		"AttackAnimationPoint"		"0.35"												// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"300"												// Range within a target can be acquired.
+		"AttackRange"				"328"												// Range within a target can be attacked.
+		"ProjectileModel"			"" 													// Particle system model for projectile.
+		"ProjectileSpeed"			"0"													// Speed of projectile.
+	
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"17890"												// Experience earn.
+		"BountyGoldMin"				"1050"												// Gold earned min.
+		"BountyGoldMax"				"6000"												// Gold earned max.
+	
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"110"
+		"HealthBarOffset"			"400"
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"							// Type of locomotion - ground, air
+		"MovementSpeed"				"375"												// Speed
+		"MovementTurnRate"			"0.8"												// Turning rate.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"65000"												// Base health - this is set via roshan_halloween_base_health ConVar
+		"StatusHealthRegen"			"35"												// Health regeneration rate.
+		"StatusMana"				"5000"												// Base mana.
+		"StatusManaRegen"			"150"												// Mana regeneration rate.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"								// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"												// Range of vision during day light.
+		"VisionNighttimeRange"		"1400"												// Range of vision at night time.
+	
+		// Inventory
+		//----------------------------------------------------------------
+		"HasInventory"				"0"
+		
+		// Creature Behavior
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			"OffensiveAbilities"
+			{
+					"Ability1"                
+					{
+						"Name"				"warlock_rain_of_chaos"
+						"AOE"                "1"
+						"Radius"             "600"
+						"MinimumTargets"     "1"
+						"Debuff"             "1"
+					}
+			         
+			}
+		
+		// Creature Wearable
+		//----------------------------------------------------------------
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"6502" //---Doom Eternal Fire Back
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"5056" //---Regalia_of_the_Bonelord_Shoulder
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"369" //---Hand finger of death
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"6396" //---harbingerwar_belt
+				}
+				
+				
+			}
+		}
+	}
 	//=================================================================================
 	// Human Bear
 	//=================================================================================
@@ -967,8 +1540,8 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"40"		// Damage range min.
-		"AttackDamageMax"			"43"		// Damage range max.	
+		"AttackDamageMin"			"90"		// Damage range min.
+		"AttackDamageMax"			"143"		// Damage range max.	
 		"AttackRate"				"1.35"		// Speed of attack.
 		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"350"		// Range within a target can be acquired.
@@ -983,9 +1556,9 @@
 	
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"70"		// Experience earn.
-		"BountyGoldMin"				"53"		// Gold earned min.
-		"BountyGoldMax"				"65"		// Gold earned max.
+		"BountyXP"					"120"		// Experience earn.
+		"BountyGoldMin"				"153"		// Gold earned min.
+		"BountyGoldMax"				"205"		// Gold earned max.
 	
 		// Movement
 		//----------------------------------------------------------------
@@ -994,10 +1567,10 @@
 	
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"600"		// Base health.
-		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-		"StatusMana"				"500"			// Base mana.
-		"StatusManaRegen"			"1.25"		// Mana regeneration rate.		 
+		"StatusHealth"				"1600"		// Base health.
+		"StatusHealthRegen"			"8.5"		// Health regeneration rate.
+		"StatusMana"				"1100"			// Base mana.
+		"StatusManaRegen"			"9.25"		// Mana regeneration rate.		 
 		
 		// Vision
 		//----------------------------------------------------------------
@@ -1048,6 +1621,103 @@
 			
 		}
 		
+	}
+	//=================================================================================
+	// Boss: Mini-Boss
+	//=================================================================================
+	"npc_mini_boss_demon"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"Level"						"25"
+		"ModelScale"				"1.2"
+		"IsAncient"					"1"
+		"ConsideredHero"        	"1"
+		"CanBeDominated"			"0"
+		
+		// Preache
+		//----------------------------------------------------------------
+		"precache"
+		{
+			"model"					"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl"
+		}
+	
+		// Abilities
+		//----------------------------------------------------------------
+			"Ability1"					""
+			"Ability2"					""
+			"Ability3"					""
+			"Ability4"					""
+			"Ability5"					""
+			"Ability6"					""
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"56"									// Physical protection.
+		"MagicalResistance"			"49"									// Magical protection.
+	
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"200"									// Damage range min.
+		"AttackDamageMax"			"400"									// Damage range max.
+		"AttackRate"				"0.45"									// Speed of attack.
+		"AttackAnimationPoint"		"0.45"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"200"									// Range within a target can be acquired.
+		"AttackRange"				"200"									// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			"150"									// Speed of projectile.
+	
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"522"									// Speed.
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1"									// Base health.
+		"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+		"StatusMana"				"3000"									// Base mana.
+		"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+		"HealthBarOffset"			"260"
+		"MinimapIcon"				"minimap_ancient"
+		"MinimapIconSize"			"450"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+	
+		// Team
+		//----------------------------------------------------------------
+		"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	
+		// VScript
+		//----------------------------------------------------------------		
+	
+	
+		
+		// Wearables
+		//----------------------------------------------------------------
+		"Creature"
+		{
+			
+			// Basic AI
+			
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"413" //---Tusk's Armored Glove
+				}
+			}
+		}
 	}
 	"npc_vision_dummy"
 	{

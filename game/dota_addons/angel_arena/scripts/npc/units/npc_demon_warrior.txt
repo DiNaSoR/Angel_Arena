@@ -19,8 +19,8 @@
 			
 	// Abilities
 	//----------------------------------------------------------------
-	"Ability1"					"undying_tombstone"			// Ability 1.
-	"Ability2"					"slark_pounce"			// Ability 2.
+	//"Ability1"					"undying_tombstone"			// Ability 1.
+	"Ability1"					"slark_pounce"			// Ability 2.
 
 	// Armor
 	//----------------------------------------------------------------
@@ -42,16 +42,16 @@
 
 	// Bounty
 	//----------------------------------------------------------------
-	"BountyXP"					"8"			// Experience earn.
+	"BountyXP"					"200"			// Experience earn.
 	"BountyGoldMin"				"80"			// Gold earned min.
 	"BountyGoldMax"				"120"			// Gold earned max.
 
 	// Status
 	//----------------------------------------------------------------
-	"StatusHealth"				"365"		// Base health.
-	"StatusHealthRegen"			"0.1"		// Health regeneration rate.
-	"StatusMana"				"300"			// Base mana.
-	"StatusManaRegen"			"0"			// Mana regeneration rate.
+	"StatusHealth"				"2365"		// Base health.
+	"StatusHealthRegen"			"4"		// Health regeneration rate.
+	"StatusMana"				"1300"			// Base mana.
+	"StatusManaRegen"			"4"			// Mana regeneration rate.
 
 	// Team
 	//----------------------------------------------------------------
@@ -91,13 +91,13 @@
 		        "Name"				"slark_pounce"
 		        "Damage"            "1"
 		    }
-		    "Ability2"                
-		    {
-		        "Name"                	"undying_tombstone"
-		        "MinimumTargets"		"2"
-		        "AOE"                	"1"
-				"Radius"             	"600"
-		    }
+		    //"Ability2"                
+		    //{
+		   //     "Name"                	"undying_tombstone"
+		   //     "MinimumTargets"		"2"
+		   //     "AOE"                	"1"
+			//	"Radius"             	"600"
+		    //}
 		}
 	}
 }

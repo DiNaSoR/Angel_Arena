@@ -20,8 +20,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"600"
 	"AbilityCastPoint"				"1"
-	"AbilityCooldown"				"60 90 120"
-	"AbilityManaCost"				"200 400 600"
+	"AbilityCooldown"				"160 190 220"
+	"AbilityManaCost"				"300 450 600"
     	
     	"AbilitySpecial"
     	{

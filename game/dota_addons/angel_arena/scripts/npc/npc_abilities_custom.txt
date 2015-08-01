@@ -314,8 +314,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"1"
-		"AbilityCooldown"				"60 90 120"
-		"AbilityManaCost"				"200 400 600"
+		"AbilityCooldown"				"160 190 220"
+		"AbilityManaCost"				"300 450 600"
 	    	
 	    	"AbilitySpecial"
 	    	{
@@ -537,7 +537,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" //| DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE" | "DOTA_ABILITY_BEHAVIOR_HIDDEN"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"item_hand_of_midas"
 	

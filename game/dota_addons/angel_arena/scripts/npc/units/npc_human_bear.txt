@@ -39,8 +39,8 @@
 	// Attack
 	//----------------------------------------------------------------
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin"			"40"		// Damage range min.
-	"AttackDamageMax"			"43"		// Damage range max.	
+	"AttackDamageMin"			"90"		// Damage range min.
+	"AttackDamageMax"			"143"		// Damage range max.	
 	"AttackRate"				"1.35"		// Speed of attack.
 	"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"350"		// Range within a target can be acquired.
@@ -55,9 +55,9 @@
 
 	// Bounty
 	//----------------------------------------------------------------
-	"BountyXP"					"70"		// Experience earn.
-	"BountyGoldMin"				"53"		// Gold earned min.
-	"BountyGoldMax"				"65"		// Gold earned max.
+	"BountyXP"					"120"		// Experience earn.
+	"BountyGoldMin"				"153"		// Gold earned min.
+	"BountyGoldMax"				"205"		// Gold earned max.
 
 	// Movement
 	//----------------------------------------------------------------
@@ -66,10 +66,10 @@
 
 	// Status
 	//----------------------------------------------------------------
-	"StatusHealth"				"600"		// Base health.
-	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-	"StatusMana"				"500"			// Base mana.
-	"StatusManaRegen"			"1.25"		// Mana regeneration rate.		 
+	"StatusHealth"				"1600"		// Base health.
+	"StatusHealthRegen"			"8.5"		// Health regeneration rate.
+	"StatusMana"				"1100"			// Base mana.
+	"StatusManaRegen"			"9.25"		// Mana regeneration rate.		 
 	
 	// Vision
 	//----------------------------------------------------------------

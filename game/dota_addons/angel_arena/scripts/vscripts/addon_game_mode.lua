@@ -1,8 +1,10 @@
 ---------------------------------------------------------------------------
 -- Required .lua files
 ---------------------------------------------------------------------------
-require('Lib/timers')
 require('Spawn/spawn')
+require('Spawn/miniboss')
+--LIB
+require('Lib/timers')
 require('Lib/aa')
 require('Lib/popups')
 require('Lib/notifications')
@@ -10,11 +12,11 @@ require('Lib/luaCommand')
 require('Lib/teleports')
 require('Lib/utilities')
 require('Lib/util')
-require('Lib/dropsys')
-require('Lib/dueltimer')
-require('Lib/duel5v5')
 require('Lib/msg')
-require('Lib/onItempickthinker')
+--Mechanics
+require('Mechanics/dropsys')
+require('Mechanics/duel')
+require('Mechanics/onItempickthinker')
 
 
 
@@ -53,8 +55,17 @@ function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_stingers_diretide.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_creeps.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/custom_sounds.vsndevts", context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context )
+	
 
 	-- Precache particles required by various world effects
+
+	PrecacheResource( "particle", "particles/items_fx/aegis_respawn_aegis_starfall.vpcf", context )
+	PrecacheResource( "particle", "particles/neutral_fx/roshan_death_aegis_trail.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf", context )
+	PrecacheResource( "particle", "particles/items_fx/aegis_respawn.vpcf", context )
+	
+	
 	--Hero shadow demon
 	PrecacheResource( "particle", "particles/units/heroes/hero_shadow_demon/sd_w.vpcf", context )
 	--tombAgiPreach

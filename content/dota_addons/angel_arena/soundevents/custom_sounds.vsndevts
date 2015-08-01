@@ -112,6 +112,63 @@
     }
 }
 
+"angel_arena.resskill"
+{
+        "operator_stacks"
+        {
+                "update_stack"
+                {
+                        "reference_operator"
+                        {
+                                "operator"              "sos_reference_stack"
+                                "reference_stack"               "src1_2d"
+                                "operator_variables"
+                                {
+                                        "vsnd_files"
+                                        {
+                                                "value"
+                                                {
+                                                        "value0"                "sounds/resskill.vsnd"
+                                                }
+                                        }
+                                        "volume_min"
+                                        {
+                                                "value"         "3.500000"
+                                        }
+                                        "volume_max"
+                                        {
+                                                "value"         "6.500000"
+                                        }
+                                        "pitch_min"
+                                        {
+                                                "value"         "1.000000"
+                                        }
+                                        "pitch_max"
+                                        {
+                                                "value"         "1.000000"
+                                        }
+                                        "chan_type"
+                                        {
+                                                "value"         "6"
+                                        }
+                                        "memory_type"
+                                        {
+                                                "value"         "0"
+                                        }
+                                        "soundlevel_min"
+                                        {
+                                                "value"         "100.000000"
+                                        }
+                                        "soundlevel_max"
+                                        {
+                                                "value"         "100.000000"
+                                        }
+                                }
+                        }
+                }
+        }
+}
+
 "angel_arena.rendarmorimpact"
 {
     "operator_stacks"

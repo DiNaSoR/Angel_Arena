@@ -53,6 +53,7 @@ FOUNTAIN_PERCENTAGE_HEALTH_REGEN = 20   	-- What should we use for the percentag
 tHeroes 		= {}
 tPlayers 		= {}
 nPlayers 		= 0
+--nHeroCount    	= 0
 --[[Future 1v1 duel test system
 nPlayers 		= 0
 nHeroCount    	= 0
@@ -74,7 +75,7 @@ ARENA_CENTER_COORD       = Vector(5897.54, 3904, 17.3543)]]
 --------------------------------------------------------------
 if	GameMode == nil then
 	GameMode = class({})
-	print("Angel Arena 0.9")
+	print("Angel Arena 1.0")
 end
 
 --------------------------------------------------------------
@@ -88,7 +89,7 @@ function 	GameMode:InitGameMode()
 				self:ReadGameConfiguration()
 				
 				--GameRules:SetThink("thinking", self)
-				--GameRules:SetThink( "OnThink", self )
+				--GameRules:GetGameModeEntity():SetThink( "OnThink", self )
 				GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
 				GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
 				GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
@@ -112,8 +113,9 @@ function 	GameMode:InitGameMode()
 				-- ALL GAMERULES
 				--GameRules:GetGameModeEntity():SetThink( "PopUpThink", self, "PopUpTimer", 2 )
 				--GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 2 )
+				--GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 1 )
 				
-				self.spellList = {"skill_bag_of_gold"}
+				
 				
 				
 				-- ALL LISTEN
@@ -126,9 +128,9 @@ function 	GameMode:InitGameMode()
 				ListenToGameEvent('player_changename', Dynamic_Wrap(GameMode, 'OnPlayerChangedName'), self)
 				ListenToGameEvent('npc_spawned', Dynamic_Wrap(GameMode, 'OnNPCSpawned'), self)
 				ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(GameMode, 'OnGameRulesStateChange'), self)
-				--ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(GameMode, 'OnPlayerLearnedAbility'), self)
 				ListenToGameEvent( 'dota_player_pick_hero', Dynamic_Wrap( GameMode, 'OnPlayerPickHero' ), self )
 				--ListenToGameEvent('player_disconnect', Dynamic_Wrap(GameMode, 'OnDisconnect'), self)
+				--ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(GameMode, 'OnPlayerLearnedAbility'), self)
 				
 				--[[ Possible Use	
 				ListenToGameEvent('entity_hurt', Dynamic_Wrap(GameMode, 'OnEntityHurt'), self)
@@ -141,12 +143,16 @@ function 	GameMode:InitGameMode()
 				ListenToGameEvent('dota_rune_activated_server', Dynamic_Wrap(GameMode, 'OnRuneActivated'), self)
 				ListenToGameEvent('dota_ability_channel_finished', Dynamic_Wrap(GameMode, 'OnAbilityChannelFinished'), self)
 				]]
+
+				
+
 				
 				-- Change random seed
 				local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
 				math.randomseed(tonumber(timeTxt))
 
 				-- Initialized tables for tracking state
+				self.spellList = {"skill_bag_of_gold"}
 				self.vUserIds = {}
 				self.vSteamIds = {}
 
@@ -179,6 +185,9 @@ function 	GameMode:InitGameMode()
 				  end
 				  Convars:RegisterConvar('barebones_spew', tostring(spew), 'Set to 1 to start spewing barebones debug info.  Set to 0 to disable.', 0)
 				
+				-- Store and update selected units of each pID
+					GameRules.SELECTED_UNITS = {}
+
 				-- Spawn Locations and Area Activations
 
 				-- Make separate lists based on creepName to randomize spawn locations later
@@ -192,6 +201,7 @@ function 	GameMode:InitGameMode()
 				 -- Demon Area
 				GameMode.demon_imp_spawnLocations = Entities:FindAllByName("npc_demon_imp_spawner")
 				GameMode.DemonAreaCreeps = {} -- Keep a list of all creeps in the area
+
 
 
 				print('Angel Arena Done loading the gamemode!\n\n')
@@ -220,6 +230,7 @@ function GameMode:CaptureGameMode()
 				mode:SetFountainConstantManaRegen( FOUNTAIN_CONSTANT_MANA_REGEN )
     			mode:SetFountainPercentageHealthRegen( FOUNTAIN_PERCENTAGE_HEALTH_REGEN )
     			mode:SetFountainPercentageManaRegen( FOUNTAIN_PERCENTAGE_MANA_REGEN )
+    			--mode:SetThink( "OnThink", self, "GlobalThink", 1 )
 
 				
 				
@@ -250,16 +261,19 @@ end
 
 --------------------------------------------------------------
 -- Thinking
---------------------------------------------------------------
---[[function GameMode:onThink()
+--[[------------------------------------------------------------
+function GameMode:OnThink()
+	print("On Think 1 sec")
     for i = 1, #tHeroes do
         local hero = tHeroes[i]
         --hero.rating = hero.creeps * 2 + hero.bosses * 20 + hero.deaths * -15 + hero:GetLevel() * 30
         --print(hero.rating,PlayerResource:GetPlayerName(hero:GetPlayerID()))       
     end 
-    --table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
-end]]
--------------------------------------------------------------------
+    table.sort(tHeroes,function(a,b) return a.rating > b.rating end)
+
+    return 1
+end
+----------------------------------------------------------------]]---
 function PrintTable(title,table)
 	print(title)
 	for k,v in pairs(table) do
@@ -282,9 +296,11 @@ end
 --------------------------------------------------------------
 function GameMode:OnPlayerPickHero(keys)
     PrintTable("OnPlayerPickHero",keys)
-    local player = EntIndexToHScript(keys.player)
-    local playerID = player:GetPlayerID()
-    local hero = EntIndexToHScript(keys.heroindex)
+
+ 	local player 	= EntIndexToHScript(keys.player)
+    local playerID 	= player:GetPlayerID()
+    local hero 		= EntIndexToHScript(keys.heroindex)
+ 
 
     --hero.creeps = 0
     --hero.bosses = 0
@@ -329,14 +345,15 @@ end
 --------------------------------------------------------------
 function GameMode:OnNPCSpawned(keys)
 	--print("Angel Arena NPC Spawned")
-	local index = keys.entindex
-	local unit = EntIndexToHScript(index)
+	--local index = keys.entindex
+	--local unit = EntIndexToHScript(index)
+
 	local npc = EntIndexToHScript(keys.entindex)
 	
 	-- Print a message every time an NPC spawns
-	if Convars:GetBool("developer") then
+	--if Convars:GetBool("developer") then
 		--print("Index: "..index.." Name: "..unit:GetName().." Created time: "..GameRules:GetGameTime().." at x= "..unit:GetOrigin().x.." y= "..unit:GetOrigin().y)
-	end
+	--end
 
 	--[[if npc:IsHero() then
 		npc.strBonus = 0
@@ -353,6 +370,9 @@ function GameMode:OnNPCSpawned(keys)
 	end
 end
 
+
+
+
 --------------------------------------------------------------
 -- OnHeroInGame
 --This function is called once and only once for every player when they spawn into the game for the first time.
@@ -361,7 +381,8 @@ function GameMode:OnHeroInGame(hero)
 	print("Angel Arena Hero spawned in game for first time -- " .. hero:GetUnitName())
 
 	local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-
+	local pID = hero:GetPlayerOwnerID()
+	local pOID = hero:GetPlayerID()
 	--[[ Starting Gold
 	hero:SetGold(0, false)]]
 
@@ -379,6 +400,10 @@ function GameMode:OnHeroInGame(hero)
 	--local item = CreateItem("item_searing_flame_of_prometheus", hero, hero)
 	--hero:AddItem(item)
 
+	--print("give ability")
+	--hero:AddAbility("crystal_maiden_brilliance_aura")
+	--hero:FindAbilityByName("crystal_maiden_brilliance_aura"):SetLevel(1)
+	
 	--[[Abilities
 	local abil1 = hero:GetAbilityByIndex(0)
 	local abil2 = hero:GetAbilityByIndex(1)
@@ -591,7 +616,7 @@ end
 --This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
 --------------------------------------------------------------
 function GameMode:OnAllPlayersLoaded()
-
+		print("Angel Arena All Players have loaded into the game")
 
 end
 
@@ -641,6 +666,7 @@ function GameMode:OnGameInProgress()
 	welcomemsg()
 	aastartpop()
 	firedueltimer()
+
 end
 
 --------------------------------------------------------------
@@ -648,20 +674,23 @@ end
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 --------------------------------------------------------------
 function GameMode:OnConnectFull(event)
-	--print ('Angel Arena OnConnectFull')
+	print ('Angel Arena OnConnectFull')
 	--PrintTable("OnConnectFull",event)
 	local entIndex = event.index+1
+	-- The Player entity of the joining user
 	local player = EntIndexToHScript(entIndex)
+	-- The Player ID of the joining player
 	local playerID = player:GetPlayerID()
 	
-
 	-- Update the user ID table with this user
 	self.vUserIds[event.userid] = player
+
+	--Update the Steam ID table
+	--self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
 	
 	table.insert(tPlayers,player)
     nPlayers = nPlayers + 1  
-	-- Update the Steam ID table
-	--self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
+
 	GameMode:CaptureGameMode()
 end
 
@@ -674,7 +703,9 @@ function GameMode:OnEntityKilled(keys)
 	
 	-- The Unit that was Killed
 	local killedUnit = EntIndexToHScript(keys.entindex_killed)
-	--local unitName = killedUnit:GetUnitName()
+	-- Get Unit Name that was Killed
+	local unitName = killedUnit:GetUnitName()
+	-- The Unit that was Attacked
 	local attacker = EntIndexToHScript(keys.entindex_attacker)
 	--local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
 	
@@ -684,6 +715,9 @@ function GameMode:OnEntityKilled(keys)
 	if keys.entindex_attacker ~= nil then
 		killerEntity = EntIndexToHScript( keys.entindex_attacker )
 	end
+
+	-- Player owner of the unit
+	local player = killedUnit:GetPlayerOwner()
 
 	--if killedUnit:IsRealHero() then
 	--	OnHeroDeath(keys)
@@ -723,4 +757,46 @@ function GameMode:OnEntityKilled(keys)
 		OnHeroDeath(keys)
 	end
 
+	-- dont delete this salah keep it for the future
+
+
+	-- Adding point to Heroes
+	if unitName == "npc_mini_boss_demon" then
+	   	print("Its a Demon Mini Boss who died")
+	   	demonminiboss()
+        --nDeathCreeps = nDeathCreeps + 1
+        --if ownedHeroAtt then
+        --	print("Adding 1 point to player - ".. ownedHeroAtt:GetName())
+         --   ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
+         
+        
+    else
+   		print("Not Demon Mini Boss")
+    end
+
+ 	--if killedUnit and ( killedUnit:GetTeamNumber()==DOTA_TEAM_NEUTRALS or killedUnit:GetTeamNumber()==DOTA_TEAM_BADGUYS ) and killedUnit:IsCreature() then
+ 		-- Item Drops
+
 end
+
+-- Adding point to Heroes
+	--[[if string.match(unitName, "_creep") then
+	   	print("Its a Creep who died")
+       nDeathCreeps = nDeathCreeps + 1
+        if ownedHeroAtt then
+        	print("Adding 1 point to player - ".. ownedHeroAtt:GetName())
+            ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
+        end
+    elseif string.match(unitName, "_boss") then
+        nDeathCreeps = nDeathCreeps + 1
+        if ownedHeroAtt then
+            ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
+            ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
+            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
+            if attacker:GetPlayerOwner() then
+                PopupNumbers(attacker:GetPlayerOwner() ,killedUnit, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
+            end
+        end
+    else
+  		print("No adding point its not creep or boss ")
+    end ]]

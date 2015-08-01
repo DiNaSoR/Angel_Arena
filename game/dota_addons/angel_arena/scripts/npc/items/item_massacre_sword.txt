@@ -1,0 +1,70 @@
+"item_massacre_sword"
+{
+	"ID"                            "1079"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"massacre_sword"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_massacre_sword"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%bonus_strenght"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE_PURE"	"%bonus_chance"
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"	"%bonus_chance_damage"
+				
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strenght"		"21"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_chance"			"30"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_chance_damage"	"60"
+		}
+	}
+}
+"item_recipe_massacre_sword" 
+{
+    "ID" 					"1200"
+    "BaseClass"           	"item_datadriven"
+    "ItemRecipe"          	"1" //destroyed after combine
+    "ItemCost"            	"2000" //if its 0, it will combine without needing a recipe.
+    "ItemResult"          	"item_massacre_sword" //the result of combining the ItemRequirements
+    "ItemRequirements"
+    {
+        "01" "item_claymore;item_javelin"
+        //"02" "item_ingredient_1;item_ingredient_2;item_ingredient_alternative_3"
+    }
+}
