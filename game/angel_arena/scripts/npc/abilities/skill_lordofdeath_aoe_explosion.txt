@@ -1,0 +1,121 @@
+"lordofdeath_boss_aoe_explosion"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"luna_lucent_beam"
+		
+		"AbilityCastRange"				"700 800 900 1000"
+		"AbilityCastPoint"				"0"
+		"AOERadius"						"300"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityDuration"				"0"
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"%damage"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"explosion_aoe"					"200"
+			}		
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"1.4"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"						"300"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		"particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_shadowraze.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"		"POINT"
+
+				"ControlPoints"
+	            {
+	            	"01"	"%explosion_aoe 0 0"
+	            	"03"	"0 0 0"
+	            }
+			}
+
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_nevermore/nevermore_shadowraze.vpcf"
+				"EffectAttachType"	"start_at_customorigin"
+				"TargetPoint"		"POINT"
+
+				"ControlPoints"
+	            {
+	            	"01"	"%explosion_aoe 0 0"
+	            	"03"	"0 0 0"
+	            }
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Nevermore.Shadowraze"
+				"Target" 		"CASTER"
+			}
+
+
+
+			"ActOnTargets"
+			{
+				"Target"
+	            {
+	                "Center" "POINT"
+	                "Radius" "%explosion_aoe"
+	                "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	            }
+
+	            "Action"
+	            {
+	            	"Damage"
+	            	{
+	            		"Target"	"TARGET"
+	            		"Type"		"DAMAGE_TYPE_MAGICAL"
+	            		"Damage"	"%damage"
+	            	} 
+					"Knockback"
+					{
+						"Target"	"TARGET"
+						"Duration"	"%duration"
+						"Distance"	"0"
+						"Height"	"400"
+					}
+
+	            }
+
+			}
+		}
+	}

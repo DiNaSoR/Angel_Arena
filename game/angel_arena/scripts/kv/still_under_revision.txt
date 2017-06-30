@@ -1,0 +1,2628 @@
+//	Potion of Mega Healing			//4500 HP
+"item_potion_of_mega_healing"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_potion_of_mega_healing"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve.vmdl" //Green
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"heal_amount"			"4500"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"Heal"
+		{
+			"Target"        	"CASTER"
+			"HealAmount"		"%heal_amount"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+}
+
+//	Potion of Mega Mana				//3500 Mana
+"item_potion_of_mega_mana"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_potion_of_mega_mana"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/clarity.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"200"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_restored"			"1400"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"		"items/mana.lua"
+			"Function"			"GiveMana"
+			"Target"			"CASTER"
+			"mana_amount"		"%mana_restored"
+		}
+		"FireEffect"
+		{
+			"Target"				"CASTER"
+			"EffectName"			"particles/units/heroes/hero_keeper_of_the_light/keeper_mana_leak_cast.vpcf"
+			"EffectAttachType"		"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 		"UNIT"
+			"EffectName" 	"DOTA_Item.ClarityPotion.Activate"
+		}
+		"SpendCharge"
+		{}	
+	}
+}
+
+//	Potion of Mega Regeneration		//50 HPs 10m
+"item_potion_of_mega_regeneration"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_potion_of_super_regeneration"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve.vmdl" //Green
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_per_second"		"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveRegeneration"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_potion_of_mega_regeneration"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_potion_of_mega_regeneration"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+			}
+		}
+	}
+}
+
+//	Elixir of Lesser Agility 		//25 AGI
+"item_elixir_of_lesser_agility"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"			"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_lesser_agility"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_lesser_agility"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}
+		}
+	}
+}
+
+//	Elixir of Lesser Intelligence  	//25 INT
+"item_elixir_of_lesser_intelligence"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_lesser_intelligence"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_lesser_intelligence"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+			}
+		}
+	}
+}
+
+//	Elixir of Lesser Strength		//25 STR
+"item_elixir_of_lesser_strength"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_lesser_strength"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_lesser_strength"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			}
+		}
+	}
+}
+
+//	Elixir of Lesser Healing Power 	//250 HealPower
+//	Elixir of Lesser Spell Power 	//250 SpellPower
+
+//	Elixir of Agility 				//50 AGI
+"item_elixir_of_agility"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"			"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_agility"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_agility"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}
+		}
+	}
+}
+
+//	Elixir of Intelligence			//50 INT
+"item_elixir_of_intelligence"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_intelligence"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_intelligence"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+			}
+		}
+	}
+}
+
+//	Elixir of Strength 				//50 STR
+"item_elixir_of_strength"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_strength"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_strength"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			}
+		}
+	}
+}
+
+//	Elixir of Healing Power 		//500 HealPower
+//	Elixir of Spell Power 			//500 SpellPower
+
+//	Elixir of Greater Agility 		//85 AGI
+"item_elixir_of_greater_agility"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"			"85"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_greater_agility"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_greater_agility"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}
+		}
+	}
+}
+
+//	Elixir of Greater Intelligence 	//85 INT
+"item_elixir_of_greater_intelligence"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"85"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_greater_intelligence"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_greater_intelligence"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+			}
+		}
+	}
+}
+
+//	Elixir of Greater Strength 		//85 STR
+"item_elixir_of_greater_strength"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"85"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_greater_strength"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_greater_strength"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			}
+		}
+	}
+}
+
+//	Elixir of Greater Healing Power //850 HealPower
+//	Elixir of Greater Spell Power 	//850 SpellPower
+
+//	Elixir of Super Agility
+"item_elixir_of_super_agility" 		//130 AGI
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"			"130"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_super_agility"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_super_agility"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}
+		}
+	}
+}
+
+//	Elixir of Super Intelligence	//130 INT
+"item_elixir_of_super_intelligence"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"130"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_super_intelligence"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_super_intelligence"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+			}
+		}
+	}
+}
+
+//	Elixir of Super Strength 		//130 STR
+"item_elixir_of_super_strength"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"130"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_super_strength"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_super_strength"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			}
+		}
+	}
+}
+//	Elixir of Super Healing Power 	//1300 HealPower	
+//	Elixir of Super Spell Power 	//1300 SpellPower
+
+//	Elixir of Mega Agility 			//200 AGI
+"item_elixir_of_mega_agility"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agility"			"200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_mega_agility"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_mega_agility"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "%bonus_agility"
+			}
+		}
+	}
+}
+
+//	Elixir of Mega Intelligence 	//200 INT
+"item_elixir_of_mega_intelligence"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_intelligence"	"200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_mega_intelligence"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_mega_intelligence"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intelligence"
+			}
+		}
+	}
+}
+
+//	Elixir of Mega Strength 		//200 STR
+"item_elixir_of_mega_strength"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_elixir"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_strength"		"200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"03"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"0.10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveElixir"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_elixir_of_mega_strength"
+			"Target" 		"CASTER"
+			"Duration"		"%duration"
+		}
+		"FireEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/units/heroes/hero_treant/treant_overgrowth_vine_glows_corerope.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+		"FireSound"
+		{
+			"Target" 			"CASTER"
+			"EffectName" 		"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_elixir_of_mega_strength"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" "%bonus_strength"
+			}
+		}
+	}
+}
+
+//	Elixir of Mega Healing Power 	//2000 HealPower
+//	Elixir of Mega Spell Power 		//2000 SpellPower
+
+
+//	Scroll of Speed 				//50% movement speed
+"item_scroll_of_speed"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_speed"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_movespeed_pct"	"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"1"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_speed"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_speed"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%bonus_movespeed_pct"
+			}
+		}
+	}
+}
+
+//	Scroll of the Beast 			//35% bonus damage
+"item_scroll_of_the_beast"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_the_beast"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage_pct"		"35"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_the_beast"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_the_beast"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%bonus_damage_pct"
+			}
+		}
+	}
+}
+
+//	Scroll of Lesser Regeneration 	//10 HPs
+"item_scroll_of_lesser_regeneration"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_regeneration"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_per_second"		"10"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveRegenerationScroll"
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		}
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_lesser_regeneration"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_lesser_regeneration"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+			}
+		}
+	}
+}
+
+//	Scroll of Regeneration 			//20 HPs
+"item_scroll_of_regeneration"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_regeneration"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_per_second"		"20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveRegenerationScroll"
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		}
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_regeneration"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_regeneration"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+			}
+		}
+	}
+}
+//	Scroll of Greater Regeneration 	//30 HPs
+"item_scroll_of_greater_regeneration"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_regeneration"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_per_second"		"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveRegenerationScroll"
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		}
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_greater_regeneration"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_greater_regeneration"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+			}
+		}
+	}
+}
+//	Scroll of Super Regeneration 	//40 HPs
+"item_scroll_of_super_regeneration"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_regeneration"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_per_second"		"40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/potions.lua"
+			"Function"		"RemoveRegenerationScroll"
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		}
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_super_regeneration"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_super_regeneration"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+			}
+		}
+	}
+}
+//  Scroll of Protection 			//20 Armor
+"item_scroll_of_protection"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_protection"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"600"
+		}
+		"04"	//Tooltip
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration_minutes"		"10"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_scroll_of_protection"
+					"Target" 		"TARGET"
+					"Duration"		"%duration"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_scroll_of_protection"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%bonus_armor"
+			}
+		}
+	}
+}
+
+//  Scroll of Lesser Healing 		//600 HP
+"item_scroll_of_lesser_healing"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_healing"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_restored"		"600"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"Heal"
+				{
+					"Target"        "TARGET"
+					"HealAmount"	"%health_restored"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+}
+//  Scroll of Healing 				//1200 HP
+"item_scroll_of_healing"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_healing"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_restored"		"1200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"Heal"
+				{
+					"Target"        "TARGET"
+					"HealAmount"	"%health_restored"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+}
+//  Scroll of Lesser Mana 			//225 Mana
+"item_scroll_of_lesser_mana"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_mana"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_restored"			"225"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/mana.lua"
+					"Function"		"GiveMana"
+					"mana_amount"	"%mana_restored"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+}
+//  Scroll of Mana 					//450 Mana
+"item_scroll_of_lesser_mana"
+{
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_scroll_of_mana"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityCooldown"               "60"
+
+	"Model"							"models/props_gameplay/tpscroll01.vmdl"
+	"Effect" 						"particles/generic_gameplay/dropped_item.vpcf"
+
+	"UIPickupSound"					"Item.PickUpRingShop"
+	"UIDropSound"					"Item.DropRingShop"
+	"WorldDropSound"				"Item.DropRingWorld"
+	
+	"ItemKillable"                  "1"
+	"ItemSellable"                  "1"
+	"ItemDroppable"                 "1"
+
+	"ItemCost"						"600"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_restored"			"225"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"600"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"Target" 			"CASTER"
+			"EffectName"		"particles/items2_fx/mekanism.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center" 	"CASTER"
+				"Radius" 	"%radius"
+				"Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			}
+		
+			"Action"    
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/mana.lua"
+					"Function"		"GiveMana"
+					"mana_amount"	"%mana_restored"
+				}
+			}
+		}
+			
+		"FireSound"
+		{
+			"EffectName"	"DOTA_Item.Mekansm.Activate"
+			"Target" 		"CASTER"
+		}
+
+		"SpendCharge"
+		{}
+	}
+}

@@ -1,0 +1,754 @@
+﻿"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{		
+		// Mode Name
+		// ************************************************************************************************************************
+		"addon_game_name"											"Angel Arena"
+		"game_mode_15_desc" 										"Get Ready!"
+
+		"angeldeultimer"    										"<font color='#E8D505' size='16'>Duel will finish after %quest_current_value% seconds</font>"
+		"aa_duel_5v5"												"<font color='#386BE8' size='18'>Be Prepared to Duel after each 10 min</font>"
+		"dueltimerQuest"											"<font color='#E8D505' size='16'>TIME LEFT TO DUEL! %quest_current_value% seconds</font>"
+		"arenawallQuest"											"Prepare To Fight in %quest_current_value% seconds"
+
+
+		// TopTitle-Start Popup
+		// ************************************************************************************************************************
+		"aarena_instructions_title"									"Angel Arena"
+		"aarena_instructions_body"									"Any suggestions or bugs please report it to steam-workshop page, Thank you and please enjoy .. oh yeah kill the boss in the middle to win fast XD .. oh yeah again each boss drop a legendry item HELL YA!"
+		
+
+		// Chat
+		// ************************************************************************************************************************
+		"DOTA_Chat_PlayerKilledGeneric" 							"<font color='#386BE8'>%s1</font> is dead! Respawn in 30 seconds"
+
+		
+		
+
+		// Team strings
+		// ************************************************************************************************************************
+		"DOTA_GoodGuys"												"ANGELS"
+		"DOTA_BadGuys"												"DEMONES"
+		"DOTA_GoodGuysCaps"											"ANGELS"
+		"DOTA_BadGuysCaps"											"DEMONES"
+		
+
+		// Winner strings
+		// ************************************************************************************************************************
+		"DOTA_Winner_GoodGuys"										"Angels Victory"
+		"DOTA_Winner_BadGuys"										"Demones Victory"
+		"DOTA_Winner_Teamname"										"%s1 Victory"
+		
+
+		// Courier
+		// ************************************************************************************************************************
+		"DOTA_No_Courier"											"NO Courier"
+		
+
+		// Units
+		// ************************************************************************************************************************
+		"AARENA_HELL_DOG"											"Hell GateKeeper"
+		"GOOD_GUYS_DEF_TOWER"										"Angel Tower"
+		"npc_dota_bador_pudge"										"The Butcher"
+		"bad_guys_def_tower"										"Demones Tower"
+		"npc_adp_invoker"											"Adp10"
+		"npc_demon_imp"												"Demon Imp"
+		"player_gravestone"											"Player Gravestone"
+		"npc_demon_warrior_creep"                                   "Demon Warrior Creep"
+		"npc_human_bear"											"Human Bear"
+		"npc_vision_dummy"                                          "Vision Dummy"
+		"npc_chest_gold"                                            "Chest of Gold"
+		"npc_demon_warrior"                                         "Demon Warrior"
+		"npc_paimon_mini_boss"                                      "Paimon"
+		"dummy_unit"                                                                      "Dummy Unit"
+		"npc_adp_son"                                                                     "Adp Son"
+		"npc_cny_beast"                                                                   "Cny Beast"
+		"npc_dummy_unit"                                                                  "Dummy Unit"
+		"npc_hero_spirit_boss"                                                            "Hero Spirit"
+		"npc_infernus"                                                                    "Infernus"
+		"npc_lord_of_death_boss"                                                          "Lord Of Death"
+		"npc_samurai_mini_boss"                                                           "Samurai"
+		"dummy_unit_dajjal"                                                               "Dummy Unit Dajjal"
+		
+		
+		// Skills
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_ability_dummy_passive"                                              "Dummy Passive"
+		"DOTA_Tooltip_ability_dummy_passive_Description"                                  ""
+
+		"DOTA_TOOLTIP_ABILITY_SKILL_PUDGE_MEAT_HOOK"					"LEGENDARY HOOK"
+		"DOTA_TOOLTIP_ABILITY_SkILL_PUDGE_MEAT_HOOK_Description"		"<font color='#ffd100'>No escape from the butcher hook at all trust me you need to give him food to slow down his movements and thinking abilities.</font>"
+		"DOTA_Tooltip_ability_skill_pudge_meat_hook_hook_speed"			"<font color='#22FF00'>HOOK SPEED:</font>"
+		"DOTA_Tooltip_ability_skill_pudge_meat_hook_hook_width"			"<font color='#22FF00'>HOOK WIDTH:</font>"
+		"DOTA_Tooltip_ability_skill_pudge_meat_hook_hook_distance"		"<font color='#22FF00'>HOOK DISTANCE:</font>"
+		"DOTA_Tooltip_ability_skill_pudge_meat_hook_vision_radius"		"<font color='#22FF00'>VISION RADIUS:</font>"
+		"DOTA_Tooltip_ability_skill_pudge_meat_hook_vision_duration"	"<font color='#22FF00'>VISION DURATION:</font>"
+
+		"DOTA_Tooltip_ability_gravestone"							"Gravestone"
+		"DOTA_Tooltip_ability_gravestone_Description"				""
+
+		"DOTA_Tooltip_ability_skill_rejuvenation"					"Rejuvenation"
+		"DOTA_Tooltip_ability_skill_rejuvenation_Description"		"<font color='#ffd100'>Heals the target over %duration% sec.</font>"
+		"DOTA_Tooltip_ability_skill_rejuvenation_heal_amount"       "<font color='#22FF00'>HEAL AMOUNT:</font>"
+		"DOTA_Tooltip_ability_skill_rejuvenation_duration"          "<font color='#22FF00'>DURATION:</font>"
+
+		"DOTA_Tooltip_ability_skill_redemption"                     "Redemption"
+		"DOTA_Tooltip_ability_skill_redemption_Description"         "<font color='#ffd100'>Brings a dead ally back to life with HP/MP Redemption level maximum health and mana.  can be cast when in combat.</font>"
+		"DOTA_Tooltip_ability_skill_redemption_hp"                  "<font color='#22FF00'>HP:</font>"
+		"DOTA_Tooltip_ability_skill_redemption_mana"                "<font color='#22FF00'>MANA:</font>"
+
+		"DOTA_Tooltip_ability_skill_rend_armor"                     "Colossus Smash"
+		"DOTA_Tooltip_ability_skill_rend_armor_Description"         "<font color='#ffd100'>Smashes a target and reduce armor causes your attacks to bypass all of their armor for 12 sec. Bypasses less armor on players. Using this ability in 1 vs 1 for better chance.</font>"
+		"DOTA_Tooltip_ability_skill_rend_armor_duration"            "<font color='#22FF00'>DURATION:</font>"
+		"DOTA_Tooltip_ability_skill_rend_armor_armor_reduction"     "<font color='#22FF00'>ARMOR REDUCTION:</font>"
+
+		"DOTA_Tooltip_ability_skill_bag_of_gold"                                          "Skill Bag Of Gold"
+		"DOTA_Tooltip_ability_skill_bag_of_gold_Description"                              ""
+
+		"DOTA_Tooltip_ability_skill_bag_of_gold_chest"                                    "Skill Bag Of Gold Chest"
+		"DOTA_Tooltip_ability_skill_bag_of_gold_chest_Description"                        ""
+
+		"DOTA_Tooltip_ability_skill_invoker_tornado"                                      "Skill Invoker Tornado"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_Description"                          ""
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_distance"                      "TRAVEL DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_speed"                         "TRAVEL SPEED:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_area_of_effect"                       "AREA OF EFFECT:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_vision_distance"                      "VISION DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_end_vision_duration"                  "END VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_lift_duration"                        "LIFT DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_base_damage"                          "BASE DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_quas_damage"                          "QUAS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_wex_damage"                           "WEX DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+
+		"DOTA_Tooltip_ability_creep_respawn"                                              "Creep Respawn"
+		"DOTA_Tooltip_ability_creep_respawn_Description"                                  ""
+
+		"DOTA_Tooltip_ability_skill_unselectable"                                         "Skill Unselectable"
+		"DOTA_Tooltip_ability_skill_unselectable_Description"                             ""
+
+		"DOTA_Tooltip_ability_dummy_unit"                                                 "Dummy Unit"
+		"DOTA_Tooltip_ability_dummy_unit_Description"                                     ""
+
+		"DOTA_Tooltip_ability_guanyu_liuyuefeizhan"                                       "Guanyu Liuyuefeizhan"
+		"DOTA_Tooltip_ability_guanyu_liuyuefeizhan_Description"                           ""
+		"DOTA_Tooltip_ability_guanyu_liuyuefeizhan_damage"                                "DAMAGE:"
+
+		"DOTA_Tooltip_ability_faceless_dash"                                              "Faceless Dash"
+		"DOTA_Tooltip_ability_faceless_dash_Description"                                  ""
+		"DOTA_Tooltip_ability_faceless_dash_speed"                                        "SPEED:"
+		"DOTA_Tooltip_ability_faceless_dash_radius"                                       "RADIUS:"
+		"DOTA_Tooltip_ability_faceless_dash_duration"                                     "DURATION:"
+		"DOTA_Tooltip_ability_faceless_dash_movement_speed_pct"                           "MOVEMENT SPEED PCT:"
+		"DOTA_Tooltip_ability_faceless_dash_attack_speed_pct"                             "ATTACK SPEED PCT:"
+		"DOTA_Tooltip_ability_faceless_dash_tooltip_range"                                "TOOLTIP RANGE:"
+
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill"                           "DaShinGO Rage"
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill_Description"               ""
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill_duration"                  "DURATION:"
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill_damage"                    "DAMAGE:"
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill_movespeed_loss"            "MOVESPEED LOSS:"
+		"DOTA_Tooltip_ability_skill_herospirit_mini_boss_skill_miss_chance"               "MISS CHANCE:"
+
+		"DOTA_Tooltip_ability_lordofdeath_boss_aoe_explosion"                             "Lordofdeath Boss Aoe Explosion"
+		"DOTA_Tooltip_ability_lordofdeath_boss_aoe_explosion_Description"                 ""
+		"DOTA_Tooltip_ability_lordofdeath_boss_aoe_explosion_explosion_aoe"               "EXPLOSION AOE:"
+		"DOTA_Tooltip_ability_lordofdeath_boss_aoe_explosion_duration"                    "DURATION:"
+		"DOTA_Tooltip_ability_lordofdeath_boss_aoe_explosion_damage"                      "DAMAGE:"
+
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive"                                "Lord of death Fire Dive"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive_Description"                    ""
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive_damage"                         "DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive_movespeed_loss"                 "MOVESPEED LOSS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_dive_miss_chance"                    "MISS CHANCE:"
+
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs"                                "Lord of death Adds"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs_Description"                    ""
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs_damage"                         "DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs_movespeed_loss"                 "MOVESPEED LOSS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_mobs_miss_chance"                    "MISS CHANCE:"
+
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill"                               "Lord of Death FIRE-MADE"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_Description"                   ""
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_duration"                      "DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_damage"                        "DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_movespeed_loss"                "MOVESPEED LOSS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_miss_chance"                   "MISS CHANCE:"
+
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy"                      "Lordofdeath Splitter"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_Description"          ""
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_speed"          "ARROW SPEED:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_width"          "ARROW WIDTH:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_range"          "ARROW RANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stunrange"		"ARROW MAX STUNRANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_min_stun"       "ARROW MIN STUN:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stun"       "ARROW MAX STUN:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_bonus_damage"   "ARROW BONUS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_vision"         "ARROW VISION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_damagerange"		"ARROW MAX DAMAGERANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_vision_duration"      "VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_damage_per_tick"      "DAMAGE PER TICK:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_number_of_targets"    "NUMBER OF TARGETS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_movespeed_reduction"		"MOVESPEED REDUCTION:"
+
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter"                                 "Lord of death Earth Splitter"
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_Description"                     ""
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_duration"                        "DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_damage"                          "DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_movespeed_loss"                  "MOVESPEED LOSS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_miss_chance"                     "MISS CHANCE:"
+
+		"DOTA_Tooltip_ability_skill_on_death_creep"                                       "Skill On Death Creep"
+		"DOTA_Tooltip_ability_skill_on_death_creep_Description"                           ""
+		
+		// Ability Modifiers
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_Invulnerable"											"Invulnerable"
+		"DOTA_Tooltip_Ability_skill_ability_Invulnerability"				"Invulnerable"
+		"DOTA_Tooltip_Ability_skill_ability_Invulnerability_Description"	"Protect the owner by the POWER OF GOD"
+		"DOTA_Tooltip_Invulnerable_Description"								"Protect the owner by the POWER OF GOD"
+		"DOTA_Tooltip_regeneration_modifier"                        		"Regeneration"
+		"DOTA_Tooltip_regeneration_modifier_Description"            		"Healing over time."
+
+		"DOTA_Tooltip_modifier_unselectable"                        		"Unselectable"
+		"DOTA_Tooltip_modifier_unselectable_Description"            		""
+
+		"DOTA_Tooltip_modifier_skill_rend_armor"                                          "Skill Rend Armor"
+		"DOTA_Tooltip_modifier_skill_rend_armor_Description"                              ""
+
+		"DOTA_Tooltip_dummy_unit"                                                         "Dummy Unit"
+		"DOTA_Tooltip_dummy_unit_Description"                                             ""
+
+		"DOTA_Tooltip_modifier_time_walk_slow_datadriven"                                 "Time Walk Slow Datadriven"
+		"DOTA_Tooltip_modifier_time_walk_slow_datadriven_Description"                     ""
+
+		"DOTA_Tooltip_modifier_lordofdeath_boss_dive"                                     "Lordofdeath Boss Dive"
+		"DOTA_Tooltip_modifier_lordofdeath_boss_dive_Description"                         ""
+
+		"DOTA_Tooltip_doom_miniboss_death_fx"                                             "Doom Miniboss Death Fx"
+		"DOTA_Tooltip_doom_miniboss_death_fx_Description"                                 ""
+
+		"DOTA_Tooltip_dummy_modifier"                                                     "Dummy Modifier"
+		"DOTA_Tooltip_dummy_modifier_Description"                                         ""
+
+
+		
+		// ITEM MODIFIERS
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_continuum_blade_crit"                                               "Continuum Blade Crit"
+		"DOTA_Tooltip_continuum_blade_crit_Description"                                   ""
+
+		"DOTA_Tooltip_hammer_of_zeus_bash"                                                "Hammer Of The Dajjal Bash"
+		"DOTA_Tooltip_hammer_of_zeus_bash_Description"                                    ""
+
+		"DOTA_Tooltip_hammer_of_zeus_aura"                                                "Hammer Of The Dajjal Aura"
+		"DOTA_Tooltip_hammer_of_zeus_aura_Description"                                    ""
+
+		"DOTA_Tooltip_modifier_potion_of_lesser_regeneration"                             "Potion Of Lesser Regeneration"
+		"DOTA_Tooltip_modifier_potion_of_lesser_regeneration_Description"                 ""
+
+		"DOTA_Tooltip_modifier_potion_of_regeneration"                                    "Potion Of Regeneration"
+		"DOTA_Tooltip_modifier_potion_of_regeneration_Description"                        ""
+
+		"DOTA_Tooltip_modifier_potion_of_greater_regeneration"                            "Potion Of Greater Regeneration"
+		"DOTA_Tooltip_modifier_potion_of_greater_regeneration_Description"                ""
+
+		"DOTA_Tooltip_modifier_potion_of_super_regeneration"                              "Potion Of Super Regeneration"
+		"DOTA_Tooltip_modifier_potion_of_super_regeneration_Description"                  ""
+
+		"DOTA_Tooltip_modifier_potion_of_mega_regeneration"                               "Potion Of Mega Regeneration"
+		"DOTA_Tooltip_modifier_potion_of_mega_regeneration_Description"                   ""
+
+		"DOTA_Tooltip_modifier_elixir_of_lesser_agility"                                  "Elixir Of Lesser Agility"
+		"DOTA_Tooltip_modifier_elixir_of_lesser_agility_Description"                      ""
+
+		"DOTA_Tooltip_modifier_elixir_of_lesser_intelligence"                             "Elixir Of Lesser Intelligence"
+		"DOTA_Tooltip_modifier_elixir_of_lesser_intelligence_Description"                 ""
+
+		"DOTA_Tooltip_modifier_elixir_of_lesser_strength"                                 "Elixir Of Lesser Strength"
+		"DOTA_Tooltip_modifier_elixir_of_lesser_strength_Description"                     ""
+
+		"DOTA_Tooltip_modifier_elixir_of_agility"                                         "Elixir Of Agility"
+		"DOTA_Tooltip_modifier_elixir_of_agility_Description"                             ""
+
+		"DOTA_Tooltip_modifier_elixir_of_intelligence"                                    "Elixir Of Intelligence"
+		"DOTA_Tooltip_modifier_elixir_of_intelligence_Description"                        ""
+
+		"DOTA_Tooltip_modifier_elixir_of_strength"                                        "Elixir Of Strength"
+		"DOTA_Tooltip_modifier_elixir_of_strength_Description"                            ""
+
+		"DOTA_Tooltip_modifier_elixir_of_greater_agility"                                 "Elixir Of Greater Agility"
+		"DOTA_Tooltip_modifier_elixir_of_greater_agility_Description"                     ""
+
+		"DOTA_Tooltip_modifier_elixir_of_greater_intelligence"                            "Elixir Of Greater Intelligence"
+		"DOTA_Tooltip_modifier_elixir_of_greater_intelligence_Description"                ""
+
+		"DOTA_Tooltip_modifier_elixir_of_greater_strength"                                "Elixir Of Greater Strength"
+		"DOTA_Tooltip_modifier_elixir_of_greater_strength_Description"                    ""
+
+		"DOTA_Tooltip_modifier_elixir_of_super_agility"                                   "Elixir Of Super Agility"
+		"DOTA_Tooltip_modifier_elixir_of_super_agility_Description"                       ""
+
+		"DOTA_Tooltip_modifier_elixir_of_super_intelligence"                              "Elixir Of Super Intelligence"
+		"DOTA_Tooltip_modifier_elixir_of_super_intelligence_Description"                  ""
+
+		"DOTA_Tooltip_modifier_elixir_of_super_strength"                                  "Elixir Of Super Strength"
+		"DOTA_Tooltip_modifier_elixir_of_super_strength_Description"                      ""
+
+		"DOTA_Tooltip_modifier_elixir_of_mega_agility"                                    "Elixir Of Mega Agility"
+		"DOTA_Tooltip_modifier_elixir_of_mega_agility_Description"                        ""
+
+		"DOTA_Tooltip_modifier_elixir_of_mega_intelligence"                               "Elixir Of Mega Intelligence"
+		"DOTA_Tooltip_modifier_elixir_of_mega_intelligence_Description"                   ""
+
+		"DOTA_Tooltip_modifier_elixir_of_mega_strength"                                   "Elixir Of Mega Strength"
+		"DOTA_Tooltip_modifier_elixir_of_mega_strength_Description"                       ""
+
+		"DOTA_Tooltip_modifier_scroll_of_speed"                                           "Scroll Of Speed"
+		"DOTA_Tooltip_modifier_scroll_of_speed_Description"                               ""
+
+		"DOTA_Tooltip_modifier_scroll_of_the_beast"                                       "Scroll Of The Beast"
+		"DOTA_Tooltip_modifier_scroll_of_the_beast_Description"                           ""
+
+		"DOTA_Tooltip_modifier_scroll_of_lesser_regeneration"                             "Scroll Of Lesser Regeneration"
+		"DOTA_Tooltip_modifier_scroll_of_lesser_regeneration_Description"                 ""
+
+		"DOTA_Tooltip_modifier_scroll_of_regeneration"                                    "Scroll Of Regeneration"
+		"DOTA_Tooltip_modifier_scroll_of_regeneration_Description"                        ""
+
+		"DOTA_Tooltip_modifier_scroll_of_greater_regeneration"                            "Scroll Of Greater Regeneration"
+		"DOTA_Tooltip_modifier_scroll_of_greater_regeneration_Description"                ""
+
+		"DOTA_Tooltip_modifier_scroll_of_super_regeneration"                              "Scroll Of Super Regeneration"
+		"DOTA_Tooltip_modifier_scroll_of_super_regeneration_Description"                  ""
+
+		"DOTA_Tooltip_modifier_scroll_of_protection"                                      "Scroll Of Protection"
+		"DOTA_Tooltip_modifier_scroll_of_protection_Description"                          ""
+
+		"DOTA_Tooltip_modifier_iron_will_of_hephaestus_absorb"                            "Iron Will Of Hephaestus Absorb"
+		"DOTA_Tooltip_modifier_iron_will_of_hephaestus_absorb_Description"                ""
+
+		"DOTA_Tooltip_armor_of_hephaestus_modifier"                                       "Armor Of Hephaestus Modifier"
+		"DOTA_Tooltip_armor_of_hephaestus_modifier_Description"                           ""
+
+		"DOTA_Tooltip_shield_of_athena_slow"                                              "Shield Of Athena Slow"
+		"DOTA_Tooltip_shield_of_athena_slow_Description"                                  ""
+
+		"DOTA_Tooltip_shield_of_athena_aura"                                              "Shield Of Athena Aura"
+		"DOTA_Tooltip_shield_of_athena_aura_Description"                                  ""
+		
+		// Items
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_ability_item_continuum_blade"                                       "Continuum Blade"
+		"DOTA_Tooltip_ability_item_continuum_blade_Description"                           ""
+		"DOTA_Tooltip_ability_item_continuum_blade_armor"                                 "ARMOR:"
+		"DOTA_Tooltip_ability_item_continuum_blade_all_stats"                             "ALL STATS:"
+		"DOTA_Tooltip_ability_item_continuum_blade_mana_regen"                            "MANA REGEN:"
+		"DOTA_Tooltip_ability_item_continuum_blade_crit_chance"                           "CRIT CHANCE:"
+		"DOTA_Tooltip_ability_item_continuum_blade_crit_bonus"                            "CRIT BONUS:"
+
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal"                                  "Hammer Of The Dajjal"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_Description"                      "Dont Believe him...... Heaven his Hell and Hell his Heaven."
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bonus_str_agi"                    "BONUS STR AGI:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bonus_int"                        "BONUS INT:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bonus_damage_aura"                "BONUS DAMAGE AURA:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_radius"                           "RADIUS:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bash_chance"                      "BASH CHANCE:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bash_damage"                      "BASH DAMAGE:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bash_duration"                    "BASH DURATION:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_lightning_chance"                 "LIGHTNING CHANCE:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_lightning_damage"                 "LIGHTNING DAMAGE:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_lightning_bounces"                "LIGHTNING BOUNCES:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_lightning_decay"                  "LIGHTNING DECAY:"
+		"DOTA_Tooltip_ability_item_hammer_of_the_dajjal_bounce_range"                     "BOUNCE RANGE:"
+
+		"DOTA_Tooltip_ability_item_healthregen_modifier"                                  "Healthregen Modifier"
+		"DOTA_Tooltip_ability_item_healthregen_modifier_Description"                      ""
+
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_block_all"                     "BLOCK ALL:"
+
+		"DOTA_Tooltip_ability_item_tachi_sword"                                           "Tachi Sword"
+		"DOTA_Tooltip_ability_item_tachi_sword_Description"                               ""
+		"DOTA_Tooltip_ability_item_tachi_sword_stat_bonus"                                "STAT BONUS:"
+		"DOTA_Tooltip_ability_item_tachi_sword_dmg_bonus"                                 "DMG BONUS:"
+		"DOTA_Tooltip_ability_item_tachi_sword_attack_speed"                              "ATTACK SPEED:"
+
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena"                             "Towering Shield Of Athena"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_Description"                 ""
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_magic_resistance"            "MAGIC RESISTANCE:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_bonus_armor_aura"            "BONUS ARMOR AURA:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_radius"                      "RADIUS:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_block_chance"                "BLOCK CHANCE:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_damage_blocked"              "DAMAGE BLOCKED:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_attack_speed_slow"           "ATTACK SPEED SLOW:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_move_speed_slow"             "MOVE SPEED SLOW:"
+		"DOTA_Tooltip_ability_item_towering_shield_of_athena_slow_duration"               "SLOW DURATION:"
+
+		"DOTA_Tooltip_ability_item_tome_int_3_Int"                                       	"INT:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_3"												"Tome of Intellect +3"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_3_Description"									"Add +3 INT to your states."
+		"DOTA_Tooltip_ability_item_tome_int_6_Int"                                        	"INT:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6"						"Tome of Intellect +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6_Description"			"Add +6 INT to your states."
+		
+		"DOTA_Tooltip_ability_item_tome_agi_3_Agi"                                        "AGI:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3"						"Tome of Agility +3"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3_Description"			"Add +3 AGI to your states."
+		"DOTA_Tooltip_ability_item_tome_agi_6_Agi"                                        "AGI:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6"						"Tome of Agility +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6_Description"			"Add +6 AGI to your states."
+		
+		"DOTA_Tooltip_ability_item_tome_str_3_Str"                                        "STR:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3"						"Tome of Strength +3"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3_Description"			"Add +3 STR to your states."
+		"DOTA_Tooltip_ability_item_tome_str_6_Str"                                        "STR:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6"						"Tome of Strength +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6_Description"			"Add +6 STR to your states."
+		
+		"DOTA_Tooltip_ability_item_heros_hauberk"                                         "Heros Hauberk"
+		"DOTA_Tooltip_ability_item_heros_hauberk_Description"                             ""
+		"DOTA_Tooltip_ability_item_heros_hauberk_armor_bonus"                             "ARMOR BONUS:"
+
+		"DOTA_Tooltip_ability_item_high_oracles_robes"                                    "High Oracles Robes"
+		"DOTA_Tooltip_ability_item_high_oracles_robes_Description"                        ""
+		"DOTA_Tooltip_ability_item_high_oracles_robes_armor_bonus"                        "ARMOR BONUS:"
+		"DOTA_Tooltip_ability_item_high_oracles_robes_int_bonus"                          "INT BONUS:"
+		"DOTA_Tooltip_ability_item_high_oracles_robes_mana_regen"                         "MANA REGEN:"
+
+		"DOTA_Tooltip_ability_item_high_oracles_staff"                                    "High Oracles Staff"
+		"DOTA_Tooltip_ability_item_high_oracles_staff_Description"                        ""
+		"DOTA_Tooltip_ability_item_high_oracles_staff_int_bonus"                          "INT BONUS:"
+
+		"DOTA_Tooltip_ability_item_high_shamans_staff"                                    "High Shamans Staff"
+		"DOTA_Tooltip_ability_item_high_shamans_staff_Description"                        ""
+		"DOTA_Tooltip_ability_item_high_shamans_staff_int_bonus"                          "INT BONUS:"
+		"DOTA_Tooltip_ability_item_high_shamans_staff_mana_regen"                         "MANA REGEN:"
+
+		"DOTA_Tooltip_ability_item_horn_of_the_hallowed_one"                              "Horn Of The Hallowed One"
+		"DOTA_Tooltip_ability_item_horn_of_the_hallowed_one_Description"                  ""
+		"DOTA_Tooltip_ability_item_horn_of_the_hallowed_one_stat_bonus"                   "STAT BONUS:"
+		"DOTA_Tooltip_ability_item_horn_of_the_hallowed_one_attack_speed"                 "ATTACK SPEED:"
+		"DOTA_Tooltip_ability_item_horn_of_the_hallowed_one_dmg_bonus"                    "DMG BONUS:"
+
+		"DOTA_Tooltip_ability_item_hunting_spear_of_artemis"                              "Hunting Spear Of Artemis"
+		"DOTA_Tooltip_ability_item_hunting_spear_of_artemis_Description"                  ""
+		"DOTA_Tooltip_ability_item_hunting_spear_of_artemis_stat_bonus"                   "STAT BONUS:"
+		"DOTA_Tooltip_ability_item_hunting_spear_of_artemis_dmg_bonus"                    "DMG BONUS:"
+		"DOTA_Tooltip_ability_item_hunting_spear_of_artemis_attack_speed"                 "ATTACK SPEED:"
+
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus"                          "Immortal Armor Of Hephaestus"
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_Description"              ""
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_bonus_all_stats"          "BONUS ALL STATS:"
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_bonus_armor"              "BONUS ARMOR:"
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_bonus_power"              "BONUS POWER:"
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_liferegen_total"          "LIFEREGEN TOTAL:"
+		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_mana_per_second"          "MANA PER SECOND:"
+		
+
+		"DOTA_TOOLTIP_ABILITY_ITEM_BAG_OF_GOLD"						"BAG OF GOLD"
+
+		
+		"DOTA_Tooltip_ability_item_alzafer_blade"					"Alzafer Blade"
+		"DOTA_Tooltip_ability_item_alzafer_blade_Description"		"<font color='#ffd100'>Item Level 15</font>\n<font color='#nFFFFFF'>Since time immemorial term there was someone named Said Alzafer, making blade of the best raw materials in the seven kingdoms. This was the curse blade in existence.</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_agi_bonus"			"<font color='#22FF00'>AGI BONUS:</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_dmg_bonus"			"<font color='#22FF00'>DMG BONUS:</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_mana_regen"		"<font color='#22FF00'>MANA REGEN:</font>"
+
+		"DOTA_Tooltip_ability_item_cloak_of_manza"					"Cloak Of Manza"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_Description"		"<font color='#ffd100'>Item Level 19</font>\n<font color='#nFFFFFF'>Lady Manza seven convoys in the Kingdom of Sultan Ahmed in the desert old, heirs  cloth cut from ore is very rare, discovered that this cloth back to the dynasty blue genie</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_agi_bonus"		"<font color='#22FF00'>AGI BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_armor_bonus"		"<font color='#22FF00'>ARMOR BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_hp_bonus"			"<font color='#22FF00'>HP BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_mana_bonus"		"<font color='#22FF00'>MANA BONUS:</font>"
+		
+		"DOTA_Tooltip_ability_item_potion_of_minor_healing"                               "Potion Of Minor Healing"
+		"DOTA_Tooltip_ability_item_potion_of_minor_healing_Description"                   ""
+		"DOTA_Tooltip_ability_item_potion_of_minor_healing_heal_amount"                   "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_minor_mana"                                  "Potion Of Minor Mana"
+		"DOTA_Tooltip_ability_item_potion_of_minor_mana_Description"                      ""
+		"DOTA_Tooltip_ability_item_potion_of_minor_mana_mana_restored"                    "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_lesser_healing"                              "Potion Of Lesser Healing"
+		"DOTA_Tooltip_ability_item_potion_of_lesser_healing_Description"                  ""
+		"DOTA_Tooltip_ability_item_potion_of_lesser_healing_heal_amount"                  "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_lesser_mana"                                 "Potion Of Lesser Mana"
+		"DOTA_Tooltip_ability_item_potion_of_lesser_mana_Description"                     ""
+		"DOTA_Tooltip_ability_item_potion_of_lesser_mana_mana_restored"                   "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_lesser_regeneration"                         "Potion Of Lesser Regeneration"
+		"DOTA_Tooltip_ability_item_potion_of_lesser_regeneration_Description"             ""
+		"DOTA_Tooltip_ability_item_potion_of_lesser_regeneration_health_per_second"       "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_potion_of_lesser_regeneration_duration"                "DURATION:"
+		"DOTA_Tooltip_ability_item_potion_of_lesser_regeneration_duration_minutes"        "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_potion_of_healing"                                     "Potion Of Healing"
+		"DOTA_Tooltip_ability_item_potion_of_healing_Description"                         ""
+		"DOTA_Tooltip_ability_item_potion_of_healing_heal_amount"                         "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_mana"                                        "Potion Of Mana"
+		"DOTA_Tooltip_ability_item_potion_of_mana_Description"                            ""
+		"DOTA_Tooltip_ability_item_potion_of_mana_mana_restored"                          "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_regeneration"                                "Potion Of Regeneration"
+		"DOTA_Tooltip_ability_item_potion_of_regeneration_Description"                    ""
+		"DOTA_Tooltip_ability_item_potion_of_regeneration_health_per_second"              "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_potion_of_regeneration_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_item_potion_of_regeneration_duration_minutes"               "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_potion_of_greater_healing"                             "Potion Of Greater Healing"
+		"DOTA_Tooltip_ability_item_potion_of_greater_healing_Description"                 ""
+		"DOTA_Tooltip_ability_item_potion_of_greater_healing_heal_amount"                 "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_greater_mana"                                "Potion Of Greater Mana"
+		"DOTA_Tooltip_ability_item_potion_of_greater_mana_Description"                    ""
+		"DOTA_Tooltip_ability_item_potion_of_greater_mana_mana_restored"                  "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_greater_regeneration"                        "Potion Of Greater Regeneration"
+		"DOTA_Tooltip_ability_item_potion_of_greater_regeneration_Description"            ""
+		"DOTA_Tooltip_ability_item_potion_of_greater_regeneration_health_per_second"      "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_potion_of_greater_regeneration_duration"               "DURATION:"
+		"DOTA_Tooltip_ability_item_potion_of_greater_regeneration_duration_minutes"       "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_potion_of_super_healing"                               "Potion Of Super Healing"
+		"DOTA_Tooltip_ability_item_potion_of_super_healing_Description"                   ""
+		"DOTA_Tooltip_ability_item_potion_of_super_healing_heal_amount"                   "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_super_mana"                                  "Potion Of Super Mana"
+		"DOTA_Tooltip_ability_item_potion_of_super_mana_Description"                      ""
+		"DOTA_Tooltip_ability_item_potion_of_super_mana_mana_restored"                    "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_super_regeneration"                          "Potion Of Super Regeneration"
+		"DOTA_Tooltip_ability_item_potion_of_super_regeneration_Description"              ""
+		"DOTA_Tooltip_ability_item_potion_of_super_regeneration_health_per_second"        "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_potion_of_super_regeneration_duration"                 "DURATION:"
+		"DOTA_Tooltip_ability_item_potion_of_super_regeneration_duration_minutes"         "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_potion_of_mega_healing"                                "Potion Of Mega Healing"
+		"DOTA_Tooltip_ability_item_potion_of_mega_healing_Description"                    ""
+		"DOTA_Tooltip_ability_item_potion_of_mega_healing_heal_amount"                    "HEAL AMOUNT:"
+
+		"DOTA_Tooltip_ability_item_potion_of_mega_mana"                                   "Potion Of Mega Mana"
+		"DOTA_Tooltip_ability_item_potion_of_mega_mana_Description"                       ""
+		"DOTA_Tooltip_ability_item_potion_of_mega_mana_mana_restored"                     "MANA RESTORED:"
+
+		"DOTA_Tooltip_ability_item_potion_of_mega_regeneration"                           "Potion Of Mega Regeneration"
+		"DOTA_Tooltip_ability_item_potion_of_mega_regeneration_Description"               ""
+		"DOTA_Tooltip_ability_item_potion_of_mega_regeneration_health_per_second"         "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_potion_of_mega_regeneration_duration"                  "DURATION:"
+		"DOTA_Tooltip_ability_item_potion_of_mega_regeneration_duration_minutes"          "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_agility"                              "Elixir Of Lesser Agility"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_agility_Description"                  ""
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_agility_bonus_agility"                "BONUS AGILITY:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_agility_duration"                     "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_agility_duration_minutes"             "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_intelligence"                         "Elixir Of Lesser Intelligence"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_intelligence_Description"             ""
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_intelligence_bonus_intelligence"      "BONUS INTELLIGENCE:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_intelligence_duration"                "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_intelligence_duration_minutes"        "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_strength"                             "Elixir Of Lesser Strength"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_strength_Description"                 ""
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_strength_bonus_strength"              "BONUS STRENGTH:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_strength_duration"                    "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_lesser_strength_duration_minutes"            "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_agility"                                     "Elixir Of Agility"
+		"DOTA_Tooltip_ability_item_elixir_of_agility_Description"                         ""
+		"DOTA_Tooltip_ability_item_elixir_of_agility_bonus_agility"                       "BONUS AGILITY:"
+		"DOTA_Tooltip_ability_item_elixir_of_agility_duration"                            "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_agility_duration_minutes"                    "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_intelligence"                                "Elixir Of Intelligence"
+		"DOTA_Tooltip_ability_item_elixir_of_intelligence_Description"                    ""
+		"DOTA_Tooltip_ability_item_elixir_of_intelligence_bonus_intelligence"             "BONUS INTELLIGENCE:"
+		"DOTA_Tooltip_ability_item_elixir_of_intelligence_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_intelligence_duration_minutes"               "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_strength"                                    "Elixir Of Strength"
+		"DOTA_Tooltip_ability_item_elixir_of_strength_Description"                        ""
+		"DOTA_Tooltip_ability_item_elixir_of_strength_bonus_strength"                     "BONUS STRENGTH:"
+		"DOTA_Tooltip_ability_item_elixir_of_strength_duration"                           "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_strength_duration_minutes"                   "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_greater_agility"                             "Elixir Of Greater Agility"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_agility_Description"                 ""
+		"DOTA_Tooltip_ability_item_elixir_of_greater_agility_bonus_agility"               "BONUS AGILITY:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_agility_duration"                    "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_agility_duration_minutes"            "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_greater_intelligence"                        "Elixir Of Greater Intelligence"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_intelligence_Description"            ""
+		"DOTA_Tooltip_ability_item_elixir_of_greater_intelligence_bonus_intelligence"     "BONUS INTELLIGENCE:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_intelligence_duration"               "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_intelligence_duration_minutes"       "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_greater_strength"                            "Elixir Of Greater Strength"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_strength_Description"                ""
+		"DOTA_Tooltip_ability_item_elixir_of_greater_strength_bonus_strength"             "BONUS STRENGTH:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_strength_duration"                   "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_greater_strength_duration_minutes"           "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_super_agility"                               "Elixir Of Super Agility"
+		"DOTA_Tooltip_ability_item_elixir_of_super_agility_Description"                   ""
+		"DOTA_Tooltip_ability_item_elixir_of_super_agility_bonus_agility"                 "BONUS AGILITY:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_agility_duration"                      "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_agility_duration_minutes"              "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_super_intelligence"                          "Elixir Of Super Intelligence"
+		"DOTA_Tooltip_ability_item_elixir_of_super_intelligence_Description"              ""
+		"DOTA_Tooltip_ability_item_elixir_of_super_intelligence_bonus_intelligence"       "BONUS INTELLIGENCE:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_intelligence_duration"                 "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_intelligence_duration_minutes"         "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_super_strength"                              "Elixir Of Super Strength"
+		"DOTA_Tooltip_ability_item_elixir_of_super_strength_Description"                  ""
+		"DOTA_Tooltip_ability_item_elixir_of_super_strength_bonus_strength"               "BONUS STRENGTH:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_strength_duration"                     "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_super_strength_duration_minutes"             "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_mega_agility"                                "Elixir Of Mega Agility"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_agility_Description"                    ""
+		"DOTA_Tooltip_ability_item_elixir_of_mega_agility_bonus_agility"                  "BONUS AGILITY:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_agility_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_agility_duration_minutes"               "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_mega_intelligence"                           "Elixir Of Mega Intelligence"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_intelligence_Description"               ""
+		"DOTA_Tooltip_ability_item_elixir_of_mega_intelligence_bonus_intelligence"        "BONUS INTELLIGENCE:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_intelligence_duration"                  "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_intelligence_duration_minutes"          "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_elixir_of_mega_strength"                               "Elixir Of Mega Strength"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_strength_Description"                   ""
+		"DOTA_Tooltip_ability_item_elixir_of_mega_strength_bonus_strength"                "BONUS STRENGTH:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_strength_duration"                      "DURATION:"
+		"DOTA_Tooltip_ability_item_elixir_of_mega_strength_duration_minutes"              "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_speed"                                       "Scroll Of Speed"
+		"DOTA_Tooltip_ability_item_scroll_of_speed_Description"                           ""
+		"DOTA_Tooltip_ability_item_scroll_of_speed_bonus_movespeed_pct"                   "BONUS MOVESPEED PCT:"
+		"DOTA_Tooltip_ability_item_scroll_of_speed_radius"                                "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_speed_duration"                              "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_speed_duration_minutes"                      "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast"                                   "Scroll Of The Beast"
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast_Description"                       ""
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast_bonus_damage_pct"                  "BONUS DAMAGE PCT:"
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast_radius"                            "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast_duration"                          "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_the_beast_duration_minutes"                  "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration"                         "Scroll Of Lesser Regeneration"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration_Description"             ""
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration_health_per_second"       "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration_radius"                  "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration_duration"                "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_regeneration_duration_minutes"        "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration"                                "Scroll Of Regeneration"
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration_Description"                    ""
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration_health_per_second"              "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration_radius"                         "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration_duration"                       "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_regeneration_duration_minutes"               "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration"                        "Scroll Of Greater Regeneration"
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration_Description"            ""
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration_health_per_second"      "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration_radius"                 "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration_duration"               "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_greater_regeneration_duration_minutes"       "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration"                          "Scroll Of Super Regeneration"
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration_Description"              ""
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration_health_per_second"        "HEALTH PER SECOND:"
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration_radius"                   "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration_duration"                 "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_super_regeneration_duration_minutes"         "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_protection"                                  "Scroll Of Protection"
+		"DOTA_Tooltip_ability_item_scroll_of_protection_Description"                      ""
+		"DOTA_Tooltip_ability_item_scroll_of_protection_bonus_armor"                      "BONUS ARMOR:"
+		"DOTA_Tooltip_ability_item_scroll_of_protection_radius"                           "RADIUS:"
+		"DOTA_Tooltip_ability_item_scroll_of_protection_duration"                         "DURATION:"
+		"DOTA_Tooltip_ability_item_scroll_of_protection_duration_minutes"                 "DURATION MINUTES:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_healing"                              "Scroll Of Lesser Healing"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_healing_Description"                  ""
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_healing_health_restored"              "HEALTH RESTORED:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_healing_radius"                       "RADIUS:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_healing"                                     "Scroll Of Healing"
+		"DOTA_Tooltip_ability_item_scroll_of_healing_Description"                         ""
+		"DOTA_Tooltip_ability_item_scroll_of_healing_health_restored"                     "HEALTH RESTORED:"
+		"DOTA_Tooltip_ability_item_scroll_of_healing_radius"                              "RADIUS:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana"                                 "Scroll Of Lesser Mana"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_Description"                     ""
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_mana_restored"                   "MANA RESTORED:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_radius"                          "RADIUS:"
+
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana"                                 "Scroll Of Lesser Mana"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_Description"                     ""
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_mana_restored"                   "MANA RESTORED:"
+		"DOTA_Tooltip_ability_item_scroll_of_lesser_mana_radius"                          "RADIUS:"
+		
+		"DOTA_Tooltip_ability_item_heros_blade"                                           "Heros Blade"
+		"DOTA_Tooltip_ability_item_heros_blade_Description"                               "Give you %dmg_bonus% and a chance of %bonus_chance%%% to crit %bonus_chance_damage% plus a good %bonus_strenght% STR"
+		"DOTA_Tooltip_ability_item_heros_blade_dmg_bonus"                                 "<font color='#22FF00'>DMG BONUS:</font>"
+		"DOTA_Tooltip_ability_item_heros_blade_bonus_chance"                              "<font color='#22FF00'>BONUS CHANCE:</font>"
+		"DOTA_Tooltip_ability_item_heros_blade_bonus_chance_damage"                       "<font color='#22FF00'>BONUS CHANCE DAMAGE:</font>"
+		"DOTA_Tooltip_ability_item_heros_blade_bonus_strenght"                            "<font color='#22FF00'>STR</font> +"
+		
+		"DOTA_Tooltip_ability_item_massacre_sword"                                        "Massacre Sword"
+		"DOTA_Tooltip_ability_item_massacre_sword_Description"                            "<font color='#ffd100'>Item Level 14</font>\n<font color='#nFFFFFF'>Blood of dead forged this sword. Gives you %dmg_bonus% damage and a chance of %bonus_chance%%% to Crit %bonus_chance_damage% Damage, give you also a good +%bonus_strenght% STR</font>"
+		"DOTA_Tooltip_ability_item_massacre_sword_bonus_strenght"                         "+$str"
+		"DOTA_Tooltip_ability_item_massacre_sword_dmg_bonus"                              "Bonus damage:"
+		"DOTA_Tooltip_ability_item_massacre_sword_bonus_chance"                           "Critical chance:"
+		"DOTA_Tooltip_ability_item_massacre_sword_bonus_chance_damage"                    "Critical chance damage:"
+
+		"DOTA_Tooltip_ability_item_recipe_massacre_sword"                                 "Recipe Massacre Sword"
+		"DOTA_Tooltip_ability_item_recipe_massacre_sword_Description"                     "Forge the blood sword!"
+		
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate"                                "Chestguard Of Ill Fate"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_Description"                    "<font color='#ffd100'>Item Level 30</font>\n<font color='#nFFFFFF'>The certain death of unlucky one. give you +%stat_bonus% to all your stats with %hp_bonus%HP and super %mana_regen%%% mana regen. Blocking %block_dmg% damage and Wonderful +%armor_bonus% armor.</font>"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_Lore"                           "Need Recipe World Drop"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_stat_bonus"                     "<font color='#22FF00'>All Stats</font> +"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_hp_bonus"                       "<font color='#22FF00'>HP Bonus:</font>"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_mana_regen"                     "<font color='#22FF00'>Mana Regeneration:</font>"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_armor_bonus"                    "<font color='#22FF00'>Armor Bonus:</font>"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_block_dmg"                      "<font color='#22FF00'>Block Phy.Damage:</font>"
+		"DOTA_Tooltip_ability_item_chestguard_of_ill_fate_hp_regen"                       "<font color='#22FF00'>HP Regeneration:</font>"
+
+		"DOTA_Tooltip_ability_item_recipe_chestguard_of_ill_fate"                         "Recipe Chestguard Of Ill Fate"
+		"DOTA_Tooltip_ability_item_recipe_chestguard_of_ill_fate_Description"             "mery mery mery..."
+		
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus"                               "Iron Will Of Hephaestus"
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_Description"                   ""
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_armor_bonus"                   "ARMOR BONUS:"
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_hp_bonus"                      "HP BONUS:"
+		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_hp_regen"                      "HP REGEN:"
+
+		
+		
+		
+		//
+		// ************************************************************************************************************************
+
+		
+	
+	
+	}
+}

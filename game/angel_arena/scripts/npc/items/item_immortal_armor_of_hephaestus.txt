@@ -1,0 +1,105 @@
+//TODO Recipe
+//Heletes will forge you the Immortal Armor of Hephaestus. 
+//Requires two Gemstone of the Olympians, two Stone of Heaven, Gem of the North, Gem of the South, Gem of the East, Gem of the West, 
+//Aphrodite's Favor, Plates of the Ancients, Armor of Zeus, Unyielding Breastplate, 
+//100 000 Crafting Materials, 100 000 gold. Requires Level 200
+
+//Increases all your stats by 100. Adds 250 to your Armor Class and increases your spell damage and healing by 3000. 
+//Regenerates .66% of your maximum life total each second and 65 mana per second. 
+//In addition, when you die you will be revived with full hit points and mana (5 minute cooldown).
+
+"item_immortal_armor_of_hephaestus"
+{
+	"ID"                            "1365"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_immortal_armor_of_hephaestus"
+	
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "50000"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+	"ItemKillable" 					"0" 
+	"ItemSellable" 					"0"
+	"ItemPurchasable"				"1"
+	"ItemDroppable"					"1"
+
+	"AbilityCooldown"               "300"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_all_stats" "100"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_armor" "30"
+		}
+
+		"03"
+		{
+			"var_type" "FIELD_FLOAT"
+			"liferegen_total" "2"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"mana_per_second" "35"
+		}
+	}
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+		"particle"	"particles/units/heroes/hero_centaur/centaur_stampede_overhead.vpcf"
+		"particle"	"particles/items_fx/aegis_respawn_timer.vpcf"
+	}
+
+	"OnOwnerDied"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"Items/items.lua"
+			"Function"		"HephaestusRespawn"
+		}
+	}
+
+	"Modifiers"
+	{
+		"armor_of_hephaestus_modifier"
+		{
+			"Passive"	"1"
+			//"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%mana_per_second" //TODO - Uncomment = RIP BALANCE
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_all_stats"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%liferegen_total"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%bonus_armor"
+
+			}
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"Items/items.lua"
+					"Function"		"HephaestusRegen"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"Items/items.lua"
+					"Function"		"DestroyHephaestusRegen"
+				}
+			}
+		}
+	}		
+}

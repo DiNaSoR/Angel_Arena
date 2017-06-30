@@ -1,0 +1,163 @@
+//=================================================================================
+// Creature: Hero Spirit Boss
+//=================================================================================
+	"npc_hero_spirit_boss"
+	{
+		"Model"						"models/heroes/ember_spirit/ember_spirit.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Hero_EmberSpirit"					// Name of sound set.
+		"ParticleFile"				""
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		"VoiceFile" 				"soundevents/voscripts/game_sounds_vo_ember_spirit.vsndevts"
+		"IdleSoundLoop"				"Hero_EmberSpirit.IdleLoop"
+		"ConsideredHero"        	"1"
+		"IsAncient"					"1"
+		"ModelScale"				"1.8"
+		"Level"						"25"
+		"UseNeutralCreepBehavior" 	"0"
+
+		// Minimap
+		//-------------------------------------------------------------------------------------------------------------
+		"MinimapIcon"               "minimap_death"
+		"MinimapIconSize"           "110"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"warlock_golem_flaming_fists"			// Ability 1
+		"Ability2"					"warlock_golem_permanent_immolation"			// Ability 2
+		"Ability3"					"ember_spirit_searing_chains"			// Ability 3
+		"Ability4"                  "skill_herospirit_mini_boss_skill"
+		"Ability5"					"ursa_overpower"
+		"AbilityLayout"				"5"
+
+
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"52"		// Physical protection.
+		"MagicalResistance"			"53"		// Magical protection.  // this should be 33, switch it back once we implement Resistant Skin
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"800"		// Damage range min.
+		"AttackDamageMax"			"1200"		// Damage range max.	
+		"AttackRate"				"0.4"		// Speed of attack.
+		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
+		"AttackRange"				"128"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			"0"			// Speed of projectile.		   
+		
+
+		// Inventory
+		//----------------------------------------------------------------
+		"HasInventory"				"1"
+		
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"			"22"									// Base strength
+		"AttributeStrengthGain"			"2.0"									// Strength bonus per level.
+		"AttributeBaseAgility"			"25"									// Base agility
+		"AttributeAgilityGain"			"1.8"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"20"									// Base intelligence
+		"AttributeIntelligenceGain"		"1.8"									// Intelligence bonus per level.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"2500"		// Experience earn.
+		"BountyGoldMin"				"1666"		// Gold earned min.
+		"BountyGoldMax"				"9000"		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"100"
+		"HealthBarOffset"			"210"
+		"BoundsHullName"			"DOTA_HULL_SIZE_HERO"	
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"435"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+		
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"150000"		// Base health.
+		"StatusHealthRegen"			"30.0"		// Health regeneration rate.
+		"StatusMana"				"3450"			// Base mana.
+		"StatusManaRegen"			"20"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"1800"									// Range of vision during day light.
+		"VisionNighttimeRange"		"1400"
+
+		"vscripts"		"AI/Boss/herospirit_boss.lua"
+
+		"precache"
+		{
+			"particle"  "particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_cast.vpcf"
+			"particle"	"particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_debuff.vpcf"
+			"particle"  "particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_start.vpcf"
+		}
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+		    "EquippedItems"
+        {
+           // "ForceStaff"
+           // {
+           //     "Item"                  "item_force_staff"
+           // }
+            "ShivaGuard"
+            {
+                "Item"                  "item_shivas_guard"
+            }
+            "LotusOrb"
+            {
+                "Item"                  "item_lotus_orb"
+            }
+            "Sphere"
+            {
+                "Item"                  "item_sphere"
+            }
+            "BladeMail"
+            {
+                "Item"                  "item_blade_mail"
+            }
+           // "Urn"
+          //  {
+           //     "Item"                  "item_urn_of_shadows"
+           //     "Charges"               "10"
+           // }
+        }
+			"OffensiveAbilities"
+			{
+				"Ability1"                
+				{
+					"Name"              "ursa_overpower"
+				} 
+			}
+
+			"AttachWearables"
+			{
+				"Wearable1" { "ItemDef" "6014" }	//--- Crimson Guard
+				"Wearable2" { "ItemDef" "472" }	//--- Weapon 1
+				"Wearable3" { "ItemDef" "473" }	//--- Weapon 2
+				"Wearable4" { "ItemDef" "7004" }	//--- Weapon 2
+				"Wearable5" { "ItemDef" "7003" }	//--- Weapon 2
+				"Wearable6" { "ItemDef" "7001" }	//--- Weapon 2
+				
+			}
+		}  
+	}

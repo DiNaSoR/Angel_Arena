@@ -1,0 +1,101 @@
+//=================================================================================	
+// Creature: Demon imp
+//=================================================================================
+"npc_demon_imp"
+{
+	// General
+	"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+	"Model"						"models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl"	// Model			
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts"
+	"ModelScale"				"0.7"
+	"Level"						"10"
+	"CanBeDominated"			"0"
+	
+	"UseNeutralCreepBehavior" 	"1"
+
+	"precache"
+	{
+		"model"					"models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl"
+	}
+			
+	// Abilities
+	//----------------------------------------------------------------
+	//"Ability1"					""			// Ability 1.
+	"Ability1"					"slark_pounce"			// Ability 2.
+	"Ability2"					"creep_respawn"			// Ability 3.
+	
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"4"			// Physical protection.
+	"MagicalResistance"			"20"			// Magical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"60"		// Damage range min.
+	"AttackDamageMax"			"120"		// Damage range max.
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackRate"				"1.1"			// Speed of attack.
+	"AttackAnimationPoint"		"1.2"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"300"		// Range within a target can be acquired.
+	"AttackRange"				"128"		// Range within a target can be attacked.
+	"ProjectileModel"			""			// Particle system model for projectile.
+	"ProjectileSpeed"			""			// Speed of projectile.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"200"			// Experience earn.
+	"BountyGoldMin"				"80"			// Gold earned min.
+	"BountyGoldMax"				"120"			// Gold earned max.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"2365"		// Base health.
+	"StatusHealthRegen"			"4"		// Health regeneration rate.
+	"StatusMana"				"1300"			// Base mana.
+	"StatusManaRegen"			"4"			// Mana regeneration rate.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"						// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	// Vision
+	//-------------------------------------------------------------------------------------------------------------
+	"VisionDaytimeRange"		"1200"									// Range of vision during day light.
+	"VisionNighttimeRange"		"1800"									// Range of vision at night time.
+	
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"				// Type of NONE-GROUND-FLY
+	"MovementSpeed"				"290"									// Speed.
+	"MovementTurnRate"			"0.5"									// Turning rate.
+	
+	"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+	"HealthBarOffset"			"140"
+
+	// Creature Data
+	//----------------------------------------------------------------
+
+	"vscripts"		"AI/creep_ai.lua"
+
+
+
+	"Creature"
+	{
+
+		"DisableClumpingBehavior"   "1"
+
+		"OffensiveAbilities"
+		{
+		    "Ability1"                
+		    {
+		        "Name"				"slark_pounce"
+		        "Damage"            "1"
+		    }
+		}
+	}
+}

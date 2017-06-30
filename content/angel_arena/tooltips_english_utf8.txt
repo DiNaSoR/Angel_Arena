@@ -1,0 +1,57 @@
+﻿// **********************************************************************************************************************
+// This file contains generated tooltips created from the files in the scripts/npc directory of this mod.
+// It does not contain tooltips already defined in addon_english.txt, nor modifiers with the property "IsHidden" "1".
+// **********************************************************************************************************************
+
+		// ******************** HEROES ********************
+		"npc_dota_hero_furion"                                                            "Furion"
+		"npc_dota_hero_furion"                                                            "Furion"
+		"npc_dota_hero_magnataur"                                                         "Magnataur"
+		"npc_dota_hero_omniknight"                                                        "Omniknight"
+
+		// ******************** UNITS ********************
+		"camera_guy"                                                                      "Camera Guy"
+		"1_wave_creep"                                                                    "1 Wave Creep"
+		"npc_demon_warrior"                                                               "Demon Warrior"
+
+		// ******************** ABILITY MODIFIERS ********************
+		"DOTA_Tooltip_modifier_skill_rend_armor"                                          "Skill Rend Armor"
+		"DOTA_Tooltip_modifier_skill_rend_armor_Description"                              ""
+
+
+		// ******************** ITEM MODIFIERS ********************
+
+		// ******************** ABILITIES ********************
+		"DOTA_Tooltip_ability_skill_bag_of_gold"                                          "Skill Bag Of Gold"
+		"DOTA_Tooltip_ability_skill_bag_of_gold_Description"                              ""
+
+		"DOTA_Tooltip_ability_skill_invoker_tornado"                                      "Skill Invoker Tornado"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_Description"                          ""
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_distance"                      "TRAVEL DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_speed"                         "TRAVEL SPEED:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_area_of_effect"                       "AREA OF EFFECT:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_vision_distance"                      "VISION DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_end_vision_duration"                  "END VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_lift_duration"                        "LIFT DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_base_damage"                          "BASE DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_quas_damage"                          "QUAS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_wex_damage"                           "WEX DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+
+
+		// ******************** ITEMS ********************
+		"DOTA_Tooltip_ability_item_tome_agi_3_Agi"                                        "AGI:"
+
+		"DOTA_Tooltip_ability_item_tome_agi_6_Agi"                                        "AGI:"
+
+		"DOTA_Tooltip_ability_item_tome_int_3_Int"                                        "INT:"
+
+		"DOTA_Tooltip_ability_item_tome_int_6_Int"                                        "INT:"
+
+		"DOTA_Tooltip_ability_item_tome_str_3_Str"                                        "STR:"
+
+		"DOTA_Tooltip_ability_item_tome_str_6_Str"                                        "STR:"
+

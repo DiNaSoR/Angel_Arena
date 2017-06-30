@@ -1,0 +1,138 @@
+//=================================================================================
+// By: DiNaSoR
+// MBoss: Paimon Mini-Boss
+// According to The Goetia: The Lesser Key of Solomon the King, Paimon is one of the
+// Kings of Hell, more obedient to Lucifer than other kings are, and has two hundred
+// (one hundred to other authors) legions of demons under his rule
+//=================================================================================
+"npc_paimon_mini_boss"
+{
+	// General
+	//----------------------------------------------------------------
+	"Model"						"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl"	// Model.
+	"BaseClass"					"npc_dota_creature"
+	"Level"						"25"
+	"ModelScale"				"1.2"
+	"IsAncient"					"1"
+	"ConsideredHero"        	"1"
+	"CanBeDominated"			"0"
+	
+	// Preache
+	//----------------------------------------------------------------
+	"precache"
+	{
+		"model"					"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl"
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+	}
+
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"warlock_fatal_bonds"
+	"Ability2"					"queenofpain_scream_of_pain"
+	"Ability3"					"dragon_knight_dragon_blood"
+	"Ability4"					"bloodseeker_blood_bath"
+	"Ability5"					""
+	"Ability6"					""
+	
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"56"									// Physical protection.
+	"MagicalResistance"			"49"									// Magical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"200"									// Damage range min.
+	"AttackDamageMax"			"400"									// Damage range max.
+	"AttackRate"				"0.45"									// Speed of attack.
+	"AttackAnimationPoint"		"0.45"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"128"									// Range within a target can be acquired.
+	"AttackRange"				"128"									// Range within a target can be attacked.
+	"ProjectileModel"			""			// Particle system model for projectile.
+	"ProjectileSpeed"			"150"									// Speed of projectile.
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"				"522"									// Speed.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"33000"									// Base health.
+	"StatusHealthRegen"			"5.0"									// Health regeneration rate.
+	"StatusMana"				"3000"									// Base mana.
+	"StatusManaRegen"			"30.0"									// Mana regeneration rate.
+	"HealthBarOffset"			"260"
+	"MinimapIcon"				"minimap_enemyicon"
+	"MinimapIconSize"			"450"
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1000"									// Range of vision during day light.
+	"VisionNighttimeRange"		"1000"									// Range of vision at night time.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName" 					"DOTA_TEAM_NEUTRALS"					// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+
+	// VScript
+	//----------------------------------------------------------------		
+
+	
+	// Wearables
+	//----------------------------------------------------------------
+	"Creature"
+	{
+		"DefaultState"			"Invade"
+		"States"	
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"100.0" //cast offensive spells whenever
+				"Avoidance"			"0.0" //dont flee
+				"Support"			"0.0" //start buffing
+			}
+		}
+		
+		"OffensiveAbilities"
+		{
+			"Ability1"
+			{
+				"Name"					"queenofpain_scream_of_pain"
+				"Damage"           		"1"
+			}
+			
+			"Ability2"
+			{
+				"Name"					"warlock_fatal_bonds"
+				"MinimumTargets"		"1"
+		        "AOE"                	"1"
+				"Radius"             	"600"
+			}
+	
+			"Ability3"
+			{
+				"Name"                	"bloodseeker_blood_bath"
+		        "MinimumTargets"		"1"
+		        "AOE"                	"1"
+				"Radius"             	"600"
+			}
+		}
+		
+		// Basic AI
+		
+		"AttachWearables"
+		{
+			"Wearable1"
+			{
+				"ItemDef"			"6925" //---Pauldrons of the Fire Dragon
+			}
+			
+		}
+	}
+}

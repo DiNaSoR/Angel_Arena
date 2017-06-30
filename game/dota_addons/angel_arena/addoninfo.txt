@@ -1,9 +1,0 @@
-"AddonInfo"
-{
-	maps			"angel_arena"
-	"IsPlayable"	"1"
-	"angel_arena"
-	{
-					"MaxPlayers"                    "10"
-	}
-}

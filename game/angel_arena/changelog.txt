@@ -1,0 +1,203 @@
+enemies = FindUnitsInRadius(unit:GetTeamNumber(), unit:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
+
+
+	--Cast Spawn whenever we're able to do so.
+	if ABILILTY_echo_stomp_spell:IsFullyCastable() then
+		--print("Elder Titan can cast echo_stomp")
+		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO, FIND_ANY_ORDER, false )
+
+		if units ~= nil then
+			if #units >= 1 then
+				print("Elder Titan wants to cast call echo_stomp, ".. #units .." enemy near.")
+				local index = RandomInt( 1, #units )
+				local target = units[index]
+
+				thisEntity:CastAbilityOnTarget(target, ABILILTY_echo_stomp_spell, -1)
+			else 
+				print("1st No units found to cast the spell on")
+			end
+		end
+	end
+	
+	
+//-- Script for forcing unit to go back
+	https://www.irccloud.com/pastebin/bt9xekZb/
+//-------------------------------------------------
+//	IDEAS
+//-------------------------------------------------
+
+Update 18/18/2015 1:35 AM i was working on Pudge to fix the stun that rune the rot
+and trying to figure a way to check if this ability are active or not. dont forget i changed pudge damage.
+
+Desgin the creep camp to lets the player know here is spawn give some love to the map
+decrease gold income to 2 per tick and reword the gold income for the creeps
+
+int players need to get alot of buff items like dmg for the amount of int they have for amount of time
+str same but with attack speed
+agi same but with evation
+
+
+
+
+----------
+
+-----------
+
+
+
+- No Highets Moutins replace them with trees
+- Many levels creeps camps
+- Add Camps and small boss for mobs with respawn
+- Add 6 mini bosses with AI
+- Add 30 more items new one
+- Rework or override some dota 2 skills for players.
+- Add team bonus exp for killing [dealy]
+- Need STR and INT ITEMS
+- change arena spawn out to each team base
+- The Last Ronin area with BGM
+- Add more golds to Bosses
+- Fountin Heal/Mana in Middle map
+- Mini bosses 8
+- Hidden treasures
+- secret area
+- leveling up bosses
+- voting UI
+
+
+
+Reminder: shADOW fiend boss implementing
+Still working in new version of pudge
+and working in Ronin Warrior 
+
+//-------------------------------------------------
+//	1.13
+//-------------------------------------------------
+ITEMS:
+- [NEW] Hammer of the Dajjal
+- [NEW] Continuum Blade
+
+
+
+//-------------------------------------------------
+//	1.12
+//-------------------------------------------------
+CHANGES:
+- [Boss] The Butcher nerfed
+- [Boss] Hero Spirit nerfed
+- [Boss] Lord of Death Buffed
+- [INC] Gold income redesigned
+- [ITEM] Immortal Armor of Hephaestus price nerf
+- [Duel] Duel Chest gold increase.
+
+
+//-------------------------------------------------
+//	1.1
+//-------------------------------------------------
+
+
+
+CHANGES:
+- [Sys] Disallow Same hero selection
+- [Sys] 1 Gold per 2 sec
+- [Sys] Hero Selection 25 sec
+- [Sys] Now points to win will by dynamic
+- [Sys] Duel chest drop less gold
+- [Sys] Imporved shops
+
+ITEMS:
+- [NEW] Heros Hauberk
+- [NEW] High Oracles Robs
+- [NEW] High Shamans staff
+- [NEW] Horn of the Hallowed one
+- [NEW] Immortal Armor of Hephaestus
+- [NEW] Iron will of Hephaestus
+- [NEW] Tachi Sword
+- [NEW] Towering Shield of Athena
+
+BOSSES:
+- [AI] The Butcher has new AI
+- [NEW] Lord Of Death
+- [NEW] Hero Spirit
+
+MINIBOSSES:
+
+
+
+BUGS:
+- [FIX] Demon base make hero stuck when use teleport
+- [FIX] Couriers secret shop fixed
+- [FIX] Mini boss follow
+
+
+NEW:
+- New area to explore Firelands
+- High Ground for wards
+
+
+
+
+
+
+
+//-------------------------------------------------
+//	1.0b
+//-------------------------------------------------
+
+NEW:
+- [Sys] Duel System 5 sec Cooldown.
+- [Sys] Duel rework with 5 sec preparing.
+- [Item]Chestguard of ill fate redesign.
+
+
+//-------------------------------------------------
+//	1.0
+//-------------------------------------------------
+Remove to [Redesign]:
+- Force Stuff removed
+- Blink Dagger removed
+- Anti-Mage
+- Faceless void
+- Mirana
+- Morphling
+- Necrolyte
+- Puck
+- Sand King
+- Spectre
+- Storm Spirit
+- BroodMother
+- Queen of Pain
+- Batrider
+- Wisp
+- Meepo
+- Slark
+- Tusk
+- Earth spirit
+- Ember Spirit
+- Phoenix
+
+BUGS:
+- Fixing secret shop bug
+- Rend Armor discrption fixed
+- Clock of manza price 9000
+- Pudge rot fixed
+- Teleport camera fixed
+- Arena camera fixed
+- Gold Sharing Fixed
+
+NEW:
+- [Sys]Improved Arena System
+- [Sys]Droploot System
+- [Art]Redesign tombs icons
+- [Map]High ground for wards Added
+- [Item]Massacre sword
+- [Item]Chestguard of ill fate
+- [Item]Scroll of the Beast
+- [Item]Scroll of Speed
+- [Item]Scroll of Protection
+- [Item]Scroll of Regeneration
+- [Item]Potion of Healing[5typs]
+- [Item]Potion of Mana[5typs]
+- [Item]Potion of Regeneration[3typs]
+
+Mini-boss:
+- [New] Paimon

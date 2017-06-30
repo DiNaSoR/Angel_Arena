@@ -1,0 +1,107 @@
+"skill_lordofdeath_boss_dive"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"dive_skill"
+		"AbilityCastAnimation"			"ACT_DOTA_RAZE_1"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"30"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.0 4.5 5.0 5.5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"100 150 200 250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed_loss"		"-40 -60 -80 -100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"miss_chance"			"25 50 75 100"
+			}
+		}
+
+		"OnSpellStart"
+		{
+
+			"FireEffect"
+			{
+				"EffectName"	"particles/items2_fx/shadow_amulet_activate_runes.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"		"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"Abilities/lordofdeath_boss_dive"
+				"Function"		"begin_dive"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_lordofdeath_boss_dive"
+				"Target" 		"CASTER"
+				"Duration"		"1"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_lordofdeath_boss_dive"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+				"Duration"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+				}
+				"EffectAttachType"	"follow_origin"
+				"ThinkInterval"  "0.03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"Abilities/lordofdeath_boss_dive.lua"
+						"Function"		"slide_think"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"Abilities/lordofdeath_boss_dive.lua"
+						"Function"		"slide_end"
+					}
+				}
+			}
+		}
+
+	}

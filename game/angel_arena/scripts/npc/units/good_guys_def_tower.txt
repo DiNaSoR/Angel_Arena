@@ -1,0 +1,92 @@
+//=================================================================================    
+// Tower: Good Guys Tower Def
+//=================================================================================
+"good_guys_def_tower"
+{
+		// General
+		"BaseClass"					"npc_dota_tower"							// Class of entity of link to.
+		"Model"						"models/props_structures/tower_dragon_white.vmdl"	// Model.
+		"SoundSet"					"Tower.Water"								// Name of sound set.
+		"MinimapIcon"				"minimap_tower45"
+		"MinimapIconSize"			"320"
+		"Level"						"25"
+ 
+		// Abilities
+		//----------------------------------------------------------------
+ 
+		"Ability1"					"beastmaster_inner_beast"					// Ability 1.
+		"Ability2"					"skeleton_king_vampiric_aura"				// Ability 2.
+		"Ability3"					"skill_ability_Invulnerability"				// Ability 3.
+		"Ability4"					"necrolyte_heartstopper_aura"				// Ability 4.
+		"Ability5"					"omniknight_degen_aura"						// Ability 5.
+		"Ability6"					"obsidian_destroyer_essence_aura"			// Ability 6 - Extra.
+		"Ability7"					"spirit_breaker_empowering_haste"			// Ability 7 - Extra.
+		"Ability8"					"vengefulspirit_command_aura"				// Ability 8 - Extra.
+		"AbilityLayout"				"6"
+		
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"20"											// Physical protection.
+		"MagicalResistance"			"0"											// Magical protection.
+ 
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"150"										// Damage range min.
+		"AttackDamageMax"			"350"										// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0.25"										// Speed of attack.
+		"AttackAnimationPoint"		"0.0"										// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"										// Range within a target can be acquired.
+		"AttackRange"				"600"										// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"1250"										// Speed of projectile.
+ 
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"											// Base strength
+		"AttributeStrengthGain"		"0"											// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"											// Base intelligence
+		"AttributeIntelligenceGain"	"0"											// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"											// Base agility
+		"AttributeAgilityGain"		"0"											// Agility bonus per level.
+ 
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"1000"										// Experience earn.
+		"BountyGoldMin"				"1000"										// Gold earned min.
+		"BountyGoldMax"				"10000"										// Gold earned max.
+ 
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_TOWER"						// Hull type used for navigation/locomotion.
+		"ProjectileCollisionSize"	"50"
+		"RingRadius"				"130"
+		"HealthBarOffset"			"260"
+ 
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"					// Type of locomotion - ground, air
+		"MovementSpeed"				"0"											// Speed
+		"MovementTurnRate"			"1.0"										// Turning rate.
+ 
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1337"										// Base health.
+		"StatusHealthRegen"			"10"										// Health regeneration rate.
+		"StatusMana"				"0"										// Base mana.
+		"StatusManaRegen"			"0"											// Mana regeneration rate.
+ 
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"						// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+ 
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1900"										// Range of vision during day light.
+		"VisionNighttimeRange"		"800"										// Range of vision at night time.
+}

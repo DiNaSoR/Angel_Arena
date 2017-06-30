@@ -1,0 +1,110 @@
+//=================================================================================================================
+// Redemption
+//=================================================================================================================
+	//=================================================================================================================
+	// 关羽 六月飞斩
+	//=================================================================================================================
+	"guanyu_liuyuefeizhan"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityTextureName"			"guanyu_wuyueyuzhan"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityManaCost"				 "95 100 105 110"
+		"AbilityCooldown"				 "10 10 10 10"
+		"FightRecapLevel"				"1"
+		//"AbilityCastPoint"     "0.3"
+		"AOERadius"	 "300"
+		"AbilityCastRange"	 "1000"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"      "0.30"
+		"LevelsBetweenUpgrades"	 "2"
+		"precache"
+		{
+			"particle" 			"particles/econ/items/brewmaster/brewmaster_offhand_elixir/brewmaster_thunder_clap_elixir.vpcf"
+			"soundfile"			 "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		     "particle"         "particles/econ/courier/courier_roshan_lava/courier_roshan_lava.vpcf"
+		     "particle"         "particles/neutral_fx/roshan_spawn.vpcf"
+ 		     
+		    "particle"       "particles/econ/items/juggernaut/jugg_sword_fireborn_odachi/jugg_crit_blur_fb_odachi.vpcf"
+		     "particle"     "particles/units/heroes/hero_ursa/ursa_earthshock.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile" 	"scripts/vscripts/Abilities/guanyu.lua"
+				"Target"		"POINT"
+				"Function"		"guanyu_liuyuefeizhan_01"
+			}
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"guanyu_liuyuefeizhan_wudi"
+			}
+		}
+		"Modifiers"
+		{
+			"guanyu_liuyuefeizhan_wudi"
+			{
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DISABLE_AUTOATTACK"	 "1"
+					"MODIFIER_PROPERTY_OVERRIDE_ANIMATION"    "1"
+					"MODIFIER_PROPERTY_BONUS_NIGHT_VISION"     "1400"
+					"MODIFIER_PROPERTY_BONUS_DAY_VISION"       "2200"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"							
+					"MODIFIER_STATE_PROVIDES_VISION"    "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"   "MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/courier/courier_roshan_lava/courier_roshan_lava.vpcf"
+						"EffectAttachType" "follow_origin"
+						"Target" "CASTER"
+					}
+				}
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+							"EffectName"	"Hero_Alchemist.UnstableConcoction.Stun"
+							 "Target" 		"CASTER"
+					}
+					"ApplyModifier"
+					{
+						"Target" 			"CASTER"
+						"ModifierName"		"guanyu_liuyuefeizhan_houyao"
+					}
+				}
+			}
+			"guanyu_liuyuefeizhan_houyao"  
+			{
+				"IsHidden"   "1"
+				"Duration"   "0.3"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"  "MODIFIER_STATE_VALUE_ENABLED"					
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage"			"200 250 300 350"
+			}
+		}
+	}
+
+

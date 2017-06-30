@@ -1,0 +1,110 @@
+//=================================================================================    
+// Boss: Lord of Death
+//=================================================================================
+"npc_lord_of_death_boss"
+    {
+        "BaseClass"                         "npc_dota_creature"
+        "Model"                             "models/heroes/shadow_fiend/shadow_fiend_arcana.vmdl"
+        "ModelScale"                        "2.0"
+        "Level"                             "30"
+        "HealthBarOffset"                   "500"
+        "HasInventory"                      "1"
+        "SelectionGroup"                    "lord_of_death_boss"
+        "DefaultState"                      "Invade"
+        "ConsideredHero"                    "1"
+
+        "Ability1"                          "skill_lordofdeath_boss_skill"
+        "Ability2"                          "skill_lordofdeath_boss_mobs"
+        "Ability3"                          "skill_lordofdeath_boss_dive"
+        "Ability4"                          "elder_titan_earth_splitter"
+        "Ability5"                          "ursa_overpower"                    // Ability 5
+        "AbilityLayout"                     "5"
+
+        "ArmorPhysical"                     "40"
+        "MagicalResistance"                 "60"
+        "AttackCapabilities"                "DOTA_UNIT_CAP_RANGED_ATTACK"
+        "AttackDamageType"                  "DAMAGE_TYPE_ArmorPhysical"
+
+        "AttackDamageMin"                   "800"
+        "AttackDamageMax"                   "1200"
+
+        "AttackRate"                        "0.5"
+        "AttackAnimationPoint"              "0.25"
+        "AttackAcquisitionRange"            "650"
+        "AttackRange"                       "650"
+        "ProjectileModel"                   "particles/units/heroes/hero_nevermore/nevermore_base_attack.vpcf"
+        "ProjectileSpeed"                   "1600"
+        "BountyGoldMin"                     "1500"
+        "BountyGoldMax"                     "2000"
+        "BountyXP"                          "30"
+        "BoundsHullName"                    "DOTA_HULL_SIZE_HERO"
+        "RingRadius"                        "140"
+        //"CollisionSize"                     "100"
+
+        "MovementCapabilities"              "DOTA_UNIT_CAP_MOVE_GROUND"
+        "MovementSpeed"                     "360"
+        "MovementTurnRate"                  "0.6"
+        "StatusHealth"                      "236000"
+        "StatusHealthRegen"                 "300"
+        "StatusMana"                        "20000"
+        "StatusManaRegen"                   "200"
+        "VisionDaytimeRange"                "1400"
+        "VisionNighttimeRange"              "1800"
+        "TeamName"                          "DOTA_TEAM_NEUTRALS"
+        "UnitRelationShipClass"             "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+        "vscripts"                          "AI/Boss/lordofdeath_boss.lua"
+        "Creature"
+        {
+
+        "OffensiveAbilities"
+            {
+                "Ability1"                
+                {
+                    "Name"              "ursa_overpower"
+                    "MinimumTargets"    "2"
+                }
+            }
+
+            "EquippedItems"
+        {
+           // "ForceStaff"
+           // {
+           //     "Item"                  "item_force_staff"
+           // }
+            "ShivaGuard"
+            {
+                "Item"                  "item_shivas_guard"
+            }
+            "LotusOrb"
+            {
+                "Item"                  "item_lotus_orb"
+            }
+            "Sphere"
+            {
+                "Item"                  "item_sphere"
+            }
+            "BladeMail"
+            {
+                "Item"                  "item_blade_mail"
+            }
+           // "Urn"
+          //  {
+           //     "Item"                  "item_urn_of_shadows"
+           //     "Charges"               "10"
+           // }
+        }
+
+            "DisableClumpingBehavior"   "1"
+            "AttachWearables"
+            {
+                //shoulders
+                "Wearable1"{ "ItemDef"   "486"}
+                //arms
+                "Wearable2"{ "ItemDef"   "488"}
+                //haed
+                "Wearable3"{ "ItemDef"   "6996"}
+            }
+
+        }
+        
+    }

@@ -1,0 +1,46 @@
+//=================================================================================================================
+// Ability: On Death Effect Creep
+//=================================================================================================================
+"skill_on_death_creep"
+{
+      "BaseClass"                   "ability_datadriven"
+      "AbilityBehavior"             "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+      "OnOwnerDied"
+      {
+        "CreateThinker"
+        {
+          "ModifierName"            "doom_miniboss_death_fx"
+          "Target"                  "CASTER"
+        }
+
+      }
+
+      "Modifiers"
+      {
+          "doom_miniboss_death_fx"
+          {
+              "Duration"              "2"
+              "OnCreated"
+            {
+              "AttachEffect"
+              {
+                "EffectName"        "particles/neutral_fx/roshan_death.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Target"            "TARGET"
+              }
+
+              "AttachEffect"
+              {
+                "EffectName"        "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+                "EffectAttachType"  "follow_origin"
+                "Target"            "TARGET"
+                "ControlPoints"
+                {
+                  "00"  "0 0 0"
+                  "01"  "200 5 5"
+                }
+              }
+            }
+          }
+      }
+}

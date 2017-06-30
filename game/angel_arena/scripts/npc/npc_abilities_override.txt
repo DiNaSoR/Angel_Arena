@@ -1,0 +1,6 @@
+// Dota Abilities Override File
+
+#base "abilities/ursa_overpower.txt"
+"DOTAAbilities"
+{
+}
