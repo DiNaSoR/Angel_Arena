@@ -1,6 +1,12 @@
-//=================================================================================    
+"DOTAUnits"
+{
+//================================================================================================================= 
 // Tower: Good Guys Tower Def
-//=================================================================================
+// Last revision: 2017-7-15
+// Imported from:
+// Made by: DiNaSoR
+// Changed by: DiNaSoR
+//=================================================================================================================
 "good_guys_def_tower"
 {
 		// General
@@ -9,20 +15,20 @@
 		"SoundSet"					"Tower.Water"								// Name of sound set.
 		"MinimapIcon"				"minimap_tower45"
 		"MinimapIconSize"			"320"
-		"Level"						"25"
+		"Level"						"150"
  
 		// Abilities
 		//----------------------------------------------------------------
  
-		"Ability1"					"beastmaster_inner_beast"					// Ability 1.
-		"Ability2"					"skeleton_king_vampiric_aura"				// Ability 2.
-		"Ability3"					"skill_ability_Invulnerability"				// Ability 3.
-		"Ability4"					"necrolyte_heartstopper_aura"				// Ability 4.
-		"Ability5"					"omniknight_degen_aura"						// Ability 5.
-		"Ability6"					"obsidian_destroyer_essence_aura"			// Ability 6 - Extra.
-		"Ability7"					"spirit_breaker_empowering_haste"			// Ability 7 - Extra.
-		"Ability8"					"vengefulspirit_command_aura"				// Ability 8 - Extra.
-		"AbilityLayout"				"6"
+		//"Ability1"					"beastmaster_inner_beast"					// Ability 1.
+		//"Ability2"					"skeleton_king_vampiric_aura"				// Ability 2.
+		//"Ability3"					"skill_ability_Invulnerability"				// Ability 3.
+		//"Ability4"					"necrolyte_heartstopper_aura"				// Ability 4.
+		//"Ability5"					"omniknight_degen_aura"						// Ability 5.
+		//"Ability6"					"obsidian_destroyer_essence_aura"			// Ability 6 - Extra.
+		//"Ability7"					"spirit_breaker_empowering_haste"			// Ability 7 - Extra.
+		//"Ability8"					"vengefulspirit_command_aura"				// Ability 8 - Extra.
+		//"AbilityLayout"				"6"
 		
 		// Armor
 		//----------------------------------------------------------------
@@ -35,12 +41,12 @@
 		"AttackDamageMin"			"150"										// Damage range min.
 		"AttackDamageMax"			"350"										// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
-		"AttackRate"				"0.25"										// Speed of attack.
+		"AttackRate"				"0.1"										// Speed of attack.
 		"AttackAnimationPoint"		"0.0"										// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"										// Range within a target can be acquired.
 		"AttackRange"				"600"										// Range within a target can be attacked.
 		"ProjectileModel"			"particles/base_attacks/ranged_tower_good.vpcf"		// Particle system model for projectile.
-		"ProjectileSpeed"			"1250"										// Speed of projectile.
+		"ProjectileSpeed"			"3000"										// Speed of projectile.
  
 		// Attributes
 		//----------------------------------------------------------------
@@ -89,4 +95,5 @@
 		//----------------------------------------------------------------
 		"VisionDaytimeRange"		"1900"										// Range of vision during day light.
 		"VisionNighttimeRange"		"800"										// Range of vision at night time.
+}
 }

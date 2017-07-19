@@ -8,9 +8,9 @@
 #TitlePanel
 {
   horizontal-align: left;
-  vertical-align: bottom;
-  margin-bottom: 270px;
-  margin-left: 10px;
+  vertical-align: top;
+  margin-top: 100px;
+  margin-left: 45px;
   flow-children: right;
 }
 
@@ -19,7 +19,47 @@
   margin-bottom: -15px;
   vertical-align: center;
   text-transform: uppercase;
-  font-size: 80px;
+  font-size: 50px;
+  color: #cccccc;
+  text-shadow: 3px 3px 3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000;
+  font-weight: bold;
+  
+}
+#VersionPanel
+{
+  horizontal-align: left;
+  vertical-align: top;
+  margin-top: 128px;
+  margin-left: 410px;
+  flow-children: right;
+}
+#Version
+{
+  margin-bottom: -15px;
+  vertical-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #cccccc;
+  text-shadow: 3px 3px 3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000;
+  font-weight: bold;
+  
+}
+#NewsPanel
+{
+
+  vertical-align: top;
+  margin-top: 170px;
+  margin-left: 45px;
+  border: 1px solid black;
+  width: 420px;
+  height: 500px;
+}
+#NewsPaneltext
+{
+  text-align: left;
+  margin-bottom: -15px;
+  vertical-align: top;
+  font-size: 20px;
   color: #cccccc;
   text-shadow: 3px 3px 3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000, -3px -3px -3px 6 #000;
   font-weight: bold;

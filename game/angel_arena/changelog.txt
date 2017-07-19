@@ -1,32 +1,34 @@
-enemies = FindUnitsInRadius(unit:GetTeamNumber(), unit:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-
-
-	--Cast Spawn whenever we're able to do so.
-	if ABILILTY_echo_stomp_spell:IsFullyCastable() then
-		--print("Elder Titan can cast echo_stomp")
-		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO, FIND_ANY_ORDER, false )
-
-		if units ~= nil then
-			if #units >= 1 then
-				print("Elder Titan wants to cast call echo_stomp, ".. #units .." enemy near.")
-				local index = RandomInt( 1, #units )
-				local target = units[index]
-
-				thisEntity:CastAbilityOnTarget(target, ABILILTY_echo_stomp_spell, -1)
-			else 
-				print("1st No units found to cast the spell on")
-			end
-		end
-	end
-	
-	
-//-- Script for forcing unit to go back
-	https://www.irccloud.com/pastebin/bt9xekZb/
 //-------------------------------------------------
-//	IDEAS
+//	IDEAS TODO
 //-------------------------------------------------
+----------------------------------
+Update 15/7/2017 11:00 PM
+----------------------------------
+Come back after 2 years that tough. now doing alot of pulishing.
+Addon_game_mode[preach,settings,aa]
+preache[nothing]
+settings[Globals]
+aa[welcomemsg,aastartpop,
 
-Update 18/18/2015 1:35 AM i was working on Pudge to fix the stun that rune the rot
+Need to compare events+events(internal)
+PostLoadPrecache has 2 caller aa/events internal
+
+mix functional.lua with any util file
+
+change onitempickthinker to events 
+there is UTIL_Remove in onitempickthinker and util invstgate there is 2 goldpickup
+
+drop table to apply to many creeps not only 1
+
+18/7/2017 check aar.txt items there is bash.lua gives error in line 26
+
+
+	
+REMEMBER TO CONTIUNE PULISHING aa.lua then gamemode.lua then events.lua
+----------------------------------
+Update 18/18/2015 1:35 AM
+----------------------------------
+i was working on Pudge to fix the stun that rune the rot
 and trying to figure a way to check if this ability are active or not. dont forget i changed pudge damage.
 
 Desgin the creep camp to lets the player know here is spawn give some love to the map
@@ -35,15 +37,6 @@ decrease gold income to 2 per tick and reword the gold income for the creeps
 int players need to get alot of buff items like dmg for the amount of int they have for amount of time
 str same but with attack speed
 agi same but with evation
-
-
-
-
-----------
-
------------
-
-
 
 - No Highets Moutins replace them with trees
 - Many levels creeps camps
@@ -62,24 +55,32 @@ agi same but with evation
 - secret area
 - leveling up bosses
 - voting UI
+- Area with slow motion attack/speed and there is a item to remove this
+the idea is to put trigger with modifier to slow down every toucher
+if you have this item lua will check then pass you without modifier
 
 
 
 Reminder: shADOW fiend boss implementing
 Still working in new version of pudge
 and working in Ronin Warrior 
+//-------------------------------------------------
+//	0.07
+//-------------------------------------------------
+//-------------------------------------------------
+//	0.06
+//-------------------------------------------------
 
 //-------------------------------------------------
-//	1.13
+//	0.05
 //-------------------------------------------------
 ITEMS:
 - [NEW] Hammer of the Dajjal
 - [NEW] Continuum Blade
 
 
-
 //-------------------------------------------------
-//	1.12
+//	0.04
 //-------------------------------------------------
 CHANGES:
 - [Boss] The Butcher nerfed
@@ -89,12 +90,9 @@ CHANGES:
 - [ITEM] Immortal Armor of Hephaestus price nerf
 - [Duel] Duel Chest gold increase.
 
-
 //-------------------------------------------------
-//	1.1
+//	0.03
 //-------------------------------------------------
-
-
 
 CHANGES:
 - [Sys] Disallow Same hero selection
@@ -134,13 +132,8 @@ NEW:
 - High Ground for wards
 
 
-
-
-
-
-
 //-------------------------------------------------
-//	1.0b
+//	0.02
 //-------------------------------------------------
 
 NEW:
@@ -150,7 +143,7 @@ NEW:
 
 
 //-------------------------------------------------
-//	1.0
+//	0.01
 //-------------------------------------------------
 Remove to [Redesign]:
 - Force Stuff removed
@@ -201,3 +194,32 @@ NEW:
 
 Mini-boss:
 - [New] Paimon
+
+
+//-------------------------------------------------
+//	Refrences
+//-------------------------------------------------
+enemies = FindUnitsInRadius(unit:GetTeamNumber(), unit:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
+
+
+	--Cast Spawn whenever we're able to do so.
+	if ABILILTY_echo_stomp_spell:IsFullyCastable() then
+		--print("Elder Titan can cast echo_stomp")
+		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetOrigin(), nil, 300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO, FIND_ANY_ORDER, false )
+
+		if units ~= nil then
+			if #units >= 1 then
+				print("Elder Titan wants to cast call echo_stomp, ".. #units .." enemy near.")
+				local index = RandomInt( 1, #units )
+				local target = units[index]
+
+				thisEntity:CastAbilityOnTarget(target, ABILILTY_echo_stomp_spell, -1)
+			else 
+				print("1st No units found to cast the spell on")
+			end
+		end
+	end
+	
+	
+//-- Script for forcing unit to go back
+	https://www.irccloud.com/pastebin/bt9xekZb/

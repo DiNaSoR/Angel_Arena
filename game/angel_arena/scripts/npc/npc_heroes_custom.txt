@@ -1,22 +1,11 @@
+//--------------------------------------------------------------
+// Heroes Custom Abilities
+//--------------------------------------------------------------
+#base "heroes/npc_dota_hero_furion.txt"
+#base "heroes/npc_dota_hero_magnataur.txt"
+#base "heroes/npc_dota_hero_omniknight.txt"
+//#base "heroes/npc_dota_hero_lycan.txt"
+
 "DOTAHeroes"
 {
-	
-		
-	"npc_dota_hero_furion"
-		{
-			"override_hero"				"npc_dota_hero_furion"
-			"Ability2"					"skill_rejuvenation"
-		}
-	"npc_dota_hero_magnataur"
-		{
-			"override_hero"				"npc_dota_hero_magnataur"
-			"Ability3"					"skill_rend_armor"
-		}
-	"npc_dota_hero_omniknight"
-		{
-			"override_hero"				"npc_dota_hero_omniknight"
-			"Ability6"					"skill_redemption"
-			"AbilityLayout"				"5"
-	
-		}
 }

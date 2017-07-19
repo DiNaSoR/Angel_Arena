@@ -1,0 +1,79 @@
+"DOTAAbilities"
+{
+//=================================================================================================================
+// ChestGuard of ill fate
+// Last revision: 2014
+// Imported from: None
+// Made by: DiNaSoR
+// Changed by: DiNaSoR
+//=================================================================================================================
+"item_chestguard_of_ill_fate"
+	{
+		"ID"                            "10009"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"chestguard_of_ill_fate"
+		//"ItemStockMax"				"2"
+		//"ItemStockInitial"			"2"
+		//"ItemStockTime"				"48.0"
+
+		"ItemQuality"					"artifact"
+		"ItemCost"                      "3000"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"Modifiers"
+		{
+			"modifier_chestguard_of_ill_fate"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%stat_bonus"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%stat_bonus"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%stat_bonus"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"			"%hp_bonus"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%mana_regen"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%block_dmg"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stat_bonus"			"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_regen"				"21"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_bonus"				"1000"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"250"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_bonus"			"5"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_dmg"				"50"
+			}
+			
+		}
+	}
+}

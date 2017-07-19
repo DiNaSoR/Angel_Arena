@@ -1,14 +1,19 @@
-if PrecacheManager == nil then PrecacheManager = class({}) end
-
+--------------------------------------------------------------
+-- Angel Arena PreacheManager Class
+--------------------------------------------------------------
+PrecacheManager = class({})
+--------------------------------------------------------------
+-- Angel Arena Preaching
+--------------------------------------------------------------
 function PrecacheManager:StartPrecache( context )
-	print("Angel Arena Loading precache")
+	print("[Angel Arena] Loading precache Start")
 
 	--Precache things we know we'll use.  Possible file types include (but not limited to):
 	--PrecacheResource( "model", "*.vmdl", context )
 	--PrecacheResource( "soundfile", "*.vsndevts", context )
 	--PrecacheResource( "particle", "*.vpcf", context )
 	--PrecacheResource( "particle_folder", "particles/folder", context )
-	-- These units could be on Async if we just waited a bit more to spawn them
+	--These units could be on Async if we just waited a bit more to spawn them
 	PrecacheUnitByNameSync("npc_lord_of_death_boss", context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts", context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts", context)
@@ -16,8 +21,6 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_nevermore.vsndevts", context)
 	PrecacheResource("soundfile", "soundevents/voscripts/game_sounds_vo_pudge.vsndevts", context)
 	PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_chen.vsndevts", context)
-	
-	
 	
 	-- Precache sounds
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts", context )
@@ -29,15 +32,13 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_necrolyte.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context)
-	PrecacheResource( "soundfile", "soundevents/music/valve_dota_001/stingers/game_sounds_stingers.vsndevts", context )
-	PrecacheResource( "soundfile", "soundevents/game_sounds_stingers_diretide.vsndevts", context )
+	--BROKEN--PrecacheResource( "soundfile", "soundevents/music/valve_dota_001/stingers/game_sounds_stingers.vsndevts", context )
+	--BROKEN--PrecacheResource( "soundfile", "soundevents/game_sounds_stingers_diretide.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_creeps.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/custom_sounds.vsndevts", context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_items.vsndevts", context )
 	
-
 	-- Precache particles required by various world effects
-
 	PrecacheResource( "particle", "particles/items_fx/aegis_respawn_aegis_starfall.vpcf", context )
 	PrecacheResource( "particle", "particles/neutral_fx/roshan_death_aegis_trail.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_chen/chen_holy_persuasion_a.vpcf", context )
@@ -54,10 +55,6 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "particle", "particles/items_fx/chain_lightning.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", context )
 	PrecacheResource( "particle", "particles/generic_gameplay/generic_stunned_old.vpcf", context )
-	
-
-	
-	
 	
 	--Hero shadow demon
 	PrecacheResource( "particle", "particles/units/heroes/hero_shadow_demon/sd_w.vpcf", context )
@@ -105,7 +102,6 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_faceless_void/", context)
 	PrecacheResource( "particle_folder", "particles/econ/items/faceless_void/", context)
 
-	
 	--Units Hero Spirit
 	PrecacheResource( "model_folder", "models/heroes/ember_spirit/", context )
 	PrecacheResource( "particle_folder", "particles/units/heroes/hero_ember_spirit/", context)
@@ -119,26 +115,12 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "particle", "particles/items2_fx/shadow_amulet_activate_runes.vpcf", context )
 	PrecacheResource( "model", "models/items/ember_spirit/blazearmor_head/blazearmor_head.vmdl", context )
 
+	PrecacheResource( "model", "models/heroes/skywrath_mage/skywrath_mage.vmdl", context )
 	PrecacheResource( "particle", "particles/econ/items/mirana/mirana_crescent_arrow/mirana_spell_crescent_arrow.vpcf", context )
 	--PrecacheResource( "particle", "particles/units/heroes/hero_elder_titan/elder_titan_earth_splitter.vpcf", context )
 	
-	
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 	-- Cosmetic item particles, should precache them individually
 	--PrecacheResource( "particle_folder", "particles/econ/items", context )
-
 
 	-- Precache world models
 	PrecacheResource( "model", "models/props_debris/merchant_debris_book001.vmdl", context )
@@ -150,13 +132,12 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "model_folder", "models/heroes/pudge/", context)
 	PrecacheResource( "model_folder", "models/heroes/undying/", context)
 	PrecacheResource( "model_folder", "models/heroes/juggernaut/", context)
-	PrecacheResource( "model_folder", "models/items/juggernaut/", context)
-
+	PrecacheResource( "model_folder", "models/heroes/sand_king/", context)
 
 	--PrecacheResource( "model_folder", "models/items/warlock/warlock_fourleg_demon.vmdl", context)
 	PrecacheResource( "model_folder", "models/heroes/shadow_fiend/", context)
 	PrecacheResource( "model", "models/props_structures/gravestone005.vmdl", context)
 
-
-	print("Angel Arena Loading precache End")
+	print("[Angel Arena] Loading precache End")
+	--aa_modifier(context)
 end

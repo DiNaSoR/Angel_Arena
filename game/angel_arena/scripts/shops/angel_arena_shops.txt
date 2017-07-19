@@ -212,7 +212,7 @@
 		"item"    "item_cloak_of_manza"
 		"item"    "item_iron_will_of_hephaestus"
 		"item"    "item_high_oracles_robes"
-		"item"    "item_heros_hauberk"
+		"item"    "item_heroes_hauberk"
 		"item"    "item_towering_shield_of_athena"
 		"item"    ""
 		"item"    ""

@@ -1,6 +1,23 @@
-// Dota Abilities Override File
+// Overraid Dota Abilities File
+//--------------------------------------------------------------
+// Heroes
+//--------------------------------------------------------------
+//#base "override/heroes/ursa_overpower.txt"
+//#base "override/heroes/lycan_summon_wolves.txt"
 
-#base "abilities/ursa_overpower.txt"
+//--------------------------------------------------------------
+// Creeps
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+// Others
+//--------------------------------------------------------------
+#base "override/abilities.txt"
+//#base "override/talents.txt"
+//#base "override/items.txt"
+//#base "override/courier.txt"
+//#base "override/remove.txt"
+//#base "override/map.txt"
 "DOTAAbilities"
 {
 }

@@ -1,3 +1,5 @@
+"DOTAAbilities"
+{
 // Rewrite of the Faceless Void Time Walk ability
 // Author: Pizzalol
 // Date: 07.01.2015.
@@ -135,4 +137,4 @@
 		}
 	}
 }
-
+}

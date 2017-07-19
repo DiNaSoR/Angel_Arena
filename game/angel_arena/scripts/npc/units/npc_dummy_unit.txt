@@ -1,3 +1,5 @@
+"DOTAUnits"
+{
 "npc_dummy_unit"
 	{
 		"BaseClass"	"npc_dota_base_additive"
@@ -50,3 +52,4 @@
 		"VisionNighttimeRange"	"0"
         "PathfindingSearchDepthScale" "0.2"
 	}
+}

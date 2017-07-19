@@ -1,3 +1,5 @@
+"DOTAAbilities"
+{
 "lordofdeath_boss_aoe_explosion"
 	{
 		// General
@@ -119,3 +121,4 @@
 			}
 		}
 	}
+}

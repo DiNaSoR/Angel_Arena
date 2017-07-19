@@ -1,0 +1,25 @@
+"DOTAAbilities"
+{
+//=================================================================================================================
+// Recipe ChestGuard of ill fate
+// Last revision: 2014
+// Imported from: None
+// Made by: DiNaSoR
+// Changed by: DiNaSoR
+//=================================================================================================================
+"item_recipe_chestguard_of_ill_fate" 
+	{
+		"ID" 					"10010"
+		"BaseClass"           	"item_datadriven"
+		"ItemRecipe"          	"1" //destroyed after combine
+		"ItemCost"            	"2125" //if its 0, it will combine without needing a recipe.
+		"ItemSellable"          "1"
+		"ItemPurchasable"		"0"
+		"ItemResult"          	"item_chestguard_of_ill_fate" //the result of combining the ItemRequirements
+		"ItemRequirements"
+		{
+			"01" "item_vanguard;item_bloodstone;item_crimson_guard"
+			//"02" "item_ingredient_1;item_ingredient_2;item_ingredient_alternative_3"
+		}
+	}
+}

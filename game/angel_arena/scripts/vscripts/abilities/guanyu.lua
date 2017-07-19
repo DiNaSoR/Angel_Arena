@@ -87,7 +87,7 @@ function guanyu_liuyuefeizhan_02(keys)
     local damage=ability:GetLevelSpecialValueFor("damage",k-1)
       local per_damage=damage*0.3
       local teams = DOTA_UNIT_TARGET_TEAM_ENEMY
-      local types = DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_MECHANICAL+DOTA_UNIT_TARGET_OTHER
+      local types = DOTA_UNIT_TARGET_HERO+DOTA_UNIT_TARGET_OTHER
       local flags = DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES
       local rad   = 250 
       local group = FindUnitsInRadius(caster:GetTeam(),caster:GetOrigin(),nil, rad, teams, types, flags, FIND_CLOSEST, true)

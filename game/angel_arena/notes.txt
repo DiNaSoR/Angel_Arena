@@ -1,0 +1,22 @@
+Addon_game_mode[preach,settings,aa]
+preache[nothing]
+settings[Globals]
+aa[welcomemsg,aastartpop,
+
+
+
+
+
+Need to compare events+events(internal)
+PostLoadPrecache has 2 caller aa/events internal
+
+mix functional.lua with any util file
+
+change onitempickthinker to events 
+there is UTIL_Remove in onitempickthinker and util invstgate there is 2 goldpickup
+
+drop table to apply to many creeps not only 1
+
+
+	
+REMEMBER TO CONTIUNE PULISHING aa.lua then gamemode.lua then events.lua

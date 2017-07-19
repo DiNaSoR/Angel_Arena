@@ -1,3 +1,5 @@
+"DOTAAbilities"
+{
 "skill_lordofdeath_boss_mobs"
 	{
 		// General
@@ -88,3 +90,4 @@
 		}
 
 	}
+}

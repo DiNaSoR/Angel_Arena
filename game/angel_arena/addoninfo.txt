@@ -1,13 +1,10 @@
 "AddonInfo"
 {
+	"version"		"v0.1"
 	"TeamCount" 	"2"
-	"maps"			"angel_arena playground"
+	"maps"			"angel_arena"
 	"IsPlayable"	"1"
 	"angel_arena"
-	{
-					"MaxPlayers"                    "10"
-	}
-	"playground"
 	{
 					"MaxPlayers"                    "10"
 	}

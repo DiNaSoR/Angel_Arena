@@ -1,0 +1,114 @@
+"DOTAAbilities"
+{
+//=================================================================================================================
+// Iron will of Hephaestus
+// Last revision: 2014
+// Imported from: The Black Road
+// Made by: Aleteh
+// Changed by: DiNaSoR
+//=================================================================================================================
+"item_iron_will_of_hephaestus"		// TODO Make the ability absorb 10,000 magic damage instead.
+	{
+		"ID"                            "10019"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityTextureName"			"item_iron_will_of_hephaestus"
+		//"ItemStockMax"				"2"
+		//"ItemStockInitial"			"2"
+		//"ItemStockTime"				"48.0"
+
+		"ItemQuality"					"epic"
+		"ItemCost"                      "18000" 	
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"               "180"
+		"AbilityManaCost"               "0"
+
+			"precache"
+			{
+				"particle"					"particles/items_fx/black_king_bar_avatar.vpcf"
+			}
+			"OnSpellStart"
+			{
+				"ApplyModifier"
+				{
+					"Target" 				"CASTER"
+					"ModifierName"			"modifier_iron_will_of_hephaestus_absorb"
+				}
+				"FireSound"
+			{
+				"Target" 				"UNIT"
+				"EffectName" 			"Item.GuardianGreaves.Activate"
+			}
+			}
+
+		"Modifiers"
+		{
+			"modifier_iron_will_of_hephaestus"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"				"%hp_bonus"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%hp_regen"
+
+				}
+			}
+			"modifier_iron_will_of_hephaestus_absorb"
+			{
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"				"CASTER"
+						"EffectName"			"particles/items3_fx/lotus_orb_shield.vpcf"
+						"EffectAttachType"		"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"CASTER"		"attach_hitloc"
+						}
+						//"EffectRadius"		"200"
+					}
+				}
+				"IsBuff"					"1"
+				"IsHidden"					"0"
+				"Duration"					"5"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK"				"%block_all"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_bonus"			"8"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_bonus"				"900"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"hp_regen"				"10"
+			}	
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_all"				"1000"
+			}	
+		}
+	}
+}

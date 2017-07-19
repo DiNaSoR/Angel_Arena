@@ -1,3 +1,5 @@
+"DOTAAbilities"
+{	
 	"skill_lordofdeath_boss_splitter_dummy"
 	{
 		// General
@@ -153,3 +155,4 @@
 		}
 
 	}
+}

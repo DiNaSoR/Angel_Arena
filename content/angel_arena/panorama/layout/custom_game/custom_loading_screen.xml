@@ -9,5 +9,11 @@
     <Panel id="TitlePanel">
       <Label id="AddonTitle" text="#addon_game_name" style="" />
     </Panel>
+	<Panel id="VersionPanel">
+	  <Label id="Version" text="#aa_version" style="" />
+    </Panel>
+	<Panel id="NewsPanel">
+	  <Label id="NewsPaneltext" text="#aarena_instructions_body" style="" />
+    </Panel>
   </Panel>
 </root>

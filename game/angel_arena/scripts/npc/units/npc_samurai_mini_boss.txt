@@ -1,126 +1,130 @@
+"DOTAUnits"
+{
 //=================================================================================
 //  Samurai
 //=================================================================================
 "npc_samurai_mini_boss"
-{
-	// General
-	"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-	"Model"						"models/heroes/juggernaut/juggernaut.vmdl"	// Model.
-	"ModelScale" 				"1.2"
-	"Level"						"25"
-	"CanBeDominated"			"0"
-	"ConsideredHero"        	"1"
-	"UseNeutralCreepBehavior" 	"0"
-	//"HasAggressiveStance"       "1"
-	
-	"precache"
 	{
-		"model"		"models/heroes/juggernaut/juggernaut.vmdl"
+		// General
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/heroes/juggernaut/juggernaut.vmdl"	// Model.
+		"ModelScale" 				"1.2"
+		"Level"						"25"
+		"CanBeDominated"			"0"
+		"ConsideredHero"        	"1"
+		"UseNeutralCreepBehavior" 	"0"
+		//"HasAggressiveStance"       "1"
+		
+		"precache"
+		{
+			"model"		"models/heroes/juggernaut/juggernaut.vmdl"
+			"model"		"models/heroes/juggernaut/juggernaut_pants.vmdl"
 
-	}
-	
-	// Abilities
-	//----------------------------------------------------------------
-	"AbilityLayout"				"5"
-	"Ability1"					"phantom_lancer_doppelwalk"			// Ability 1
-	"Ability2"					"clinkz_strafe"						// Ability 2
-	"Ability3"					"dragon_knight_dragon_blood"		// Ability 3.
-	"Ability4"					"faceless_void_time_walk"			// Ability 4.
-	"Ability5"					"kunkka_tidebringer"
+		}
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"					"phantom_lancer_doppelwalk"			// Ability 1
+		"Ability2"					"clinkz_strafe"						// Ability 2
+		"Ability3"					"dragon_knight_dragon_blood"		// Ability 3.
+		"Ability4"					"faceless_void_time_walk"			// Ability 4.
+		"Ability5"					"kunkka_tidebringer"
 
-	// Armor
-	//----------------------------------------------------------------
-	"ArmorPhysical"				"10"			// Physical protection.
-	"MagicalResistance"			"10"			// Magical protection.
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"10"			// Physical protection.
+		"MagicalResistance"			"10"			// Magical protection.
 
-	// Attack
-	//----------------------------------------------------------------
-	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin"			"150"		// Damage range min.
-	"AttackDamageMax"			"200"		// Damage range max.	
-	"AttackRate"				"0.7"		// Speed of attack.
-	"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
-	"AttackRange"				"128"		// Range within a target can be attacked.
-	"AttackRangeBuffer"         "128"       // Extra range the target can move without canceling the attack
-	"ProjectileModel"			""			// Particle system model for projectile.
-	"ProjectileSpeed"			"0"			// Speed of projectile.	
-
-	   
-
-
-	// Attributes
-	//----------------------------------------------------------------
-	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-	"AttributeBaseStrength"		"0"			// Base strength
-	"AttributeStrengthGain"		"0"			// Strength bonus per level.
-	"AttributeBaseIntelligence"	"0"			// Base intelligence
-	"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
-	"AttributeBaseAgility"		"0"			// Base agility
-	"AttributeAgilityGain"		"0"			// Agility bonus per level.
-
-	// Bounty
-	//----------------------------------------------------------------
-	"BountyXP"					"350"		// Experience earn.
-	"BountyGoldMin"				"250"		// Gold earned min.
-	"BountyGoldMax"				"350"		// Gold earned max.
-
-	// Bounds
-	//----------------------------------------------------------------
-	"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
-	"RingRadius"				"120"
-	"HealthBarOffset"			"200"
-
-	// Movement
-	//----------------------------------------------------------------
-	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
-	"MovementSpeed"				"350"		// Speed
-	"MovementTurnRate"			"0.5"		// Turning rate.
-
-	// Status
-	//----------------------------------------------------------------
-	"StatusHealth"				"39000"		// Base health.
-	"StatusHealthRegen"			"8.0"			// Health regeneration rate.
-	"StatusMana"				"3900"		// Base mana.
-	"StatusManaRegen"			"6.0"			// Mana regeneration rate.
-
-	// Team
-	//----------------------------------------------------------------
-	"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
-	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
-	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	// Vision
-	//----------------------------------------------------------------
-	"VisionDaytimeRange"		"1200"		// Range of vision during day light.
-	"VisionNighttimeRange"		"1200"		// Range of vision at night time.
-
-	//----------------------------------------------------------------
-	"vscripts"					"AI/Miniboss/titan_ai.lua"
-
-	// Inventory
-	//----------------------------------------------------------------
-	"HasInventory"				"0"
-	
-
-	// Creature Data
-	//----------------------------------------------------------------
-	"Creature"
-	{
-
-		//Basic AI State
-		//------------------------------------------------------------
-
-	
-		"AttachWearables"
-			{
-				"Wearable1"{"ItemDef" "7164"} //---Pantaloons of the Bladekeeper
-				"Wearable2"{"ItemDef" "5438"} //---Fire of the Exiled Ronin
-				"Wearable3"{"ItemDef" "6773"} //---Shoulders of the Bladesrunner
-				"Wearable4"{"ItemDef" "6107"} //---Gifts of the Vanished Isle Head
-			}
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"150"		// Damage range min.
+		"AttackDamageMax"			"200"		// Damage range max.	
+		"AttackRate"				"0.2"		// Speed of attack.
+		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"228"		// Range within a target can be attacked.
+		"AttackRangeBuffer"         "228"       // Extra range the target can move without canceling the attack
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			"0"			// Speed of projectile.	
 
 		
+
+
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain"		"0"			// Agility bonus per level.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"350"		// Experience earn.
+		"BountyGoldMin"				"250"		// Gold earned min.
+		"BountyGoldMax"				"350"		// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"			// Hull type used for navigation/locomotion.
+		"RingRadius"				"120"
+		"HealthBarOffset"			"200"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+		"MovementSpeed"				"550"		// Speed
+		"MovementTurnRate"			"0.5"		// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"39000"		// Base health.
+		"StatusHealthRegen"			"8.0"			// Health regeneration rate.
+		"StatusMana"				"3900"		// Base mana.
+		"StatusManaRegen"			"6.0"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"		// Range of vision during day light.
+		"VisionNighttimeRange"		"1200"		// Range of vision at night time.
+
+		//----------------------------------------------------------------
+		"vscripts"					"mechanics/ai/boss/samurai.lua"
+
+		// Inventory
+		//----------------------------------------------------------------
+		"HasInventory"				"0"
+		
+
+		// Creature Data
+		//----------------------------------------------------------------
+		"Creature"
+		{
+
+			//Basic AI State
+			//------------------------------------------------------------
+
+		
+			"AttachWearables"
+				{
+					"Wearable1"{"ItemDef" "7164"} //---Pantaloons of the Bladekeeper
+					"Wearable2"{"ItemDef" "5438"} //---Fire of the Exiled Ronin
+					"Wearable3"{"ItemDef" "6773"} //---Shoulders of the Bladesrunner
+					"Wearable4"{"ItemDef" "6107"} //---Gifts of the Vanished Isle Head
+				}
+
+			
+		}
 	}
 }

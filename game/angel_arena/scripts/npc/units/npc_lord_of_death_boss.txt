@@ -1,3 +1,5 @@
+"DOTAUnits"
+{
 //=================================================================================    
 // Boss: Lord of Death
 //=================================================================================
@@ -52,7 +54,7 @@
         "VisionNighttimeRange"              "1800"
         "TeamName"                          "DOTA_TEAM_NEUTRALS"
         "UnitRelationShipClass"             "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-        "vscripts"                          "AI/Boss/lordofdeath_boss.lua"
+        "vscripts"                          "mechanics/ai/boss/lordofdeath_boss.lua"
         "Creature"
         {
 
@@ -108,3 +110,4 @@
         }
         
     }
+}
