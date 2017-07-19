@@ -3,11 +3,11 @@
   custom_net_tables =
   [
     "team_scores",
-	"selection",
+	  "selection",
     "ngp",
     "info",
     "stat_display",
-	"talents",
+	  "talents",
   	"game_options",
   	"arena_capture",
   	"player_table",

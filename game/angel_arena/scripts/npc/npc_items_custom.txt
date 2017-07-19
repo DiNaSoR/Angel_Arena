@@ -40,7 +40,7 @@
 //--------------------------------------------------------------
 #base "items/tbr/item_potions.txt"
 //#base "items/imba/imba.txt"
-#base "items/aar/aar.txt"
+//#base "items/aar/aar.txt"
 
 "DOTAAbilities"
 {

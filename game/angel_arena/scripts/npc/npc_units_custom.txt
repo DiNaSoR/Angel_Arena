@@ -18,9 +18,9 @@
 //--------------------------------------------------------------
 //Mini Bosses
 //--------------------------------------------------------------
-#base "units/npc_cny_beast.txt"
+//#base "units/npc_cny_beast.txt"
 #base "units/npc_paimon_mini_boss.txt"
-#base "units/npc_samurai_mini_boss.txt"
+//#base "units/npc_samurai_mini_boss.txt"
 
 //--------------------------------------------------------------
 // Bosses

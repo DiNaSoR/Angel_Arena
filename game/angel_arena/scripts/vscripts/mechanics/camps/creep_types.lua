@@ -36,14 +36,14 @@ CreepTypes = {
     },
     {
       {"npc_dota_neutral_polar_furbolg_champion",   480,    0,  28,    2,    50,   63},
-      {"npc_dota_neutral_beardude",                 800,    0,  28,    2,    50,   63},
+      {"npc_dota_neutral_polar_furbolg_champion",                 800,    0,  28,    2,    50,   63},
     }
   },
     -- 3 "hard camp"
   {
     {                                          --HP   MANA   DMG   ARM  GOLD   EXP
       {"npc_dota_neutral_granite_golem",        1600, 400,   44,   3,   100,    49}, --expected gold is 504 and XP is 98
-      {"npc_dota_neutral_elder_jungle_stalker", 1200, 240,   28,   2,   100,    49},
+      {"npc_dota_neutral_rock_golem",       1200, 240,   28,   2,   100,    49},
     },
     {
       {"npc_dota_neutral_prowler_acolyte",     1600, 400,   44,   3,   100,    49},
