@@ -1,0 +1,31 @@
+"DOTAAbilities"
+{
+//=================================================================================================================
+// Angel Arena Boom
+//=================================================================================================================
+	"skill_zombie_hunter"
+	{
+		// General
+		//-----------------------------------------------------------------------------------------------------
+		"BaseClass"						"night_stalker_hunter_in_the_night"
+		"AbilityTextureName"      		"hunter_in_the_night"		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"            			"1"
+
+		// Special
+		//-----------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_movement_speed_pct_night"	"200"
+			}
+			"02"
+			{
+				"var_type"							"FIELD_INTEGER"
+				"bonus_attack_speed_night"			"500"
+			}
+		}
+	}
+}

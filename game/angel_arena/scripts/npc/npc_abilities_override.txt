@@ -12,7 +12,7 @@
 //--------------------------------------------------------------
 // Others
 //--------------------------------------------------------------
-#base "override/abilities.txt"
+//#base "override/abilities.txt"
 //#base "override/talents.txt"
 //#base "override/items.txt"
 //#base "override/courier.txt"

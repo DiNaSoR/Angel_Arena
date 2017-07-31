@@ -7,6 +7,9 @@
 // NPCs
 //--------------------------------------------------------------
 //#base "units/npc_courier.txt"
+#base "units/others/npc_arena_fountain.txt"
+#base "units/units/npc_dota_creature_jihade.txt"
+#base "units/units/npc_dota_creature_basic_zombie.txt"
 //--------------------------------------------------------------
 // Creeps
 //--------------------------------------------------------------
@@ -40,6 +43,7 @@
 #base "units/player_gravestone.txt"
 #base "units/npc_vision_dummy.txt"
 #base "units/npc_chest_gold.txt"
+
 
 //#base "units/imba/imba_npc_units.txt"
 //#base "units/imba/imba_npc_units_custom.txt"

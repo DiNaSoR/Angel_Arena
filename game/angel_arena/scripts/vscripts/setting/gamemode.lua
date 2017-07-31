@@ -6,8 +6,10 @@ function 	GameMode:InitGameMode()
 		print( "[Angel Arena] InitGameMode Started." )
 				
 		--self:ReadGameConfiguration()
-				
+
+		
 	-- Setup Rules
+		GameRules:GetGameModeEntity().GameMode = self
 		GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
 		GameRules:SetUseUniversalShopMode( UNIVERSAL_SHOP_MODE )
 		GameRules:SetSameHeroSelectionEnabled( ALLOW_SAME_HERO_SELECTION )
@@ -174,8 +176,13 @@ function 	GameMode:InitGameMode()
 		--GameMode.demon_imp_spawnLocations = Entities:FindAllByName("npc_demon_imp_spawner")
 		--GameMode.DemonAreaCreeps = {} -- Keep a list of all creeps in the area
 
+		Teams:Initialize()
+		PlayerTables:CreateTable("arena", {}, AllPlayersInterval)
+		PlayerTables:CreateTable("player_hero_indexes", {}, AllPlayersInterval)
+		PlayerTables:CreateTable("players_abandoned", {}, AllPlayersInterval)
+		PlayerTables:CreateTable("gold", {}, AllPlayersInterval)
+		PlayerTables:CreateTable("disable_help_data", {[0] = {}, [1] = {}, [2] = {}, [3] = {}, [4] = {}, [5] = {}, [6] = {}, [7] = {}, [8] = {}, [9] = {}, [10] = {}, [11] = {}, [12] = {}, [13] = {}, [14] = {}, [15] = {}, [16] = {}, [17] = {}, [18] = {}, [19] = {}, [20] = {}, [21] = {}, [22] = {}, [23] = {}}, AllPlayersInterval)
 
-		
 
 
 		print('[Angel Arena] InitGameMode Ended.')
@@ -239,3 +246,8 @@ function GameMode:CaptureGameMode()
 	print('[Angel Arena] CaptureGameMode Ended.')
 	end 
 end
+--------------------------------------------------------------
+-- Apocalypse GameMode
+--------------------------------------------------------------
+require('mechanics/spawn/zombie/spawner')
+require('mechanics/spawn/jihadi/spawner')

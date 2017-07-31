@@ -7,5 +7,6 @@
 	"angel_arena"
 	{
 					"MaxPlayers"                    "10"
+					"TeamCount"						"2"
 	}
 }

@@ -2,8 +2,8 @@
 // Heroes Custom Abilities
 //--------------------------------------------------------------
 #base "heroes/npc_dota_hero_furion.txt"
-#base "heroes/npc_dota_hero_magnataur.txt"
-#base "heroes/npc_dota_hero_omniknight.txt"
+//#base "heroes/npc_dota_hero_magnataur.txt"
+//#base "heroes/npc_dota_hero_omniknight.txt"
 //#base "heroes/npc_dota_hero_lycan.txt"
 
 "DOTAHeroes"

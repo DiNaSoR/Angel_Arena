@@ -1,11 +1,19 @@
 //--------------------------------------------------------------
-// Heroes Abilities
+// Angel Arena Abilities
 //--------------------------------------------------------------
-#base "abilities/skill_faceless_dash.txt"
-#base "abilities/skill_redemption.txt"
-#base "abilities/skill_rejuvenation.txt"
-#base "abilities/skill_rend_armor.txt"
+#base "abilities/angelarena/skill_faceless_dash.txt"
+#base "abilities/angelarena/skill_redemption.txt"
+#base "abilities/angelarena/skill_rejuvenation.txt"
+#base "abilities/angelarena/skill_rend_armor.txt"
+#base "abilities/angelarena/skill_boom.txt"
+#base "abilities/angelarena/skill_zombie_hunter.txt"
 
+//--------------------------------------------------------------
+// Angel Arena Heroes Abilities
+//--------------------------------------------------------------
+	//--Invoker
+	#base "abilities/angelarena/invoker/skill_aa_invoker_ghost_walk.txt"
+	#base "abilities/angelarena/invoker/skill_aa_invoker_forge_spirit.txt"
 //--------------------------------------------------------------
 // NPCs Abilities
 //--------------------------------------------------------------
@@ -13,48 +21,51 @@
 //--------------------------------------------------------------
 // Creeps Abilities
 //--------------------------------------------------------------
-#base "abilities/skill_ondeathcreep.txt"
+#base "abilities/creeps/skill_ondeathcreep.txt"
 
 //--------------------------------------------------------------
 //Mini Bosses Abilities
 //--------------------------------------------------------------
-#base "abilities/skill_herospirit_mini_boss_skill.txt"
+
 
 //--------------------------------------------------------------
 // Bosses Abilities
 //--------------------------------------------------------------
 	//--Lord of Death
-	#base "abilities/skill_lordofdeath_boss_skill.txt"
-	#base "abilities/skill_lordofdeath_aoe_explosion.txt"
-	#base "abilities/skill_lordofdeath_boss_dive.txt"
-	#base "abilities/skill_lordofdeath_boss_mobs.txt"
-	#base "abilities/skill_lordofdeath_boss_splitter_dummy.txt"
-	#base "abilities/skill_lordofdeath_splitter.txt"
-	//--Pudge
-	#base "abilities/skill_pudge_meat_hook.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_boss_skill.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_aoe_explosion.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_boss_dive.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_boss_mobs.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_boss_splitter_dummy.txt"
+	#base "abilities/bosses/lordofdeath/skill_lordofdeath_splitter.txt"
+	//--Butcher
+	#base "abilities/bosses/butcher/skill_pudge_meat_hook.txt"
 	//--ADP10
-	#base "abilities/skill_invoker_tornado.txt"
+	#base "abilities/bosses/adp10/skill_aa_invoker_tornado.txt"
+	//--Hero Spirit
+	#base "abilities/bosses/herospirit/skill_herospirit_mini_boss_skill.txt"
 
 //--------------------------------------------------------------
 // Others Abilities
 //--------------------------------------------------------------
-#base "abilities/dummy_passive.txt"
-#base "abilities/dummy_unit.txt"
-#base "abilities/gravestone.txt"
-#base "abilities/skill_ability_invulnerability.txt"
-#base "abilities/skill_bag_of_gold.txt"
-#base "abilities/skill_bag_of_gold_chest.txt"
-#base "abilities/skill_respawn.txt"
-#base "abilities/skill_unselectable.txt"
+#base "abilities/others/dummy_passive.txt"
+#base "abilities/others/dummy_unit.txt"
+#base "abilities/others/gravestone.txt"
+#base "abilities/others/skill_ability_invulnerability.txt"
+#base "abilities/others/skill_bag_of_gold.txt"
+#base "abilities/others/skill_bag_of_gold_chest.txt"
+#base "abilities/others/skill_respawn.txt"
+#base "abilities/others/skill_unselectable.txt"
 
-
-//#base "abilities/siltbreaker/siltbreaker.txt"
 //--------------------------------------------------------------
-// Under Revision Abilities
+// Under Revision Abilities [UNTESTED]
 //--------------------------------------------------------------
-//#base "abilities/skill_dab.txt"
-//#base "abilities/imba/imba_abilities_custom.txt"
+//#base "abilities/untested/skill_dab.txt"
+//#base "abilities/untested/imba/imba_abilities_custom.txt"
+//#base "abilities/untested/retro/invoker_retro_exort.txt"
+//#base "abilities/untested/retro/invoker_retro_firebolt.txt"
 
+//--------------------------------------------------------------
 "DOTAAbilities"
 {
 }

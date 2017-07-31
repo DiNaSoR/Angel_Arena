@@ -6,7 +6,8 @@
 		// Mode Name
 		// ************************************************************************************************************************
 		"addon_game_name"											"Angel Arena"
-		"game_mode_15_desc" 										"Get Ready!"
+		"aa_version" 												"v0.1"
+		"DOTA_GAMEMODE_15" 											"Get Ready!"
 
 		"angeldeultimer"    										"<font color='#E8D505' size='16'>Duel will finish after %quest_current_value% seconds</font>"
 		"aa_duel_5v5"												"<font color='#386BE8' size='18'>Be Prepared to Duel after each 10 min</font>"
@@ -17,22 +18,34 @@
 		// TopTitle-Start Popup
 		// ************************************************************************************************************************
 		"aarena_instructions_title"									"Angel Arena"
-		"aarena_instructions_body"									"Any suggestions or bugs please report it to steam-workshop page, Thank you and please enjoy .. oh yeah kill the boss in the middle to win fast XD .. oh yeah again each boss drop a legendry item HELL YA!"
+		"aarena_instructions_body"									"Any suggestions or bugs please report it to steam-workshop page, Thank you and please enjoy."
 		
 
 		// Chat
 		// ************************************************************************************************************************
 		"DOTA_Chat_PlayerKilledGeneric" 							"<font color='#386BE8'>%s1</font> is dead! Respawn in 30 seconds"
-
 		
+		
+		// Duel
+		// ************************************************************************************************************************
+		"custom_toast_DuelStarted"									"{time_dota}: {duel_index}th duel has started!"
+		"duel_no_heroes"											"There is no enough players."
+		"duel_over_winner_none" 									"The duel is over. No winner."
+		"duel_over_winner_p1" 										"The duel is over. "
+		"duel_over_winner_p2" 										" is the winner. All it's heroes received "
+		"notifications_gold"										" Gold"
 		
 
 		// Team strings
 		// ************************************************************************************************************************
-		"DOTA_GoodGuys"												"ANGELS"
-		"DOTA_BadGuys"												"DEMONES"
 		"DOTA_GoodGuysCaps"											"ANGELS"
 		"DOTA_BadGuysCaps"											"DEMONES"
+		"Unassigned"      											"Unassigned Team"
+		"Spectator"       											"Spectator Team"
+		"Neutrals"        											"Neutral Team"
+		"NoTeam"          											"No Team"
+		"DOTA_GoodGuys"   											"ANGELS"
+		"DOTA_BadGuys"    											"DEMONES"
 		
 
 		// Winner strings
@@ -47,6 +60,10 @@
 		"DOTA_No_Courier"											"NO Courier"
 		
 
+		// Other Units
+		// ************************************************************************************************************************
+		"camera_guy"                                                "Camera Guy"
+		"1_wave_creep"                                              "1 Wave Creep"
 		// Units
 		// ************************************************************************************************************************
 		"AARENA_HELL_DOG"											"Hell GateKeeper"
@@ -62,21 +79,23 @@
 		"npc_chest_gold"                                            "Chest of Gold"
 		"npc_demon_warrior"                                         "Demon Warrior"
 		"npc_paimon_mini_boss"                                      "Paimon"
-		"dummy_unit"                                                                      "Dummy Unit"
-		"npc_adp_son"                                                                     "Adp Son"
-		"npc_cny_beast"                                                                   "Cny Beast"
-		"npc_dummy_unit"                                                                  "Dummy Unit"
-		"npc_hero_spirit_boss"                                                            "Hero Spirit"
-		"npc_infernus"                                                                    "Infernus"
-		"npc_lord_of_death_boss"                                                          "Lord Of Death"
-		"npc_samurai_mini_boss"                                                           "Samurai"
-		"dummy_unit_dajjal"                                                               "Dummy Unit Dajjal"
+		"dummy_unit"                                                "Dummy Unit"
+		"npc_adp_son"                                               "Adp Son"
+		"npc_cny_beast"                                             "Cny Beast"
+		"npc_dummy_unit"                                            "Dummy Unit"
+		"npc_hero_spirit_boss"                                      "Hero Spirit"
+		"npc_infernus"                                              "Infernus"
+		"npc_lord_of_death_boss"                                    "Lord Of Death"
+		"npc_samurai_mini_boss"                                     "Samurai"
+		"dummy_unit_dajjal"                                         "Dummy Unit Dajjal"
 		
 		
 		// Skills
 		// ************************************************************************************************************************
-		"DOTA_Tooltip_ability_dummy_passive"                                              "Dummy Passive"
-		"DOTA_Tooltip_ability_dummy_passive_Description"                                  ""
+		// ************************************************************************************************************************
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_ability_dummy_passive"                            "Dummy Passive"
+		"DOTA_Tooltip_ability_dummy_passive_Description"                ""
 
 		"DOTA_TOOLTIP_ABILITY_SKILL_PUDGE_MEAT_HOOK"					"LEGENDARY HOOK"
 		"DOTA_TOOLTIP_ABILITY_SkILL_PUDGE_MEAT_HOOK_Description"		"<font color='#ffd100'>No escape from the butcher hook at all trust me you need to give him food to slow down his movements and thinking abilities.</font>"
@@ -86,45 +105,51 @@
 		"DOTA_Tooltip_ability_skill_pudge_meat_hook_vision_radius"		"<font color='#22FF00'>VISION RADIUS:</font>"
 		"DOTA_Tooltip_ability_skill_pudge_meat_hook_vision_duration"	"<font color='#22FF00'>VISION DURATION:</font>"
 
-		"DOTA_Tooltip_ability_gravestone"							"Gravestone"
-		"DOTA_Tooltip_ability_gravestone_Description"				""
+		"DOTA_Tooltip_ability_gravestone"								"Gravestone"
+		"DOTA_Tooltip_ability_gravestone_Description"					""
 
-		"DOTA_Tooltip_ability_skill_rejuvenation"					"Rejuvenation"
-		"DOTA_Tooltip_ability_skill_rejuvenation_Description"		"<font color='#ffd100'>Heals the target over %duration% sec.</font>"
-		"DOTA_Tooltip_ability_skill_rejuvenation_heal_amount"       "<font color='#22FF00'>HEAL AMOUNT:</font>"
-		"DOTA_Tooltip_ability_skill_rejuvenation_duration"          "<font color='#22FF00'>DURATION:</font>"
+		"DOTA_Tooltip_ability_skill_rejuvenation"						"Rejuvenation"
+		"DOTA_Tooltip_ability_skill_rejuvenation_Description"			"<font color='#ffd100'>Heals the target over %duration% sec.</font>"
+		"DOTA_Tooltip_ability_skill_rejuvenation_heal_amount"       	"<font color='#22FF00'>HEAL AMOUNT:</font>"
+		"DOTA_Tooltip_ability_skill_rejuvenation_duration"          	"<font color='#22FF00'>DURATION:</font>"
 
-		"DOTA_Tooltip_ability_skill_redemption"                     "Redemption"
-		"DOTA_Tooltip_ability_skill_redemption_Description"         "<font color='#ffd100'>Brings a dead ally back to life with HP/MP Redemption level maximum health and mana.  can be cast when in combat.</font>"
-		"DOTA_Tooltip_ability_skill_redemption_hp"                  "<font color='#22FF00'>HP:</font>"
-		"DOTA_Tooltip_ability_skill_redemption_mana"                "<font color='#22FF00'>MANA:</font>"
+		"DOTA_Tooltip_ability_skill_redemption"                     	"Redemption"
+		"DOTA_Tooltip_ability_skill_redemption_Description"         	"<font color='#ffd100'>Brings a dead ally back to life with HP/MP Redemption level maximum health and mana.  can be cast when in combat.</font>"
+		"DOTA_Tooltip_ability_skill_redemption_hp"                  	"<font color='#22FF00'>HP:</font>"
+		"DOTA_Tooltip_ability_skill_redemption_mana"                	"<font color='#22FF00'>MANA:</font>"
 
-		"DOTA_Tooltip_ability_skill_rend_armor"                     "Colossus Smash"
-		"DOTA_Tooltip_ability_skill_rend_armor_Description"         "<font color='#ffd100'>Smashes a target and reduce armor causes your attacks to bypass all of their armor for 12 sec. Bypasses less armor on players. Using this ability in 1 vs 1 for better chance.</font>"
-		"DOTA_Tooltip_ability_skill_rend_armor_duration"            "<font color='#22FF00'>DURATION:</font>"
-		"DOTA_Tooltip_ability_skill_rend_armor_armor_reduction"     "<font color='#22FF00'>ARMOR REDUCTION:</font>"
-
+		"DOTA_Tooltip_ability_skill_rend_armor"                     	"Colossus Smash"
+		"DOTA_Tooltip_ability_skill_rend_armor_Description"         	"<font color='#ffd100'>Smashes a target and reduce armor causes your attacks to bypass all of their armor for 12 sec. Bypasses less armor on players. Using this ability in 1 vs 1 for better chance.</font>"
+		"DOTA_Tooltip_ability_skill_rend_armor_duration"            	"<font color='#22FF00'>DURATION:</font>"
+		"DOTA_Tooltip_ability_skill_rend_armor_armor_reduction"     	"<font color='#22FF00'>ARMOR REDUCTION:</font>"
+		//=======================================================================================================
+		// Bag of Gold
+		//=======================================================================================================
 		"DOTA_Tooltip_ability_skill_bag_of_gold"                                          "Skill Bag Of Gold"
 		"DOTA_Tooltip_ability_skill_bag_of_gold_Description"                              ""
-
+		//=======================================================================================================
+		// Bag of Gold Chest
+		//=======================================================================================================
 		"DOTA_Tooltip_ability_skill_bag_of_gold_chest"                                    "Skill Bag Of Gold Chest"
 		"DOTA_Tooltip_ability_skill_bag_of_gold_chest_Description"                        ""
-
-		"DOTA_Tooltip_ability_skill_invoker_tornado"                                      "Skill Invoker Tornado"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_Description"                          ""
-		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_distance"                      "TRAVEL DISTANCE:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_speed"                         "TRAVEL SPEED:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_area_of_effect"                       "AREA OF EFFECT:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_vision_distance"                      "VISION DISTANCE:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_end_vision_duration"                  "END VISION DURATION:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_lift_duration"                        "LIFT DURATION:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_base_damage"                          "BASE DAMAGE:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_quas_damage"                          "QUAS DAMAGE:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_wex_damage"                           "WEX DAMAGE:"
-		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                             "LEVELKEY:"
+		//=======================================================================================================
+		// Skill Invoker Tornado
+		//=======================================================================================================
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado"                                      "Skill Invoker Tornado"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_Description"                          ""
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_travel_distance"                      "TRAVEL DISTANCE:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_travel_speed"                         "TRAVEL SPEED:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_area_of_effect"                       "AREA OF EFFECT:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_vision_distance"                      "VISION DISTANCE:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_end_vision_duration"                  "END VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_lift_duration"                        "LIFT DURATION:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_base_damage"                          "BASE DAMAGE:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_quas_damage"                          "QUAS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_levelkey"                             "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_wex_damage"                           "WEX DAMAGE:"
+		"DOTA_Tooltip_ability_skill_aa_invoker_tornado_levelkey"                             "LEVELKEY:"
 
 		"DOTA_Tooltip_ability_creep_respawn"                                              "Creep Respawn"
 		"DOTA_Tooltip_ability_creep_respawn_Description"                                  ""
@@ -182,21 +207,21 @@
 		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_movespeed_loss"                "MOVESPEED LOSS:"
 		"DOTA_Tooltip_ability_skill_lordofdeath_boss_skill_miss_chance"                   "MISS CHANCE:"
 
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy"                      "Lordofdeath Splitter"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_Description"          ""
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_speed"          "ARROW SPEED:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_width"          "ARROW WIDTH:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_range"          "ARROW RANGE:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stunrange"		"ARROW MAX STUNRANGE:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_min_stun"       "ARROW MIN STUN:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stun"       "ARROW MAX STUN:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_bonus_damage"   "ARROW BONUS DAMAGE:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_vision"         "ARROW VISION:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_damagerange"		"ARROW MAX DAMAGERANGE:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_vision_duration"      "VISION DURATION:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_damage_per_tick"      "DAMAGE PER TICK:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_number_of_targets"    "NUMBER OF TARGETS:"
-		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_movespeed_reduction"		"MOVESPEED REDUCTION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy"                      	"Lordofdeath Splitter"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_Description"          	""
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_speed"          	"ARROW SPEED:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_width"          	"ARROW WIDTH:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_range"          	"ARROW RANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stunrange"	"ARROW MAX STUNRANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_min_stun"       	"ARROW MIN STUN:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_stun"       	"ARROW MAX STUN:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_bonus_damage"   	"ARROW BONUS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_vision"         	"ARROW VISION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_arrow_max_damagerange"	"ARROW MAX DAMAGERANGE:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_vision_duration"      	"VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_damage_per_tick"      	"DAMAGE PER TICK:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_number_of_targets"    	"NUMBER OF TARGETS:"
+		"DOTA_Tooltip_ability_skill_lordofdeath_boss_splitter_dummy_movespeed_reduction"	"MOVESPEED REDUCTION:"
 
 		"DOTA_Tooltip_ability_skill_lordofdeath_splitter"                                 "Lord of death Earth Splitter"
 		"DOTA_Tooltip_ability_skill_lordofdeath_splitter_Description"                     ""
@@ -207,6 +232,34 @@
 
 		"DOTA_Tooltip_ability_skill_on_death_creep"                                       "Skill On Death Creep"
 		"DOTA_Tooltip_ability_skill_on_death_creep_Description"                           ""
+		// Invoker
+		// ************************************************************************************************************************
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike"									"Sun Strike"
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_Description"						"Sends a catastrophic ray of fierce energy from the sun at any targeted location, incinerating all enemies standing beneath it once it reaches the earth. Deals damage based on the level of <font color='#cabe68'>Exort</font>, however this damage is spread evenly over all enemies hit."
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_Lore"								"Harlek's Incantation of Incineration."
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_Note0"								"Gives vision of the target area before the strike."
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_Note1"								"Invoker gains experience with kills made from Sun Strike, even if made from outside of experience range."
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_area_of_effect"						"RADIUS:"
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_delay"								"DELAY:"
+		"DOTA_Tooltip_ability_aa_invoker_sun_strike_damage"								"DAMAGE (<font color='#cabe68'>EXORT</font>):\n"
+
+		"DOTA_Tooltip_ability_skill_invoker_tornado"                                    "Skill Invoker Tornado"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_Description"                        ""
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_distance"                    "TRAVEL DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                           "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_travel_speed"                       "TRAVEL SPEED:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_area_of_effect"                     "AREA OF EFFECT:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_vision_distance"                    "VISION DISTANCE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_end_vision_duration"                "END VISION DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_lift_duration"                      "LIFT DURATION:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                           "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_base_damage"                        "BASE DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_quas_damage"                        "QUAS DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                           "LEVELKEY:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_wex_damage"                         "WEX DAMAGE:"
+		"DOTA_Tooltip_ability_skill_invoker_tornado_levelkey"                           "LEVELKEY:"
+		
+		
 		
 		// Ability Modifiers
 		// ************************************************************************************************************************
@@ -395,26 +448,26 @@
 		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_3"												"Tome of Intellect +3"
 		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_3_Description"									"Add +3 INT to your states."
 		"DOTA_Tooltip_ability_item_tome_int_6_Int"                                        	"INT:"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6"						"Tome of Intellect +6"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6_Description"			"Add +6 INT to your states."
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6"												"Tome of Intellect +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_INT_6_Description"									"Add +6 INT to your states."
 		
-		"DOTA_Tooltip_ability_item_tome_agi_3_Agi"                                        "AGI:"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3"						"Tome of Agility +3"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3_Description"			"Add +3 AGI to your states."
-		"DOTA_Tooltip_ability_item_tome_agi_6_Agi"                                        "AGI:"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6"						"Tome of Agility +6"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6_Description"			"Add +6 AGI to your states."
+		"DOTA_Tooltip_ability_item_tome_agi_3_Agi"                                        	"AGI:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3"												"Tome of Agility +3"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_3_Description"									"Add +3 AGI to your states."
+		"DOTA_Tooltip_ability_item_tome_agi_6_Agi"                                        	"AGI:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6"												"Tome of Agility +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_AGI_6_Description"									"Add +6 AGI to your states."
 		
-		"DOTA_Tooltip_ability_item_tome_str_3_Str"                                        "STR:"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3"						"Tome of Strength +3"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3_Description"			"Add +3 STR to your states."
-		"DOTA_Tooltip_ability_item_tome_str_6_Str"                                        "STR:"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6"						"Tome of Strength +6"
-		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6_Description"			"Add +6 STR to your states."
+		"DOTA_Tooltip_ability_item_tome_str_3_Str"                                        	"STR:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3"												"Tome of Strength +3"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_3_Description"									"Add +3 STR to your states."
+		"DOTA_Tooltip_ability_item_tome_str_6_Str"                                        	"STR:"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6"												"Tome of Strength +6"
+		"DOTA_TOOLTIP_ABILITY_ITEM_TOME_STR_6_Description"									"Add +6 STR to your states."
 		
-		"DOTA_Tooltip_ability_item_heros_hauberk"                                         "Heros Hauberk"
-		"DOTA_Tooltip_ability_item_heros_hauberk_Description"                             ""
-		"DOTA_Tooltip_ability_item_heros_hauberk_armor_bonus"                             "ARMOR BONUS:"
+		"DOTA_Tooltip_ability_item_heroes_hauberk"                                         "Heroes Hauberk"
+		"DOTA_Tooltip_ability_item_heroes_hauberk_Description"                             "درع الأبطال"
+		"DOTA_Tooltip_ability_item_heroes_hauberk_armor_bonus"                             "ARMOR BONUS:"
 
 		"DOTA_Tooltip_ability_item_high_oracles_robes"                                    "High Oracles Robes"
 		"DOTA_Tooltip_ability_item_high_oracles_robes_Description"                        ""
@@ -452,21 +505,21 @@
 		"DOTA_Tooltip_ability_item_immortal_armor_of_hephaestus_mana_per_second"          "MANA PER SECOND:"
 		
 
-		"DOTA_TOOLTIP_ABILITY_ITEM_BAG_OF_GOLD"						"BAG OF GOLD"
+		"DOTA_TOOLTIP_ABILITY_ITEM_BAG_OF_GOLD"											"BAG OF GOLD"
 
 		
-		"DOTA_Tooltip_ability_item_alzafer_blade"					"Alzafer Blade"
-		"DOTA_Tooltip_ability_item_alzafer_blade_Description"		"<font color='#ffd100'>Item Level 15</font>\n<font color='#nFFFFFF'>Since time immemorial term there was someone named Said Alzafer, making blade of the best raw materials in the seven kingdoms. This was the curse blade in existence.</font>"
-		"DOTA_Tooltip_ability_item_alzafer_blade_agi_bonus"			"<font color='#22FF00'>AGI BONUS:</font>"
-		"DOTA_Tooltip_ability_item_alzafer_blade_dmg_bonus"			"<font color='#22FF00'>DMG BONUS:</font>"
-		"DOTA_Tooltip_ability_item_alzafer_blade_mana_regen"		"<font color='#22FF00'>MANA REGEN:</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade"										"Alzafer Blade"
+		"DOTA_Tooltip_ability_item_alzafer_blade_Description"							"<font color='#ffd100'>Item Level 15</font>\n<font color='#nFFFFFF'>Since time immemorial term there was someone named Said Alzafer, making blade of the best raw materials in the seven kingdoms. This was the curse blade in existence.</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_agi_bonus"								"<font color='#22FF00'>AGI BONUS:</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_dmg_bonus"								"<font color='#22FF00'>DMG BONUS:</font>"
+		"DOTA_Tooltip_ability_item_alzafer_blade_mana_regen"							"<font color='#22FF00'>MANA REGEN:</font>"
 
-		"DOTA_Tooltip_ability_item_cloak_of_manza"					"Cloak Of Manza"
-		"DOTA_Tooltip_ability_item_cloak_of_manza_Description"		"<font color='#ffd100'>Item Level 19</font>\n<font color='#nFFFFFF'>Lady Manza seven convoys in the Kingdom of Sultan Ahmed in the desert old, heirs  cloth cut from ore is very rare, discovered that this cloth back to the dynasty blue genie</font>"
-		"DOTA_Tooltip_ability_item_cloak_of_manza_agi_bonus"		"<font color='#22FF00'>AGI BONUS:</font>"
-		"DOTA_Tooltip_ability_item_cloak_of_manza_armor_bonus"		"<font color='#22FF00'>ARMOR BONUS:</font>"
-		"DOTA_Tooltip_ability_item_cloak_of_manza_hp_bonus"			"<font color='#22FF00'>HP BONUS:</font>"
-		"DOTA_Tooltip_ability_item_cloak_of_manza_mana_bonus"		"<font color='#22FF00'>MANA BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza"										"Cloak Of Manza"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_Description"							"<font color='#ffd100'>Item Level 19</font>\n<font color='#nFFFFFF'>Lady Manza seven convoys in the Kingdom of Sultan Ahmed in the desert old, heirs  cloth cut from ore is very rare, discovered that this cloth back to the dynasty blue genie</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_agi_bonus"							"<font color='#22FF00'>AGI BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_armor_bonus"							"<font color='#22FF00'>ARMOR BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_hp_bonus"								"<font color='#22FF00'>HP BONUS:</font>"
+		"DOTA_Tooltip_ability_item_cloak_of_manza_mana_bonus"							"<font color='#22FF00'>MANA BONUS:</font>"
 		
 		"DOTA_Tooltip_ability_item_potion_of_minor_healing"                               "Potion Of Minor Healing"
 		"DOTA_Tooltip_ability_item_potion_of_minor_healing_Description"                   ""
@@ -741,14 +794,159 @@
 		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_hp_bonus"                      "HP BONUS:"
 		"DOTA_Tooltip_ability_item_iron_will_of_hephaestus_hp_regen"                      "HP REGEN:"
 
-		
-		
-		
-		//
-		// ************************************************************************************************************************
+////=======================================================================================================================
+// HEROES Tooltip
+////======================================================================================================================= 	
+////======================================================================================================================= 
+// Lycan
+////======================================================================================================================= 
+        // Lycan's Summon Wolves
+        ////===============================================================================================================       
 
-		
-	
-	
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves"                                     "Summon Wolves - <font color='#ffff00'><b>مخاوي الذيب</b></font>"
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves_Description"                         "<font color='#ff0000'>Imported from Dota IMBA</font>\n Summons %wolves_count% wolves to fight with you. Wolves have passive evasion and invisibility, and their abilities and stats improve with their level.\n<font color='#FF7800'>The pack is for life:</font> wolves last until killed.\n<font color='#FF7800'>Wolf pack:</font> Lycan gains a charge of Wolf Pack every %charge_cooldown% seconds, up to a maximum of %max_charges%. Whenever a wolf dies, a stack is consumed and the wolf respawns near Lycan's location.\n<font color='#FF7800'>Alpha's leadership:</font> wolves gain bonus health based on Lycan's level." 
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves_Note0"                               "Automatically revives wolves whenever there is a charge available, until the maximum of wolves is reached."
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves_Lore"                                "<font color='#ffff00'><b>ياذيب أنا مثلك شموخي غريزه..اكره ردي الطبع واموت بالطيب..وعن الردى ياذيب نفسي عزيزه..يمكن أنا انسان في داخلي ذيب</b></font>"
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves_wolf_type"                           "WOLF LEVEL:"
+        "DOTA_Tooltip_ability_imba_lycan_summon_wolves_HP_bonus_per_lycan_level"            "BONUS HEALTH:"
+
+        "DOTA_Tooltip_modifier_imba_lycan_wolf_charge"                                      "Wolf Pack"
+        "DOTA_Tooltip_modifier_imba_lycan_wolf_charge_Description"                          "Whenever a wolf dies, a stack is consumed and another wolf joins Lycan."
+
+        ////===============================================================================================================
+        // Lycan's Wolfsbane
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane"                                         "Wolfsbane"
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_Description"                             "Passively increases Lycan and his wolves' damage whenever Lycan is near a kill with at least %minimum_allies_required% allies in a %radius% radius. This effect can only occur once every %prevent_modifier_duration% seconds.\n<font color='#FF7800'>Full Moon:</font> also decreases Shapeshift's cooldown with each stack of Wolfsbane.\n\n<font color='#00FF40'>Upgradable by Aghanim's Scepter.</font>"       
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_Note0"                                   "Lycan himself is ignored for the minimum ally count requirement, even when he holds a scepter."
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_Note1"                                   "If Lycan is Broken, Wolfsbane's damage bonus is removed from everyone benefitting it."
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_Lore"                                    "Lycan has devoted his life to the wolves that adopted him into their pack. Adapting his tactics to the neverending hunt in the Ancients' battlefield was a trivial matter." 
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_damage_bonus"                            "DAMAGE PER STACK:"
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_radius"                                  "KILL SEARCH RADIUS:"
+        "DOTA_Tooltip_ability_imba_lycan_wolfsbane_aghanim_description"                     "Now grants damage to all allied heroes and player controlled creeps. Lycan no longer has to be present in a kill for Wolfsbane to trigger, but the minimum amount of allies is still required."
+
+        "DOTA_Tooltip_modifier_imba_wolfsbane_wolves"                                       "Wolfsbane"
+        "DOTA_Tooltip_modifier_imba_wolfsbane_wolves_Description"                           "Increased damage for each successful kill as a pack."
+
+        "DOTA_Tooltip_modifier_imba_wolfsbane_lycan"                                        "Wolfsbane"
+        "DOTA_Tooltip_modifier_imba_wolfsbane_lycan_Description"                            "Increased damage for each successful kill as a pack. Each stack reduces Shapeshift cooldown by 1 second."
+
+        "DOTA_Tooltip_modifier_imba_wolfsbane_lycan_prevent"                                "Wolfsbane Cooldown"
+        "DOTA_Tooltip_modifier_imba_wolfsbane_lycan_prevent_Description"                    "The pack has recently hunted! Cannot benefit from Wolfsbane for the duration."
+ 
+        ////===============================================================================================================
+        // Lycan's Howl
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_lycan_howl"                                              "Howl"
+        "DOTA_Tooltip_ability_imba_lycan_howl_Description"                                  "Grants bonus damage and health to all allied heroes, as well as all units under their control. Howl's effect is doubled during the night. Lasts for %duration% seconds.\n<font color='#FF7800'>The wolf is at your door:</font> also increases movement speed.\n<font color='#FF7800'>Moon phase:</font> when cast at night, Howl also grants phased movement."
+        "DOTA_Tooltip_ability_imba_lycan_howl_Note0"                                        "Ignores lane creeps."      
+        "DOTA_Tooltip_ability_imba_lycan_howl_Lore"                                         "Blood-curdling wolf cries signal to opponents that Banehallow is among them."
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_damage_hero"                            "HERO DAMAGE BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_damage_units"                           "CREEP DAMAGE BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_health_heroes"                          "HERO HEALTH BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_health_units"                           "CREEP HEALTH BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_ms_heroes"                              "HERO MOVESPEED BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_howl_bonus_ms_units"                               "CREEP MOVESPEED BONUS:"
+
+        "DOTA_Tooltip_modifier_imba_howl_buff"                                              "Howl"
+        "DOTA_Tooltip_modifier_imba_howl_buff_Description"                                  "Attack damage, move speed and maximum health increased. Phased if applied at night."
+
+        ////===============================================================================================================
+        // Lycan's Feral Impulse
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse"                                     "Feral Impulse"
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_Description"                         "Increases the damage and health regeneration of Lycan and all units under his control.\n<font color='#FF7800'>Welcome to the pack:</font> the more units and heroes affected by the aura, the stronger its effects become. Heroes grant double the bonus."
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_Note0"                               "Lycan is ignored when counting units affected by Feral Impulse."
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_Lore"                                "His animalistic symbiosis with canine kind gives Banehallow enhanced reflexes and hunting capabilities."
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_base_bonus_damage_perc"              "%DAMAGE BONUS:"
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_damage_inc_per_unit"                 "%DAMAGE BONUS PER ALLY:"
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_health_regen"                        "BONUS REGEN:"      
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_regen_inc_per_unit"                  "BONUS REGEN PER ALLY:"
+        "DOTA_Tooltip_ability_imba_lycan_feral_impulse_aura_radius"                         "RADIUS:"       
+
+        "DOTA_Tooltip_modifier_imba_feral_impulse"                                          "Feral Impulse"
+        "DOTA_Tooltip_modifier_imba_feral_impulse_Description"                              "Attack damage and health regeneration increased."
+
+        ////===============================================================================================================
+        // Lycan's Shapeshift
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift"                                        "Shapeshift"
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift_Description"                            "Lycan assumes his lupine form, granting him and his units immunity to slows, movement speed beyond the normal maximum, bonus night vision and a %crit_chance%%% chance to crit for %crit_damage%%% damage with their attacks.\n<font color='#FF7800'>Unbound savagery:</font> grants Lycan and his units a guaranteed critical on their next attack. This benefit is regained %certain_crit_cooldown% seconds after being used, as long as Lycan is still Shapeshifted."
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift_Lore"                                   "Forever a slave to his lycanthropy, Banehallow has come to accept his curse, and embrace his own savagery."
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift_duration"                               "DURATION:"
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift_night_vision_bonus"                     "BONUS NIGHT VISION:"
+        "DOTA_Tooltip_ability_imba_lycan_shapeshift_absolute_speed"                         "HASTED SPEED:"
+
+        "DOTA_Tooltip_modifier_imba_shapeshift"                                             "Shapeshift"
+        "DOTA_Tooltip_modifier_imba_shapeshift_Description"                                 "Unslowable, and moving beyond normal maximum speed. Attacks have a chance to crit."
+
+        "DOTA_Tooltip_modifier_imba_shapeshift_transform"                                   "Shapeshift"
+        "DOTA_Tooltip_modifier_imba_shapeshift_transform_Description"                       "Transformed into a wolf."
+
+        "DOTA_Tooltip_modifier_imba_shapeshift_certain_crit"                                "Unbound Savagery"
+        "DOTA_Tooltip_modifier_imba_shapeshift_certain_crit_Description"                    "Next attack will be a guaranteed critical hit."
+
+        ////===============================================================================================================
+        // Lycan's Unit: Summoned Wolves
+        ////===============================================================================================================               
+
+        "npc_lycan_wolf1"                                                                   "Wolf Pup"
+        "npc_lycan_wolf2"                                                                   "Wolf"
+        "npc_lycan_wolf3"                                                                   "Dire Wolf"
+        "npc_lycan_wolf4"                                                                   "Alpha Wolf"
+        "npc_lycan_wolf5"                                                                   "Shadow Wolf"
+        "npc_lycan_wolf6"                                                                   "Nightclaw"
+
+        ////===============================================================================================================
+        // Lycan's Summoned Wolves: Wicked Crunch
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch"                             "Wicked Crunch"
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_Description"                 "Lycan's wolves use their vicious bite to crunch enemies' muscles, lowering their attack speed. Every attack adds a stack of Wicked Crunch to the target, up to %max_stacks%.\n<font color='#FF7800'>Top of the food chain:</font> if Lycan attacks a target with Wicked Crunch stacks, they are all consumed, dealing massive bonus damage, and lifestealing 100%% of that damage.\n<font color='#FF7800'>Savage feast:</font> wolves chew the meat off their targets, recovering %fixed_lifesteal% health with each attack."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_Note0"                       "Attack speed loss does not depend on stack amount."            
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_Lore"                        "Wolf packs are incredibly organized, even amidst the chaos of the hunt. Lower ranked wolves will rip apart their prey's flesh, only for the Alpha to feast on the tender meat within."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_damage_bonus_per_stack"      "DAMAGE PER STACK:"
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_duration"                    "DURATION:"
+        "DOTA_Tooltip_ability_imba_summoned_wolf_wicked_crunch_attack_speed_reduction"      "ATTACK SPEED SLOW:"
+
+        "DOTA_Tooltip_modifier_imba_summoned_wolf_wicked_crunch_debuff"                     "Wicked Crunch"
+        "DOTA_Tooltip_modifier_imba_summoned_wolf_wicked_crunch_debuff_Description"         "Next Lycan attack will lifesteal and deal bonus damage."
+
+        ////===============================================================================================================
+        // Lycan's Summoned Wolves: Hunter Instincts
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_summoned_wolf_hunter_instincts"                          "Hunter Instincts"
+        "DOTA_Tooltip_ability_imba_summoned_wolf_hunter_instincts_Description"              "Grants a chance to evade attacks."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_hunter_instincts_Lore"                     "Lycan's Wolves are nimble and cunning, surprising many a hero by dodging surefire blows with their sharp instincts."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_hunter_instincts_evasion"                  "%EVASION:"
+
+        ////===============================================================================================================
+        // Lycan's Summoned Wolves: Invisibility
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_imba_summoned_wolf_invisibility"                              "Invisibility"
+        "DOTA_Tooltip_ability_imba_summoned_wolf_invisibility_Description"                  "Allows Wolves to disappear after not attacking for a certain amount of time. Detectable with true sight."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_invisibility_Lore"                         "Wolves are silent scouts, stalking their prey until the moment to strike arrives."
+        "DOTA_Tooltip_ability_imba_summoned_wolf_invisibility_fade_time"                    "FADE TIME:"
+                                                                           
+
+        ////===============================================================================================================
+        // Lycan's Custom Talents
+        ////===============================================================================================================       
+
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_1"                       "+1 Wolves power level"     
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_2"                       "+2%/2 Feral Impulse damage/regen per ally"
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_3"                       "+12 Howl duration"
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_4"                       "+2 Wolfsbane damage per stack"         
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_5"                       "+2 Maximum summoned wolves/charges"
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_6"                       "x2 Wicked Crunch on-hit stacks/max stacks"
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_7"                       "Increase Howl's potency (details in Howl)"
+        "DOTA_Tooltip_ability_special_bonus_imba_lycan_8"                       "+15 Shapeshift duration"
+
 	}
 }

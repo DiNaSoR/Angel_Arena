@@ -1,15 +1,11 @@
-modifier_creep_loot = class(ModifierBaseClass)
+modifier_creep_loot = class({
+  	IsHidden =      function() return true end,
+	  IsPurgable =    function() return false end,
+	  IsPermanent =   function() return true end,
+})
 
 function modifier_creep_loot:OnCreated(keys)
   self.locationString = keys.locationString
-end
-
-function modifier_creep_loot:IsHidden()
-  return true
-end
-
-function modifier_creep_loot:IsPurgable()
-  return false
 end
 
 function modifier_creep_loot:DeclareFunctions()

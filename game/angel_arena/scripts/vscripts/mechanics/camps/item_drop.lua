@@ -33,8 +33,26 @@ local RARITY_ENUM = 4
 --  *RARITY -> item will not drop.
 --it is possible to define the same item twice, for maximum flexibility
 ItemPowerTable = {
-  --NAME                        FROM    TO        RARITY
-  { "item_infinite_bottle",      3,      -1,      1},
+  --NAME                             FROM       TO        RARITY
+  {"item_potion_of_super_mana",      1,       -1,      1},
+  {"item_scroll_of_the_beast",       1,         -1,      1},
+  {"item_tome_int_3",                1,       -1,      1},
+  {"item_boots_of_elves",            1,       -1,      1},
+  {"item_javelin",            1,       -1,      1},
+  {"item_mithril_hammer",            1,       -1,      1},
+  {"item_quarterstaff",            1,       -1,      1},
+  {"item_blades_of_attack",            1,       -1,      1},
+  {"item_ring_of_protection",            1,       -1,      1},
+  {"item_smoke_of_deceit",            1,       -1,      1},
+  {"item_staff_of_wizardry",            1,       -1,      1},
+  {"item_blade_of_alacrity",            1,       -1,      1},
+  {"item_ogre_axe",            1,       -1,      1},
+	{"item_slippers",            1,       -1,      1},
+  {"item_mantle",            1,       -1,      1},
+  {"item_circlet",            1,       -1,      1},
+  {"item_quelling_blade",            1,       -1,      1},
+  {"item_stout_shield",            1,       -1,      1},
+  {"item_boots_of_elves",            1,       -1,      1},
 }
 
 function CreepItemDrop:Init ()
@@ -63,7 +81,7 @@ function CreepItemDrop:CreateDrop (itemName, pos)
   newItem.firstPickedUp = false
 
   CreateItemOnPositionSync(pos, newItem)
-  newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 350)))
+  newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 150)))
 
   Timers:CreateTimer(BOTTLE_DESPAWN_TIME, function ()
     -- check if safe to destroy

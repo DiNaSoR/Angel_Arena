@@ -1,302 +1,348 @@
 --------------------------------------------------------------
--- Duel System Setting
+--	Duel Globals
 --------------------------------------------------------------
-FIRE_DUEL_SYSYEM_TIMER      = 10
-DUEL_SYSTEM_TIMER_STARTED   = 300
-DUEL_TIMER_INSIDE_ARENA     = 25
-DUEL_TIMER_PRE_ARENA        = 5
-DUEL_TIMER_AFTER_ARENA      = 10
+DUEL_SETTINGS = {
+	DelaysFromLast = {
+		[0] = 300,
+		[30] = 240,
+		[60] = 180,
+	},
+	DurationBase = 60,
+	DurationForPlayer = 20,
+	Duel1x1Duration = 90,
+	WinGold_Base = 100,
+	WinGold_PerDuel = 400
+}
 
+DOTA_DUEL_STATUS_NONE = 0
+DOTA_DUEL_STATUS_WATING = 1
+DOTA_DUEL_STATUS_IN_PROGRESS = 2
 --------------------------------------------------------------
--- Starting the Duel for first time
+--	Duel Class
 --------------------------------------------------------------
-function firedueltimer()
-    --Create Time for Duel after 10 sec from the GameModeTime
-    Timers:CreateTimer(FIRE_DUEL_SYSYEM_TIMER, 
-        function()
-            Notifications:TopToAll({text="EVERY BREATH YOU TAKE IS A ", duration=9.0})
-            Notifications:Top(0, {text="STEP ", duration=9, style={color="yellow"}, continue=true})
-            Notifications:Top(0, {text="TOWARDS ", duration=9, continue=true})
-            Notifications:Top(0, {text="DEATH!", duration=9, style={color="red"}, continue=true})
-        duelstarted()
-    end)
-end
-
---------------------------------------------------------------
--- Duel 5 v 5 Start Timer
---------------------------------------------------------------
-function duelstarted(event)
-    dueltimerQuest = SpawnEntityFromTableSynchronous( "quest", { name = "DueltimerQuest", title = "#dueltimerQuest" } )
-
-    questDuelTimeEnd = GameRules:GetGameTime() + DUEL_SYSTEM_TIMER_STARTED --Time to Finish the quest
-
-    --bar system
-    dueltimerQuestKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
-        show_progress_bar = true,
-        progress_bar_hue_shift = -119
-    } )
-    dueltimerQuest:AddSubquest( dueltimerQuestKillCountSubQuest )
-    dueltimerQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_SYSTEM_TIMER_STARTED ) --text on the quest timer at start
-    dueltimerQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_SYSTEM_TIMER_STARTED ) --text on the quest timer
-    dueltimerQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_SYSTEM_TIMER_STARTED ) --value on the bar at start
-    dueltimerQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_SYSTEM_TIMER_STARTED ) --value on the bar
-
-    Timers:CreateTimer(0.9, function()
-            dueltimerQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questDuelTimeEnd - GameRules:GetGameTime() )
-            dueltimerQuestKillCountSubQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questDuelTimeEnd - GameRules:GetGameTime() ) --update the bar with the time passed        
-            if (questDuelTimeEnd - GameRules:GetGameTime())<=0 and dueltimerQuest ~= nil then --finish the quest
-                print("30 Sec finished")
-                EmitGlobalSound("Tutorial.Quest.complete_01") --on game_sounds_music_tutorial, check others
-                UTIL_RemoveImmediate( dueltimerQuest )
-                dueltimerQuest = nil
-                dueltimerQuestKillCountSubQuest = nil
-                print("Run script now")
-                arenawall()
-                teleportEnt = Entities:FindByName(nil, "arenateleporttrigger")
-                teleportEnt:Disable()
-                
-            end
-            return 1        
-        end)
-end
-
-
---------------------------------------------------------------
--- Duel 5 v 5 Arena Wall
---------------------------------------------------------------
-function arenawall()
-
-    local goodpoint =  Vector(6029.61, 7127.88, 201)
-    local badpoint = Vector(7616, 7127.88, 201)
-
-    --local player = EntIndexToHScript(player)
-    --local playerID = player:GetPlayerID()
-    --local hero = EntIndexToHScript(heroindex)
-
-    --local player = PlayerResource:GetPlayer(hero:GetPlayerID())
-    --local hero = player:GetAssignedHero()
-    --local player = EntIndexToHScript(keys.player)
-    --local level = keys.level
-    EmitGlobalSound("angel_arena.arenawelcome")
-    wallenable()
-    --get the player's ID
-    --local pID = player:GetPlayerID()
-
-    --get the hero handle
-    --local hero = player:GetAssignedHero()
-    
-    --get the players current stat points
-    --local statsUnspent = hero:GetAbilityPoints()
-
-    --spot_heaven = Vector(5897.54, 3904, 17.3543)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_NOTEAM)
-    --local dummy = CreateUnitByName("npc_vision_dummy", spot_heaven, true, nil, nil, DOTA_TEAM_BADGUYS)
-    --print("Duel 5v5")
-    --EmitGlobalSound("angel_arena.duelstartmusic")
-
-    --hero:SetHealth(hero:GetMaxHealth())
-    --hero:SetMana(hero:GetMaxMana())
-    --ResetAllAbilitiesCooldown(hero)
-    --hero:ability:EndCooldown()
-
-    --mass teleport
-    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
-        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
-            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-            FindClearSpaceForUnit(entHero, badpoint, false)
-            PlayerResource:SetCameraTarget(nPlayerID, entHero)
-            Timers:CreateTimer(0.2, function()
-                    PlayerResource:SetCameraTarget(nPlayerID, nil)
-                    end)
-            entHero:AddNewModifier(entHero, nil, "modifier_stun_lua", {duration = 5})
-            entHero:Stop()
-            Healall()
-        end
-    end
-
-    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
-        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_GOODGUYS then
-            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-            FindClearSpaceForUnit(entHero, goodpoint, false)
-            PlayerResource:SetCameraTarget(nPlayerID, entHero)
-            Timers:CreateTimer(0.2, function()
-                    PlayerResource:SetCameraTarget(nPlayerID, nil)
-                    end)
-            entHero:AddNewModifier(entHero, nil, "modifier_stun_lua", {duration = 5})
-            entHero:Stop()
-            Healall()
-        end
-    end
-
-
-
-    -- Show Quest
-    arenawallQuest = SpawnEntityFromTableSynchronous( "quest", { name = "arenawallQuest", title = "#arenawallQuest" } )
-
-    arenawallQuestTimeEnd = GameRules:GetGameTime() + DUEL_TIMER_PRE_ARENA --Time to Finish the quest
-
-    --bar system
-    arenawallQuestKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
-        show_progress_bar = true,
-        progress_bar_hue_shift = -119
-    } )
-    arenawallQuest:AddSubquest( arenawallQuestKillCountSubQuest )
-    arenawallQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_TIMER_PRE_ARENA ) --text on the quest timer at start
-    arenawallQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_TIMER_PRE_ARENA ) --text on the quest timer
-    arenawallQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_TIMER_PRE_ARENA ) --value on the bar at start
-    arenawallQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_TIMER_PRE_ARENA ) --value on the bar
-    
-    Timers:CreateTimer(0.9, function()
-        arenawallQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, arenawallQuestTimeEnd - GameRules:GetGameTime() )
-        arenawallQuestKillCountSubQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, arenawallQuestTimeEnd - GameRules:GetGameTime() ) --update the bar with the time passed        
-        if (arenawallQuestTimeEnd - GameRules:GetGameTime())<=0 and arenawallQuest ~= nil then --finish the quest
-            print("30 Sec finished")
-            EmitGlobalSound("Tutorial.Quest.complete_01") --on game_sounds_music_tutorial, check others
-            UTIL_RemoveImmediate( arenawallQuest )
-            arenawallQuest = nil
-            arenawallQuestKillCountSubQuest = nil
-            Duel5v5()
-
-
-
-        end
-        return 1        
-    end
-    )
+if Duel == nil then
+	_G.Duel = class({})
+	Duel.TimeUntilDuel = 0
+	Duel.DuelTimerEndTime = 0
+	Duel.DuelStatus = DOTA_DUEL_STATUS_NONE
+	Duel.EntIndexer = {}
+	Duel.TimesTeamWins = {}
+	Duel.AnnouncerCountdownCooldowns = {}
+	Duel.DuelCounter = 0
+	Duel.DuelBox1 = Vector(0,0,0)
+	Duel.DuelBox2 = Vector(0,0,0)
 end
 --------------------------------------------------------------
--- Duel 5 v 5 Started Disabling wall
+--	Duel Timer from Globals table
 --------------------------------------------------------------
-function Duel5v5()
-
-    walldisable()
-
-    print("Duel 5v5")
-    EmitGlobalSound("angel_arena.duelstartmusic")
-
-    
-
-    -- Show Quest
-    angeldeulQuest = SpawnEntityFromTableSynchronous( "quest", { name = "AngeldeulQuest", title = "#angeldeultimer" } )
-
-    questTimeEnd = GameRules:GetGameTime() + DUEL_TIMER_INSIDE_ARENA --Time to Finish the quest
-
-    --bar system
-    angeldeulQuestKillCountSubQuest = SpawnEntityFromTableSynchronous( "subquest_base", {
-        show_progress_bar = true,
-        progress_bar_hue_shift = -119
-    } )
-    angeldeulQuest:AddSubquest( angeldeulQuestKillCountSubQuest )
-    angeldeulQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_TIMER_INSIDE_ARENA ) --text on the quest timer at start
-    angeldeulQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_TIMER_INSIDE_ARENA ) --text on the quest timer
-    angeldeulQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, DUEL_TIMER_INSIDE_ARENA ) --value on the bar at start
-    angeldeulQuestKillCountSubQuest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, DUEL_TIMER_INSIDE_ARENA ) --value on the bar
-    
-    Timers:CreateTimer(0.9, function()
-        angeldeulQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() )
-        angeldeulQuestKillCountSubQuest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, questTimeEnd - GameRules:GetGameTime() ) --update the bar with the time passed        
-        if (questTimeEnd - GameRules:GetGameTime())<=0 and angeldeulQuest ~= nil then --finish the quest
-        	print("30 Sec finished")
-            EmitGlobalSound("Tutorial.Quest.complete_01") --on game_sounds_music_tutorial, check others
-            UTIL_RemoveImmediate( angeldeulQuest )
-            angeldeulQuest = nil
-            angeldeulQuestKillCountSubQuest = nil
-            --print("Dummy killed")
-            drop = Vector(6861.27, 7211.82, 192.884)
-    		local item = CreateUnitByName("npc_chest_gold", drop, true, nil, nil, DOTA_TEAM_NOTEAM)
-    		teleportoutsidethearena()
-            --StopSound("angel_arena.duelstartmusic")
-            --SendToConsole("stopsound")
-
-
-        end
-        return 1        
-    end
-    )
-
-
-    duelmsgwelcome()
+function Duel:SetDuelTimer(duration)
+	Duel.DuelTimerEndTime = GameRules:GetGameTime() + duration
+	PlayerTables:SetTableValue("arena", "duel_end_time", Duel.DuelTimerEndTime)
 end
-
-
 --------------------------------------------------------------
--- Teleport outside the Arena [sub to Duel5v5]
+--	Duel Timer for Global Timer
+--	Create Physics Collider
 --------------------------------------------------------------
-function teleportoutsidethearena()
-	
-	DuelCounter = DUEL_TIMER_AFTER_ARENA
-    Timers:CreateTimer(function()
-        if DuelCounter == 0 then
-           print("teleport enabled")
-    		teleportEnt = Entities:FindByName(nil, "arenateleporttrigger")
-            Healall()
-    		teleportEnt:Enable()
-    		duelstarted()
-            return nil
-        else
-            ShowCenterMessage(tostring(DuelCounter),1)
-            DuelCounter = DuelCounter - 1
-            return 1
-        end
-    end)
+function Duel:CreateGlobalTimer()
+	Duel.DuelStatus = DOTA_DUEL_STATUS_WATING
+	Duel:SetDuelTimer(-GameRules:GetDOTATime(false, true))
+	Timers:CreateTimer(Dynamic_Wrap(Duel, 'GlobalThink'))
+
+	--Physics:RemoveCollider("collider_box_blocker_arena")
+	Duel.DuelBox1 = Entities:FindByName(nil, "target_mark_arena_blocker_1"):GetAbsOrigin()
+	Duel.DuelBox2 = Entities:FindByName(nil, "target_mark_arena_blocker_2"):GetAbsOrigin()
+	local collider = Physics:AddCollider("collider_box_blocker_arena", Physics:ColliderFromProfile("boxblocker"))
+	collider.box = CreateSimpleBox(Duel.DuelBox2, Duel.DuelBox1)
+	collider.findClearSpace = true
+	--collider.draw = true
+	collider.test = function(self, unit)
+		if not IsPhysicsUnit(unit) and unit.IsConsideredHero and unit:IsConsideredHero() then
+			Physics:Unit(unit)
+		end
+		return IsPhysicsUnit(unit) and Duel.DuelStatus == DOTA_DUEL_STATUS_WATING and not unit.OnDuel
+	end
 end
-
-
 --------------------------------------------------------------
--- Duel 5 v 5 Wall Disable
+--	Duel Global Thinker
+--	Announce duel Timer 10 sec
+--	Start and End trigger for duel
 --------------------------------------------------------------
-function walldisable()
-    ObsEnt = Entities:FindByName(nil, "arenawall_1")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_2")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_3")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_4")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_5")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_6")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_7")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_8")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_9")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_10")
-    ObsEnt:SetEnabled(false,false)
-    ObsEnt = Entities:FindByName(nil, "arenawall_11")
-    ObsEnt:SetEnabled(false,false)
-    print("Wall Disable")
+function Duel:GlobalThink()
+	local now = GameRules:GetGameTime()
+	for i = 1, 10 do
+		local diff = now + i - Duel.DuelTimerEndTime
+		if diff < 0.3 and diff > 0 and (not Duel.AnnouncerCountdownCooldowns[i] or now > Duel.AnnouncerCountdownCooldowns[i]) then
+			Duel.AnnouncerCountdownCooldowns[i] = now + 1
+			if i < 10 then i = "0" .. i end
+			EmitAnnouncerSound("announcer_ann_custom_countdown_" .. i)
+		end
+	end
+	if now >= Duel.DuelTimerEndTime then
+		if Duel.DuelStatus == DOTA_DUEL_STATUS_IN_PROGRESS then
+			Duel:EndDuel()
+		elseif Duel.DuelStatus == DOTA_DUEL_STATUS_WATING then
+			Duel:StartDuel()
+		end
+	end
+	return 0.2
 end
-
-
 --------------------------------------------------------------
--- Duel 5 v 5 Wall Enable
+--	Statring the Duel find heroes and count them
+--	Teleport them to mark points in Map
 --------------------------------------------------------------
-function wallenable()
-    ObsEnt = Entities:FindByName(nil, "arenawall_1")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_2")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_3")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_4")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_5")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_6")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_7")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_8")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_9")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_10")
-    ObsEnt:SetEnabled(true,true)
-    ObsEnt = Entities:FindByName(nil, "arenawall_11")
-    ObsEnt:SetEnabled(true,true)
-    print("Wall Enable")
+function Duel:StartDuel()
+	Duel.heroes_teams_for_duel = {}
+	for playerID = 0, DOTA_MAX_TEAM_PLAYERS - 1  do
+		if PlayerResource:IsValidPlayerID(playerID) and not IsPlayerAbandoned(playerID) then
+			local team = PlayerResource:GetTeam(playerID)
+			local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+			if IsValidEntity(hero) then
+				Duel.heroes_teams_for_duel[team] = Duel.heroes_teams_for_duel[team] or {}
+				table.insert(Duel.heroes_teams_for_duel[team], hero)
+			end
+		end
+	end
+	local heroes_in_teams = {}
+	for i,v in pairs(Duel.heroes_teams_for_duel) do
+		for _,unit in pairs(v) do
+			local pid = unit:GetPlayerOwnerID()
+			if not unit:IsAlive() then
+				unit:RespawnHero(false, false, false)
+			end
+			if PlayerResource:IsValidPlayerID(pid) and GetConnectionState(pid) == DOTA_CONNECTION_STATE_CONNECTED then
+				heroes_in_teams[i] = (heroes_in_teams[i] or 0) + 1
+			end
+		end
+	end
+
+	local heroes_to_fight_n = math.min(unpack(table.iterate(heroes_in_teams)))
+	if heroes_to_fight_n > 0 and table.count(heroes_in_teams) > 1 then
+		EmitAnnouncerSound("announcer_ann_custom_mode_20")
+		Duel.IsFirstDuel = Duel.DuelCounter == 0
+		Duel:SetDuelTimer(DUEL_SETTINGS.DurationBase + DUEL_SETTINGS.DurationForPlayer * heroes_to_fight_n)
+		Duel.DuelStatus = DOTA_DUEL_STATUS_IN_PROGRESS
+		local rndtbl = {}
+		table.merge(rndtbl, Duel.heroes_teams_for_duel)
+		for i,v in pairs(rndtbl) do
+			if #v > 0 then
+				table.shuffle(v)
+				local count = 0
+				repeat
+					local unit = v[1]
+					if IsValidEntity(unit) then
+						local pid = unit:GetPlayerOwnerID()
+						if not unit.DuelChecked and unit:IsAlive() and PlayerResource:IsValidPlayerID(pid) and GetConnectionState(pid) == DOTA_CONNECTION_STATE_CONNECTED then
+							unit.OnDuel = true
+							Duel:FillPreduelUnitData(unit)
+							local health = unit:GetMaxHealth()
+							unit:SetHealth(unit:HasAbility("shinobu_vampire_blood") and health * 0.5 or health)
+							unit:SetMana(unit:GetMaxMana())
+							count = count + 1
+						end
+						unit.DuelChecked = true
+					end
+					table.shuffle(v)
+				until count >= heroes_to_fight_n
+			end
+		end
+		for team,tab in pairs(Duel.heroes_teams_for_duel) do
+			for _,_unit in pairs(tab) do
+				for _,unit in ipairs(_unit:GetFullName() == "npc_dota_hero_meepo" and MeepoFixes:FindMeepos(_unit, true) or {_unit}) do
+				--	for _,v in ipairs(DUEL_PURGED_MODIFIERS) do
+					--	if unit:HasModifier(v) then
+					--		unit:RemoveModifierByName(v)
+					--	end
+					--end
+					if unit:HasModifier("modifier_item_tango_arena") then
+						unit:SetModifierStackCount("modifier_item_tango_arena", unit, math.round(unit:GetModifierStackCount("modifier_item_tango_arena", unit) * 0.5))
+					end
+					if unit.PocketItem then
+						UTIL_Remove(unit.PocketItem)
+					end
+					if _unit.OnDuel then
+						unit.ArenaBeforeTpLocation = unit:GetAbsOrigin()
+						ProjectileManager:ProjectileDodge(unit)
+						unit:FindClearSpaceForUnitAndSetCamera(Entities:FindByName(nil, "target_mark_arena_team" .. team):GetAbsOrigin())
+						EmitGlobalSound("angel_arena.duelstartmusic")
+					elseif unit:IsAlive() then
+						Duel:SetUpVisitor(unit)
+					end
+				end
+			end
+		end
+		CustomGameEventManager:Send_ServerToAllClients("create_custom_toast", {
+			type = "generic",
+			text = "#custom_toast_DuelStarted",
+			variables = {
+				["{duel_index}"] = Duel.DuelCounter
+			}
+		})
+	else
+		Duel:EndDuelLogic(false, true)
+		Notifications:TopToAll({text="#duel_no_heroes", duration=5})
+	end
+end
+--------------------------------------------------------------
+--	Duel Endding
+--------------------------------------------------------------
+function Duel:EndDuel()
+	local winner = Duel:GetWinner()
+	if winner then
+		if winner == DOTA_TEAM_GOODGUYS then
+			EmitAnnouncerSound("announcer_announcer_victory_rad")
+		elseif winner == DOTA_TEAM_BADGUYS then
+			EmitAnnouncerSound("announcer_announcer_victory_dire")
+		end
+		Notifications:TopToAll({text="#duel_over_winner_p1", duration=6})
+		Notifications:TopToAll(CreateTeamNotificationSettings(winner, false))
+		Notifications:TopToAll({text="#duel_over_winner_p2", continue=true})
+		local goldAmount = DUEL_SETTINGS.WinGold_Base + (DUEL_SETTINGS.WinGold_PerDuel * Duel.DuelCounter)
+		local g1,g2 = CreateGoldNotificationSettings(goldAmount)
+		Notifications:TopToAll(g1)
+		Notifications:TopToAll(g2)
+		for _,t in pairs(Duel.heroes_teams_for_duel) do
+			for _,v in ipairs(t) do
+				if IsValidEntity(v) then
+					v:ModifyPlayerStat("Duels_Played", 1)
+				end
+			end
+		end
+		for _,v in ipairs(Duel.heroes_teams_for_duel[winner]) do
+			if IsValidEntity(v) then
+				--Gold:ModifyGold(v, goldAmount)
+				v:ModifyPlayerStat("Duels_Won", 1)
+			end
+		end
+		Duel.TimesTeamWins[winner] = (Duel.TimesTeamWins[winner] or 0) + 1
+	else
+		Notifications:TopToAll({text="#duel_over_winner_none", duration=5})
+	end
+	Duel.DuelCounter = Duel.DuelCounter + 1
+	Duel:EndDuelLogic(true, true)
+end
+--------------------------------------------------------------
+--	Duel Getting who is the winnder
+--------------------------------------------------------------
+function Duel:GetWinner()
+	local teams = {}
+	for team,tab in pairs(Duel.heroes_teams_for_duel) do
+		for _,unit in pairs(tab) do
+			if IsValidEntity(unit) and unit:IsAlive() then
+				if not table.contains(teams, team) and unit.OnDuel then
+					table.insert(teams, team)
+				end
+			end
+		end
+	end
+	return #teams == 1 and teams[1] or nil
+end
+--------------------------------------------------------------
+--	Duel setup the visitor
+--------------------------------------------------------------
+function Duel:SetUpVisitor(unit)
+	unit.ArenaBeforeTpLocation = unit.ArenaBeforeTpLocation or (unit:GetUnitName() == FORCE_PICKED_HERO and FindFountain(unit:GetTeamNumber()):GetAbsOrigin() or unit:GetAbsOrigin())
+	Duel:FillPreduelUnitData(unit)
+	ProjectileManager:ProjectileDodge(unit)
+	unit:AddNewModifier(unit, nil, "modifier_hero_out_of_game", {})
+end
+--------------------------------------------------------------
+--	Endding Duel Logic ???
+--------------------------------------------------------------
+function Duel:EndDuelLogic(bEndForUnits, timeUpdate)
+	Duel.EntIndexer = {}
+	Duel.DuelStatus = DOTA_DUEL_STATUS_WATING
+	Duel.heroes_teams_for_duel = {}
+	if bEndForUnits then
+		for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1  do
+			if PlayerResource:IsValidPlayerID(playerID) then
+				local _hero = PlayerResource:GetSelectedHeroEntity(playerID)
+				if not PlayerResource:IsPlayerAbandoned(playerID) and IsValidEntity(_hero) then
+					for _,hero in ipairs(_hero:GetFullName() == "npc_dota_hero_meepo" and MeepoFixes:FindMeepos(_hero, true) or {_hero}) do
+						Duel:EndDuelForUnit(hero)
+					end
+				end
+			end
+		end
+	end
+	Events:Emit("Duel/end")
+	if timeUpdate then
+		local delay = table.nearestOrLowerKey(DUEL_SETTINGS.DelaysFromLast, GetDOTATimeInMinutesFull())
+		Timers:CreateTimer(2, function()
+			EmitAnnouncerSound("announcer_ann_custom_timer_0" .. delay/60)
+		end)
+		Duel:SetDuelTimer(delay)
+	end
+end
+--------------------------------------------------------------
+--	Endding Duel For Units
+--	Remove hero out of game modifier
+--	Refresh mana/hp/abilities
+--	Teleport out of arena for last position
+--------------------------------------------------------------
+function Duel:EndDuelForUnit(unit)
+	unit:RemoveModifierByName("modifier_hero_out_of_game")
+	Timers:CreateTimer(0.1, function()
+		if IsValidEntity(unit) and unit:IsAlive() and unit.StatusBeforeArena then
+			if unit.StatusBeforeArena.Health then unit:SetHealth(unit.StatusBeforeArena.Health) end
+			if unit.StatusBeforeArena.Mana then unit:SetMana(unit.StatusBeforeArena.Mana) end
+			for ability,v in pairs(unit.StatusBeforeArena.AbilityCooldowns or {}) do
+				if IsValidEntity(ability) and unit:HasAbility(ability:GetAbilityName()) then
+					ability:EndCooldown()
+					ability:StartCooldown(v)
+				end
+			end
+			for item,v in pairs(unit.StatusBeforeArena.ItemCooldowns or {}) do
+				if IsValidEntity(item) then
+					item:EndCooldown()
+					item:StartCooldown(v)
+				end
+			end
+			unit.StatusBeforeArena = nil
+		end
+	end)
+
+	if unit.FindClearSpaceForUnitAndSetCamera then
+		local pos = unit.ArenaBeforeTpLocation
+		if not pos then
+			pos = FindFountain(unit:GetTeamNumber()):GetAbsOrigin()
+		end
+		ProjectileManager:ProjectileDodge(unit)
+		unit:FindClearSpaceForUnitAndSetCamera(pos)
+	end
+	unit.OnDuel = nil
+	unit.ArenaBeforeTpLocation = nil
+	unit.DuelChecked = nil
+end
+--------------------------------------------------------------
+--	Pre Duel Units Data
+--	Reset Mana/hp/abilities
+--	Check if we can reset item cooldown
+--------------------------------------------------------------
+function Duel:FillPreduelUnitData(unit)
+	unit.StatusBeforeArena = {
+		Health = unit:GetHealth(),
+		Mana = unit:GetMana(),
+		AbilityCooldowns = {},
+		ItemCooldowns = {},
+	}
+	for i = 0, unit:GetAbilityCount() - 1 do
+		local ability = unit:GetAbilityByIndex(i)
+		if ability and ability:GetCooldown(ability:GetLevel()) > 0 then
+			unit.StatusBeforeArena.AbilityCooldowns[ability] = ability:GetCooldownTimeRemaining()
+			ability:EndCooldown()
+		end
+	end
+	for i = 0, 5 do
+		local item = unit:GetItemInSlot(i)
+		if item and item:GetAbilityName() ~= "item_aegis_arena" then
+			unit.StatusBeforeArena.ItemCooldowns[item] = item:GetCooldownTimeRemaining()
+			item:EndCooldown()
+		end
+	end
+end
+--------------------------------------------------------------
+--	Check if Duel On Going status
+--------------------------------------------------------------
+function Duel:IsDuelOngoing()
+	return Duel.DuelStatus == DOTA_DUEL_STATUS_IN_PROGRESS
 end

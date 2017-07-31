@@ -6,7 +6,6 @@ if CreepCamps == nil then
     CreepCamps = class({})
 end
 
---LinkLuaModifier("modifier_creep_loot", "modifiers/modifier_creep_loot.lua", LUA_MODIFIER_MOTION_NONE)
 
 --creep power level is from CREEP_POWER_LEVEL_MIN to CREEP_POWER_LEVEL_MAX
 local CreepPowerLevel = 0.0
@@ -111,8 +110,8 @@ function CreepCamps:SpawnCreepInCamp (location, creepProperties, maximumUnits)
   end
 
   if creepHandle ~= nil then
-    --self:SetCreepPropertiesOnHandle(creepHandle, creepProperties)
-    --creepHandle:AddNewModifier(nil, nil, "modifier_creep_loot", {locationString = locationString})
+    self:SetCreepPropertiesOnHandle(creepHandle, creepProperties)
+    creepHandle:AddNewModifier(nil, nil, "modifier_creep_loot", {locationString = locationString})
   end
 
   return true

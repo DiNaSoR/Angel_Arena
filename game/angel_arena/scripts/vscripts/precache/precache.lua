@@ -139,5 +139,5 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "model", "models/props_structures/gravestone005.vmdl", context)
 
 	print("[Angel Arena] Loading precache End")
-	--aa_modifier(context)
+	aa_modifier(context)
 end

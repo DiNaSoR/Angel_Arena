@@ -14,6 +14,18 @@ DROPS_TABLE                                  = LoadKeyValues("scripts/npc/kv/ite
 --IMBA_HERO_TALENTS_LIST                      = LoadKeyValues("scripts/npc/kv/imba/imba_hero_talents_list.kv")
 --DISPELLABLE_DEBUFF_LIST                     = LoadKeyValues("scripts/npc/kv/imba/dispellable_debuffs_list.kv")]]
 --------------------------------------------------------------
+-- Angel Arena Zombie Raid
+--------------------------------------------------------------
+ALLOW_ZOMBI                                 = true                  -- Do we allow zombie raid?
+MIN_SPAWN_ZOMBI                             = 100                   -- Min zombie spawn number.
+MAX_SPAWN_ZOMBI                             = 100                   -- Max zombie spawn number.
+--------------------------------------------------------------
+-- Angel Arena Jihadi Outbreak
+--------------------------------------------------------------
+ALLOW_JIHADI                                = true                  -- Do we allow jihadi raid?
+MIN_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
+MAX_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
+--------------------------------------------------------------
 -- Angel Arena Rules
 --------------------------------------------------------------
 ENABLE_HERO_RESPAWN                         = true              	-- Should the heroes automatically respawn on a timer or stay dead until manually respawned
@@ -77,8 +89,8 @@ FOUNTAIN_CONSTANT_MANA_REGEN                = -1       	            -- What shou
 FOUNTAIN_PERCENTAGE_MANA_REGEN              = -1     	            -- What should we use for the percentage fountain mana regen?  Use -1 to keep the default dota behavior.
 FOUNTAIN_PERCENTAGE_HEALTH_REGEN            = -1   	                -- What should we use for the percentage fountain health regen?  Use -1 to keep the default dota behavior.
 --------------------------------------------------------------
-ENABLE_FIRST_BLOOD                          = true                  -- Should we enable first blood for the first kill in this game?
-HIDE_KILL_BANNERS                           = false                 -- Should we hide the kill banners that show when a player is killed?
+ENABLE_FIRST_BLOOD                          = false                 -- Should we enable first blood for the first kill in this game?
+HIDE_KILL_BANNERS                           = true                  -- Should we hide the kill banners that show when a player is killed?
 --------------------------------------------------------------
 SHOW_ONLY_PLAYER_INVENTORY                  = false                 -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING                    = false                 -- Should we prevent players from being able to buy items into their stash when not at a shop?
@@ -114,7 +126,7 @@ Dialog3                                     = false 				-- Dialog 3.
 CREEP_SPAWN_INTERVAL                        = 60                    -- number of seconds between each creep spawn
 INITIAL_CREEP_DELAY                         = 10                    -- number of seconds to wait before spawning the first wave of creeps
 BOTTLE_DESPAWN_TIME                         = 60                    -- Time until Bottles despawn
-CREEP_GROWTH                                = 100
+CREEP_GROWTH                                = 10
 --------------------------------------------------------------
 FACING_DOWN 	                            = Vector(0, -1, -0)		--Facing Forward direction
 FACING_RIGHT 	                            = Vector(1, 0, -0)		--Facing Forward direction

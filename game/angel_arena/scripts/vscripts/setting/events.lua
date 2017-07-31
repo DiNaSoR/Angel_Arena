@@ -17,8 +17,8 @@ end
 --	On Disconnect
 --------------------------------------------------------------
 function GameMode:OnDisconnect(keys)
-  DebugPrint('[DEBUG] Player Disconnected ' .. tostring(keys.userid))
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] Player Disconnected ' .. tostring(keys.userid))
+  --DebugPrintTable(keys)
 
   local name = keys.name
   local networkid = keys.networkid
@@ -32,8 +32,8 @@ end
 --------------------------------------------------------------
 function GameMode:OnGameRulesStateChange(keys)
   --print("Angel Arena GameRules State Changed")
-  DebugPrint("[DEBUG] GameRules State Changed")
-  DebugPrintTable(keys)
+  --DebugPrint("[DEBUG] GameRules State Changed")
+  --DebugPrintTable(keys)
 
   local newState = GameRules:State_Get()
   -- Waiting for players to load
@@ -54,6 +54,7 @@ function GameMode:OnGameRulesStateChange(keys)
   elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
   print("[Angel Arena] Game Change to game in progress")
     GameMode:OnGameInProgress()
+
   -- Hero Selection
   --[[elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
     for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
@@ -70,40 +71,45 @@ end
 --	game event object for OnNPCSpawned
 --------------------------------------------------------------
 function GameMode:OnNPCSpawned(keys)
-	--print("Angel Arena NPC Spawned")
-	--local index = keys.entindex
-	--local unit = EntIndexToHScript(index)
-	DebugPrint("[DEBUG] NPC Spawned")
-	DebugPrintTable(keys)
-
+	--print("[Angel Arena] NPC Spawned")
   local npc = EntIndexToHScript(keys.entindex)
+
 	-- Replace hero corpse with grave so they can rez him again.
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
 			npc.bFirstSpawned = true
 			GameMode:OnHeroInGame(npc)
-	elseif npc:IsRealHero() and npc.grave then
+	else--if --npc:IsRealHero() and npc.grave then
 		-- remove the player grave
-		UTIL_Remove(npc.grave)
+		  --UTIL_Remove(npc.grave)
 	end
-	-- Print a message every time an NPC spawns
-	--if Convars:GetBool("developer") then
-		--print("Index: "..index.." Name: "..unit:GetName().." Created time: "..GameRules:GetGameTime().." at x= "..unit:GetOrigin().x.." y= "..unit:GetOrigin().y)
-	--end
 
-	--[[if npc:IsHero() then
-		npc.strBonus = 0
-        npc.intBonus = 0
-        npc.agilityBonus = 0
-    end]]
-	
-  --[[replace Silencer's int steal with a custom modifier
-  if npc:GetUnitName() == "npc_dota_hero_silencer" then
-    LinkLuaModifier("modifier_oaa_int_steal", "modifiers/modifier_oaa_int_steal.lua", LUA_MODIFIER_MOTION_NONE)
-    Timers:CreateTimer(function()
-      npc:RemoveModifierByName("modifier_silencer_int_steal")
-      npc:AddNewModifier(npc, npc:FindAbilityByName("silencer_glaives_of_wisdom_oaa"), "modifier_oaa_int_steal", {})
-    end)
-  end]]
+
+  --Check if its hero then if its truehero to apply Visitor for Duel
+  if npc:IsHero() then
+		--HeroVoice:OnNPCSpawned(npc)
+		Timers:CreateTimer(function()
+			if IsValidEntity(npc) and npc:IsAlive() and npc:IsHero() and npc:GetPlayerOwner() then
+				Physics:Unit(npc)
+				npc:SetAutoUnstuck(true)
+				if npc.ModelOverride then
+					npc:SetModel(npc.ModelOverride)
+					npc:SetOriginalModel(npc.ModelOverride)
+				end
+				--if not npc:IsWukongsSummon() then
+					if npc:IsTrueHero() then
+						  PlayerTables:SetTableValue("player_hero_indexes", npc:GetPlayerID(), npc:GetEntityIndex())
+						  --[[if IsValidEntity(npc.BloodstoneDummies) then
+							    UTIL_Remove(npc.BloodstoneDummies)
+							    npc.BloodstoneDummies = nil
+						  end]]
+						  if not npc.OnDuel and Duel:IsDuelOngoing() then
+							  Duel:SetUpVisitor(npc)
+						  end
+					end
+				--end
+			end
+		end)
+	end
 end
 --------------------------------------------------------------
 --	OnEntityHurt
@@ -112,7 +118,7 @@ end
 --	game event object for OnEntityHurt
 --------------------------------------------------------------
 function GameMode:OnEntityHurt(keys)
-  DebugPrint("[DEBUG] Entity Hurt")
+  --DebugPrint("[DEBUG] Entity Hurt")
   --DebugPrintTable(keys)
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
@@ -160,8 +166,8 @@ end
 -- game event object for OnPlayerReconnect
 --------------------------------------------------------------
 function GameMode:OnPlayerReconnect(keys)
-  DebugPrint( '[DEBUG] OnPlayerReconnect' )
-  DebugPrintTable(keys)
+  --DebugPrint( '[DEBUG] OnPlayerReconnect' )
+  --DebugPrintTable(keys)
 
   local playID = keys.PlayerID
   if not playID then
@@ -175,8 +181,8 @@ end
 --	game event object for OnItemPurchased
 --------------------------------------------------------------
 function GameMode:OnItemPurchased( keys )
-  DebugPrint( '[DEBUG] OnItemPurchased' )
-  DebugPrintTable(keys)
+  --DebugPrint( '[DEBUG] OnItemPurchased' )
+  --DebugPrintTable(keys)
 
   -- The playerID of the hero who is buying something
   local plyID = keys.PlayerID
@@ -195,22 +201,25 @@ end
 --	game event object for OnAbilityUsed
 --------------------------------------------------------------
 function GameMode:OnAbilityUsed(keys)
-  DebugPrint('[DEBUG] AbilityUsed')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] AbilityUsed')
+  --DebugPrintTable(keys)
   
-	--local player = EntIndexToHScript(keys.PlayerID)
-	local player = PlayerResource:GetPlayer(keys.PlayerID)
-	local abilityname = keys.abilityname
-end
+	local player          = PlayerResource:GetPlayer(keys.PlayerID)
+  local hero            = PlayerResource:GetSelectedHeroEntity(keys.PlayerID)
+  local heroname        = PlayerResource:GetSelectedHeroName(keys.PlayerID)
+	local abilityname     = keys.abilityname
+  local herolevel       = hero:GetLevel()
 
+  abilityusedindex(player,hero,heroname,abilityname,herolevel)
+end
 --------------------------------------------------------------
 -- On NonPlayer Used Ability
 -- A non-player entity (necro-book, chen creep, etc) used an ability
 -- game event object for OnNonPlayerUsedAbility
 --------------------------------------------------------------
 function GameMode:OnNonPlayerUsedAbility(keys)
-  DebugPrint('[DEBUG] OnNonPlayerUsedAbility')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnNonPlayerUsedAbility')
+  --DebugPrintTable(keys)
 
   local abilityname=  keys.abilityname
 end
@@ -221,8 +230,8 @@ end
 -- A player changed their name
 --------------------------------------------------------------
 function GameMode:OnPlayerChangedName(keys)
-  DebugPrint('[DEBUG] OnPlayerChangedName')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnPlayerChangedName')
+  --DebugPrintTable(keys)
 
   local newName = keys.newname
   local oldName = keys.oldName
@@ -232,8 +241,8 @@ end
 -- game event object for OnPlayerLearnedAbility
 --------------------------------------------------------------
 function GameMode:OnPlayerLearnedAbility( keys)
-  DebugPrint('[DEBUG] OnPlayerLearnedAbility')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnPlayerLearnedAbility')
+  --DebugPrintTable(keys)
 
   local player = EntIndexToHScript(keys.player)
   local abilityname = keys.abilityname
@@ -243,8 +252,8 @@ end
 -- game event object for OnAbilityChannelFinished
 --------------------------------------------------------------
 function GameMode:OnAbilityChannelFinished(keys)
-  DebugPrint('[DEBUG] OnAbilityChannelFinished')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnAbilityChannelFinished')
+  --DebugPrintTable(keys)
 
   local abilityname = keys.abilityname
   local interrupted = keys.interrupted == 1
@@ -254,8 +263,8 @@ end
 -- game event object for OnPlayerLevelUp
 --------------------------------------------------------------
 function GameMode:OnPlayerLevelUp(keys)
-  DebugPrint('[DEBUG] OnPlayerLevelUp')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnPlayerLevelUp')
+  --DebugPrintTable(keys)
 	
 	local player = EntIndexToHScript(keys.player)
 	local level = keys.level
@@ -340,8 +349,8 @@ end
 -- game event object for OnLastHit
 --------------------------------------------------------------
 function GameMode:OnLastHit(keys)
-  DebugPrint('[DEBUG] OnLastHit')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnLastHit')
+  --DebugPrintTable(keys)
 
   local isFirstBlood = keys.FirstBlood == 1
   local isHeroKill = keys.HeroKill == 1
@@ -354,8 +363,9 @@ end
 -- game event object for OnTreeCut
 --------------------------------------------------------------
 function GameMode:OnTreeCut(keys)
-  DebugPrint('[DEBUG] OnTreeCut')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnTreeCut')
+  --DebugPrintTable(keys)
+  --print("TREE IS DOWN!")
 
   local treeX = keys.tree_x
   local treeY = keys.tree_y
@@ -365,33 +375,20 @@ end
 -- game event object for OnRuneActivated
 --------------------------------------------------------------
 function GameMode:OnRuneActivated (keys)
-  DebugPrint('[DEBUG] OnRuneActivated')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnRuneActivated')
+  --DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local rune = keys.rune
 
-  --[[ Rune Can be one of the following types
-  DOTA_RUNE_DOUBLEDAMAGE
-  DOTA_RUNE_HASTE
-  DOTA_RUNE_HAUNTED
-  DOTA_RUNE_ILLUSION
-  DOTA_RUNE_INVISIBILITY
-  DOTA_RUNE_BOUNTY
-  DOTA_RUNE_MYSTERY
-  DOTA_RUNE_RAPIER
-  DOTA_RUNE_REGENERATION
-  DOTA_RUNE_SPOOKY
-  DOTA_RUNE_TURBO
-  ]]
 end
 --------------------------------------------------------------
 -- A player took damage from a tower
 -- game event object for OnPlayerTakeTowerDamage
 --------------------------------------------------------------
 function GameMode:OnPlayerTakeTowerDamage(keys)
-  DebugPrint('[DEBUG] OnPlayerTakeTowerDamage')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnPlayerTakeTowerDamage')
+  --DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local damage = keys.damage
@@ -424,7 +421,7 @@ function GameMode:OnPlayerPickHero(keys)
    -- FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
     
     table.insert(tHeroes, hero)
-    print(table.insert(tHeroes, hero))
+    --print(table.insert(tHeroes, hero))
     
     --nHeroCount = nHeroCount + 1
     
@@ -445,8 +442,8 @@ end
 -- game event object for OnTeamKillCredit
 --------------------------------------------------------------
 function GameMode:OnTeamKillCredit(keys)
-  DebugPrint('[DEBUG] OnTeamKillCredit')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnTeamKillCredit')
+  --DebugPrintTable(keys)
 
   local killerPlayer = PlayerResource:GetPlayer(keys.killer_userid)
   local victimPlayer = PlayerResource:GetPlayer(keys.victim_userid)
@@ -466,9 +463,6 @@ end]]
 -- game event object for keys
 --------------------------------------------------------------
 function GameMode:OnEntityKilled( keys )
-  --DebugPrint( '[DEBUG] OnEntityKilled Called' )
-  --DebugPrintTable( keys )
-
 
 	-- The Unit that was Killed
 	local killedUnit = EntIndexToHScript( keys.entindex_killed )
@@ -496,9 +490,6 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
-	--if killedUnit:IsRealHero() then
-	--	OnHeroDeath(keys)
-	--end
 	
   -- Fire ent killed event
   if killedUnit.deathEvent then
@@ -511,26 +502,26 @@ function GameMode:OnEntityKilled( keys )
   
 	--This code just checking is it creature or creep ?
 	if killedUnit:IsCreature() or killedUnit:IsCreep() then
-	 	print("[Angel Arena] Creature/Creep Killed: ["..killedUnit:GetUnitName().."] Killer: [".. killerEntity:GetUnitName().."]")
+	    --print("[Angel Arena] Creature/Creep Killed: ["..killedUnit:GetUnitName().."] Killer: [".. killerEntity:GetUnitName().."]")
 	 	--DebugPrint("KILLED, KILLER: " .. killedUnit:GetUnitName() .. " -- " .. killerEntity:GetUnitName())
-        RollDrops(killedUnit)
+     -- RollDrops(killedUnit)
         
   end
 	
 	--This code to check if this is real hero when they die place grave in hero place then add point to the team
 	if killedUnit and killedUnit:IsRealHero() then 
-		  print("[Angel Arena] HERO Killed: [".. killedUnit:GetUnitName() .."] killer: [".. killerEntity:GetUnitName().."]")
-		  local grave = CreateUnitByName("player_gravestone", killedUnit:GetAbsOrigin(), true, killedUnit, killedUnit, killedUnit:GetTeamNumber())
-		  killedUnit.grave = grave
+		  --print("[Angel Arena] HERO Killed: [".. killedUnit:GetUnitName() .."] killer: [".. killerEntity:GetUnitName().."]")
+		  --local grave = CreateUnitByName("player_gravestone", killedUnit:GetAbsOrigin(), true, killedUnit, killedUnit, killedUnit:GetTeamNumber())
+		  --killedUnit.grave = grave
 
 		if killedUnit:GetTeam() == DOTA_TEAM_BADGUYS and killerEntity:GetTeam() == DOTA_TEAM_GOODGUYS then
-			self.nRadiantKills = self.nRadiantKills + 1
+			  self.nRadiantKills = self.nRadiantKills + 1
 			  if END_GAME_ON_KILLS and self.nRadiantKills >= KILLS_TO_END_GAME_FOR_TEAM then
 				  GameRules:SetSafeToLeave( true )
 				  GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 			  end
 		elseif killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS and killerEntity:GetTeam() == DOTA_TEAM_BADGUYS then
-			self.nDireKills = self.nDireKills + 1
+			  self.nDireKills = self.nDireKills + 1
 			  if END_GAME_ON_KILLS and self.nDireKills >= KILLS_TO_END_GAME_FOR_TEAM then
 				  GameRules:SetSafeToLeave( true )
 				  GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
@@ -541,10 +532,66 @@ function GameMode:OnEntityKilled( keys )
 			    GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, self.nDireKills )
 			    GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, self.nRadiantKills )
 		    end
-		  --print("On Hero Death key started")
-		  GameMode:OnHeroDeath(keys)
+		    --print("On Hero Death key started")
+		    GameMode:OnHeroDeath(keys)
 	end
 
+
+
+
+  if killedUnit then
+      if killedUnit:IsHero() then
+        --killedUnit:RemoveModifierByName("modifier_shard_of_true_sight") -- For some reason simple KV modifier not removes on death without this
+        if killedUnit:IsRealHero() then
+          local respawnTime = killedUnit:CalculateRespawnTime()
+          killedUnit:SetTimeUntilRespawn(respawnTime)
+          --MeepoFixes:ShareRespawnTime(killedUnit, respawnTime)
+          --killedUnit.RespawnTimeModifierBloodstone = nil
+          --killedUnit.RespawnTimeModifierSaiReleaseOfForge = nil
+
+          if killedUnit.OnDuel and Duel:IsDuelOngoing() then
+            --print(" I AM IN DUEL AND I DIDED")
+            killedUnit:SetTimeUntilRespawn(respawnTime)
+            killedUnit.OnDuel = nil
+            killedUnit.ArenaBeforeTpLocation = nil
+            if Duel:GetWinner() ~= nil then
+              Duel:EndDuel()
+            end
+          end
+          --[[if not IsValidEntity(killerEntity) or not killerEntity.GetPlayerOwner or not IsValidEntity(killerEntity:GetPlayerOwner()) then
+            Kills:OnEntityKilled(killedUnit:GetPlayerOwner(), nil)
+          elseif killerEntity == killedUnit then
+            local player = killedUnit:GetPlayerOwner()
+            Kills:OnEntityKilled(player, player)
+          end]]
+        end
+      end
+
+      --if killedUnit:IsRealCreep() then
+        --Spawner.Creeps[killedUnit.SSpawner] = Spawner.Creeps[killedUnit.SSpawner] - 1
+      --end
+
+      --[[if killerEntity then
+        for _, individual_hero in ipairs(HeroList:GetAllHeroes()) do
+          if individual_hero:IsAlive() and individual_hero:HasModifier("modifier_shinobu_hide_in_shadows_invisibility") then
+            local shinobu_hide_in_shadows = individual_hero:FindAbilityByName("shinobu_hide_in_shadows")
+            if individual_hero:GetTeam() == killedUnit:GetTeam() and individual_hero:GetRangeToUnit(killedUnit) <= shinobu_hide_in_shadows:GetAbilitySpecial("ally_radius") then
+              individual_hero:SetHealth(individual_hero:GetMaxHealth())
+              shinobu_hide_in_shadows:ApplyDataDrivenModifier(individual_hero, individual_hero, "modifier_shinobu_hide_in_shadows_rage", nil)
+            end
+          end
+        end]]
+
+        --[[if killerEntity:GetTeamNumber() ~= killedUnit:GetTeamNumber() and (killerEntity.GetPlayerID or killerEntity.GetPlayerOwnerID) then
+          local plId = killerEntity.GetPlayerID ~= nil and killerEntity:GetPlayerID() or killerEntity:GetPlayerOwnerID()
+          if plId > -1 and not (killerEntity.HasModifier and killerEntity:HasModifier("modifier_item_golden_eagle_relic_enabled")) then
+            local gold = RandomInt(killedUnit:GetMinimumGoldBounty(), killedUnit:GetMaximumGoldBounty())
+            --Gold:ModifyGold(plId, gold)
+            SendOverheadEventMessage(killerEntity:GetPlayerOwner(), OVERHEAD_ALERT_GOLD, killedUnit, gold, killerEntity:GetPlayerOwner())
+          end
+        end
+      end]]
+  end
 
 	-- MiniBosses Check
 	checkminibosses(keys)
@@ -555,8 +602,8 @@ end
 -- have completely connected
 --------------------------------------------------------------
 function GameMode:PlayerConnect(keys)
-  DebugPrint('[DEBUG] PlayerConnect')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] PlayerConnect')
+  --DebugPrintTable(keys)
 end
 --------------------------------------------------------------
 -- OnConnectFull
@@ -564,8 +611,8 @@ end
 -- game event object for OnConnectFull
 --------------------------------------------------------------
 function GameMode:OnConnectFull(keys)
-  DebugPrint('[DEBUG] OnConnectFull')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnConnectFull')
+  --DebugPrintTable(keys)
   
   GameMode:CaptureGameMode()
   local entIndex = keys.index+1
@@ -600,8 +647,8 @@ end
 -- game event object for OnIllusionsCreated
 --------------------------------------------------------------
 function GameMode:OnIllusionsCreated(keys)
-  DebugPrint('[DEBUG] OnIllusionsCreated')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnIllusionsCreated')
+  --DebugPrintTable(keys)
 
   local originalEntity = EntIndexToHScript(keys.original_entindex)
 end
@@ -610,8 +657,8 @@ end
 -- game event object for OnItemCombined
 --------------------------------------------------------------
 function GameMode:OnItemCombined(keys)
-  DebugPrint('[DEBUG] OnItemCombined')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnItemCombined')
+  --DebugPrintTable(keys)
 
   -- The playerID of the hero who is buying something
   local plyID = keys.PlayerID
@@ -629,8 +676,8 @@ end
 -- game event object for OnAbilityCastBegins
 --------------------------------------------------------------
 function GameMode:OnAbilityCastBegins(keys)
-  DebugPrint('[DEBUG] OnAbilityCastBegins')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnAbilityCastBegins')
+  --DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local abilityName = keys.abilityname
@@ -640,8 +687,8 @@ end
 -- game event object for OnTowerKill
 --------------------------------------------------------------
 function GameMode:OnTowerKill(keys)
-  DebugPrint('[DEBUG] OnTowerKill')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnTowerKill')
+  --DebugPrintTable(keys)
 
   local gold = keys.gold
   local killerPlayer = PlayerResource:GetPlayer(keys.killer_userid)
@@ -652,8 +699,8 @@ end
 -- game event object for OnPlayerSelectedCustomTeam
 --------------------------------------------------------------
 function GameMode:OnPlayerSelectedCustomTeam(keys)
-  DebugPrint('[DEBUG] OnPlayerSelectedCustomTeam')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnPlayerSelectedCustomTeam')
+  --DebugPrintTable(keys)
 
   local player = PlayerResource:GetPlayer(keys.player_id)
   local success = (keys.success == 1)
@@ -664,8 +711,8 @@ end
 -- game event object for OnNPCGoalReached
 --------------------------------------------------------------
 function GameMode:OnNPCGoalReached(keys)
-  DebugPrint('[DEBUG] OnNPCGoalReached')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnNPCGoalReached')
+  --DebugPrintTable(keys)
 
   local goalEntity = EntIndexToHScript(keys.goal_entindex)
   local nextGoalEntity = EntIndexToHScript(keys.next_goal_entindex)
@@ -676,33 +723,8 @@ end
 -- game event object for OnPlayerChat
 --------------------------------------------------------------
 function GameMode:OnPlayerChat(keys)
-  DebugPrint('[DEBUG] OnNPCGoalReached')
-  DebugPrintTable(keys)
+  --DebugPrint('[DEBUG] OnNPCGoalReached')
+  --DebugPrintTable(keys)
 end
 --------------------------------------------------------------
--- dont delete this salah keep it for the future
--- Adding point to Heroes
 --------------------------------------------------------------
-	--[[if string.match(unitName, "_creep") then
-	   	print("Its a Creep who died")
-       nDeathCreeps = nDeathCreeps + 1
-        if ownedHeroAtt then
-        	print("Adding 1 point to player - ".. ownedHeroAtt:GetName())
-            ownedHeroAtt.creeps = ownedHeroAtt.creeps + 1
-        end
-    elseif string.match(unitName, "_boss") then
-        nDeathCreeps = nDeathCreeps + 1
-        if ownedHeroAtt then
-            ownedHeroAtt.bosses = ownedHeroAtt.bosses + 1
-            ownedHeroAtt.lumber = ownedHeroAtt.lumber + 3
-            FireGameEvent('cgm_player_lumber_changed', { player_ID = attacker:GetPlayerOwnerID(), lumber = ownedHeroAtt.lumber })
-            if attacker:GetPlayerOwner() then
-                PopupNumbers(attacker:GetPlayerOwner() ,killedUnit, "gold", Vector(0,180,0), 3, 3, POPUP_SYMBOL_PRE_PLUS, nil)
-            end
-        end
-    else
-  		print("No adding point its not creep or boss ")
-    end ]]
-
-     	--if killedUnit and ( killedUnit:GetTeamNumber()==DOTA_TEAM_NEUTRALS or killedUnit:GetTeamNumber()==DOTA_TEAM_BADGUYS ) and killedUnit:IsCreature() then
- 		-- Item Drops

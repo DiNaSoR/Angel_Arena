@@ -88,7 +88,7 @@ end
 --The hero parameter is the hero entity that just spawned in
 --------------------------------------------------------------
 function GameMode:OnHeroInGame(hero)
-  	print("[Angel Arena] Hero spawned in game for first time")
+  	--print("[Angel Arena] Hero spawned in game for first time")
 
 	local player 	= PlayerResource:GetPlayer(hero:GetPlayerID())
 	local pID 		= hero:GetPlayerOwnerID()
@@ -157,6 +157,10 @@ function GameMode:OnPreGame()
 	InitModule(NGP)
 	InitModule(Doors)
 	InitModule(HeroKillGold)]]
+	--This code will calculate how many players in each team adds them and muli it by 10 to give final score to win the game.
+	PLAYER_COUNT_GOODGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+	PLAYER_COUNT_BADGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
+	KILLS_TO_END_GAME_FOR_TEAM 	= math.floor(PLAYER_COUNT_GOODGUYS + PLAYER_COUNT_BADGUYS) * 10
 
 	GameMode:PostLoadPrecache()
 	GameMode:OnAllPlayersLoaded()
@@ -169,11 +173,6 @@ end
 --------------------------------------------------------------
 function GameMode:OnGameInProgress()
 	print("[Angel Arena] The game has officially begun")
-
-	--This code will calculate how many players in each team adds them and muli it by 10 to give final score to win the game.
-	PLAYER_COUNT_GOODGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-	PLAYER_COUNT_BADGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-	KILLS_TO_END_GAME_FOR_TEAM 	= math.floor(PLAYER_COUNT_GOODGUYS + PLAYER_COUNT_BADGUYS) * 10
 
 	-- initialize modules
 	InitModule(CreepPower)
@@ -189,6 +188,7 @@ function GameMode:OnGameInProgress()
   
 	welcomemsg()
 	--firedueltimer()
+	Duel:CreateGlobalTimer()
 end
 --------------------------------------------------------------
 -- Modules

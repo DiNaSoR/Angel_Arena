@@ -2,9 +2,9 @@
 -- Required .lua files
 ---------------------------------------------------------------------------
 --Precache--------------------------------------------------
+require('modifier/aa_modifier')
 require('precache/precache')
 require('setting/settings')
-require('modifier/aa_modifier')
 require('setting/aa')
 require('setting/gamemode')
 
@@ -21,14 +21,19 @@ require('libraries/notifications')
 require('libraries/animations')
 --require('libraries/attachments')
 require('libraries/playertables')--Done installing it to Panorama
+require('libraries/playerresource')
 --require('libraries/containers')
 --require('libraries/modmaker')
 --require('libraries/pathgraph')
 --require('libraries/selection')
 require('libraries/popups')
 
-	--Open Angel Arena Libraries(Testing)
-	require('libraries/oaa/playerresource')
+	--AABS Libraries
+	require('libraries/data/globals')
+	require('libraries/data/table')
+	require('libraries/data/units')
+
+	--OAA Libraries(Testing)
 	--require('libraries/oaa/functional')
 	--require('libraries/oaa/chatcommand')
 	--require('libraries/oaa/basenpc')
@@ -50,7 +55,7 @@ require('libraries/popups')
 		require('mechanics/onItempickthinker')
 	--Drops
 		require('mechanics/drops/dropsys')
-		require('mechanics/duel/duel')
+		--require('mechanics/duel/duel')
 	--Spawn
 		require('mechanics/spawn/spawn')
 		require('mechanics/spawn/miniboss')
@@ -58,19 +63,36 @@ require('libraries/popups')
 		require('mechanics/duel/duel')
 	--Triggers
 		require('mechanics/triggers/lavatrigger')
+		require('mechanics/triggers/triggers')
 	--Teleport
 		require('mechanics/teleport/teleports')
 	--Camps
 		require('mechanics/camps/index')
 	--Gold
-		--require('mechanics/gold/gold')
+		require('mechanics/gold/gold')
 	--Message
 		require('mechanics/msg/msg')
 	--AI
 		-- Ai folder aleardy linked in Units files/NPC
+	--kills
+		require('mechanics/kills/kills')
+		require('mechanics/kills/data')
+	--Hero Voice
+		require('mechanics/herovoice/herovoice')
+	--Duel
+		require('mechanics/duel/duel')
+	--Teams
+		require('mechanics/teams/teams')
+	--Event helper
+		require('mechanics/events_helper/events_helper')
+	--Ability used
+		require('mechanics/abilityused/abilityused')
 
 --Setting--------------------------------------------------
 require('setting/events')
+require('mechanics/teams/teams')
+require('mechanics/events_helper/events_helper')
+
 
 
 

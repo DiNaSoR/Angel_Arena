@@ -1,6 +1,22 @@
+Credit: 
+Noya
+BMD
+Aleteh
+ark120202
+chrisinajar,Trildar,Chronphylos,Warpdragon
 //-------------------------------------------------
 //	IDEAS TODO
 //-------------------------------------------------
+----------------------------------
+Update 24/7/2017 2:19 AM
+----------------------------------
+Need to check invoker skills from Redux
+dota next generation
+----------------------------------
+Update 23/7/2017 2:14 AM
+----------------------------------
+Next work need to polish duel events/uits ...etc
+
 ----------------------------------
 Update 15/7/2017 11:00 PM
 ----------------------------------
@@ -26,7 +42,7 @@ drop table to apply to many creeps not only 1
 	
 REMEMBER TO CONTIUNE PULISHING aa.lua then gamemode.lua then events.lua
 ----------------------------------
-Update 18/18/2015 1:35 AM
+Update 18/8/2015 1:35 AM
 ----------------------------------
 i was working on Pudge to fix the stun that rune the rot
 and trying to figure a way to check if this ability are active or not. dont forget i changed pudge damage.
@@ -67,6 +83,7 @@ and working in Ronin Warrior
 //-------------------------------------------------
 //	0.07
 //-------------------------------------------------
+
 //-------------------------------------------------
 //	0.06
 //-------------------------------------------------

@@ -1,0 +1,30 @@
+"DOTAUnits"
+{
+//=================================================================================	
+// Npc Arena Fountain
+//=================================================================================
+	"npc_arena_fountain"
+	{
+		"BaseClass"				"npc_dota_building"
+		"Model"					"models/development/invisiblebox.vmdl"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_NO_ATTACK"
+		"Ability1"				"skill_unselectable"
+
+		"BoundsHullName"		"DOTA_HULL_SIZE_SMALL"
+
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"			"0"	// Speed
+		"MovementTurnRate"		"0"	// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"			"1"	// Base health.
+		"StatusHealthRegen"		"0"	// Health regeneration rate.
+		"StatusMana"			"0"	// Base mana.
+		"StatusManaRegen"		"0"	// Mana regeneration rate.
+
+		"TeamName"				"DOTA_TEAM_NEUTRALS"
+		"VisionDaytimeRange"		"1500"
+		"VisionNighttimeRange"		"1500"
+	}
+}

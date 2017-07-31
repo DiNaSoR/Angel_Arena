@@ -1,9 +1,173 @@
 "DOTAUnits"
 {
 //=================================================================================
+	// Invoker
+	//=================================================================================
+	"npc_adp_invoker"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/heroes/invoker/invoker.vmdl"
+		"SoundSet"					"Hero_Invoker"
+		"Level"						"99"
+		"ModelScale" 				"1.3"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		"ConsideredHero"			"0"
+		//"vscripts"					"mechanics/ai/boss/adp/adp.lua"
+		"HasInventory"				"1"
+		"UsesConstantGesture"		"1"
+		"IsAncient"					"0"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"		"4"
+		"Ability1"			"aa_invoker_sun_strike"
+		"Ability2"			"invoker_exort"
+		"Ability3"			""
+		"Ability4"			""
+		//"Ability5"			"invoker_ice_wall"
+		//"Ability6"			"invoker_alacrity"
+		//"Ability7"			"invoker_quas"
+		//"Ability8"			"invoker_wex"
+		//"Ability9"			"invoker_exort"
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"60"
+		"MagicalResistance"			"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"100"
+		"AttackDamageMax"			"600"
+		"AttackRate"				"0.2"
+		"AttackAnimationPoint"		"0.2"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"				"800"
+		"ProjectileModel"			"particles/units/heroes/hero_invoker/invoker_base_attack.vpcf"
+		"ProjectileSpeed"			"1500"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_HUGE"
+		"RingRadius"				"70"
+		"HealthBarOffset"			"300"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"119"
+		"BountyGoldMin"				"76"
+		"BountyGoldMax"				"88"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"500"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100000"
+		"StatusHealthRegen"			"20"
+		"StatusMana"				"65000"
+		"StatusManaRegen"			"1000.0"
+		
+		// Minimap
+		//----------------------------------------------------------------
+		"MinimapIcon"				"minimap_roshancamp"
+		"MinimapIconSize"			"650"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"8000"
+		"VisionNighttimeRange"		"8000"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"DefaultState"				"Invade"
+			
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+				}
+			}
+
+			"EquippedItems"
+			{
+				"Travels"
+				{
+					"Item"					"item_cyclone"
+				}
+				"Blink"
+				{
+					"Item"					"item_blink"
+				}
+				"Octarine"
+				{
+					"Item"					"item_octarine_core"
+				}
+				"Aghanims"
+				{
+					"Item"					"item_ultimate_scepter"
+				}
+				"Hex"
+				{
+					"Item"					"item_sheepstick"
+				}
+				"Sphere"
+				{
+					"Item"					"item_sphere"
+				}
+			}
+
+			"AttachWearables"
+			{
+				"Wearable1"
+				{
+					"ItemDef"			"8746" 
+				}
+				"Wearable2"
+				{
+					"ItemDef"			"7989" 
+				}
+				"Wearable3"
+				{
+					"ItemDef"			"7988"
+				}
+				"Wearable4"
+				{
+					"ItemDef"			"7979"
+				}
+				"Wearable5"
+				{
+					"ItemDef"			"7987"
+				}
+				"Wearable6"
+				{
+					"ItemDef"			"98"
+				}
+			}
+		}
+	}
+//=================================================================================
 // Boss: Nielas Aran Invoker
 //=================================================================================
-"npc_adp_invoker"
+"npc_adp_invoker2"
 {
 	// General
 	//----------------------------------------------------------------

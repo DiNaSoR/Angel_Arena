@@ -1,0 +1,75 @@
+"DOTAAbilities"
+{
+//=================================================================================================================
+// Angel Arena Boom
+//=================================================================================================================
+	"skill_boom"
+	{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityTextureName"	"skill_boom"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"				"1"
+
+		"AbilityCastRange"		"128"
+		"AbilityCastPoint"		"0.0"
+
+		"AbilityDamage"			"1000"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"small_radius"		"100"
+			}
+
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"big_radius"		"250"
+			}
+
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"big_radius_dmg"	"0.5"
+			}
+		}
+		
+		"OnOwnerDied"
+		{	
+			"RunScript"
+			{
+				"ScriptFile"	"abilities\skill_boom.lua"
+				"Function"		"jihadi"
+			}
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities\skill_boom.lua"
+				"Function"		"jihadi"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_summoned"
+			{
+				"IsHidden"			"1"
+		
+				"States"
+				{
+					"MODIFIER_STATE_DOMINATED"		"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+}
