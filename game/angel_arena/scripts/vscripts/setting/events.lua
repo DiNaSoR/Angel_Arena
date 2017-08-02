@@ -38,10 +38,12 @@ function GameMode:OnGameRulesStateChange(keys)
   local newState = GameRules:State_Get()
   -- Waiting for players to load
   if newState == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
+  
   print("[Angel Arena] Game Change to waiting for players to load")
   -- Hero selection
   elseif  newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
   print("[Angel Arena] Game Change to hero selection")
+  --EmitGlobalSound("angel_arena.allahremix")
   -- Strategy time started
   elseif  newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
   print("[Angel Arena] Game Change to strategy time")
@@ -211,6 +213,8 @@ function GameMode:OnAbilityUsed(keys)
   local herolevel       = hero:GetLevel()
 
   abilityusedindex(player,hero,heroname,abilityname,herolevel)
+
+  
 end
 --------------------------------------------------------------
 -- On NonPlayer Used Ability
@@ -341,7 +345,6 @@ function GameMode:OnPlayerLevelUp(keys)
 	elseif heroLevel==30 then
 		FireGameEvent('ability_6_unlocked', { player_ID = pID })		
 	end]]
-  
 end
 --------------------------------------------------------------
 -- OnLastHit

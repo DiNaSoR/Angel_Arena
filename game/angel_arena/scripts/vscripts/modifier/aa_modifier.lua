@@ -7,6 +7,8 @@ print('[Angel Arena] Modifiers Started')
 	LinkLuaModifier("modifier_stun_lua", "modifier/modifier_stun_lua.lua", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_aa_speed_limit_break", "modifier/modifier_aa_speed_limit_break.lua", LUA_MODIFIER_MOTION_NONE )
 	LinkLuaModifier("modifier_creep_loot", "modifier/modifier_creep_loot.lua", LUA_MODIFIER_MOTION_NONE)
+	--LinkLuaModifier("modifier_test_anim", "modifier/angelarena/modifier_test_anim.lua", LUA_MODIFIER_MOTION_NONE)
+
 	
 	--AABS Modifiers-------------------------------------------------------------------------------------------------------------------------------------------
 	--LinkLuaModifier("modifier_arena_hero", "modifier/duel/modifier_arena_hero.lua", LUA_MODIFIER_MOTION_NONE )
