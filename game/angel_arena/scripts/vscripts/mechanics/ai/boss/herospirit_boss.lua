@@ -42,14 +42,6 @@ function AIThinking()
         return nil
     end	
 
-    if #units <= 0 then
-    	thisEntity:MoveToPosition(point)
-
-    	if (point - thisEntity:GetOrigin()):Length2D() <= 1 then
-    		thisEntity:SetForwardVector(FACING_RIGHT)
-    	end
-    end
-
     if (point - thisEntity:GetOrigin()):Length2D() > 1400 then
         thisEntity:MoveToPosition(point)
     end

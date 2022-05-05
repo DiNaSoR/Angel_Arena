@@ -1,0 +1,45 @@
+"item_warriors_talisman_of_addiction"
+{
+	"ID"                            "1329"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"warriors_talisman_of_addiction"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "100000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_warriors_talisman_of_addiction"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%int_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"80"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"2"
+		}
+	}
+
+
+}

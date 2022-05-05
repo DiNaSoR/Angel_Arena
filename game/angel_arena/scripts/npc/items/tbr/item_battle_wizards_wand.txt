@@ -1,0 +1,38 @@
+"item_battle_wizards_wand"
+{
+	"ID"                            "1042"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"battle_wizards_wand"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_battle_wizards_wand"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%int_bonus"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"6"
+		}
+	}
+}

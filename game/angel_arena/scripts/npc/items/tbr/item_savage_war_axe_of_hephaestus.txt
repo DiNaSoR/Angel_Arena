@@ -1,0 +1,72 @@
+"item_savage_war_axe_of_hephaestus"
+{
+	"ID"                            "1203"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"savage_war_axe_of_hephaestus"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"precache"
+	{
+		"Soundfile"					"sounds/weapons/hero/slardar/slithereen_crush.vsnd"
+	}
+	"Modifiers"
+	{
+		"modifier_savage_war_axe_of_hephaestus"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%dmg_bonus"
+			}
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "5"
+					"OnSuccess"
+					{				
+						"Stun"
+						{
+							"Target"			"TARGET"
+							"Duration"			"2.5"
+						}
+						"Damage"
+						{
+							"Target"		 	"TARGET"
+							"Type"			 	"DAMAGE_TYPE_PHYSICAL"
+							"Damage"			"350"
+						}
+						"FireSound"
+						{
+							"EffectName"		"Hero_Slardar.Slithereen_Crush"
+							"Target" 			"CASTER"
+						}
+						"FireEffect"
+						{
+							"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+							"EffectAttachType"	"follow_origin"
+							"Target"			"TARGET"
+						}			
+					}
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"60"
+		}
+	}
+}

@@ -7,7 +7,7 @@ function jihadi(event)
 	local damage = ability:GetAbilityDamage()/2
 	local fullRadius = ability:GetSpecialValueFor("small_radius")
 	local halfRadius = ability:GetSpecialValueFor("big_radius")
-	caster:EmitSound("angel_arena.allahuakbar")
+	--caster:EmitSound("angel_arena.allahuakbar")
 	local targets = FindUnitsInRadius(caster:GetTeamNumber(),
 		caster:GetAbsOrigin(),
 		nil,

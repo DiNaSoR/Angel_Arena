@@ -1,0 +1,112 @@
+//TODO: Recipe
+//Heletes will forge you the Searing Flame of Prometheus. 
+//Requires two Gemstone of the Olympians, two Stone of Heaven, Gem of the North, Gem of the South, Gem of the East, Gem of the West,
+//Gift of Hera, Blackfire Staff, Staff of Poseidon, Magefire Ring, 
+//100 000 Crafting Materials, 100 000 gold. Requires Level 200
+
+//Increases all your stats by 100. Increases your attack damage by 25% and adds splash damage to your attack. 
+//Increases your spell damage and healing by 35%. In addition enemy units near you will be set on fire, dealing 250 damage to them per second.
+"item_searing_flame_of_prometheus"
+{
+	"ID"                            "1367"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"searing_flame_of_prometheus"
+	
+	"ItemQuality"					"rare"
+	"ItemCost"                      "100000"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+	"ItemKillable" 					"0" 
+	"ItemSellable" 					"0"
+	"ItemPurchasable"				"1"
+	"ItemDroppable"					"1"
+
+	"AbilityCooldown"				"300"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_all_stats" "100"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage_percent" "25"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"cleave" "100"	//Made it up - TODO: Check WC3 Value
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"cleave_radius" "300"	//Made it up - TODO: Check WC3 Value
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_power_percent" "35"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"damage_per_second" "250"
+		}
+		"07"
+		{
+			"var_type" "FIELD_INTEGER"
+			"burn_radius" "250"	//Made it up - TODO: Check WC3 Value
+		}
+	}
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+	}
+
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items.lua"
+			"Function"		"ItemCheck"
+		}
+	}
+
+	"Modifiers"
+	{
+		"flame_of_prometheus_modifier"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_percent"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_all_stats"
+			}
+			//TODO: Attach particle Effect
+			"ThinkInterval"		"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target"
+					{
+						"Center"  				"CASTER"
+						"Radius" 				"%burn_radius"
+						"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" 				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					}
+					"Type"			 "DAMAGE_TYPE_MAGICAL"
+					"Damage"		 "%damage_per_second"
+				}
+			}
+		}
+	}	
+}

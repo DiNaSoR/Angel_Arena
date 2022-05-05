@@ -149,7 +149,6 @@ function GameMode:OnPreGame()
 	InitModule(BlinkBlock)
 	InitModule(ZoneControl)
 	InitModule(AbilityLevels)
-	InitModule(HeroProgression)
 	InitModule(SellBlackList)
 	InitModule(Glyph)
 	InitModule(BubbleOrbFilter)
@@ -157,6 +156,9 @@ function GameMode:OnPreGame()
 	InitModule(NGP)
 	InitModule(Doors)
 	InitModule(HeroKillGold)]]
+	InitModule(Gold)
+	--InitModule(HeroProgression)
+
 	--This code will calculate how many players in each team adds them and muli it by 10 to give final score to win the game.
 	PLAYER_COUNT_GOODGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
 	PLAYER_COUNT_BADGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)

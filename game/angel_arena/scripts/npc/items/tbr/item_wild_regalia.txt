@@ -1,0 +1,119 @@
+"item_wild_regalia"	
+{
+	"ID"                            "1267"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"wild_regalia"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/econ/items/lone_druid/lone_druid_cauldron/lone_druid_bear_entangle_body_cauldron.vpcf"
+		"particle"					"particles/units/heroes/hero_warlock/warlock_upheaval_debuff.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_wild_regalia"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%int_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%mana_regen"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"	"50"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target" 			"TARGET"
+							"ModifierName"		"modifier_wild_regalia_entangle"
+							"Duration"				"8"
+						}
+						"AttachEffect"
+						{
+							"Target"			"TARGET"
+							"EffectName"		"particles/units/heroes/hero_warlock/warlock_upheaval_debuff.vpcf"
+							"EffectAttachType" 	"follow_origin"
+						}
+						"AttachEffect"
+						{
+							"Target"			"TARGET"
+							"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle_body.vpcf"
+							"EffectAttachType" 	"follow_origin"
+						}
+					}
+				}
+			}
+		}
+		"modifier_wild_regalia_entangle"
+		{
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				
+			}
+			"ThinkInterval"			"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target" 
+					{
+						"Center" "TARGET"
+						"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"75"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"45"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"30"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"20"
+		}
+	}
+}

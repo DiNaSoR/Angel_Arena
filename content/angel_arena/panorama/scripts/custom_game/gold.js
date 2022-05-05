@@ -1,4 +1,4 @@
-/* global FindDotaHudElement, Game, PlayerTables */
+/* global FindDotaHudElement, Game, PlayerTables, GameEvents, Players, Entities */
 /*
   Author:
     Chronophylos
@@ -8,12 +8,20 @@
 */
 'use strict';
 
+var console = {
+  log: $.Msg.bind($)
+};
+
 // settings
 var useFormatting = 'half';
 
 (function () {
   PlayerTables.SubscribeNetTableListener('gold', onGoldChange);
 }());
+
+//function onQueryChange () {
+//  onGoldChange('gold', PlayerTables.GetAllTableValues('gold'));
+//}
 
 function onGoldChange (table, data) {
   var playerID = Game.GetLocalPlayerID();
@@ -40,13 +48,14 @@ function UpdateGoldTooltip (gold) {
   try {
     var tooltipLabels = FindDotaHudElement('DOTAHUDGoldTooltip').FindChildTraverse('Contents');
 
-    var label = tooltipLabels.GetChild(0);
+    label = tooltipLabels.GetChild(0);
     label.text = label.text.replace(/: [0-9]+/, ': ' + gold);
 
     label = tooltipLabels.GetChild(1);
     label.style.visibility = 'collapse';
   } catch (e) {}
 }
+
 /*
   Author:
     Noya

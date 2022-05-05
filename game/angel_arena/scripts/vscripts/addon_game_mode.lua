@@ -25,7 +25,7 @@ require('libraries/playerresource')
 --require('libraries/containers')
 --require('libraries/modmaker')
 --require('libraries/pathgraph')
---require('libraries/selection')
+require('libraries/selection')
 require('libraries/popups')
 
 	--AABS Libraries
@@ -34,12 +34,12 @@ require('libraries/popups')
 	require('libraries/data/units')
 
 	--OAA Libraries(Testing)
-	--require('libraries/oaa/functional')
+	require('libraries/oaa/functional')
 	--require('libraries/oaa/chatcommand')
 	--require('libraries/oaa/basenpc')
-	--require('libraries/oaa/basehero')
+	require('libraries/oaa/basehero')
 	--require('libraries/oaa/gamerules')
-	--require('libraries/oaa/fun')
+	require('libraries/oaa/fun')()
 	--require('libraries/oaa/event')
 	--require('libraries/oaa/math')
 
@@ -81,6 +81,10 @@ require('libraries/popups')
 		require('mechanics/herovoice/herovoice')
 	--Duel
 		require('mechanics/duel/duel')
+	--Gold
+		require('mechanics/gold/gold')
+	--hero progression
+		--require('mechanics/progression/hero_progression')
 	--Teams
 		require('mechanics/teams/teams')
 	--Event helper

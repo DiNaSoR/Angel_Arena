@@ -42,41 +42,6 @@ function AIThinking()
         return nil
     end	
 
-    if #units <= 0 then
-    	thisEntity:MoveToPosition(point)
-
-    	if (point - thisEntity:GetOrigin()):Length2D() <= 1 then
-    		thisEntity:SetForwardVector(FACING_DOWN)
-    	end
-
-    	local mobs = FindUnitsInRadius(DOTA_TEAM_NEUTRALS,
-			                              thisEntity:GetAbsOrigin(),
-			                              nil,
-			                              1250,
-			                              DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-			                              DOTA_UNIT_TARGET_ALL,
-			                              DOTA_UNIT_TARGET_FLAG_NONE,
-			                              FIND_ANY_ORDER,
-			                              false)
-    	if mobs ~= nil then
-			if #mobs >= 1 then
-				
-				local index = RandomInt( 1, #mobs )
-				local target = mobs[index]
-
-				if target:GetUnitName() == "npc_infernus" then
-
-				--print(index)
-				--print(target)
-				target:ForceKill(true) 
-				end
-				
-			else
-				
-			end
-		end
-    end
-
     if (point - thisEntity:GetOrigin()):Length2D() > 1400 then
         thisEntity:MoveToPosition(point)
     end

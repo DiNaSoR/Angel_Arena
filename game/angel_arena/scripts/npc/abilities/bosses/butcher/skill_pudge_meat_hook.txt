@@ -8,7 +8,6 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"pudge_meat_hook"
-	"AbilityTextureName"            "bador_pudge_hook"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"

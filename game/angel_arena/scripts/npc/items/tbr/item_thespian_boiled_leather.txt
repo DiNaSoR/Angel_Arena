@@ -1,0 +1,43 @@
+"item_thespian_boiled_leather"
+{
+	"ID"                            "1167"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"thespian_boiled_leather"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_thespian_boiled_leather"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%agi_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"12"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"25"
+		}
+	}
+}

@@ -1,0 +1,43 @@
+"item_boots_of_agility_16"
+{
+	"ID"                            "1068"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"boots_of_agility_16"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifiers_boots_of_agility_16"
+		{
+			"Passive"					"1"
+			"IsHidden" 					"1"
+			"Attributes" 				"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%agi_bonus"
+			}
+		}
+	}
+
+
+	// Special
+	//--------------------------------------------------------------------------------------------
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" 		"FIELD_INTEGER"
+			"agi_bonus" 	"16"
+		}
+	}
+}

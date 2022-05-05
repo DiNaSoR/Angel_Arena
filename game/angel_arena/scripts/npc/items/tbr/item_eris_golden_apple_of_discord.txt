@@ -1,0 +1,38 @@
+"item_eris_golden_apple_of_discord"		// TODO Add Use: 75% chance to receive a random powerful buff and 25% chance for debuff. Cooldown: 1 minute.
+{
+	"ID"                            "1176"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"eris_golden_apple_of_discord"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_eris_golden_apple_of_discord"
+		{
+			"Passive"					"1"
+			"IsHidden"					"1"
+			"Attributes"				"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%mana_regen"
+			}
+		}
+		
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"40"
+		}
+	}
+}

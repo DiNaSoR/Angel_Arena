@@ -1,0 +1,76 @@
+"item_sword_of_the_high_commander"
+{
+	"ID"                            "1370"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"sword_of_the_high_commander"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/econ/items/legion/legion_weapon_voth_domosh/legion_duel_ring_aura_arcana.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_sword_of_the_high_commander"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+			}
+		}
+		"modifier_sword_of_the_high_commander_aura"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Aura" 					"sword_of_the_high_commander_aura"
+    		"Aura_Radius" 			"500"
+    		"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" 			"DOTA_UNIT_TARGET_ALL"
+    		"EffectName" 			"particles/econ/items/legion/legion_weapon_voth_domosh/legion_duel_ring_aura_arcana.vpcf"
+                "EffectAttachType" 		"follow_origin" 
+		}
+		"sword_of_the_high_commander_aura"
+   		{
+    	
+	    	"IsBuff" 				"1"
+	    	"IsPurgable" 			"0"
+	    	
+	    	"Properties"
+	    	{
+	     		"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "20"
+	    	}
+	    }
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"100"			
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"30"
+		}
+	}
+}

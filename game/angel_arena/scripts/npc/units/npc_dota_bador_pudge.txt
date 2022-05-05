@@ -47,13 +47,13 @@
 		
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"160"								// Physical protection.
+		"ArmorPhysical"				"80"								// Physical protection.
 		"MagicalResistance"			"80"								// Magical protection.
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1200"								// Damage range min.
+		"AttackDamageMin"			"600"								// Damage range min.
 		"AttackDamageMax"			"1600"								// Damage range max.
 		"AttackRate"				"0.25"								// Speed of attack.
 		"AttackAnimationPoint"		"0.25"								// Normalized time in animation cycle to attack.
@@ -85,7 +85,7 @@
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"475000"								// Base health.
-		"StatusHealthRegen"			"300"								// Health regeneration rate.
+		"StatusHealthRegen"			"80"								// Health regeneration rate.
 		"StatusMana"				"30000"								// Base mana.
 		"StatusManaRegen"			"300.0"								// Mana regeneration rate.
 		"MinimapIcon"				"minimap_ancient"
@@ -110,72 +110,47 @@
 		//----------------------------------------------------------------
 		"Creature"
 		{				
-			"OffensiveAbilities"
+
+				"EquippedItems"
 				{
-					"Ability1"                
+					"MKB"
 					{
-						"Name"              "ursa_overpower"
+						"Item"					"item_monkey_king_bar"
 					}
-					"Ability2"                
+					"ShivaGuard"
 					{
-						"Name"              "ursa_earthshock"
-						"AOE"               "1"
-						"Radius"            "350"
-						"MinimumTargets"    "1"
-					}   
+						"Item"					"item_shivas_guard"
+					}
+					"LotusOrb"
+					{
+						"Item"					"item_lotus_orb"
+					}
+					"Sphere"
+					{
+						"Item"					"item_sphere"
+					}
+					"BladeMail"
+					{
+						"Item"					"item_blade_mail"
+					}
+					"Urn"
+					{
+						"Item"					"item_urn_of_shadows"
+						"Charges"				"10"
+					}
 				}
-			
-			//"DefaultState"			"Invade"
-			//"States"
-			//{
-			//	"Invade"
-			//	{
-			//		"Name"			"Invade"
-			//		"Aggression"	"80.0"
-			//		"Avoidance"		"0.0"
-			//		"Support"		"80.0"
-			//	}
-			//}
-			
-			"EquippedItems"
-			{
-				"MKB"
+				
+				"AttachWearables"
 				{
-					"Item"					"item_monkey_king_bar"
+					"Wearable1" { "ItemDef" "6296" }	//--- Cuff Hook of the Black Death  Type_Hook
+					"Wearable2" { "ItemDef" "6295" }	//--- Pudge's Cleaver -- offhand_weapon
+					"Wearable3" { "ItemDef" "6298" }	//--- Pudges_Left_Arm
+					"Wearable4" { "ItemDef" "369" }		//--- Pudges_Left_Arm for LiON HAND
+					"Wearable5" { "ItemDef" "261" }		//--- Pudges_Bracer
+					"Wearable6" { "ItemDef" "6293" }	//--- Pudges_Toupee hair/head
+					"Wearable7" { "ItemDef" "6297" }	//--- Back kitchin
+					"Wearable8" { "ItemDef" "459" }		//--- Back kitchin EARTH SHAKER TOTEM
 				}
-				"ShivaGuard"
-				{
-					"Item"					"item_shivas_guard"
-				}
-				"LotusOrb"
-				{
-					"Item"					"item_lotus_orb"
-				}
-				"Sphere"
-				{
-					"Item"					"item_sphere"
-				}
-				"BladeMail"
-				{
-					"Item"					"item_blade_mail"
-				}
-				"Urn"
-				{
-					"Item"					"item_urn_of_shadows"
-					"Charges"				"10"
-				}
-			}
-			"AttachWearables"
-			{
-				"Wearable1" { "ItemDef" "6296" }	//--- Cuff Hook of the Black Death  Type_Hook
-				"Wearable2" { "ItemDef" "6295" }	//--- Pudge's Cleaver -- offhand_weapon
-				"Wearable3" { "ItemDef" "6298" }	//--- Pudges_Left_Arm
-				"Wearable4" { "ItemDef" "369" }		//--- Pudges_Left_Arm for LiON HAND
-				"Wearable5" { "ItemDef" "261" }		//--- Pudges_Bracer
-				"Wearable6" { "ItemDef" "6293" }	//--- Pudges_Toupee hair/head
-				"Wearable7" { "ItemDef" "6297" }	//--- Back kitchin
-				"Wearable8" { "ItemDef" "459" }		//--- Back kitchin EARTH SHAKER TOTEM
-			}
 		}
 	}
 }

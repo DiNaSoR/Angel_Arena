@@ -1,0 +1,55 @@
+"item_ironwood_chestplate"
+{
+	"ID"                            "1095"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"ironwood_chestplate"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_ironwood_chestplate"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%agi_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%hp_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"500"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"15"
+		}
+	}
+}

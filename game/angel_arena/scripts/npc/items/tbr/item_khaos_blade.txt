@@ -1,0 +1,50 @@
+"item_khaos_blade"
+{
+	"ID"                            "1125"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"khaos_blade"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_khaos_blade"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%dmg_bonus"
+
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"1"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"50"
+		}
+	}
+}

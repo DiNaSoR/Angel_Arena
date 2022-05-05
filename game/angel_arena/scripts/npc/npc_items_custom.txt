@@ -39,8 +39,11 @@
 // Under revision
 //--------------------------------------------------------------
 #base "items/tbr/item_potions.txt"
+#base "items/imba/2171_item_imba_magic_stick.txt"
 //#base "items/imba/imba.txt"
 //#base "items/aar/aar.txt"
+
+#base "items/tbr/item_adamantium_helm.txt"
 
 "DOTAAbilities"
 {

@@ -1,0 +1,23 @@
+"item_ring_of_spell_power"
+{
+	"ID"                            "1084"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"ring_of_spell_power"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_ring_of_spell_power"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+		}
+	}
+}

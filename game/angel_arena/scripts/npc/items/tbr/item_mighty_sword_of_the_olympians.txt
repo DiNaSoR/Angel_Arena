@@ -1,0 +1,90 @@
+"item_mighty_sword_of_the_olympians"
+{
+	"ID"                            "1285"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"mighty_sword_of_the_olympians"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"precache"
+	{
+		"soundfile"					"sounds/weapons/hero/zuus/arc_lightning.vsnd"
+		"particle"					"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_mighty_sword_of_the_olympians"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%int_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"	"10"
+					"OnSuccess"
+					{
+						"Damage"
+						{
+							"Target"		 "TARGET"
+							"Type"			 "DAMAGE_TYPE_MAGICAL"
+							"Damage"		 "400"
+						}
+						"FireEffect"
+						{
+							"EffectName"		"particles/units/heroes/hero_zuus/zuus_arc_lightning_.vpcf"
+							"EffectAttachType" 	"follow_origin"
+							"Target" 			"TARGET"
+						}
+						"FireSound"
+						{
+							"EffectName"		"Hero_Zuus.ArcLightning.Cast"
+							"Target" 			"CASTER"
+						}
+					}
+				}
+			}
+			
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"1"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"80"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"40"
+		}
+	}
+}

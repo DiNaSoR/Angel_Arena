@@ -1,0 +1,42 @@
+"item_deathchill_blade"		// TODO Make Lua script that applies 25% of your base damage as AoE damage around the target
+{
+	"ID"                            "1209"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"deathchill_blade"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_deathchill_blade"
+		{
+			"Passive" 				"1"
+			"IsHidden" 				"1"
+			"Attributes" 			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%dmg_bonus"
+			}
+			//"OnAttackLanded"
+			//{
+			//	"RunScript"			"items/deathchill_blade"
+			//}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"dmg_bonus"			"90"
+		}
+	}
+}

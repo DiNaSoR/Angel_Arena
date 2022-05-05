@@ -1,0 +1,89 @@
+"item_ring_of_the_frozen_citadel"
+{
+	"ID"                            "1330"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"ring_of_the_frozen_citadel"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"precache"
+	{
+		"particle"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_ring_of_the_frozen_citadel"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%hp_regen"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%mana_regen"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+			}
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"Target" 		"ATTACKER"
+					"ModifierName"	"modifier_ring_of_the_frozen_citadel_slow"
+				}
+			}
+		}
+		"modifier_ring_of_the_frozen_citadel_slow"	// TODO Add proper values
+		{
+			"Duration"				"6"
+			"IsDebuff"				"1"	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-30"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-30"
+			}
+			"AttachEffect"
+			{
+				"EffectName"		"particles/generic_gameplay/generic_slowed_cold.vpcf"
+				"Target"			"ATTACKER"
+				"EffectAttachType"	"follow_origin"
+			}
+			
+		}			
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_regen"				"30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"40"
+		}
+	}
+
+
+}

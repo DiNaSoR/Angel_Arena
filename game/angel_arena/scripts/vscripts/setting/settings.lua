@@ -4,6 +4,7 @@ BAREBONES_DEBUG_SPEW = false
 --------------------------------------------------------------
 AA_VERSION                                   = LoadKeyValues("addoninfo.txt").version
 DROPS_TABLE                                  = LoadKeyValues("scripts/npc/kv/item_test.kv")
+CustomNetTables:SetTableValue("info", "version", { value = AA_VERSION })
 --SPAWN_INFO_KV                               = LoadKeyValues("scripts/npc/kv/spawn_info.kv")
 
 --IMBA KV------------------------------------------------------
@@ -44,10 +45,10 @@ POST_GAME_TIME                              = 60.0                  -- How long 
 TREE_REGROW_TIME                            = 60.0                 	-- How long should it take individual trees to respawn after being cut down/destroyed?
 --------------------------------------------------------------
 GOLD_PER_TICK                               = 1                    	-- How much gold should players get per tick?
-GOLD_TICK_TIME                              = 0.1                   -- How long should we wait in seconds between gold ticks?
+GOLD_TICK_TIME                              = 1                     -- How long should we wait in seconds between gold ticks?
 DISABLE_GOLD_SOUNDS                         = false					-- Should we disable the gold sound when players get gold?
 LOSE_GOLD_ON_DEATH                          = true                  -- Should we have players lose the normal amount of dota gold on death?
-STARTING_GOLD                               = 625                   -- How much starting gold should we give to each player?
+STARTING_GOLD                               = 315                   -- How much starting gold should we give to each player?
 --------------------------------------------------------------
 RECOMMENDED_BUILDS_DISABLED                 = false     	        -- Should we disable the recommened builds for heroes (Note: this is not working currently I believe)
 --------------------------------------------------------------
@@ -62,8 +63,8 @@ CUSTOM_BUYBACK_COST_ENABLED                 = false      	        -- Should we u
 CUSTOM_BUYBACK_COOLDOWN_ENABLED             = false  	            -- Should we use a custom buyback time?
 BUYBACK_ENABLED                             = false                 -- Should we allow people to buyback when they die?
 --------------------------------------------------------------
-DISABLE_FOG_OF_WAR_ENTIRELY                 = true			        -- Should we disable fog of war entirely for both teams?
-USE_UNSEEN_FOG_OF_WAR                       = false                 -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
+DISABLE_FOG_OF_WAR_ENTIRELY                 = false			        -- Should we disable fog of war entirely for both teams?
+USE_UNSEEN_FOG_OF_WAR                       = true                 -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
                                                                         -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 --------------------------------------------------------------
 USE_STANDARD_DOTA_BOT_THINKING              = true		            -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
@@ -77,7 +78,7 @@ ENABLE_TOWER_BACKDOOR_PROTECTION            = false	                -- Should we
 REMOVE_ILLUSIONS_ON_DEATH                   = false			        -- Should we remove all illusions if the main hero dies?
 --------------------------------------------------------------
 USE_CUSTOM_HERO_LEVELS                      = true				    -- Should we allow heroes to have custom levels?
-MAX_LEVEL                                   = 150								-- What level should we let heroes get to?
+MAX_LEVEL                                   = 250					-- What level should we let heroes get to?
 USE_CUSTOM_XP_VALUES                        = true				    -- Should we use custom XP values to level up heroes, or the default Dota numbers?
 XP_PER_LEVEL_TABLE                          = {}
 XP_PER_LEVEL_TABLE[1]                       = 0                     -- Fill this table up with the required XP per level if you want to change it

@@ -1,0 +1,44 @@
+"item_battleforge_shield"	// TODO Add block mechanic
+{
+	"ID"                            "1379"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"battleforge_shield"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_battleforge_blade"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%str_bonus"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"24"
+		}
+	}
+}

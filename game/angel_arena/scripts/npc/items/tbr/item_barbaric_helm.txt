@@ -1,0 +1,68 @@
+"item_barbaric_helm"
+{
+	"ID"                            "1169"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"barbaric_helm"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"precache"
+	{
+		"particle"					"particles\units\heroes\hero_centaur\centaur_return.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_barbaric_helm"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+
+			"OnAttacked"
+			{
+				"AttachEffect"
+				{
+					"Target" 			"ATTACKER"
+					"EffectName"		"particles\units\heroes\hero_centaur\centaur_return.vpcf"
+					"EffectAttachType" 	"follow_origin"
+					//"EffectRadius"		"200"
+				}
+
+				"Damage"
+				{
+					"Target"		"ATTACKER"
+					"Damage"		"75"
+					"Type"			"DAMAGE_TYPE_PHYSICAL"
+				}
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"25"
+		}
+	}
+}

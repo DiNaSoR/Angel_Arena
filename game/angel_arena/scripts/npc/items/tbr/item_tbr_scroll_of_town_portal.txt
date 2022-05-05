@@ -1,0 +1,22 @@
+///////// CONSUMABLES ///////
+/////////////////////////////
+
+"item_tbr_scroll_of_town_portal" // TODO Make it work
+{
+	"ID"                            "1007"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"tbr_scroll_of_town_portal"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"consumable"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+
+	}
+}

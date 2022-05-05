@@ -1,0 +1,77 @@
+"item_shimmering_lance"
+{
+	"ID"                            "1331"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"shimmering_lance"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/generic_gameplay/generic_slowed_cold.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_shimmering_lance"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+			}
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"Target" 		"TARGET"
+					"ModifierName"	"modifier_shimmering_lance_slow"
+				}
+				"Random"
+				{
+					"Chance"		 "10"
+					"OnSuccess"
+					{
+						"Damage"
+						{
+							"Target" "TARGET"
+							"Type"	 "DAMAGE_TYPE_MAGICAL"
+							"Damage" "300"
+						}
+					}
+				}
+			}
+		}
+		"modifier_shimmering_lance_slow"
+		{	
+			"Duration"				"8"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-25"
+			}
+			"AttachEffect"
+			{
+				"EffectName"		"particles/generic_gameplay/generic_slowed_cold.vpcf"
+				"Target"			"ATTACKER"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"250"
+		}
+	}
+
+
+}

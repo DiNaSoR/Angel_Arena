@@ -1,0 +1,68 @@
+"item_unyielding_tower"
+{
+	"ID"                            "1375"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"unyielding_tower"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_unyielding_tower"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"				"%hp_bonus"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+			}
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"Target" 			"ATTACKER"
+					"ModifierName"		"modifier_unyielding_tower_slow"
+				}
+			}
+		}
+		"modifier_unyielding_tower_slow"
+		{
+			"Duration"				"6"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-30"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"-30"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"100"			
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"6000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"30"
+		}
+	}
+}

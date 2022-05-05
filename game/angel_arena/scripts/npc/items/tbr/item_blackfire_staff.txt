@@ -1,0 +1,47 @@
+///////// RELICS ////////////
+/////////////////////////////
+
+"item_blackfire_staff"
+{
+	"ID"                            "1363"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"blackfire_staff"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_blackfire_Staff"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"		"%dmg_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"all_stats"				"50"			
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"15"
+		}
+	}
+}

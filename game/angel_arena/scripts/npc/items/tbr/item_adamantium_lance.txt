@@ -1,0 +1,91 @@
+"item_adamantium_lance"		// TODO Add With Adamantium Helm, Adamantium Tower: +50 armor, +100 attack damage.
+{
+	"ID"                            "1351"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"adamantium_lance"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_adamantium_lance"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+			}
+
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "10"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "adamantium_lance_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+
+		"adamantium_lance_crit"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "300"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"wraithblade_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"125"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"25"
+		}
+	}
+}

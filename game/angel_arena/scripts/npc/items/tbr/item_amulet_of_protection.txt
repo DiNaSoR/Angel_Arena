@@ -1,0 +1,59 @@
+"item_amulet_of_protection"
+{
+	"ID"                            "1153"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"amulet_of_protection"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_amulet_of_protection"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%hp_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+		}
+		"modifiers_evasion"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%miss_chance"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"600"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"miss_chance"			"20"
+		}
+	}
+}

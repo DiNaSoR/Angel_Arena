@@ -1,0 +1,106 @@
+//Increases your Strength and Agility by 150 and your intelligence by 5. 
+//Adds 125 to your movement speed and gives you 25% evasion. In addition, each time you attack you will regenerate .33% of your maximum life total. 
+//Use: Fills you with the spirit of the war god Ares, giving you an additional 25% damage for 45 seconds. 2 minute cooldown. Olympian Relic
+
+//Recipe costs 100 000 Crafting Materials, 100 000 gold. Requires Level 200
+"item_ares_bloodthirsty_spear"
+{
+	"ID"                            "1362"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"			"ares_bloodthirsty_spear"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "100000"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+	"ItemKillable" 					"0" 
+	"ItemSellable" 					"0"
+	"ItemPurchasable"				"1"
+	"ItemDroppable"					"1"
+
+	"AbilityCooldown"				"120"
+	"AbilityDuration"				"45"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_str_agi" "150"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_int" "5"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"movement_speed" "125"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"evasion" "25"
+		}
+		"05"
+		{
+			"var_type" "FIELD_FLOAT"
+			"lifesteal_total" "0.33"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage_percent" "25"
+		}
+	}
+
+	"OnSpellStart"
+	//Fills you with the spirit of the war god Ares, giving you an additional 25% damage for 45 seconds.
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"ares_spear_active"
+			"Target"		"CASTER"
+		}	
+	}
+
+	"Modifiers"
+	{
+		"ares_spear_modifier"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movement_speed"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+			}
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items.lua"
+					"Function"		"AresLifesteal"
+				}
+			}
+		}
+		"ares_spear_active"
+		{
+			"IsHidden"	"0"
+			"IsBuff"	"1"
+			"Duration"	"15"
+			"TextureName"	"items/ares_bloodthirsty_spear"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_percent"
+			}
+			"EffectName" 		"particles/items2_fx/satanic_buff.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
+	}	
+}

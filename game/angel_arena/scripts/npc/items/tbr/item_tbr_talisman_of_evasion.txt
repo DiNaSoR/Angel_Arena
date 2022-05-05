@@ -1,0 +1,37 @@
+"item_tbr_talisman_of_evasion"
+{
+	"ID"                            "1150"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"talisman_of_evasion"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_evasion"
+		{
+			"Passive"				"1"
+			"IsHidden"				"0"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%miss_chance"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"miss_chance"			"30"
+		}
+	}
+}

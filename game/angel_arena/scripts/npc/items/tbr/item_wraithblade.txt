@@ -1,0 +1,181 @@
+///////// ARTIFACTS /////////
+/////////////////////////////
+"item_wraithblade"
+{
+	"ID"                            "1377"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"wraithblade"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                 	 	"9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"Model" 						"models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon.vmdl"
+	"Effect" 						"particles/econ/courier/courier_roshan_frost/courier_roshan_frost_ambient.vpcf"
+
+	//"OnEquip"
+	//{
+	//	"ApplyModifier"
+	//	{
+	//		"ModifierName"		"bonus_spell_power"
+	//		"Target"			"CASTER"
+	//	}
+	
+	//	"ApplyModifier"
+	//	{
+	//		"ModifierName"		"bonus_healing_power"
+	//		"Target"			"CASTER"
+	//	}
+	//}
+
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items.lua"
+			"Function"		"ItemCheck"
+		}
+	}
+
+	"Modifiers"
+	{
+		// "bonus_spell_power"
+		// {
+		// 	"Passive"			"1"
+		// 	"IsHidden"			"1"
+		// 	"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+		// 	"OnCreated"
+		// 	{
+		// 		"RunScript"
+		// 		{
+		// 			"ScriptFile"	"items.lua"
+		// 			"Function"		"GiveSpellPower"
+		// 			"BonusPower"	"600" //should be an AbilitySpecial
+		// 		}
+		// 	}
+		// 	"OnDestroy"
+		// 	{
+		// 		"RunScript"
+		// 		{
+		// 			"ScriptFile"	"items.lua"
+		// 			"Function"		"RemoveSpellPower"
+		// 			"BonusPower"	"600"
+		// 		}
+		// 	}
+		// }
+
+		// "bonus_healing_power"
+		// {
+		// 	"Passive"			"1"
+		// 	"IsHidden"			"1"
+		// 	"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+		// 	"OnCreated"
+		// 	{
+		// 		"RunScript"
+		// 		{
+		// 			"ScriptFile"	"items.lua"
+		// 			"Function"		"GiveHealingPower"
+		// 			"BonusPower"	"600" //should be an AbilitySpecial
+		// 		}
+		// 	}
+		// 	"OnDestroy"
+		// 	{
+		// 		"RunScript"
+		// 		{
+		// 			"ScriptFile"	"items.lua"
+		// 			"Function"		"RemoveHealingPower"
+		// 			"BonusPower"	"600"
+		// 		}
+		// 	}
+		// }
+		
+		"modifier_wraithblade"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" 			"%armor"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%mana_regen"
+			}
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "wraithblade_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+
+		"wraithblade_crit"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"wraithblade_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor"					"40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"all_stats"				"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"35"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_chance"			"10"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_bonus"			"300"
+		}
+
+	}
+}

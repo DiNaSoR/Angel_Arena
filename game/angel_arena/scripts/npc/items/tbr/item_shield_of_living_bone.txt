@@ -1,0 +1,75 @@
+"item_shield_of_living_bone"		// TODO Copy the method of the athena shield for Block
+{
+	"ID"                            "1315"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"shield_of_living_bone"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_shield_of_living_bone"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance"		"50"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target" 			"CASTER"
+							"ModifierName"		"modifier_shield_of_living_bone_block"
+						}
+						"RemoveModifier"
+						{
+							"Target" 			"CASTER"
+							"ModifierName"		"modifier_shield_of_living_bone_block"
+						}
+					}
+				}
+			}
+		}
+		"modifier_shield_of_living_bone_block"
+		{
+			"Properties"
+			{	
+				"IsHidden"			"1"
+				
+				"MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK"	"1000"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"30"
+		}
+	}
+
+
+}

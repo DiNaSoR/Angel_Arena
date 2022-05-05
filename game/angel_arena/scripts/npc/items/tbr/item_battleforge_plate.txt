@@ -1,0 +1,89 @@
+"item_battleforge_plate"  // TODO Add 0.2 Mana regained OnAttacked
+{
+	"ID"                            "1088"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"battleforge_plate"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_battleforge_plate"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"Target" 			"CASTER"
+					"ModifierName"		"modifier_battleforge_plate_mana_regen"
+					"Duration"			"1"
+				}
+			}
+
+			"ThinkInterval"			"1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target" //AOE
+					{
+						"Center" 	"CASTER"
+						"Radius" 	"200"
+						"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY" //Actually it should damage both
+						"Types" 	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"40"
+				}
+			}
+		}
+		"modifier_battleforge_plate_mana_regen"
+		{
+			"Passive"				"1"
+			"IsHidden"				"0"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%mana_regen"	
+			}
+		}	
+	}
+
+	
+
+	"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"str_bonus"			"20"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"armor_bonus"		"35"
+			}
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"mana_regen"		"1"
+			}
+		}
+}

@@ -1,0 +1,83 @@
+"item_adamantium_scythe"
+{
+	"ID"                            "1220"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"adamantium_scythe"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_adamantium_scythe"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%dmg_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+			}
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "10"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "adamantium_scythe_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+			
+		"adamantium_scythe_crit"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "300"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"adamantium_scythe_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"60"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"30"
+		}
+	}
+}

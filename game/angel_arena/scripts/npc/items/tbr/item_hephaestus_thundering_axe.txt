@@ -1,0 +1,79 @@
+"item_hephaestus_thundering_axe"
+{
+	"ID"                            "1353"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"placeholder"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_hephaestus_thundering_axe"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+			}
+
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" 					"8"
+					"OnSuccess"
+					{				
+						"Stun"
+						{
+							"Target"			"TARGET"
+							"Duration"			"2.5"
+						}
+						"Damage"
+						{
+							"Target"		 	"TARGET"
+							"Type"			 	"DAMAGE_TYPE_PHYSICAL"
+							"Damage"			"1500"
+						}
+						"FireSound"
+						{
+							"EffectName"		"Hero_Slardar.Slithereen_Crush"
+							"Target" 			"CASTER"
+						}
+						"FireEffect"
+						{
+							"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+							"EffectAttachType"	"follow_origin"
+							"Target"			"TARGET"
+						}			
+					}
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"100"
+		}
+	}
+
+
+}

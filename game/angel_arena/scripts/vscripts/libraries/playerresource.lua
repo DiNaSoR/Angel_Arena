@@ -1,20 +1,29 @@
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:SetPlayerStat(PlayerID, key, value)
 	local pd = PLAYER_DATA[PlayerID]
 	if not pd.HeroStats then pd.HeroStats = {} end
 	pd.HeroStats[key] = value
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:GetPlayerStat(PlayerID, key)
 	local pd = PLAYER_DATA[PlayerID]
 	return pd.HeroStats == nil and 0 or (pd.HeroStats[key] or 0)
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:ModifyPlayerStat(PlayerID, key, value)
 	local v = self:GetPlayerStat(PlayerID, key) + value
 	self:SetPlayerStat(PlayerID, key, v)
 	return v
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:SetPlayerTeam(playerID, newTeam)
 	local oldTeam = self:GetTeam(playerID)
 	local player = self:GetPlayer(playerID)
@@ -68,7 +77,9 @@ function CDOTA_PlayerResource:SetPlayerTeam(playerID, newTeam)
 	Teams:RecalculateKillWeight(oldTeam)
 	Teams:RecalculateKillWeight(newTeam)
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:SetDisableHelpForPlayerID(nPlayerID, nOtherPlayerID, disabled)
 	if nPlayerID ~= nOtherPlayerID then
 		if not PLAYER_DATA[nPlayerID].DisableHelp then
@@ -81,11 +92,15 @@ function CDOTA_PlayerResource:SetDisableHelpForPlayerID(nPlayerID, nOtherPlayerI
 		PlayerTables:SetTableValue("disable_help_data", disable_help_data)
 	end
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:IsDisableHelpSetForPlayerID(nPlayerID, nOtherPlayerID)
 	return PLAYER_DATA[nPlayerID] ~= nil and PLAYER_DATA[nPlayerID].DisableHelp ~= nil and PLAYER_DATA[nPlayerID].DisableHelp[nOtherPlayerID] and PlayerResource:GetTeam(nPlayerID) == PlayerResource:GetTeam(nOtherPlayerID)
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:KickPlayer(nPlayerID)
 	local usid = PLAYER_DATA[nPlayerID].UserID
 	if usid then
@@ -94,11 +109,15 @@ function CDOTA_PlayerResource:KickPlayer(nPlayerID)
 	end
 	return false
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:IsPlayerAbandoned(playerID)
 	return IsPlayerAbandoned(playerID)
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:MakePlayerAbandoned(iPlayerID)
 	if not PLAYER_DATA[iPlayerID].IsAbandoned then
 		RemoveAllOwnedUnits(iPlayerID)
@@ -158,8 +177,71 @@ function CDOTA_PlayerResource:MakePlayerAbandoned(iPlayerID)
 		end
 	end
 end
-
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
 function CDOTA_PlayerResource:GetRealSteamID(PlayerID)
 	local id = tostring(PlayerResource:GetSteamID(PlayerID))
 	return id == "0" and tostring(PlayerID) or id
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+--[[ Extension functions for PlayerResource
+-PlayerResource:GetAllTeamPlayerIDs()
+  Returns an iterator for all the player IDs assigned to a valid team (radiant, dire, or custom)
+-PlayerResource:GetConnectedTeamPlayerIDs()
+  Returns an iterator for all connected, non-spectator player IDs
+-PlayerResource:GetPlayerIDsForTeam(int team)
+  Returns an iterator for all player IDs in the given team
+-PlayerResource:GetConnectedPlayerIDsForTeam(int team)
+  Returns an iterator for all connected player IDs in the given team
+-PlayerResource:RandomHeroForPlayersWithoutHero()
+  Forcibly randoms a hero for any player that has not yet picked a hero
+-PlayerResource:IsBotOrPlayerConnected(int id)
+  Returns true if the given player ID is a connected bot or player
+]]
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:GetAllTeamPlayerIDs()
+  return filter(partial(self.IsValidPlayerID, self), range(0, self:GetPlayerCount()))
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:GetConnectedTeamPlayerIDs()
+  return filter(partial(self.IsBotOrPlayerConnected, self), self:GetAllTeamPlayerIDs())
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:GetPlayerIDsForTeam(team)
+  return filter(function(id) return self:GetTeam(id) == team end, range(0, self:GetPlayerCount()))
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:GetConnectedTeamPlayerIDsForTeam(team)
+  return filter(partial(self.IsBotOrPlayerConnected, self), self:GetPlayerIDsForTeam(team))
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:RandomHeroForPlayersWithoutHero()
+  function HasNotSelectedHero(playerID)
+    return not self:HasSelectedHero(playerID)
+  end
+  function ForceRandomHero(playerID)
+    self:GetPlayer(playerID):MakeRandomHeroSelection()
+  end
+  local playerIDsWithoutHero = filter(HasNotSelectedHero, self:GetConnectedTeamPlayerIDs())
+  foreach(ForceRandomHero, playerIDsWithoutHero)
+end
+---------------------------------------------------------------------------
+-- ???
+---------------------------------------------------------------------------
+function CDOTA_PlayerResource:IsBotOrPlayerConnected(id)
+  local connectionState = self:GetConnectionState(id)
+  return connectionState == 2 or connectionState == 1
 end

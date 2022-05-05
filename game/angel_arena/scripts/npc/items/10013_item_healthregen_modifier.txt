@@ -14,6 +14,9 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemSellable" 					"0"
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
 	
 		"Modifiers"
 		{

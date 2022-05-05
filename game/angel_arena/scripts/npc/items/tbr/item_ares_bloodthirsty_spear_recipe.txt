@@ -1,0 +1,48 @@
+//Add this on every item that needs to do a check for restrictions
+//This is needed because the listener for inventory changed is broken, and OnItemPickedUp doesn't account for someone dragging an item into another players inventory
+//Item restrictions are defined here, looking them in the item_info.kv table
+//	"OnEquip"
+//	{
+//		"RunScript"
+//		{
+//			"ScriptFile"	"items.lua"
+//			"Function"		"ItemCheck"
+//		}
+//	}
+
+// "artifact" (Orange)
+// "epic" (Purple)
+// "rare" (Blue)
+// "common" (Green)
+// "component" "consumable" (White)
+
+// Olympic Relic (Dark blue)
+// Relic (Light blue)
+// Artifact (Green)
+// Unique (Orange)
+// Common (White)
+// Consumable (White)
+// Crafting (Multiple)
+
+
+////// OLYMPIC RELICS ///////
+/////////////////////////////
+
+//Heletes will forge you Ares Bloodthirsty Spear. 
+//Requires: Blade of Ares, Shadow Blade, Burning Hand of the War God, Heartstone Ring of Agility + 2 New Item components
+	//New Item components:
+		// Philosopher's Stone:  2 Gemstone of the Olympians, 2 Stone of Heaven
+		// Primatic Gem: Gem of the North, Gem of the South, Gem of the East, Gem of the West
+// TODO: Recipe
+"item_ares_bloodthirsty_spear_recipe"
+{
+	"ID"							"2362"
+	"BaseClass"						"item_recipe_arcane_boots"
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_ares_bloodthirsty_spear"
+	"ItemCost"						"10000"
+	"ItemRequirements"
+	{
+		"01"						"item_blade_of_ares;item_shadow_blade;item_burning_hand_of_the_war_god;item_heartstone_ring_of_agility"
+	}
+}

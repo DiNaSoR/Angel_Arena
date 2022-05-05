@@ -1,0 +1,49 @@
+"item_deathchill_greatsword"	// TODO Make Lua script that applies 35% of your base damage as AoE damage around the target. Note that this does not include damage bonuses from items.
+{
+	"ID"                            "1345"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"deathchill_greatsword"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_deathchill_greatsword"
+		{
+			"Passive" 				"1"
+			"IsHidden" 				"1"
+			"Attributes" 			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 	"%dmg_bonus"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%stat_bonus"
+			}
+			//"OnAttackLanded"
+			//{
+			//	"RunScript"			"items/deathchill_greatsword"
+			//}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"dmg_bonus"			"150"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"stat_bonus"		"50"
+		}
+	}
+}

@@ -1,73 +1,95 @@
+--------------------------------------------------------------
+-- Version
+--------------------------------------------------------------
+
 PUDGE_AI_VERSION = "0.1"
+
 --------------------------------------------------------------
 -- Setting
 --------------------------------------------------------------
-HOOK_SOUNDBOX = {	"pudge_pud_ability_hook_01",
-					"pudge_pud_ability_hook_02",
-					"pudge_pud_ability_hook_03",
-					"pudge_pud_ability_hook_04", 
-					"pudge_pud_ability_hook_05", 
-					"pudge_pud_ability_hook_06", 
-					"pudge_pud_ability_hook_07", 
-					"pudge_pud_ability_hook_08"
-				}
-DISM_SOUNDBOX = {	"pudge_pud_attack_08",
-					"pudge_pud_attack_09",
-					"pudge_pud_attack_10",
-					"pudge_pud_attack_11", 
-					"pudge_pud_attack_12", 
-					"pudge_pud_attack_13"
-				}
-RUNNING_SOUNDBOX = {"pudge_pud_laugh_01",
-					"pudge_pud_laugh_02",
-					"pudge_pud_laugh_03",
-					"pudge_pud_laugh_04", 
-					"pudge_pud_laugh_05", 
-					"pudge_pud_laugh_06", 
-					"pudge_pud_laugh_07"
+
+HOOK_SOUNDBOX = 	{	"pudge_pud_ability_hook_01",
+						"pudge_pud_ability_hook_02",
+						"pudge_pud_ability_hook_03",
+						"pudge_pud_ability_hook_04", 
+						"pudge_pud_ability_hook_05", 
+						"pudge_pud_ability_hook_06", 
+						"pudge_pud_ability_hook_07", 
+						"pudge_pud_ability_hook_08"
 					}
-PUDGE_DIALOG = 	{	"YEAH RUN AWAY LITTLE GIRL!",
-					"slag!.Slag!.SLAG!",
-					"WHAT A WANKER!",
-					"HAHA YOU THOUGHT YOU CAN TAKE ME?", 
-					"JUST AS I THOUGHT!", 
-					"TURN YOUR FACE AND NEVER COME BACK!", 
-					"I WILL STEP ON YOUR FACE IF YOU STEP HERE AGAIN!"
-				}											
+DISM_SOUNDBOX = 	{	"pudge_pud_attack_08",
+						"pudge_pud_attack_09",
+						"pudge_pud_attack_10",
+						"pudge_pud_attack_11", 
+						"pudge_pud_attack_12", 
+						"pudge_pud_attack_13"
+					}
+RUNNING_SOUNDBOX = 	{	"pudge_pud_laugh_01",
+						"pudge_pud_laugh_02", 
+						"pudge_pud_laugh_03",
+						"pudge_pud_laugh_04", 
+						"pudge_pud_laugh_05", 
+						"pudge_pud_laugh_06", 
+						"pudge_pud_laugh_07"
+					}
+PUDGE_DIALOG =	 	{	"YEAH RUN AWAY LITTLE GIRL!",
+						"slag!.Slag!.SLAG!",
+						"WHAT A WANKER!",
+						"HAHA YOU THOUGHT YOU CAN TAKE ME?", 
+						"JUST AS I THOUGHT!", 
+						"TURN YOUR FACE AND NEVER COME BACK!", 
+						"I WILL STEP ON YOUR FACE IF YOU STEP HERE AGAIN!"
+					}											
 --------------------------------------------------------------
 -- InitGameMode
 --------------------------------------------------------------
-function 	Spawn( entityKeyValues )
-				Pudgespeech = true
-				print("[Angel Arena] Starting AI for "..thisEntity:GetUnitName().." "..PUDGE_AI_VERSION)
-				hook 	= thisEntity:FindAbilityByName("skill_pudge_meat_hook")
-				rot 	= thisEntity:FindAbilityByName("pudge_rot")
-				dism 	= thisEntity:FindAbilityByName("pudge_dismember")
 
-				thisEntity:SetContextThink("Hook", Hook, 1)
-				thisEntity:SetContextThink("Dism", Dism, 1)
+function 	Spawn( entityKeyValues )
+				--Pudgespeech = true
+				
+				print("[Angel Arena] Starting AI for "..thisEntity:GetUnitName().." "..PUDGE_AI_VERSION)
+				
+				hookskill 	= thisEntity:FindAbilityByName( "skill_pudge_meat_hook" )
+				rot 		= thisEntity:FindAbilityByName("pudge_rot")
+				dism 		= thisEntity:FindAbilityByName("pudge_dismember")
+
+				--thisEntity:SetContextThink("Hook", Hook, 1)
+				--thisEntity:SetContextThink("Dism", Dism, 1)
 				thisEntity:SetContextThink("AIThinking", AIThinking, 0.5)
-				thisEntity:SetContextThink("CastItemName", CastItemName, 0.5)
+				--thisEntity:SetContextThink("CastItemName", CastItemName, 0.5)
 end
 --------------------------------------------------------------
 -- AI Behavior
 --------------------------------------------------------------
-function AIThinking()
 
+function AIThinking()
+--print("I am searching")
+--print(hookskill)
 	local point = Vector(-128, 256, 128)
-	local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
+	local units = FindUnitsInRadius(
+									thisEntity:GetTeamNumber(), 
+									thisEntity:GetAbsOrigin(), 
+									nil, 
+									130000, 
+									DOTA_UNIT_TARGET_TEAM_ENEMY, 
+									DOTA_UNIT_TARGET_HERO, 
+									DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, 
+									FIND_CLOSEST, 
+									false)
     
+	for _,unit in pairs(units)  do
+		  print(unit:GetName())
+		  print("found one")
+	  end
+
     if thisEntity:IsNull() or not thisEntity:IsAlive() then
+		print("I am searching2")
         return nil
     end	
 
-    if #units <= 0 then
-    	thisEntity:MoveToPosition(point)
-    end
-
     if (point - thisEntity:GetOrigin()):Length() > 1400 then
         thisEntity:MoveToPosition(point)
-        dialogpudge()
+        print("traget flee")
     end
  
     return 0.5;
@@ -81,22 +103,29 @@ function dialogpudge()
 --print("Bador")
 end
 
---//--------------------------------------------------------------------------------------
---//	Hook
---//--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--	Hook
+--------------------------------------------------------------------------------------
 function Hook()
+	print("I am searching hook")
 
-	if hook:IsFullyCastable() then
+	if hookskill:IsFullyCastable() then
 
 		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
+		
+		for i,unit in ipairs(units) do
+			if i > 1 then -- Skip the closest one, which is the unit itself
+			  print(unit:GetName())
+			end
+		  end
 
 		if units ~= nil then
 			if #units >= 1 then
 				local index = RandomInt( 1, #units )
 				local target = units[index]
 				
-				thisEntity:CastAbilityOnPosition(target:GetAbsOrigin(), hook, -1)
-				--print("Pudge Hook")
+				thisEntity:CastAbilityOnPosition(target:GetAbsOrigin(), hookskill, -1)
+				print("Pudge Hook")
 				EmitSoundOn(HOOK_SOUNDBOX[RandomInt(1,8)], target)
 				
 
@@ -106,14 +135,14 @@ function Hook()
 			end
 		end	
 	else
-		--print("[Bador] Hook no ready")	
+		print("[Bador] Hook no ready")	
 	end
 	return 1
 end
 
---//--------------------------------------------------------------------------------------
---//	cast Urn
---//--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--	cast Urn
+--------------------------------------------------------------------------------------
 function CastItemName()
 	--print("CastItemNmae run")
 	local healthRemaining = thisEntity:GetHealth() / thisEntity:GetMaxHealth()
@@ -154,9 +183,9 @@ end
 
 
 
---//--------------------------------------------------------------------------------------
---//	Dismember
---//--------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------
+--	Dismember
+--------------------------------------------------------------------------------------
 function Dism()
 
 

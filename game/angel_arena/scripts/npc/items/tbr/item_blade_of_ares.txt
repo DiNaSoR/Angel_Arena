@@ -1,0 +1,69 @@
+"item_blade_of_ares"
+{
+	"ID"                            "1206"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"blade_of_ares"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/items_fx/bloodstone_heal.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_blade_of_ares"
+		{
+
+
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%dmg_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+			}
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		"particles/items_fx/bloodstone_heal.vpcf"
+					"EffectAttachType" 	"follow_origin"
+					"Target" 			"TARGET"
+				}
+				"Damage"
+				{
+					"Target"		 "TARGET"
+					"Type"			 "DAMAGE_TYPE_PHYSICAL"
+					"Damage"		 "35"
+				}
+				"Heal"
+				{
+					"Target" 		"CASTER"
+					"HealAmount"	"35"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"30"
+		}
+	}
+}

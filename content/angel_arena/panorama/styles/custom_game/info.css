@@ -1,0 +1,11 @@
+.InfoContainer
+{
+  horizontal-align: left;
+  vertical-align: top;
+}
+
+.InfoLabel
+{
+  color: #faff00;
+  font-weight: bold;
+}

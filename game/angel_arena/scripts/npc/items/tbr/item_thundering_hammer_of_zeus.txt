@@ -1,0 +1,190 @@
+//TODO: Recipe
+//Heletes will forge you the Thundering Hammer of Zeus. 
+//Requires two Gemstone of the Olympians, two Stone of Heaven, Gem of the North, Gem of the South, Gem of the East, Gem of the West, 
+//Bright Lance, Sword of the High Commander, Hephaestus Thundering Axe, Biting Blade, 
+//100 000 Crafting Materials, 100 000 gold. Requires Level 200
+
+//Increases Strength and Agility by 150, intelligence by 5, attack damage of you and your nearby allies by 33%
+//gives you an 8% chance to bash for up to 2 seconds and deal an additional 2000 damage. 
+//Has a 15% chance on attack to unleash a bolt of lightning that deals 5000 damage to the first target and then jumps to up to 5 other targets, each jump doing 20% less damage. 
+"item_thundering_hammer_of_zeus"
+{
+	"ID"                            "1372"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"thundering_hammer_of_zeus"
+	
+	"ItemQuality"					"rare"
+	"ItemCost"                      "100000"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+	"ItemKillable" 					"0" 
+	"ItemSellable" 					"0"
+	"ItemPurchasable"				"1"
+	"ItemDroppable"					"1"
+
+	"AbilityCooldown"				"300"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_str_agi" "150"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_int" "5"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_damage_aura" "33"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"radius" "900"
+		}
+		"05"
+		{
+			"var_type" "FIELD_FLOAT"
+			"bash_chance" "8"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bash_damage" "2000"
+		}
+		"07"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bash_duration" "2"
+		}
+		"08"
+		{
+			"var_type" "FIELD_INTEGER"
+			"lightning_chance" "15"
+		}
+		"09"
+		{
+			"var_type" "FIELD_INTEGER"
+			"lightning_damage" "5000"
+		}
+		"10"
+		{
+			"var_type" "FIELD_INTEGER"
+			"lightning_bounces" "5"
+		}
+		"11"
+		{
+			"var_type" "FIELD_INTEGER"
+			"lightning_decay" "20"
+		}
+		"12"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bounce_range" "450"
+		}
+	}
+
+	"precache"
+	{
+		"particle"	"particles/generic_gameplay/generic_stunned_old.vpcf"
+		"particle"	"particles/items_fx/chain_lightning.vpcf"
+		"particle"	"particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf"
+	}
+
+	"OnEquip"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items.lua"
+			"Function"		"ItemCheck"
+		}
+	}
+
+	"Modifiers"
+	{
+		"hammer_of_zeus_modifier"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+			}
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance"		"%bash_chance"
+					"OnSuccess"
+					{
+						//This way it wont stack stuns
+						"ApplyModifier"
+						{
+							"Target" 			"TARGET"
+							"ModifierName"		"hammer_of_zeus_bash"
+						}
+					}
+				}
+				"Random"
+				{
+					"Chance"		"%lightning_chance"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"items.lua"
+							"Function"		"ZeusLightning"
+						}
+					}
+				}
+			}
+
+			"Aura" 			"hammer_of_zeus_aura"
+    		"Aura_Radius" 	"%radius"
+    		"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" 	"DOTA_UNIT_TARGET_ALL"			
+		}
+
+		"hammer_of_zeus_bash"
+		{
+			"Duration"	"%bash_duration"
+			"IsDebuff"	"1"
+			"IsHidden"	"0"
+			"EffectName"	"particles/generic_gameplay/generic_stunned_old.vpcf"
+			"EffectAttachType"	"follow_overhead"
+			"OnCreated"
+			{
+				"Damage"
+				{
+					"Target"		 "TARGET"
+					"Type"			 "DAMAGE_TYPE_PHYSICAL"
+					"Damage"		 "%bash_damage"
+				}
+			}
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"		"MODIFIER_STATE_VALUE_ENABLED"				
+			}
+			"OverrideAnimation"	"ACT_DOTA_DISABLED"
+		}		
+
+		"hammer_of_zeus_aura"
+   		{	
+	    	"IsBuff"	"1"
+	    	"IsHidden"	"0"
+	    	"IsPurgable" "0"
+	    	
+	    	"Properties"
+	    	{
+	     		"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%bonus_damage_aura"
+	    	}
+	    }
+	}
+}

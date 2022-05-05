@@ -1,0 +1,54 @@
+"item_light_regalia"
+{
+	"ID"                            "1251"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"light_regalia"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_light_regalia"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"%mana_regen"
+
+			}
+			"OnAttackLanded"
+			{
+				//"RunScript"		"items/light_regalia"	-- Adds AoE heal on attack. Heal Amount is equal to 1/3 of your Intelligence
+			}	
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"55"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"12"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"50"
+		}
+	}
+}

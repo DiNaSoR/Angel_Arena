@@ -19,8 +19,8 @@
 
 		"ItemQuality"					"epic"
 		"ItemCost"                      "9000" 	
-		"ItemShopTags"					"sideshop1"
-		"SideShop"						"1"
+		//"ItemShopTags"					"sideshop1"
+		//"SideShop"						"1"
 		
 		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 		"Modifiers"

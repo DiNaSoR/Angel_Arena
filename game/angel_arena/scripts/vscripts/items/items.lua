@@ -300,7 +300,7 @@ function HephaestusRespawn( event )
 end
 
 function ZeusLightning( event )
-	print("Struck by Zuus")
+	print("Struck by Zeus")
 	local hero = event.caster
 	local target = event.target
 	local damage = event.ability:GetSpecialValueFor("lightning_damage")

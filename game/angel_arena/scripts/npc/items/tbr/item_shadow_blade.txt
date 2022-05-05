@@ -1,0 +1,54 @@
+"item_shadow_blade"
+{
+	"ID"                            "1368"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"shadow_blade"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_shadow_blade"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%agi_bonus"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" 		"%dmg_bonus"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"		"%move_speed"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%evasion"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"150"			
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"			"100"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"25"
+		}
+	}
+}

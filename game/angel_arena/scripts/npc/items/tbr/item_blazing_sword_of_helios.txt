@@ -1,0 +1,142 @@
+//TODO: Recipe
+//Heletes will forge you the Blazing Sword of Helios. 
+//Requires 
+	//two Gemstone of the Olympians, two Stone of Heaven, 
+	//Gem of the North, Gem of the South, Gem of the East, Gem of the West, 
+	//Adamantium Scythe, Sword of Destruction, Soul Blade, Heartstone Ring of Agility, 
+//100 000 Crafting Materials, 100 000 gold. Requires Level 200
+
+
+//Increases your Strength and Agility by 150 and your intelligence by 5. 
+//Increases your attack damage by 20% and gives you a 10% chance to do 4.5 time normal damage on an attack. 
+//Use: Calls down 5 meteors from the god Helios, each inflicting between 500 and 5000 damage to all enemies in the area. 3 minute cooldown
+"item_blazing_sword_of_helios"
+{
+	"ID"                            "1364"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityTextureName"			"blazing_sword_of_helios"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "100000"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+	"ItemKillable" 					"0" 
+	"ItemSellable" 					"0"
+	"ItemPurchasable"				"1"
+	"ItemDroppable"					"1"
+
+	"AbilityCooldown"				"180"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_str_agi" "150"
+		}
+		"02"
+		{
+			"var_type" "FIELD_INTEGER"
+			"bonus_int" "5"
+		}
+		"03"
+		{
+			"var_type" "FIELD_INTEGER"
+			"damage_bonus_percent" "20"
+		}
+		"04"
+		{
+			"var_type" "FIELD_INTEGER"
+			"crit_chance" "20"
+		}
+		"05"
+		{
+			"var_type" "FIELD_INTEGER"
+			"crit_multiplier" "25"
+		}
+		"06"
+		{
+			"var_type" "FIELD_INTEGER"
+			"meteor_min_damage" "500"
+		}
+		"07"
+		{
+			"var_type" "FIELD_INTEGER"
+			"meteor_max_damage" "5000"
+		}
+		"08"
+		{
+			"var_type" "FIELD_INTEGER"
+			"radius" "350"
+		}
+	}
+
+	"OnSpellStart"
+	//Calls down 5 meteors from the god Helios, each inflicting between 500 and 5000 damage to all enemies in the area.
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items.lua"
+			"Function"		"HeliosMeteors"
+			"Target"		"POINT"
+		}
+	}
+
+	"Modifiers"
+	{
+		"sword_of_helios_modifier"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_bonus_percent"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_str_agi"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+			}
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "sword_of_helios_crit"
+							"Target"	   "CASTER"	
+						}			
+					}
+				}
+			}
+		}
+		"sword_of_helios_crit"
+		{
+			"IsHidden"	"1"
+			"Duration"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"sword_of_helios_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}	
+}

@@ -1,0 +1,67 @@
+"item_divine_regalia"	// TODO Set Bonus: Whenever your physical attacks land there is a 10% chance that a bolt of fire will leap from your sword, causing damage equal to double your Strength to all enemy units in front of you in a line.
+{
+	"ID"                            "1235"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"divine_regalia"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_divine_regalia"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%str_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%int_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%agi_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armor_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%mana_regen"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"40"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"15"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"45"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"25"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"50"
+		}
+	}
+}

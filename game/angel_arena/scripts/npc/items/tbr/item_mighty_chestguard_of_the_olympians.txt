@@ -1,0 +1,92 @@
+"item_mighty_chestguard_of_the_olympians"		// Fix particle not ending
+{
+	"ID"                            "1283"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"mighty_chestguard_of_the_olympians"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/generic_gameplay/generic_stunned.vpcf"
+	}
+
+	"Modifiers"
+	{
+		"modifier_mighty_chestguard_of_the_olympians"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%int_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"				"%hp_bonus"
+			}
+			"OnAttacked"
+			{
+				"Random"
+				{
+					"Chance"					"10"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target" 			"ATTACKER"
+							"ModifierName"		"mighty_chestguard_of_the_olympians_stun"
+						}							
+					}
+				}
+			
+			}
+		}
+		"mighty_chestguard_of_the_olympians_stun"
+		{
+			"Duration"				"3"
+			"FireEffect"
+			{
+				"EffectName"		"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"Target" 			"ATTACKER"
+			}
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}				
+		}
+		
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"1"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"40"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"900"
+		}
+	}
+}

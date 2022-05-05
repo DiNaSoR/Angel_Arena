@@ -1,0 +1,42 @@
+"item_mask_of_death"
+{
+	"ID"                            "1129"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"mask_of_death"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_mask_of_death"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+
+			"OnAttackLanded"
+			{
+				"Heal"
+				{
+					"Target"		"CASTER"
+					"HealAmount"	"%steal"
+					
+				}
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"steal"					"20"
+		}
+	}
+}

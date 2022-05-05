@@ -14,7 +14,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1219"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -256,7 +256,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1101"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -400,7 +400,7 @@
 		"ID"								"1256"
 		"BaseClass"							"item_datadriven"
 		"AbilityTextureName" 				"item_aegis"
-		"Model"								"models/props_gameplay/aegis.mdl"
+		"Model"								"models/props_gameplay/aegis.vmdl"
 		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"ItemDeclarations"					"DECLARE_PURCHASES_TO_TEAMMATES"
 		
@@ -511,7 +511,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1103"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -769,7 +769,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1269"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -915,7 +915,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1258"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -1022,7 +1022,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1107"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -1119,7 +1119,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1109"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -1310,7 +1310,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1262"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -1803,7 +1803,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1273"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -1993,7 +1993,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1229"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -2142,7 +2142,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1114"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -2593,7 +2593,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1259"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -2849,7 +2849,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1116"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -3067,7 +3067,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1221"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -3272,7 +3272,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1118"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -3453,7 +3453,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1120"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -3648,7 +3648,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1281"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -3847,7 +3847,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1267"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4046,7 +4046,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1123"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4204,7 +4204,7 @@
 			// General
 			//-------------------------------------------------------------------------------------------------------------
 			"ID"							"1241"						
-			"Model"							"models/props_gameplay/recipe.mdl"
+			"Model"							"models/props_gameplay/recipe.vmdl"
 			"BaseClass"                     "item_datadriven"
 			
 			// Item Info
@@ -4308,7 +4308,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1275"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4451,7 +4451,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1126"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4616,7 +4616,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1128"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4710,7 +4710,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1217"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -4994,7 +4994,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1304"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -5095,7 +5095,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1130"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -5238,7 +5238,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1132"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -5540,7 +5540,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1134"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -5623,7 +5623,7 @@
 			// General
 			//-------------------------------------------------------------------------------------------------------------
 			"ID"							"1205"						
-			"Model"							"models/props_gameplay/recipe.mdl"
+			"Model"							"models/props_gameplay/recipe.vmdl"
 			"BaseClass"                     "item_datadriven"
 		
 			// Item Info
@@ -6042,7 +6042,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1271"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -6582,7 +6582,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1283"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -6839,7 +6839,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1139"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -6958,7 +6958,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1200"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -7111,7 +7111,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1141"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -7309,7 +7309,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1279"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -7605,7 +7605,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1144"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -7828,7 +7828,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1227"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -7987,7 +7987,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1307"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -9018,7 +9018,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1150"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -9539,7 +9539,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1254"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -9685,7 +9685,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1245"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -9786,7 +9786,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1243"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -10035,7 +10035,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1301"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -10139,7 +10139,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1302"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -10252,7 +10252,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1277"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -10544,7 +10544,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1161"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -10771,7 +10771,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1213"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 	
 		// Item Info
@@ -10843,7 +10843,7 @@
 			// General
 			//-------------------------------------------------------------------------------------------------------------
 			"ID"							"1215"						
-			"Model"							"models/props_gameplay/recipe.mdl"
+			"Model"							"models/props_gameplay/recipe.vmdl"
 			"BaseClass"                     "item_datadriven"
 		
 			// Item Info
@@ -11261,7 +11261,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1225"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -11426,7 +11426,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1249"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -11715,7 +11715,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1146"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -11803,7 +11803,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1170"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -11903,7 +11903,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1265"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -12118,7 +12118,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1288"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -12280,7 +12280,7 @@
 			// General
 			//-------------------------------------------------------------------------------------------------------------
 			"ID"							"1173"						
-			"Model"							"models/props_gameplay/recipe.mdl"
+			"Model"							"models/props_gameplay/recipe.vmdl"
 			"BaseClass"                     "item_datadriven"
 		
 			// Item Info
@@ -12415,7 +12415,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1175"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -12582,7 +12582,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1177"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -12776,7 +12776,7 @@
 			// General
 			//-------------------------------------------------------------------------------------------------------------
 			"ID"							"1251"						
-			"Model"							"models/props_gameplay/recipe.mdl"
+			"Model"							"models/props_gameplay/recipe.vmdl"
 			"BaseClass"                     "item_datadriven"
 			
 			// Item Info
@@ -13006,7 +13006,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1290"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -13124,7 +13124,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1179"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -13251,7 +13251,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1181"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info
@@ -13394,7 +13394,7 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1183"						
-		"Model"							"models/props_gameplay/recipe.mdl"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 		"BaseClass"                     "item_datadriven"
 		
 		// Item Info

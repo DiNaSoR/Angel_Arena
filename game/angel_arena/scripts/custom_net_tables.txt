@@ -4,7 +4,6 @@
   [
     "team_scores",
 	  "selection",
-    "ngp",
     "info",
     "stat_display",
 	  "talents",

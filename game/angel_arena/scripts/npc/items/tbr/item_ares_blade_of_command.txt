@@ -1,0 +1,63 @@
+"item_ares_blade_of_command"
+{
+	"ID"                            "1342"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"ares_blade_of_command"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_ares_blade_of_command"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"
+			}
+			"OnAttackLanded"
+			{
+				"Heal"
+				{
+					"Target" 		"CASTER"
+					"HealAmount"	"35"
+				}
+			}
+		}
+		"modifier_ares_blade_of_command_aura"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Aura" 					"ares_command_aura"
+    		"Aura_Radius" 			"500"
+    		"Aura_Teams" 			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    		"Aura_Types" 			"DOTA_UNIT_TARGET_ALL"
+    		"EffectName" 			"particles/items_fx/aura_vlads.vpcf"
+                "EffectAttachType" 		"follow_origin" 
+		}
+		"ares_command_aura"
+   		{
+    	
+	    	"IsBuff" 				"1"
+	    	"IsPurgable" 			"0"
+	    	
+	    	"Properties"
+	    	{
+	     		"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "15"
+	    	}
+	    }
+	}
+
+
+
+}

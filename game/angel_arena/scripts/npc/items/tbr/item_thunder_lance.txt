@@ -1,0 +1,23 @@
+"item_thunder_lance"	// TODO Complete
+//Add Increases your Strength and Agility by 35 and damage by 75. Also grants you an 8% chance on attack to cause 1000 additional damage and stun the target for up to 2 seconds.
+{
+	"ID"                            "1317"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"thunder_lance"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+
+	}
+
+
+
+}

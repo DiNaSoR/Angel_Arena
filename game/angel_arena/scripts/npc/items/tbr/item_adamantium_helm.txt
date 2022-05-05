@@ -1,0 +1,54 @@
+"DOTAAbilities"
+{
+"item_adamantium_helm"
+{
+	"ID"                            "1355"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"adamantium_helm"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_adamantium_helm"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%str_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armor_bonus"
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%magic_res"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"magic_res"				"30"
+		}
+	}
+
+
+}
+}

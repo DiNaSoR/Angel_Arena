@@ -1,0 +1,49 @@
+"item_boots_of_marathon"	// TODO Add Use: returns you to Athens. Cooldown: 3 minutes.
+{
+	"ID"                            "1307"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"boots_of_marathon"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_boots_of_marathon"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%str_bonus"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"			"100"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"25"
+		}
+	}
+}

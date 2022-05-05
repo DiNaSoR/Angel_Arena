@@ -1,0 +1,70 @@
+"item_bloodrage_charm"
+{
+	"ID"                            "1155"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"bloodrage_charm"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"               "180"
+    	"AbilityManaCost"               "0"
+
+    	"OnSpellStart"
+    	{
+    		"ApplyModifier"
+    		{
+    			"Target" 			"CASTER"
+    			"ModifierName"		"modifier_bloodrage_charm"
+    		}
+    		"FireSound"
+		{
+			"Target" 			"UNIT"
+			"EffectName" 		"Hero_Omniknight.GuardianAngel.Cast"
+		}
+        }
+
+	"Modifiers"    				
+	{  							 
+		"modifier_bloodrage_charm"   	
+		{
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"EffectRadius"		"300"
+				}
+			}
+			"IsBuff"					"1"
+			"IsHidden"					"0"
+			"Duration"					"30"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+		}
+	}
+
+
+        "AbilitySpecial"
+        {
+        	"01"
+        	{
+        		"var_type"				"FIELD_INTEGER"
+        		"attack_speed"			"100"
+        	}
+        }
+    }

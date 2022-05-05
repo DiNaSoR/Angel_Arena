@@ -1,0 +1,44 @@
+"item_talisman_of_wisdom"
+{
+	"ID"                            "1166"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"talisman_of_wisdom"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifiers_talisman_of_wisdom"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%int_bonus"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%mana_regen"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"40"
+		}
+	}
+}

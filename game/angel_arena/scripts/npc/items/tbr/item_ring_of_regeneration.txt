@@ -1,0 +1,45 @@
+///////// COMMON ///////////
+/////////////////////////////
+"item_ring_of_regeneration" 
+{
+
+	"ID"                            "1004"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"ring_of_regeneration"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_ring_of_regeneration"
+		{
+			"Passive"					"1"
+			"IsHidden"					"1"
+			"Attributes"				"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	"%hp_regen"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"		"FIELD_INTEGER"
+			"hp_regen"		"3"
+			}
+		}
+}

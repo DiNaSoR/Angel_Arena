@@ -1,0 +1,57 @@
+"item_shining_sword_of_the_olympians"
+{
+	"ID"                            "1292"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"shining_sword_of_the_olympians"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_shining_helm_of_the_olympians"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"		"%dmg_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%mana_regen"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"15"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"dmg_bonus"				"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"30"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"25"
+		}
+	}
+}

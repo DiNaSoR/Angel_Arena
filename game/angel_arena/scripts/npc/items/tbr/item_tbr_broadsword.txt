@@ -1,0 +1,39 @@
+"item_tbr_broadsword"
+{
+	"ID"                            "1028"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"broadsword"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_tbr_item_broadsword"
+		{
+			"Passive" 				"1"
+			"IsHidden" 				"1"
+			"Attributes" 			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "%dmg_bonus"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"dmg_bonus"			"15"
+		}
+	}
+}

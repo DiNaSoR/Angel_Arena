@@ -1,0 +1,55 @@
+"item_red_dragonscale_ring_of_addiction"
+{
+	"ID"                            "1337"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"red_dragonscale_ring_of_addiction"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_red_dragonscale_ring_of_addiction"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%str_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%agi_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%int_bonus"
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%magic_res"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"130"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"agi_bonus"				"105"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"3"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"magic_res"				"25"
+		}
+	}
+}

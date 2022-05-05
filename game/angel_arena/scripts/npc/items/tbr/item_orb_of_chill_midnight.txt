@@ -1,0 +1,51 @@
+"item_orb_of_chill_midnight"
+{
+	"ID"                            "1214"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"orb_of_chill_midnight"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_orb_of_chill_midnight"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"			"%hp_regen"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%mana_regen"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"10"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_regen"				"30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"50"
+		}
+	}
+}

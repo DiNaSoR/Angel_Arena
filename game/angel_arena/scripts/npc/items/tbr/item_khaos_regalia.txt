@@ -1,0 +1,85 @@
+"item_khaos_regalia"
+{
+	"ID"                            "1250"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"khaos_regalia"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"precache"
+	{
+		"particle"					"particles/items_fx/bloodstone_heal.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_khaos_regalia"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%str_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%int_bonus"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armor_bonus"
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"		"%magic_res"
+			}
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		"particles/items_fx/bloodstone_heal.vpcf"
+					"EffectAttachType" 	"follow_origin"
+					"Target" 			"TARGET"
+				}
+				"Damage"
+				{
+					"Target"		 "TARGET"
+					"Type"			 "DAMAGE_TYPE_PHYSICAL"
+					"Damage"		 "125"
+				}
+				"Heal"
+				{
+					"Target" 		"CASTER"
+					"HealAmount"	"125"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"125"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"int_bonus"				"5"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"25"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"35"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"magic_res"				"25"
+		}
+	}
+}

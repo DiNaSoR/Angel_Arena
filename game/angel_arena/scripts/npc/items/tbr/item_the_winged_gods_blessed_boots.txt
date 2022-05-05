@@ -1,0 +1,50 @@
+"item_the_winged_gods_blessed_boots"
+{
+	"ID"                            "1332"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"the_winged_gods_blessed_boots"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_the_winged_gods_blessed_boots"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%move_speed"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"			"100"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"25"
+		}
+	}
+}

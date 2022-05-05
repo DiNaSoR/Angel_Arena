@@ -1,0 +1,40 @@
+"item_gemstone_key"		// TODO Add icon
+{
+	"ID"                            "1282"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK" //"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"placeholder"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"Model"							"models/props_gameplay/gem01.vmdl"
+	"Effect"						"particles/generic_gameplay/dropped_gem.vpcf"
+
+	////////////
+	// Example of Item that gives materials on Pick Up
+	////////////
+	"ItemInitialCharges"			"1"
+	"ItemCastOnPickup"				"1"
+	"OnSpellStart"
+	{
+		"SpendCharge"
+		{}
+		"RunScript"
+		{
+			"ScriptFile"			"crafting.lua"
+			"Function"				"GiveMaterialsToPlayer"
+			"Ammount"				"420"
+		}
+	}
+	////////////		
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+
+	}
+}

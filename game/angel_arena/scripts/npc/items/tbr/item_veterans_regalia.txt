@@ -1,0 +1,56 @@
+"item_veterans_regalia"		// TODO Add Set Bonus: Increases the dodge chance and spell damage reduction of your Phalanx skill to 40%.
+{
+	"ID"                            "1266"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"veterans_regalia"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_veterans_regalia"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"		"%str_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"			"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"		"%mana_regen"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"60"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"40"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"45"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"30"
+		}
+	}
+}

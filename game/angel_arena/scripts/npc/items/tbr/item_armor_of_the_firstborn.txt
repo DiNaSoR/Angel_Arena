@@ -1,0 +1,66 @@
+"item_armor_of_the_firstborn"
+{
+	"ID"                            "1333"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"armor_of_the_firstborn"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"common"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"               "30"
+    	"AbilityManaCost"               "0"
+
+	"OnSpellStart"
+	{
+		"Heal"
+		{
+			"Target" 				"CASTER"
+			"HealAmount"			"3000"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifiers_armor_of_the_firstborn"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%hp_bonus"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"80"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"2000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_regen"				"35"
+		}
+	}
+}

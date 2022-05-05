@@ -1,0 +1,50 @@
+"item_spartan_breastplate" // TODO With Spartan Short Sword: +5 Strength and Agility.
+{
+	"ID"                            "1063"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"spartan_breastplate"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_spartan_breastplate"
+		{
+			"Passive" 				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%str_bonus"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%hp_regen"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"str_bonus"				"8"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_regen"				"5"
+		}
+	}
+}

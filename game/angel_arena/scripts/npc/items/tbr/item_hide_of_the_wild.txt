@@ -1,0 +1,57 @@
+"item_hide_of_the_wild"
+{
+	"ID"                            "1093"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"hide_of_the_wild"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"epic"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_hide_of_the_wild"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"		"%stat_bonus"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%stat_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%hp_bonus"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"%mana_regen"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stat_bonus"			"12"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"hp_bonus"				"400"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"25"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"20"
+		}
+	}
+}

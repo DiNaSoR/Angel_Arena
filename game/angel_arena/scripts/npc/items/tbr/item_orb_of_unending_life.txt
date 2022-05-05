@@ -1,0 +1,41 @@
+"item_orb_of_unending_life"
+{
+	"ID"                            "1036"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"orb_of_unending_life"
+	//"ItemStockMax"				"2"
+	//"ItemStockInitial"			"2"
+	//"ItemStockTime"				"48.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "9000" 	
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+	"Modifiers"
+	{
+		"modifier_orb_of_unending_life"
+		{
+			"Passive"					"1"
+			"IsHidden"					"1"
+			"Attributes"				"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" 	"%hp_regen"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+		{
+			"01"
+			{
+			"var_type"		"FIELD_INTEGER"
+			"hp_regen"		"6"
+			}
+		}
+}
