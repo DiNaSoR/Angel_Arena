@@ -1,3 +1,25 @@
+-- OPENAI CHATGPT
+--This code appears to define a class called BossAI which handles the behavior of a boss in a game. It has four states: IDLE, AGRO, LEASHING, and DEAD.
+--
+--The Create function is used to create an instance of BossAI and assign it to a unit. It takes in a unit and an optional options table as arguments. The options table can contain the following values:
+--
+--tier: the tier of the boss (defaults to 1)
+--leash: the size of the leash around the origin of the boss (defaults to BOSS_LEASH_SIZE)
+--agroDamage: the amount of damage that the boss needs to take in order to become aggressive (defaults to BOSS_AGRO_FACTOR * options.tier)
+--customAgro: a boolean indicating whether the boss should use custom agro logic (defaults to false)
+--owner: the owner of the boss (not specified in the default case)
+--isProtected: a boolean indicating whether the boss is protected (defaults to false)
+--The onDeath function of the returned object can be used to listen to the death event of the boss.
+--
+--The HurtHandler function is called when the boss takes damage and handles the boss's behavior based on its current state. If the boss is in the IDLE state, it checks whether the amount of damage it has taken so far is greater than the agro damage. If so, it calls the Agro function and sets the current damage to 0. If the boss is in the AGRO state, no action is taken.
+--
+--The DeathHandler function is called when the boss dies and handles the boss's death event. It broadcasts the death event, adds points to the team of the killer, and gives items to players on the killer's team. If the boss is protected, the points are given to the owner's team instead.
+--
+--The GiveItemToWholeTeam function is used to give an item to all players on a given team.
+--
+--The BossAI.hasFarmingCore and BossAI.hasReflexCore tables store whether the good and bad teams have the farming and reflex cores, respectively.
+--
+--The BossSpawner table appears to store information about boss spawners, and the disable function is used to disable them. The hasFarmingCore and hasReflexCore properties of heroes are used to track whether they have these cores.
 
 -- Taken from bb template
 if BossAI == nil then

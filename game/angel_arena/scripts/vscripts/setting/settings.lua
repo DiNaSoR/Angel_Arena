@@ -17,13 +17,13 @@ CustomNetTables:SetTableValue("info", "version", { value = AA_VERSION })
 --------------------------------------------------------------
 -- Angel Arena Zombie Raid
 --------------------------------------------------------------
-ALLOW_ZOMBI                                 = true                  -- Do we allow zombie raid?
+ALLOW_ZOMBI                                 = false                  -- Do we allow zombie raid?
 MIN_SPAWN_ZOMBI                             = 100                   -- Min zombie spawn number.
 MAX_SPAWN_ZOMBI                             = 100                   -- Max zombie spawn number.
 --------------------------------------------------------------
 -- Angel Arena Jihadi Outbreak
 --------------------------------------------------------------
-ALLOW_JIHADI                                = true                  -- Do we allow jihadi raid?
+ALLOW_JIHADI                                = false                  -- Do we allow jihadi raid?
 MIN_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
 MAX_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
 --------------------------------------------------------------
@@ -44,7 +44,7 @@ PRE_GAME_TIME                               = 5                     -- How long 
 POST_GAME_TIME                              = 60.0                  -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME                            = 60.0                 	-- How long should it take individual trees to respawn after being cut down/destroyed?
 --------------------------------------------------------------
-GOLD_PER_TICK                               = 1                    	-- How much gold should players get per tick?
+GOLD_PER_TICK                               = 2                    	-- How much gold should players get per tick?
 GOLD_TICK_TIME                              = 1                     -- How long should we wait in seconds between gold ticks?
 DISABLE_GOLD_SOUNDS                         = false					-- Should we disable the gold sound when players get gold?
 LOSE_GOLD_ON_DEATH                          = true                  -- Should we have players lose the normal amount of dota gold on death?
