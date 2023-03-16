@@ -63,8 +63,8 @@ CUSTOM_BUYBACK_COST_ENABLED                 = false      	        -- Should we u
 CUSTOM_BUYBACK_COOLDOWN_ENABLED             = false  	            -- Should we use a custom buyback time?
 BUYBACK_ENABLED                             = false                 -- Should we allow people to buyback when they die?
 --------------------------------------------------------------
-DISABLE_FOG_OF_WAR_ENTIRELY                 = false			        -- Should we disable fog of war entirely for both teams?
-USE_UNSEEN_FOG_OF_WAR                       = true                 -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
+DISABLE_FOG_OF_WAR_ENTIRELY                 = true			        -- Should we disable fog of war entirely for both teams?
+USE_UNSEEN_FOG_OF_WAR                       = false                 -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
                                                                         -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 --------------------------------------------------------------
 USE_STANDARD_DOTA_BOT_THINKING              = true		            -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)

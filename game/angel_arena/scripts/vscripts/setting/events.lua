@@ -645,6 +645,11 @@ function GameMode:OnConnectFull(keys)
 	
   
 end
+
+function GameMode:OnPlayerConnect(keys)
+  DebugPrint('[DEBUG] OnPlayerConnect')
+  DebugPrintTable(keys)
+end
 --------------------------------------------------------------
 -- This function is called whenever illusions are created and tells you which was/is the original entity
 -- game event object for OnIllusionsCreated
