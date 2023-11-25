@@ -18,14 +18,14 @@ CustomNetTables:SetTableValue("info", "version", { value = AA_VERSION })
 -- Angel Arena Zombie Raid
 --------------------------------------------------------------
 ALLOW_ZOMBI                                 = false                  -- Do we allow zombie raid?
-MIN_SPAWN_ZOMBI                             = 100                   -- Min zombie spawn number.
-MAX_SPAWN_ZOMBI                             = 100                   -- Max zombie spawn number.
+MIN_SPAWN_ZOMBI                             = 5                   -- Min zombie spawn number.
+MAX_SPAWN_ZOMBI                             = 20                   -- Max zombie spawn number.
 --------------------------------------------------------------
--- Angel Arena Jihadi Outbreak
+-- Angel Arena boomber Outbreak
 --------------------------------------------------------------
-ALLOW_JIHADI                                = false                  -- Do we allow jihadi raid?
-MIN_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
-MAX_SPAWN_JIHADI                            = 20                    -- Min Jihadi spawn number
+ALLOW_boomber                                = false                  -- Do we allow boomber raid?
+MIN_SPAWN_boomber                            = 5                    -- Min boomber spawn number
+MAX_SPAWN_boomber                            = 10                    -- Min boomber spawn number
 --------------------------------------------------------------
 -- Angel Arena Rules
 --------------------------------------------------------------

@@ -46,7 +46,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"abilities\skill_boom.lua"
-				"Function"		"jihadi"
+				"Function"		"boomber"
 			}
 		}
 
@@ -55,7 +55,7 @@
 			"RunScript"
 			{
 				"ScriptFile"	"abilities\skill_boom.lua"
-				"Function"		"jihadi"
+				"Function"		"boomber"
 			}
 		}
 

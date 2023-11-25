@@ -622,29 +622,33 @@ function GameMode:OnConnectFull(keys)
   -- The Player entity of the joining user
   local player = EntIndexToHScript(entIndex)
   local ply = EntIndexToHScript(entIndex)
-  -- The Player ID of the joining player
-  local playerID = player:GetPlayerID()
   
-	-- Update the user ID table with this user
-	self.vUserIds[keys.userid] = player
-  self.vUserIds[keys.userid] = ply
-
-	--Update the Steam ID table
-	self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
-  self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = ply
-	
-  -- If the player is a broadcaster flag it in the Broadcasters table
-  if PlayerResource:IsBroadcaster(playerID) then
-    self.vBroadcasters[keys.userid] = 1
-    return
+  -- Check if the player variable is not nil before using it
+  if player ~= nil then
+    -- The Player ID of the joining player
+    local playerID = player:GetPlayerID()
+    
+    -- Update the user ID table with this user
+    self.vUserIds[keys.userid] = player
+    self.vUserIds[keys.userid] = ply
+  
+    -- Update the Steam ID table
+    self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
+    self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = ply
+    
+    -- If the player is a broadcaster flag it in the Broadcasters table
+    if PlayerResource:IsBroadcaster(playerID) then
+      self.vBroadcasters[keys.userid] = 1
+      return
+    end
+  
+    table.insert(tPlayers,player)
+    nPlayers = nPlayers + 1
+  else
+    print("Error: Player entity not found.")
   end
-
-	table.insert(tPlayers,player)
-    nPlayers = nPlayers + 1 
-
-	
-  
 end
+
 
 function GameMode:OnPlayerConnect(keys)
   DebugPrint('[DEBUG] OnPlayerConnect')

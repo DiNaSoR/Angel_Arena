@@ -29,8 +29,8 @@ function apocalypse()
 	Notifications:Top(PlayerResource:GetPlayer(0), {text="Apocalypse", duration=5, style={color="red", ["font-size"]="110px"}})
 end
 ---------------------------------------------------------------------------
--- Jihadists Outbreak Welcome
+-- boombersts Outbreak Welcome
 ---------------------------------------------------------------------------
-function jihadistsmsg()
-	Notifications:Top(PlayerResource:GetPlayer(0), {text="Jihadists Outbreak", duration=5, style={color="black", ["font-size"]="100px"}})
+function boomberstsmsg()
+	Notifications:Top(PlayerResource:GetPlayer(0), {text="boombersts Outbreak", duration=5, style={color="black", ["font-size"]="100px"}})
 end

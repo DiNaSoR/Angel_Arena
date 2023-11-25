@@ -250,4 +250,4 @@ end
 -- Apocalypse GameMode
 --------------------------------------------------------------
 require('mechanics/spawn/zombie/spawner')
-require('mechanics/spawn/jihadi/spawner')
+require('mechanics/spawn/boomber/spawner')

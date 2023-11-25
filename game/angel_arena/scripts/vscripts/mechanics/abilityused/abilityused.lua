@@ -16,7 +16,7 @@ function furionforge(player,hero,heroname,abilityname,herolevel)
 	if heroname == "npc_dota_hero_furion" and abilityname == "skill_aa_invoker_forge_spirit" then
     	for i=1,NUMBERS_OF_FORGED_SPIRIT do
       	local summon_point = RotatePosition(hero:GetAbsOrigin(), QAngle(0, (i - 1) * 360 / 10, 0), hero:GetAbsOrigin() + hero:GetForwardVector() * 80)
-      	local mobs = CreateUnitByName("npc_dota_creature_jihade", summon_point, true, hero, hero, hero:GetTeamNumber())
+      	local mobs = CreateUnitByName("npc_dota_creature_boomber", summon_point, true, hero, hero, hero:GetTeamNumber())
   	    -- Prevent nearby units from getting stuck
 		  Timers:CreateTimer(FrameTime(), function()
 				ResolveNPCPositions(summon_point, 128)	

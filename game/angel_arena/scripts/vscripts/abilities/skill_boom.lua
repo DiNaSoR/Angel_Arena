@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
---  Skill Boom (Jihadi)
+--  Skill Boom (boomber)
 ---------------------------------------------------------------------------
-function jihadi(event)
+function boomber(event)
 	local caster = event.caster
 	local ability = event.ability
 	local damage = ability:GetAbilityDamage()/2

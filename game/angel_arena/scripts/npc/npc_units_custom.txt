@@ -8,7 +8,7 @@
 //--------------------------------------------------------------
 //#base "units/npc_courier.txt"
 #base "units/others/npc_arena_fountain.txt"
-#base "units/units/npc_dota_creature_jihade.txt"
+#base "units/units/npc_dota_creature_boomber.txt"
 #base "units/units/npc_dota_creature_basic_zombie.txt"
 //--------------------------------------------------------------
 // Creeps

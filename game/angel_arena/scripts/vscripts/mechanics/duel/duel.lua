@@ -103,8 +103,8 @@ function Duel:StartDuel()
 		end
 	end
 	local heroes_in_teams = {}
-	for i,v in pairs(Duel.heroes_teams_for_duel) do
-		for _,unit in pairs(v) do
+	for i, v in pairs(Duel.heroes_teams_for_duel) do
+		for _, unit in pairs(v) do
 			local pid = unit:GetPlayerOwnerID()
 			if not unit:IsAlive() then
 				unit:RespawnHero(false, false, false)
@@ -114,8 +114,8 @@ function Duel:StartDuel()
 			end
 		end
 	end
-
-	local heroes_to_fight_n = math.min(unpack(table.iterate(heroes_in_teams)))
+	if next(heroes_in_teams) ~= nil then
+		local heroes_to_fight_n = math.min(unpack(table.iterate(heroes_in_teams)))
 	if heroes_to_fight_n > 0 and table.count(heroes_in_teams) > 1 then
 		EmitAnnouncerSound("announcer_ann_custom_mode_20")
 		Duel.IsFirstDuel = Duel.DuelCounter == 0
@@ -177,10 +177,12 @@ function Duel:StartDuel()
 				["{duel_index}"] = Duel.DuelCounter
 			}
 		})
+
 	else
 		Duel:EndDuelLogic(false, true)
 		Notifications:TopToAll({text="#duel_no_heroes", duration=5})
 	end
+end
 end
 --------------------------------------------------------------
 --	Duel Endding
