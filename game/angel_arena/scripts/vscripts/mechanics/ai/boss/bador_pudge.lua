@@ -2,7 +2,7 @@
 -- Version
 --------------------------------------------------------------
 
-PUDGE_AI_VERSION = "0.1"
+PUDGE_AI_VERSION = "0.2"
 
 --------------------------------------------------------------
 -- Setting
@@ -43,108 +43,196 @@ PUDGE_DIALOG =	 	{	"YEAH RUN AWAY LITTLE GIRL!",
 --------------------------------------------------------------
 -- InitGameMode
 --------------------------------------------------------------
-
 function 	Spawn( entityKeyValues )
 				--Pudgespeech = true
 				
 				print("[Angel Arena] Starting AI for "..thisEntity:GetUnitName().." "..PUDGE_AI_VERSION)
 				
-				hookskill 	= thisEntity:FindAbilityByName( "skill_pudge_meat_hook" )
+				hookskill 	= thisEntity:FindAbilityByName("skill_pudge_meat_hook")
 				rot 		= thisEntity:FindAbilityByName("pudge_rot")
 				dism 		= thisEntity:FindAbilityByName("pudge_dismember")
-
-				--thisEntity:SetContextThink("Hook", Hook, 1)
-				--thisEntity:SetContextThink("Dism", Dism, 1)
 				thisEntity:SetContextThink("AIThinking", AIThinking, 0.5)
-				--thisEntity:SetContextThink("CastItemName", CastItemName, 0.5)
+
 end
 --------------------------------------------------------------
 -- AI Behavior
 --------------------------------------------------------------
+local ai_points = 0
 
 function AIThinking()
---print("I am searching")
---print(hookskill)
-	local point = Vector(-128, 256, 128)
-	local units = FindUnitsInRadius(
-									thisEntity:GetTeamNumber(), 
-									thisEntity:GetAbsOrigin(), 
-									nil, 
-									130000, 
-									DOTA_UNIT_TARGET_TEAM_ENEMY, 
-									DOTA_UNIT_TARGET_HERO, 
-									DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, 
-									FIND_CLOSEST, 
-									false)
-    
-	for _,unit in pairs(units)  do
-		  print(unit:GetName())
-		  print("found one")
-	  end
-
     if thisEntity:IsNull() or not thisEntity:IsAlive() then
-		print("I am searching2")
         return nil
-    end	
-
-    if (point - thisEntity:GetOrigin()):Length() > 1400 then
-        thisEntity:MoveToPosition(point)
-        print("traget flee")
     end
- 
-    return 0.5;
+
+    local point = Vector(-128, 256, 128)
+    local units = FindEnemyUnits(thisEntity, 1300)
+
+    -- Check if any enemies are nearby
+    if #units > 0 then
+        print("Found " .. #units .. " enemy units")
+        local target = GetWeakestEnemy(units)
+        if target then
+            -- Calculate AI points
+            ai_points = ai_points + CalculatePoints(target)
+            print("AI points: " .. ai_points)
+
+            -- Execute skill if not channeling or casting
+            if not thisEntity:IsChanneling() and not thisEntity:IsCastingAbility() then
+                local skill_choice = ChooseSkillBasedOnWeight(ai_points)
+                ExecuteSkill(skill_choice, target)
+            end
+        else
+            print("Target not found")
+            MoveToPosition(point)
+        end
+    else
+        MoveToPosition(point)
+    end
+
+    return 0.5
 end
 
---------------------------------------------------------------
--- Bador Dialopudge
---------------------------------------------------------------
-function dialogpudge()
---Msg("PUDGE_DIALOG")
---print("Bador")
+function CalculatePoints(target)
+    local points = 0
+
+    if HitNormalAttack(target) then
+        points = points + 1
+    end
+
+    if HitCritAttack(target) then
+        points = points + 2
+    end
+
+    if TargetRunsAway(target) then
+        points = points + 3
+    end
+
+    return points
 end
 
---------------------------------------------------------------------------------------
---	Hook
---------------------------------------------------------------------------------------
-function Hook()
-	print("I am searching hook")
+-------------------------------------------------------------------
+-- ChooseSkillBasedOnWeight
+-------------------------------------------------------------------
+function ChooseSkillBasedOnWeight(points)
+    local weights = {
+        hook = 10,
+        rot = 20,
+        dismember = 30
+    }
 
-	if hookskill:IsFullyCastable() then
+    local available_skills = {}
 
-		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-		
-		for i,unit in ipairs(units) do
-			if i > 1 then -- Skip the closest one, which is the unit itself
-			  print(unit:GetName())
-			end
-		  end
+    for skill, weight in pairs(weights) do
+        if points >= weight then
+            table.insert(available_skills, skill)
+        end
+    end
 
-		if units ~= nil then
-			if #units >= 1 then
-				local index = RandomInt( 1, #units )
-				local target = units[index]
-				
-				thisEntity:CastAbilityOnPosition(target:GetAbsOrigin(), hookskill, -1)
-				print("Pudge Hook")
-				EmitSoundOn(HOOK_SOUNDBOX[RandomInt(1,8)], target)
-				
-
-
-			else 
-
-			end
-		end	
-	else
-		print("[Bador] Hook no ready")	
-	end
-	return 1
+    return available_skills[RandomInt(1, #available_skills)]
 end
 
---------------------------------------------------------------------------------------
---	cast Urn
---------------------------------------------------------------------------------------
-function CastItemName()
-	--print("CastItemNmae run")
+function ExecuteSkill(skill_choice, target)
+    if skill_choice == "hook" and CanCastHook(target) then
+        print("Casting Hook")
+        CastHook(target)
+        ai_points = ai_points - 10
+    elseif skill_choice == "rot" and CanCastRot() then
+        print("Casting Rot")
+        CastRot()
+        ai_points = ai_points - 20
+    elseif skill_choice == "dismember" and CanCastDismember(target) then
+        print("Casting Dismember")
+        CastDismember(target)
+        ai_points = ai_points - 30
+    end
+end
+-------------------------------------------------------------------
+-- FindEnemyUnits
+-------------------------------------------------------------------
+function FindEnemyUnits(pudgeEntity, searchRadius)
+    local team = pudgeEntity:GetTeamNumber()
+    local position = pudgeEntity:GetAbsOrigin()
+
+    local enemies = {}
+
+    for _, unit in ipairs(Entities:FindAllInSphere(position, searchRadius)) do
+        if unit:GetTeamNumber() ~= team and unit:GetTeamNumber() ~= 4 and unit ~= pudgeEntity then
+            if unit.GetUnitName and unit:IsAlive() and unit:IsHero() then  -- Add these checks
+                table.insert(enemies, unit)
+                --print("Found enemy: " .. unit:GetUnitName() .. ", Team: " .. unit:GetTeamNumber())
+            end
+        end
+    end
+
+    return enemies
+end
+-------------------------------------------------------------------
+-- GetWeakestEnemy
+-------------------------------------------------------------------
+function GetWeakestEnemy(units)
+    local weakest = nil
+    local lowestHP = math.huge
+
+    for _, unit in ipairs(units) do
+        local health = unit:GetHealth()
+        if health < lowestHP then
+            weakest = unit
+            lowestHP = health
+        end
+    end
+
+    return weakest
+end
+
+-------------------------------------------------------------------
+-- CanCastRot
+-------------------------------------------------------------------
+function CanCastRot()
+    return rot:IsFullyCastable() and not thisEntity:HasModifier("modifier_pudge_rot")
+end
+-------------------------------------------------------------------
+-- CastRot
+-------------------------------------------------------------------
+function CastRot()
+    thisEntity:CastAbilityNoTarget(rot, -1)
+end
+-------------------------------------------------------------------
+-- CanCastHook
+-------------------------------------------------------------------
+function CanCastHook(target)
+    return hookskill:IsFullyCastable() and IsValidEntity(target) and (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() > 200
+end
+-------------------------------------------------------------------
+-- CastHook
+-------------------------------------------------------------------
+function CastHook(target)
+    thisEntity:CastAbilityOnPosition(target:GetAbsOrigin(), hookskill, -1)
+    EmitSoundOn(HOOK_SOUNDBOX[RandomInt(1, 8)], target)
+end
+-------------------------------------------------------------------
+-- CanCastDismember
+-------------------------------------------------------------------
+function CanCastDismember(target)
+    return dism:IsFullyCastable() and IsValidEntity(target) and (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() <= 250
+end
+-------------------------------------------------------------------
+-- CastDismember
+-------------------------------------------------------------------
+function CastDismember(target)
+    thisEntity:CastAbilityOnTarget(target, dism, -1)
+    EmitSoundOn(DISM_SOUNDBOX[RandomInt(1, 6)], target)
+end
+-------------------------------------------------------------------
+-- CanUseItems
+-------------------------------------------------------------------
+function CanUseItems()
+    return thisEntity:GetHealth() / thisEntity:GetMaxHealth() < 0.75
+end
+-------------------------------------------------------------------
+-- UseItems
+-------------------------------------------------------------------
+function UseItems(target)
+    --print("CastItemNmae run")
 	local healthRemaining = thisEntity:GetHealth() / thisEntity:GetMaxHealth()
 	local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 950, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
 	local index = RandomInt( 1, #units )
@@ -179,68 +267,49 @@ function CastItemName()
 	end
 	return 1
 end
+-------------------------------------------------------------------
+-- MoveTowardsEnemy
+-------------------------------------------------------------------
+function MoveTowardsEnemy(target)
+    local origin = Vector(-128, 256, 128)
+    local max_distance = 1400  -- You can set the leash distance here
+    local position = target:GetAbsOrigin()
+    local direction = (position - thisEntity:GetAbsOrigin()):Normalized()
+    local distance = (origin - thisEntity:GetAbsOrigin()):Length2D()
+    local attackRange = thisEntity:Script_GetAttackRange()
 
-
-
-
---------------------------------------------------------------------------------------
---	Dismember
---------------------------------------------------------------------------------------
-function Dism()
-
-
-	if dism:IsFullyCastable() then
-
-		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-
-		if units ~= nil then
-			if #units >= 1 then
-				local index = RandomInt( 1, #units )
-				local target = units[index]
-				
-				thisEntity:CastAbilityOnTarget(target, dism, -1)
-				thisEntity:CastAbilityToggle(rot, -1)
-				EmitSoundOn(DISM_SOUNDBOX[RandomInt(1,6)], target)
-
-			end
-		end	
-	end
-
-	local cooldown = math.floor(dism:GetCooldownTimeRemaining())
-
-	if cooldown == 20 and rot:GetToggleState() == true then
-		--print(rot:GetToggleState())
-		thisEntity:CastAbilityToggle(rot, -1)
-		--print(rot:GetToggleState())
-	else
-		--print(cooldown)
-	end
-
-	return 1
+    if target:IsAlive() then
+        if (position - thisEntity:GetAbsOrigin()):Length2D() <= attackRange then
+            thisEntity:MoveToTargetToAttack(target)
+        else
+            local newPosition = thisEntity:GetAbsOrigin() + direction * 150
+            local newDistance = (origin - newPosition):Length2D()
+            if newDistance > max_distance then
+                thisEntity:MoveToPosition(origin)
+            else
+                MoveToPosition(origin)  -- If the AI is too far away, move it back to the origin
+            end
+        end
+    else
+        MoveToPosition(origin)  -- If the target hero is dead, move the AI back to the origin
+    end
 end
 
---[[function goback()
-
-		local unit = Entities:FindByName(nil,"npc_dota_bador_pudge")
-		--local unit = EntIndexToHScript(index)
-		local position = Vector (-128,256,128)
-		--local initial_neutral_position = position
-
-		--local waypoint = Entities:FindByNameNearest( "path_1", thisEntity:GetOrigin(), 0 )
-				--waypoint = unit:GetAbsOrigin()
-
-				if unit:entindex:Length2D() > 900 then
-					print("[Bador] Ok i cant chase this dude")
-							unit:MoveToPosition(position) 
-				
-					return math.random(2,6)
-				--[[if unit:GetAttackTarget() == nil then
-					print("I am running back sorry")
-					thisEntity:SetInitialGoalEntity( waypoint )
-					thisEntity:MoveToPositionAggressive( waypoint:GetOrigin() )
-				else
-							print("[Bador] I can get them dont worry")
-					return nil
-				end
-	--return 1	
-end]]
+-------------------------------------------------------------------
+-- MoveToPosition
+-------------------------------------------------------------------
+function MoveToPosition(position)
+    local units = FindEnemyUnits(thisEntity, 1300)
+    if #units == 0 then
+        if (position - thisEntity:GetOrigin()):Length() > 1400 then
+            thisEntity:MoveToPosition(position)
+        end
+    end
+end
+--------------------------------------------------------------
+-- Bador Dialopudge
+--------------------------------------------------------------
+function dialogpudge()
+--Msg("PUDGE_DIALOG")
+--print("Bador")
+end

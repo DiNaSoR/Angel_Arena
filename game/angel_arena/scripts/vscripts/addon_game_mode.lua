@@ -11,7 +11,7 @@ require('setting/gamemode')
 --internal-------------------------------------------------
 require('internal/util')
 --require('internal/events')
---require('internal/eventtest')
+require('internal/eventtest')
 
 --libraries-------------------------------------------------
 require('libraries/timers')
@@ -95,7 +95,6 @@ require('libraries/popups')
 --Setting--------------------------------------------------
 require('setting/events')
 require('mechanics/teams/teams')
-require('mechanics/events_helper/events_helper')
 
 
 

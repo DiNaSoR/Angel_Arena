@@ -109,6 +109,8 @@ function 	GameMode:InitGameMode()
 		ListenToGameEvent('entity_killed', Dynamic_Wrap(GameMode, 'OnEntityKilled'), self)
 		ListenToGameEvent('entity_hurt', Dynamic_Wrap(GameMode, 'OnEntityHurt'), self)
 		
+		ListenToGameEvent("player_hurt", Dynamic_Wrap(GameMode, 'OnPlayerHurt '), self)
+		
 		ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(GameMode, 'OnItemPurchased'), self)
 		ListenToGameEvent('dota_item_picked_up', Dynamic_Wrap(GameMode, 'OnItemPickedUp'), self)
 		ListenToGameEvent('last_hit', Dynamic_Wrap(GameMode, 'OnLastHit'), self)

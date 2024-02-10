@@ -1,0 +1,15 @@
+"DOTAAbilities"
+{
+    //=====================================================================
+    // Ability: No Bash Immunity
+    //=====================================================================
+    "skill_no_bash_immunity"
+    {
+        "BaseClass"                 "ability_lua"
+        "AbilityType"               "DOTA_ABILITY_TYPE_PASSIVE"
+        "AbilityBehavior"           "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "ScriptFile"                "abilities/skill_no_bash_immunity.lua"
+        "AbilityTextureName"        "phantom_assassin_blur"
+        "MaxLevel"                  "1"  // Set MaxLevel to 0 so it's not a levelable ability
+    }
+}

@@ -1,4 +1,4 @@
-BAREBONES_DEBUG_SPEW = false
+BAREBONES_DEBUG_SPEW = true
 --------------------------------------------------------------
 -- All KeyValues[KV] Files Global value
 --------------------------------------------------------------

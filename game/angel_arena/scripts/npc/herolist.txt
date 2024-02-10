@@ -118,4 +118,16 @@
   "npc_dota_hero_wisp"                                    "1"
   "npc_dota_hero_witch_doctor"                            "1"
   "npc_dota_hero_zuus"                                    "1"
+  "npc_dota_hero_phantom_assassin"                        "1"
+  "npc_dota_hero_keeper_of_the_light"                     "1"
+
+  "npc_dota_hero_grimstroke"                              "1"
+  "npc_dota_hero_hoodwink"                                "1"
+  "npc_dota_hero_mars"                                    "1"
+  "npc_dota_hero_muerta"                                  "1"
+  "npc_dota_hero_primal_beast"                            "1"
+  "npc_dota_hero_snapfire"                                "1"
+  "npc_dota_hero_void_spirit"                             "1"
+  "npc_dota_hero_dawnbreaker"                             "1"
+  "npc_dota_hero_marci"                                   "1"
 }

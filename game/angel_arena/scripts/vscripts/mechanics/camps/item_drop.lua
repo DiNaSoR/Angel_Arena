@@ -81,8 +81,8 @@ function CreepItemDrop:CreateDrop (itemName, pos)
   newItem.firstPickedUp = false
 
   CreateItemOnPositionSync(pos, newItem)
-  newItem:LaunchLoot(false, 300, 0.75, pos + RandomVector(RandomFloat(50, 150)))
-
+  newItem:LaunchLootInitialHeight(false, 0, 300, 0.75, pos + RandomVector(RandomFloat(50, 150)))
+  
   Timers:CreateTimer(BOTTLE_DESPAWN_TIME, function ()
     -- check if safe to destroy
     if IsValidEntity(newItem) then

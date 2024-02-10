@@ -32,13 +32,14 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"AbilityLayout"				"5"
+		"AbilityLayout"				"7"
 		"Ability1"					"skill_pudge_meat_hook"				// Ability 1
 		"Ability2"					"pudge_rot"							// Ability 2
 		"Ability3"					"skill_bag_of_gold"					// Ability 3
 		"Ability4"					"pudge_dismember"					// Ability 4
 		"Ability5"					"ursa_overpower"					// Ability 5 ursa_overpower
 		"Ability6"					"ursa_earthshock"					// Ability 6
+		"Ability7"					"skill_no_bash_immunity"					// Ability 7 No Bash Passive
 		
 
 		// Inventory
@@ -47,8 +48,8 @@
 		
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"80"								// Physical protection.
-		"MagicalResistance"			"80"								// Magical protection.
+		"ArmorPhysical"				"40"								// Physical protection.
+		"MagicalResistance"			"40"								// Magical protection.
 
 		// Attack
 		//----------------------------------------------------------------

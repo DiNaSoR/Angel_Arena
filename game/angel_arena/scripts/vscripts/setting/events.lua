@@ -120,8 +120,8 @@ end
 --	game event object for OnEntityHurt
 --------------------------------------------------------------
 function GameMode:OnEntityHurt(keys)
-  --DebugPrint("[DEBUG] Entity Hurt")
-  --DebugPrintTable(keys)
+  DebugPrint("[DEBUG] Entity Hurt")
+  DebugPrintTable(keys)
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
   if keys.entindex_attacker ~= nil and keys.entindex_killed ~= nil then
@@ -140,6 +140,48 @@ function GameMode:OnEntityHurt(keys)
     end
   end
 end
+--------------------------------------------------------------
+--	OnPlayerHurt
+--------------------------------------------------------------
+function GameMode:OnPlayerHurt(event)
+  print("OnPlayerHurt triggered")
+  
+  local damagebits = event.damagebits
+  print("Damagebits:", damagebits)
+
+  if event.entindex_attacker ~= nil and event.entindex_victim ~= nil then
+      local entCause = EntIndexToHScript(event.entindex_attacker)
+      local entVictim = EntIndexToHScript(event.entindex_victim)
+      print("Attacker and victim entities found")
+
+      local damagingAbility = nil
+
+      if event.entindex_inflictor ~= nil then
+          damagingAbility = EntIndexToHScript(event.entindex_inflictor)
+          print("Damaging ability found")
+      else
+          print("No damaging ability found")
+      end
+
+      if entVictim.hurtEvent then
+          entVictim.hurtEvent.broadcast(event)
+          print("Victim hurt event broadcasted")
+      else
+          print("No victim hurt event found")
+      end
+
+      -- Increment AI points if the attacker is thisEntity
+      if entCause == thisEntity then
+          ai_points = ai_points + 1
+          print("AI points incremented:", ai_points)
+      else
+          print("Attacker is not thisEntity")
+      end
+  else
+      print("Attacker or victim entity not found")
+  end
+end
+
 --------------------------------------------------------------
 --	OnItemPickedUp
 --	An item was picked up off the ground
@@ -267,8 +309,8 @@ end
 -- game event object for OnPlayerLevelUp
 --------------------------------------------------------------
 function GameMode:OnPlayerLevelUp(keys)
-  --DebugPrint('[DEBUG] OnPlayerLevelUp')
-  --DebugPrintTable(keys)
+  DebugPrint('[DEBUG] OnPlayerLevelUp')
+  DebugPrintTable(keys)
 	
 	local player = EntIndexToHScript(keys.player)
 	local level = keys.level

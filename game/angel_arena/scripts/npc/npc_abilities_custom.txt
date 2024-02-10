@@ -56,6 +56,7 @@
 #base "abilities/others/skill_bag_of_gold_chest.txt"
 #base "abilities/others/skill_respawn.txt"
 #base "abilities/others/skill_unselectable.txt"
+#base "abilities/others/skill_no_bash_immunity.txt"
 
 //--------------------------------------------------------------
 // Under Revision Abilities [UNTESTED]

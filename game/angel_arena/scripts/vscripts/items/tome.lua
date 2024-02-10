@@ -26,12 +26,18 @@ function Int3(keys)
 end
 
 function Int6(keys)
-	local Caster = keys.caster
-	local intellect = Caster:GetBaseIntellect()
-	print("PreIntellect: " .. intellect)
-	Caster:ModifyIntellect(6)
-	intellect = Caster:GetBaseIntellect()
-	print("ProIntellect: " .. intellect)
+    local Caster = keys.caster
+    local intellect = Caster:GetBaseIntellect()
+    print("PreIntellect: " .. intellect)
+    Caster:ModifyIntellect(6)
+    intellect = Caster:GetBaseIntellect()
+    print("ProIntellect: " .. intellect)
+
+    -- Suggested Particle Effect for Intellect Gain
+    local particleName = "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_essence_effect_spiral.vpcf"
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, Caster)
+    ParticleManager:SetParticleControl(particle, 0, Caster:GetAbsOrigin()) -- Position at caster
+    ParticleManager:ReleaseParticleIndex(particle)
 end
 
 function Str3(keys)
