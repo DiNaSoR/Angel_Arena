@@ -33,7 +33,7 @@ function Int6(keys)
     intellect = Caster:GetBaseIntellect()
     print("ProIntellect: " .. intellect)
 
-    -- Suggested Particle Effect for Intellect Gain
+    -- Enhanced Particle Effect for Intellect Gain
     local particleName = "particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_essence_effect_spiral.vpcf"
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, Caster)
     ParticleManager:SetParticleControl(particle, 0, Caster:GetAbsOrigin()) -- Position at caster

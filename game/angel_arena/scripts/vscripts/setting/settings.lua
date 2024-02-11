@@ -48,7 +48,7 @@ GOLD_PER_TICK                               = 2                    	-- How much 
 GOLD_TICK_TIME                              = 1                     -- How long should we wait in seconds between gold ticks?
 DISABLE_GOLD_SOUNDS                         = false					-- Should we disable the gold sound when players get gold?
 LOSE_GOLD_ON_DEATH                          = true                  -- Should we have players lose the normal amount of dota gold on death?
-STARTING_GOLD                               = 315                   -- How much starting gold should we give to each player?
+STARTING_GOLD                               = 31500                   -- How much starting gold should we give to each player?
 --------------------------------------------------------------
 RECOMMENDED_BUILDS_DISABLED                 = false     	        -- Should we disable the recommened builds for heroes (Note: this is not working currently I believe)
 --------------------------------------------------------------
@@ -65,7 +65,7 @@ BUYBACK_ENABLED                             = false                 -- Should we
 --------------------------------------------------------------
 DISABLE_FOG_OF_WAR_ENTIRELY                 = true			        -- Should we disable fog of war entirely for both teams?
 USE_UNSEEN_FOG_OF_WAR                       = false                 -- Should we make unseen and fogged areas of the map completely black until uncovered by each team?
-                                                                        -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
+                                                                    -- Note: DISABLE_FOG_OF_WAR_ENTIRELY must be false for USE_UNSEEN_FOG_OF_WAR to work
 --------------------------------------------------------------
 USE_STANDARD_DOTA_BOT_THINKING              = true		            -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY               = true		            -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
@@ -123,11 +123,11 @@ Dialog1                                     = false 				-- Dialog 1.
 Dialog2                                     = false 				-- Dialog 2.
 Dialog3                                     = false 				-- Dialog 3.
 --------------------------------------------------------------
--- Creeps
-CREEP_SPAWN_INTERVAL                        = 60                    -- number of seconds between each creep spawn
-INITIAL_CREEP_DELAY                         = 10                    -- number of seconds to wait before spawning the first wave of creeps
+-- Creeps and Camps
+CREEP_SPAWN_INTERVAL                        = 5                    -- number of seconds between each creep spawn
+INITIAL_CREEP_DELAY                         = 5                    -- number of seconds to wait before spawning the first wave of creeps
 BOTTLE_DESPAWN_TIME                         = 60                    -- Time until Bottles despawn
-CREEP_GROWTH                                = 10
+CREEP_GROWTH                                = 1
 --------------------------------------------------------------
 FACING_DOWN 	                            = Vector(0, -1, -0)		--Facing Forward direction
 FACING_RIGHT 	                            = Vector(1, 0, -0)		--Facing Forward direction

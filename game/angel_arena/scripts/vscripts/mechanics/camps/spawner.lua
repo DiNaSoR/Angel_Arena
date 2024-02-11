@@ -71,6 +71,7 @@ function CreepCamps:DoSpawn (location, difficulty, maximumUnits)
     self:SpawnCreepInCamp (location, creepGroup[i], maximumUnits)
   end
 end
+
 function CreepCamps:SpawnCreepInCamp (location, creepProperties, maximumUnits)
   if creepProperties == nil then
    --DebugPrint ('[creeps/spawner] unknown creep type ')
