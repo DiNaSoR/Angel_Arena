@@ -7,6 +7,8 @@
 #base "abilities/angelarena/skill_rend_armor.txt"
 #base "abilities/angelarena/skill_boom.txt"
 #base "abilities/angelarena/skill_zombie_hunter.txt"
+#base "abilities/angelarena/queenofpain_shadow_strike_datadriven.txt"
+
 
 //--------------------------------------------------------------
 // Angel Arena Heroes Abilities
