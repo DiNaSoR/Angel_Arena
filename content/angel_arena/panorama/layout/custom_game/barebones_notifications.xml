@@ -16,4 +16,13 @@
       </Panel>
     </Panel>
   </Panel>
+
+  <!-- If adding a new panel -->
+  <!--
+  <Panel hittest="false" class="BarebonesHeroNotifications">
+    <Panel hittest="false" id="HeroNotifications">
+    </Panel>
+  </Panel>
+  -->
+
 </root>

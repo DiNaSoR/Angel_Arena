@@ -80,3 +80,24 @@
     transform: scaleX(1) scaleY(1);
   }
 }
+
+.HeroKillNotification {
+    color: #00ff00; /* Green for kills */
+    font-size: 24px;
+    text-align: center;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+.HeroDeathNotification {
+    color: #ff0000; /* Red for deaths */
+    font-size: 24px;
+    text-align: center;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

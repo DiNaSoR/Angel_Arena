@@ -120,8 +120,8 @@ end
 --	game event object for OnEntityHurt
 --------------------------------------------------------------
 function GameMode:OnEntityHurt(keys)
-  DebugPrint("[DEBUG] Entity Hurt")
-  DebugPrintTable(keys)
+  --DebugPrint("[DEBUG] Entity Hurt")
+  --DebugPrintTable(keys)
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
   if keys.entindex_attacker ~= nil and keys.entindex_killed ~= nil then
@@ -454,7 +454,6 @@ function GameMode:OnPlayerPickHero(keys)
   local player 		  = EntIndexToHScript(keys.player)
   local playerID 	  = player:GetPlayerID()
    
-
     --drop = Vector(-2752, -1280, 129.354)
     --local unit = CreateUnitByName("npc_lord_of_death_boss", drop, true, nil, nil, DOTA_TEAM_NEUTRALS)
  	
@@ -579,6 +578,19 @@ function GameMode:OnEntityKilled( keys )
 		    end
 		    --print("On Hero Death key started")
 		    GameMode:OnHeroDeath(keys)
+
+      -- Emit kill event with points
+      local killPoints = 100  -- Example points value
+      local deathPoints = 50  -- Example points value
+      local killedPlayerID = killedUnit:GetPlayerOwnerID()
+      local killerPlayerID = killerEntity:GetPlayerOwnerID()
+
+      CustomGameEventManager:Send_ServerToAllClients("hero_kill_event", {
+        killer = killerPlayerID,
+        killed = killedPlayerID,
+        killPoints = killPoints,
+        deathPoints = deathPoints
+      })
 	end
 
 
