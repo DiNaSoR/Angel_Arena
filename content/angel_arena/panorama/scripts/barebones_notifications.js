@@ -111,35 +111,9 @@ function AddNotification(msg, panel) {
 }
 
 
-function AddHeroKillNotification(data) {
-  var msg = {
-    text: `Hero Kill!\n+${data.killPoints} Points`,
-    class: 'HeroKillNotification',
-    style: {
-      // Customize styles if needed
-    }
-  };
-  AddNotification(msg, $('#TopNotifications'));
-}
-
-function AddHeroDeathNotification(data) {
-  var msg = {
-    text: `Hero Death.\n+${data.deathPoints} Points`,
-    class: 'HeroDeathNotification',
-    style: {
-      // Customize styles if needed
-    }
-  };
-  AddNotification(msg, $('#BottomNotifications'));
-}
-
 (function () {
   GameEvents.Subscribe( "top_notification", TopNotification );
   GameEvents.Subscribe( "bottom_notification", BottomNotification );
   GameEvents.Subscribe( "top_remove_notification", TopRemoveNotification );
   GameEvents.Subscribe( "bottom_remove_notification", BottomRemoveNotification );
-  GameEvents.Subscribe("hero_kill_event", function(data) {
-    AddHeroKillNotification(data);
-    AddHeroDeathNotification(data);
-  });
 })();
