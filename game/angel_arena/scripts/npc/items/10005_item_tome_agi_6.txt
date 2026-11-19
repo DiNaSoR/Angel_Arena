@@ -52,7 +52,7 @@
 			"RunScript"
 		{
 			"Target"				"CASTER"
-			"ScriptFile"			"Items/tome.lua"
+			"ScriptFile"			"items/tome.lua"
 			"Function"				"Agi6"
 		}
 		"FireSound"

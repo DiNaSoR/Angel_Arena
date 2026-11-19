@@ -1,19 +1,18 @@
-﻿<root>
+<root>
   <styles>
     <include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
   </styles>
-  <Panel class="AddonLoadingRoot">
-    <Panel id="CustomBg" >
-      <Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/angelarena.png" />
-    </Panel>
-    <Panel id="TitlePanel">
-      <Label id="AddonTitle" text="#addon_game_name" style="" />
-    </Panel>
-	<Panel id="VersionPanel">
-	  <Label id="Version" text="#aa_version" style="" />
-    </Panel>
-	<Panel id="NewsPanel">
-	  <Label id="NewsPaneltext" text="#aarena_instructions_body" style="" />
+  <Panel class="ArenaLoadingScreen" hittest="false">
+    <Image class="ArenaBackdrop" src="file://{images}/custom_game/loading_screen/arena_at_dusk.png" scaling="stretch-to-cover-preserve-aspect" />
+    <Panel class="ArenaShade" />
+    <Panel class="ArenaWelcome">
+      <Label class="ArenaTitle" text="#addon_game_name" />
+      <Panel class="ArenaDivider" />
+      <Label class="ArenaPremise" text="#arena_loading_premise" />
+      <Panel class="ArenaObjectives">
+        <Label class="ArenaObjective" text="#arena_loading_kills" />
+        <Label class="ArenaObjective ArenaBossObjective" text="#arena_loading_boss" />
+      </Panel>
     </Panel>
   </Panel>
 </root>

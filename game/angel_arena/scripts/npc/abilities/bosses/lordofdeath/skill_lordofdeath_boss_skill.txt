@@ -71,8 +71,8 @@
 			}
 			"RunScript"
 			{
-						"ScriptFile"	"Abilities/lordofdeath_boss_basic_skill"
-						"Function"		"animation"
+						"ScriptFile"	"abilities/boss_cast_animation.lua"
+						"Function"		"ArenaBossCastAnimation"
 			}
 			"DelayedAction"
 			{
@@ -81,7 +81,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Abilities/lordofdeath_boss_basic_skill"
+						"ScriptFile"	"abilities/lordofdeath_boss_basic_skill.lua"
 						"Function"		"begin_explosion"
 					}
 				}

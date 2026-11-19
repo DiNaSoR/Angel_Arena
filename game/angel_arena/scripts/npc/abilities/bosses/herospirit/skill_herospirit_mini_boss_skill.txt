@@ -74,8 +74,8 @@
 			}
 			"RunScript"
 			{
-						"ScriptFile"	"Abilities/herospirit_mini_boss_skill"
-						"Function"		"animation"
+						"ScriptFile"	"abilities/boss_cast_animation.lua"
+						"Function"		"ArenaBossCastAnimation"
 			}
 			"DelayedAction"
 			{
@@ -84,7 +84,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Abilities/herospirit_mini_boss_skill"
+						"ScriptFile"	"abilities/herospirit_mini_boss_skill.lua"
 						"Function"		"begin_explosion"
 					}
 				}

@@ -1,575 +1,406 @@
---------------------------------------------------------------
--- Version
---------------------------------------------------------------
-PUDGE_AI_VERSION = "0.5"  -- Updated version
+local THINK_INTERVAL = 0.25
+local HOOK_WINDUP = 0.75
+local HOOK_WINDUP_INTERVAL = 0.03
+local HOOK_WARNING = "particles/ui_mouseactions/range_finder_line.vpcf"
+local HOOK_ORIGIN_TOLERANCE = 25
+local ACQUISITION_RADIUS = 1300
+local LEASH_RADIUS = 1400
+local HOME_RADIUS = 50
+local ROT_HYSTERESIS = 75
+local MIN_HOOK_DISTANCE = 325
+local MAX_LEAD_TIME = 1.8
 
---------------------------------------------------------------
--- Settings
---------------------------------------------------------------
-HOOK_SOUNDBOX = {
-    "pudge_pud_ability_hook_01",
-    "pudge_pud_ability_hook_02",
-    "pudge_pud_ability_hook_03",
-    "pudge_pud_ability_hook_04",
-    "pudge_pud_ability_hook_05",
-    "pudge_pud_ability_hook_06",
-    "pudge_pud_ability_hook_07",
-    "pudge_pud_ability_hook_08"
-}
-
-DISM_SOUNDBOX = {
-    "pudge_pud_attack_08",
-    "pudge_pud_attack_09",
-    "pudge_pud_attack_10",
-    "pudge_pud_attack_11",
-    "pudge_pud_attack_12",
-    "pudge_pud_attack_13"
-}
-
-RUNNING_SOUNDBOX = {
-    "pudge_pud_laugh_01",
-    "pudge_pud_laugh_02",
-    "pudge_pud_laugh_03",
-    "pudge_pud_laugh_04",
-    "pudge_pud_laugh_05",
-    "pudge_pud_laugh_06",
-    "pudge_pud_laugh_07"
-}
-
--- NOTE: These text lines are NOT actual sound events. If you want Pudge
--- to say these lines, either use in-game chat or replace them with valid sound events.
-PUDGE_DIALOG = {
-    "YEAH RUN AWAY LITTLE GIRL!",
-    "slag!.Slag!.SLAG!",
-    "WHAT A WANKER!",
-    "HAHA YOU THOUGHT YOU CAN TAKE ME?",
-    "JUST AS I THOUGHT!",
-    "TURN YOUR FACE AND NEVER COME BACK!",
-    "I WILL STEP ON YOUR FACE IF YOU STEP HERE AGAIN!"
-}
-
---------------------------------------------------------------
--- Initialization
---------------------------------------------------------------
-function Spawn(entityKeyValues)
-    if not thisEntity then return end
-
-    -- Store the original position
-    thisEntity.original_position = thisEntity:GetAbsOrigin()
-
-    print("[Angel Arena] Starting AI for " .. thisEntity:GetUnitName() .. " " .. PUDGE_AI_VERSION)
-
-    -- Initialize abilities
-    hookskill = thisEntity:FindAbilityByName("skill_pudge_meat_hook")
-    rot = thisEntity:FindAbilityByName("pudge_rot")
-    dism = thisEntity:FindAbilityByName("pudge_dismember")
-
-    -- Initialize items
-    thisEntity.items = {
-        urn = nil,
-        shivas = nil,
-        lotus_orb = nil,
-        blade_mail = nil
-    }
-    for i = 0, 5 do
-        local item = thisEntity:GetItemInSlot(i)
-        if item then
-            local name = item:GetAbilityName()
-            if name == "item_urn_of_shadows" then
-                thisEntity.items.urn = item
-            elseif name == "item_shivas_guard" then
-                thisEntity.items.shivas = item
-            elseif name == "item_lotus_orb" then
-                thisEntity.items.lotus_orb = item
-            elseif name == "item_blade_mail" then
-                thisEntity.items.blade_mail = item
-            end
-        end
-    end
-
-    -- Initialize memory
-    thisEntity.memory = {
-        hook_success = 0,
-        rot_success = 0,
-        dismember_success = 0,
-        hook_failure = 0,
-        rot_failure = 0,
-        dismember_failure = 0
-    }
-
-    -- Initialize state
-    thisEntity.state = "idle"
-    thisEntity.isCasting = false
-
-    -- Ability cooldown counters (manual tracking to reduce spamming)
-    thisEntity.globalCooldown = 0
-    thisEntity.hookCooldown = 0
-    thisEntity.dismemberCooldown = 0
-    thisEntity.rotCooldown = 0
-
-    thisEntity.thinkInterval = 0.5
-
-    -- Optional: Start idle gesture
-    thisEntity:StartGesture(ACT_DOTA_IDLE)
-
-    -- Set context think
-    thisEntity:SetContextThink("AIThinking", AIThinking, thisEntity.thinkInterval)
+local function IsValid(handle)
+    return handle and not handle:IsNull()
 end
 
---------------------------------------------------------------
--- Main Thinker
---------------------------------------------------------------
-function AIThinking()
-    if not thisEntity:IsAlive() then
-        return nil
-    end
-
-    -- Decrement manual cooldowns
-    DecrementCooldowns()
-
-    -- Handle state transitions (e.g., if out of range, return to spawn)
-    HandleStateTransitions()
-
-    -- Execute behavior based on state
-    if thisEntity.state == "idle" then
-        IdleBehavior()
-    elseif thisEntity.state == "engaging" then
-        EngagingBehavior()
-    elseif thisEntity.state == "returning" then
-        ReturningBehavior()
-    elseif thisEntity.state == "casting" then
-        -- Let the cast finish; do not interrupt
-        return thisEntity.thinkInterval
-    elseif thisEntity.state == "using_items" then
-        UseItemsBehavior()
-    end
-
-    return thisEntity.thinkInterval
+local function IsReady(ability)
+    return IsValid(ability) and ability:IsFullyCastable()
 end
 
---------------------------------------------------------------
--- Cooldown Management
---------------------------------------------------------------
-function DecrementCooldowns()
-    if thisEntity.globalCooldown > 0 then
-        thisEntity.globalCooldown = math.max(0, thisEntity.globalCooldown - thisEntity.thinkInterval)
+local function LearnAbility(boss, name)
+    local ability = boss:FindAbilityByName(name)
+    if IsValid(ability) and ability:GetLevel() == 0 then
+        ability:SetLevel(1)
     end
-    if thisEntity.hookCooldown > 0 then
-        thisEntity.hookCooldown = math.max(0, thisEntity.hookCooldown - thisEntity.thinkInterval)
-    end
-    if thisEntity.dismemberCooldown > 0 then
-        thisEntity.dismemberCooldown = math.max(0, thisEntity.dismemberCooldown - thisEntity.thinkInterval)
-    end
-    if thisEntity.rotCooldown > 0 then
-        thisEntity.rotCooldown = math.max(0, thisEntity.rotCooldown - thisEntity.thinkInterval)
-    end
+    return ability
 end
 
---------------------------------------------------------------
--- State Transitions
---------------------------------------------------------------
-function HandleStateTransitions()
-    local max_distance = 1400
-    local origin = thisEntity.original_position
-    local distance = (origin - thisEntity:GetAbsOrigin()):Length2D()
-
-    if distance > max_distance then
-        thisEntity.state = "returning"
-        thisEntity:Stop()  -- Stop any ongoing movement or attack
-    end
-
-    if thisEntity.state == "returning" then
-        if distance <= 10 then
-            thisEntity.state = "idle"
-            thisEntity:Stop()
-        else
-            MoveToPosition(origin)
-        end
-    end
-end
-
---------------------------------------------------------------
--- Idle Behavior
---------------------------------------------------------------
-function IdleBehavior()
-    local units = FindEnemyUnits(thisEntity, 1300)
-    if #units == 0 then
-        -- No enemies in range -> optional idle/wander
-        return
-    end
-
-    local target = GetBestTarget(units)
-    if target then
-        -- If we have a valid target, possibly cast abilities
-        if not thisEntity:IsChanneling() and not IsCastingAbility() and 
-           not thisEntity.isCasting and thisEntity.globalCooldown <= 0 then
-            ExecuteSkillDecision(target)
-        end
-
-        -- Move toward target
-        thisEntity.state = "engaging"
-        MoveTowardsEnemy(target)
-    else
-        MoveToPosition(thisEntity.original_position)  -- Fallback
-    end
-end
-
---------------------------------------------------------------
--- Engaging Behavior
---------------------------------------------------------------
-function EngagingBehavior()
-    local target = FindClosestEnemy(thisEntity, 1300)
-    if target and target:IsAlive() then
-        -- Consider casting if not channeling or already casting
-        if not thisEntity:IsChanneling() and not IsCastingAbility() and 
-           not thisEntity.isCasting and thisEntity.globalCooldown <= 0 then
-            ExecuteSkillDecision(target)
-        end
-        MoveTowardsEnemy(target)
-    else
-        thisEntity.state = "idle"
-    end
-end
-
---------------------------------------------------------------
--- Returning Behavior
---------------------------------------------------------------
-function ReturningBehavior()
-    local origin = thisEntity.original_position
-    local distance = (origin - thisEntity:GetAbsOrigin()):Length2D()
-
-    if distance <= 10 then
-        thisEntity.state = "idle"
-        thisEntity:Stop()
-    else
-        MoveToPosition(origin)
-    end
-end
-
---------------------------------------------------------------
--- Skill Decision Making
---------------------------------------------------------------
-function ExecuteSkillDecision(target)
-    if not target or not target:IsAlive() then return end
-
-    -- Try hooking first if target is outside short range
-    if CanCastHook(target) then
-        ExecuteSkill("hook", target)
-        return
-    end
-
-    -- Then try dismember if target is close
-    if CanCastDismember(target) then
-        ExecuteSkill("dismember", target)
-        return
-    end
-
-    -- Finally, consider toggling Rot
-    if CanCastRot() then
-        ExecuteSkill("rot", target)
-        return
-    end
-end
-
---------------------------------------------------------------
--- Execute Skill
---------------------------------------------------------------
-function ExecuteSkill(skill_choice, target)
-    if skill_choice == nil then return end
-
-    thisEntity.state = "casting"
-    thisEntity.isCasting = true
-
-    -- Short global cooldown to prevent spamming
-    thisEntity.globalCooldown = 1.0
-
-    if skill_choice == "hook" and hookskill then
-        if CastHook(target) then
-            local success = HookHit(target)  -- Placeholder random check
-            if success then
-                thisEntity.memory.hook_success = thisEntity.memory.hook_success + 1
-                PlayDialog()
-            else
-                thisEntity.memory.hook_failure = thisEntity.memory.hook_failure + 1
-            end
-            thisEntity.hookCooldown = hookskill:GetCooldown(-1)
-        end
-
-    elseif skill_choice == "rot" and rot then
-        if CastRot() then
-            local success = RotHit(target)   -- Placeholder random check
-            if success then
-                thisEntity.memory.rot_success = thisEntity.memory.rot_success + 1
-                PlayDialog()
-            else
-                thisEntity.memory.rot_failure = thisEntity.memory.rot_failure + 1
-            end
-            thisEntity.rotCooldown = rot:GetCooldown(-1)
-        end
-
-    elseif skill_choice == "dismember" and dism then
-        if CastDismember(target) then
-            local success = DismemberHit(target) -- Placeholder random check
-            if success then
-                thisEntity.memory.dismember_success = thisEntity.memory.dismember_success + 1
-                PlayDialog()
-            else
-                thisEntity.memory.dismember_failure = thisEntity.memory.dismember_failure + 1
-            end
-            thisEntity.dismemberCooldown = dism:GetCooldown(-1)
-        end
-    end
-
-    -- Release casting
-    thisEntity.isCasting = false
-    thisEntity.state = "engaging"
-end
-
---------------------------------------------------------------
--- Ability Casting Checks & Functions
---------------------------------------------------------------
-function CanCastHook(target)
-    if not hookskill or thisEntity.hookCooldown > 0 or not hookskill:IsFullyCastable() then
-        return false
-    end
-    local manaCost = hookskill:GetManaCost(-1) or 0
-    if thisEntity:GetMana() < manaCost then
-        return false
-    end
-    local distance = (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D()
-    return (distance >= 200 and distance <= 1300)
-end
-
-function CastHook(target)
-    if not target or not hookskill then return false end
-    -- You can remove randomness if you want a more accurate hook.
-    local cast_position = target:GetAbsOrigin() + RandomVector(RandomFloat(50, 150))
-    thisEntity:CastAbilityOnPosition(cast_position, hookskill, -1)
-    EmitSoundOn( HOOK_SOUNDBOX[RandomInt(1, #HOOK_SOUNDBOX)], thisEntity )
-    return true
-end
-
-function CanCastDismember(target)
-    if not dism or thisEntity.dismemberCooldown > 0 or not dism:IsFullyCastable() then
-        return false
-    end
-    local manaCost = dism:GetManaCost(-1) or 0
-    if thisEntity:GetMana() < manaCost then
-        return false
-    end
-    local distance = (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D()
-    -- For melee range: typically ~160 or so. Give some buffer.
-    return (distance <= 250)
-end
-
-function CastDismember(target)
-    if not target or not dism then return false end
-    thisEntity:CastAbilityOnTarget(target, dism, -1)
-    EmitSoundOn( DISM_SOUNDBOX[RandomInt(1, #DISM_SOUNDBOX)], thisEntity )
-    return true
-end
-
-function CanCastRot()
-    if not rot or thisEntity.rotCooldown > 0 or not rot:IsFullyCastable() then
-        return false
-    end
-    local manaCost = rot:GetManaCost(-1) or 0
-    if thisEntity:GetMana() < manaCost then
-        return false
-    end
-    -- If Pudge already has Rot turned on, no need to cast again
-    if thisEntity:HasModifier("modifier_pudge_rot") then
-        return false
-    end
-    return true
-end
-
-function CastRot()
-    thisEntity:CastAbilityNoTarget(rot, -1)
-    EmitSoundOn(RUNNING_SOUNDBOX[RandomInt(1, #RUNNING_SOUNDBOX)], thisEntity)
-    return true
-end
-
---------------------------------------------------------------
--- Item Usage Behavior
---------------------------------------------------------------
-function UseItemsBehavior()
-    -- If we don’t really need items, go back to idle
-    if not CanUseItems() then
-        thisEntity.state = "idle"
-        return
-    end
-
-    local healthPercentage = thisEntity:GetHealth() / thisEntity:GetMaxHealth()
-    local enemies = FindEnemyUnits(thisEntity, 950)
-    if #enemies < 1 then
-        thisEntity.state = "idle"
-        return
-    end
-
-    local target = GetBestTarget(enemies)
-    for _, item in pairs(thisEntity.items) do
-        if item and item:IsFullyCastable() then
-            local itemName = item:GetAbilityName()
-            if itemName == "item_urn_of_shadows" and target then
-                -- Use urn on an enemy if they're fairly distant
-                if (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() > 700 then
-                    thisEntity:CastAbilityOnTarget(target, item, -1)
+-- Each scan uses what Bador's team can see. Dropping an observation also
+-- drops its velocity, so a hero emerging from fog gets a fresh first sample.
+local function Survey(boss, home, origin, now, previous, focus, interrupt_range)
+    local units = FindUnitsInRadius(boss:GetTeamNumber(), origin, nil, ACQUISITION_RADIUS,
+        DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+        DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE
+            + DOTA_UNIT_TARGET_FLAG_NO_INVIS, FIND_CLOSEST, false)
+    local scene = { seen = {}, close_heroes = 0, attackers = 0, nearest = math.huge, nearest_hero = math.huge }
+    local best = -math.huge
+    for _, unit in ipairs(units) do
+        if unit ~= boss and IsValid(unit) and unit:IsAlive() then
+            local position = unit:GetAbsOrigin()
+            local contact = { position = position, time = now }
+            local last = previous[unit]
+            if last and now > last.time and now - last.time <= 0.6 and not unit:IsRooted() and not unit:IsStunned() then
+                local velocity = (position - last.position) * (1 / (now - last.time))
+                -- Discard jumps from blinks and forced movement.
+                if velocity:Length2D() <= 700 then
+                    contact.velocity = velocity
                 end
+            end
+            scene.seen[unit] = contact
 
-            elseif itemName == "item_shivas_guard" and healthPercentage <= 0.75 then
-                thisEntity:CastAbilityNoTarget(item, -1)
-
-            elseif itemName == "item_lotus_orb" and healthPercentage <= 0.85 then
-                thisEntity:CastAbilityOnTarget(thisEntity, item, -1)
-
-            elseif itemName == "item_blade_mail" and healthPercentage <= 0.95 then
-                thisEntity:CastAbilityNoTarget(item, -1)
+            if unit:GetTeamNumber() ~= boss:GetTeamNumber() and (position - home):Length2D() <= LEASH_RADIUS then
+                local distance = (position - origin):Length2D()
+                local score = -0.55 * distance
+                scene.nearest = math.min(scene.nearest, distance)
+                contact.hero = unit:IsRealHero() and not unit:IsIllusion()
+                if contact.hero then
+                    scene.nearest_hero = math.min(scene.nearest_hero, distance)
+                    score = score + 1000 + 350 * (1 - unit:GetHealth() / unit:GetMaxHealth())
+                    if distance <= 650 then
+                        scene.close_heroes = scene.close_heroes + 1
+                    end
+                    if unit:IsChanneling() and distance <= interrupt_range then score = score + 700 end
+                    if unit:GetAttackTarget() == boss then
+                        scene.attackers = scene.attackers + 1
+                        score = score + 160
+                    end
+                    local casting = unit:GetCurrentActiveAbility()
+                    if IsValid(casting) and casting:IsInAbilityPhase() and casting:GetCursorTarget() == boss then
+                        scene.incoming_spell = true
+                    end
+                end
+                if unit == focus then score = score + 110 end
+                contact.score = score
+                if score > best then
+                    best, scene.target = score, unit
+                end
             end
         end
     end
-
-    thisEntity.state = "idle"
+    return scene
 end
 
-function CanUseItems()
-    -- Pudge uses items if his health is below 95%
-    return (thisEntity:GetHealth() / thisEntity:GetMaxHealth()) < 0.95
-end
+local function HookAim(flight, origin, contact)
+    local position = contact.position
+    if not contact.velocity then return position end
 
---------------------------------------------------------------
--- Movement & Positioning
---------------------------------------------------------------
-function MoveTowardsEnemy(target)
-    if not target or not target:IsAlive() then
-        thisEntity.state = "idle"
-        return
+    if flight.speed <= 0 then return position end
+    local aim = position
+    for _ = 1, 2 do
+        local travel = (aim - origin):Length2D() / flight.speed
+        aim = position + contact.velocity * math.min(flight.delay + travel, MAX_LEAD_TIME)
     end
-
-    local origin = thisEntity.original_position
-    local max_distance = 1400
-    local current_position = thisEntity:GetAbsOrigin()
-    local target_position = target:GetAbsOrigin()
-    local direction = (target_position - current_position):Normalized()
-    local distance_from_origin = (origin - current_position):Length2D()
-    local attackRange = thisEntity:Script_GetAttackRange()
-
-    -- If too far from spawn, force returning
-    if distance_from_origin > max_distance then
-        thisEntity.state = "returning"
-        thisEntity:Stop()
-        MoveToPosition(origin)
-        return
-    end
-
-    local distance_to_target = (target_position - current_position):Length2D()
-    if distance_to_target <= attackRange + 100 then
-        thisEntity:MoveToTargetToAttack(target)
-    else
-        -- Move incrementally closer
-        local newPosition = current_position + direction * 150
-        thisEntity:MoveToPosition(newPosition)
-    end
+    return aim
 end
 
-function MoveToPosition(position)
-    local current_position = thisEntity:GetAbsOrigin()
-    local distance_to_position = (position - current_position):Length2D()
-    if distance_to_position > 10 then
-        thisEntity:MoveToPosition(position)
-    else
-        thisEntity.state = "idle"
-        thisEntity:Stop()
-    end
-end
+local function HookLaneClear(origin, aim, target, seen, flight)
+    local offset = aim - origin
+    local length = offset:Length2D()
+    if length == 0 then return false end
+    local dx, dy = offset.x / length, offset.y / length
+    for unit, contact in pairs(seen) do
+        if unit ~= target then
+            local relative = contact.position - origin
+            local forward = relative.x * dx + relative.y * dy
+            local lateral = relative.x * dy - relative.y * dx
+            local clearance = flight.width + unit:GetHullRadius()
+            if forward >= 0 and forward < length and math.abs(lateral) <= clearance then return false end
 
---------------------------------------------------------------
--- Target Selection
---------------------------------------------------------------
-function FindEnemyUnits(pudgeEntity, searchRadius)
-    local team = pudgeEntity:GetTeamNumber()
-    local position = pudgeEntity:GetAbsOrigin()
-
-    local enemies = FindUnitsInRadius(
-        team,
-        position,
-        nil,
-        searchRadius,
-        DOTA_UNIT_TARGET_TEAM_ENEMY,
-        DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
-        DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE,
-        FIND_CLOSEST,
-        false
-    )
-    return enemies
-end
-
--- Return the "best" target from a table of enemies
-function GetBestTarget(units)
-    if #units == 0 then return nil end
-
-    -- Example logic: Sort by lowest health, then by closest distance
-    table.sort(units, function(a, b)
-        if a:GetHealth() == b:GetHealth() then
-            return (a:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() < 
-                   (b:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D()
-        else
-            return a:GetHealth() < b:GetHealth()
+            -- A clear lane now can be occupied when the projectile arrives.
+            local velocity = contact.velocity
+            if velocity and flight.speed > 0 then
+                local travel = math.max(0, math.min(length, forward)) / flight.speed
+                local time = math.min(MAX_LEAD_TIME, flight.delay + travel)
+                forward = forward + time * (velocity.x * dx + velocity.y * dy)
+                lateral = lateral + time * (velocity.x * dy - velocity.y * dx)
+                if forward >= 0 and forward < length and math.abs(lateral) <= clearance then return false end
+            end
         end
-    end)
-
-    return units[1]
-end
-
-function FindClosestEnemy(pudgeEntity, searchRadius)
-    local enemies = FindEnemyUnits(pudgeEntity, searchRadius)
-    if #enemies == 0 then
-        return nil
     end
-    return enemies[1]  -- Because they are sorted by FIND_CLOSEST
+    return true
 end
 
---------------------------------------------------------------
--- Placeholder "Hit" Detection
--- In a real scenario, you'd use OnProjectileHitUnit or
--- other game events to see if Meat Hook actually hit a target.
---------------------------------------------------------------
-function HookHit(target)
-    -- 50% random chance
-    return (RandomInt(0,1) == 1)
+local function CanHook(hook, origin, position)
+    if not IsReady(hook) then
+        return false
+    end
+    local distance = (position - origin):Length2D()
+    local range = hook:GetCastRange(origin, nil)
+    local travel_distance = hook:GetSpecialValueFor("hook_distance")
+    if travel_distance > 0 and (range <= 0 or travel_distance < range) then
+        range = travel_distance
+    end
+    return distance >= MIN_HOOK_DISTANCE and distance <= range
 end
 
-function RotHit(target)
-    -- 50% random chance
-    return (RandomInt(0,1) == 1)
+local function ShowHookWarning(boss, origin, position, hook)
+    local direction = Vector(position.x - origin.x, position.y - origin.y, 0):Normalized()
+    local reach = hook:GetSpecialValueFor("hook_distance")
+    if reach <= 0 then
+        reach = hook:GetCastRange(origin, nil)
+    end
+
+    local warning = ParticleManager:CreateParticle(HOOK_WARNING, PATTACH_WORLDORIGIN, boss)
+    local endpoint = GetGroundPosition(origin + direction * reach, boss)
+    ParticleManager:SetParticleControl(warning, 0, origin)
+    ParticleManager:SetParticleControl(warning, 1, endpoint)
+    return warning, direction
 end
 
-function DismemberHit(target)
-    -- 50% random chance
-    return (RandomInt(0,1) == 1)
+local function FindHookAngle(boss, home, origin, aim, hook, scene, flight)
+    local direction = (aim - origin):Normalized()
+    local side = Vector(-direction.y, direction.x, 0)
+    for _, step in ipairs({ 280, -280 }) do
+        local position = GetGroundPosition(origin + direction * 100 + side * step, boss)
+        if (position - home):Length2D() <= LEASH_RADIUS and CanHook(hook, position, aim)
+            and HookLaneClear(position, aim, scene.target, scene.seen, flight)
+            and GridNav:IsTraversable(position) and not GridNav:IsBlocked(position)
+            and GridNav:CanFindPath(origin, position) then
+            return position
+        end
+    end
 end
 
---------------------------------------------------------------
--- Casting Check
---------------------------------------------------------------
-function IsCastingAbility()
-    -- If current active ability is channeling or in an ability phase
-    local currentOrder = thisEntity:GetCurrentActiveAbility()
-    if currentOrder then
-        return (currentOrder:IsChanneling() or currentOrder:IsInAbilityPhase())
+local function CanTarget(boss, ability, target, origin)
+    return IsReady(ability) and (target:GetAbsOrigin() - origin):Length2D() <= ability:GetCastRange(origin, target)
+        and not target:HasModifier("modifier_item_lotus_orb_active")
+        and UnitFilter(target, ability:GetAbilityTargetTeam(), ability:GetAbilityTargetType(),
+            ability:GetAbilityTargetFlags(), boss:GetTeamNumber()) == UF_SUCCESS
+end
+
+local function TryDefense(boss, scene)
+    if boss:IsMuted() then return false end
+    local health = boss:GetHealth() / boss:GetMaxHealth()
+    local lotus = boss:FindItemInInventory("item_lotus_orb")
+    if (scene.incoming_spell or boss:IsSilenced()) and IsReady(lotus)
+        and not boss:HasModifier("modifier_item_lotus_orb_active") then
+        boss:CastAbilityOnTarget(boss, lotus, -1)
+        return true
+    end
+
+    local blade_mail = boss:FindItemInInventory("item_blade_mail")
+    if (scene.attackers >= 2 or (health <= 0.95 and scene.nearest_hero <= 350)) and IsReady(blade_mail)
+        and not boss:HasModifier("modifier_item_blade_mail_reflect") then
+        boss:CastAbilityNoTarget(blade_mail, -1)
+        return true
+    end
+
+    local shivas_guard = boss:FindItemInInventory("item_shivas_guard")
+    if (scene.close_heroes >= 2 or (health <= 0.75 and scene.nearest_hero <= 650)) and IsReady(shivas_guard) then
+        boss:CastAbilityNoTarget(shivas_guard, -1)
+        return true
     end
     return false
 end
 
---------------------------------------------------------------
--- Dialog / "Taunt" Lines
---------------------------------------------------------------
-function PlayDialog()
-    local dialog = PUDGE_DIALOG[RandomInt(1, #PUDGE_DIALOG)]
-    -- If you have a valid sound event, use:
-    -- thisEntity:EmitSound("<sound_event>")
-    -- For actual text lines, you could do:
-    -- GameRules:SendCustomMessage(dialog, 0, 0)
-    -- Here, we just attempt to call it as a sound event:
-    EmitSoundOn(dialog, thisEntity)
+function Spawn()
+    local boss = thisEntity
+    if not IsValid(boss) then
+        return
+    end
+
+    local home = boss:GetAbsOrigin()
+    local hook = LearnAbility(boss, "skill_pudge_meat_hook")
+    local rot = LearnAbility(boss, "pudge_rot")
+    local dismember = LearnAbility(boss, "pudge_dismember")
+    local overpower = LearnAbility(boss, "ursa_overpower")
+    local earthshock = LearnAbility(boss, "ursa_earthshock")
+    local returning = false
+    local pending_hook
+    local previous = {}
+    local focus
+    local next_flank_time = 0
+    local flank
+
+    local function ClearHook()
+        if pending_hook then
+            ParticleManager:DestroyParticle(pending_hook.warning, true)
+            ParticleManager:ReleaseParticleIndex(pending_hook.warning)
+            pending_hook = nil
+        end
+    end
+
+    local function TryHook(origin, scene, now, distance)
+        if not IsReady(hook) or distance < MIN_HOOK_DISTANCE then return end
+
+        local flight = {
+            width = hook:GetSpecialValueFor("hook_width"),
+            speed = hook:GetSpecialValueFor("hook_speed"),
+            delay = HOOK_WINDUP + hook:GetCastPoint(),
+        }
+        local function AimFor(unit)
+            -- Take a movement sample before committing to a newly spotted runner.
+            if unit:IsMoving() and not scene.seen[unit].velocity and not unit:IsRooted() and not unit:IsStunned() then
+                return
+            end
+            local aim = HookAim(flight, origin, scene.seen[unit])
+            if CanHook(hook, origin, aim) and (aim - home):Length2D() <= LEASH_RADIUS then
+                return aim
+            end
+        end
+
+        local target = scene.target
+        if not scene.seen[target].hero then return end
+        local primary_aim = AimFor(target)
+        local shot
+        if primary_aim and HookLaneClear(origin, primary_aim, target, scene.seen, flight) then
+            shot = primary_aim
+        else
+            -- A screened carry can still leave a second hero open to a pull.
+            local best = -math.huge
+            for unit, contact in pairs(scene.seen) do
+                if unit ~= target and contact.hero and contact.score > best then
+                    local aim = AimFor(unit)
+                    if aim and HookLaneClear(origin, aim, unit, scene.seen, flight) then
+                        best, shot = contact.score, aim
+                    end
+                end
+            end
+        end
+
+        if shot then
+            boss:Stop()
+            local warning, direction = ShowHookWarning(boss, origin, shot, hook)
+            pending_hook = { warning = warning, origin = origin, position = shot, release_time = now + HOOK_WINDUP }
+            flank = nil
+            boss:SetForwardVector(direction)
+            EmitSoundOn("pudge_pud_ability_hook_01", boss)
+            return HOOK_WINDUP_INTERVAL
+        end
+
+        if not primary_aim or scene.nearest <= boss:Script_GetAttackRange() or boss:IsRooted() then return end
+        if flank and flank.target == target and now < flank.until_time
+            and (origin - flank.position):Length2D() > HOME_RADIUS then
+            return THINK_INTERVAL
+        end
+        if now < next_flank_time then return end
+
+        next_flank_time = now + 1.25
+        local position = FindHookAngle(boss, home, origin, primary_aim, hook, scene, flight)
+        if position then
+            flank = { target = target, position = position, until_time = now + 0.8 }
+            boss:MoveToPosition(position)
+            return THINK_INTERVAL
+        end
+    end
+
+    boss:SetContextThink("BadorThink", function()
+        if not IsValid(boss) or not boss:IsAlive() or GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+            ClearHook()
+            return nil
+        end
+        if GameRules:IsGamePaused() then return THINK_INTERVAL end
+        if boss:IsStunned() or boss:IsHexed() or boss:IsCommandRestricted() or boss:IsOutOfGame() then
+            ClearHook()
+            return THINK_INTERVAL
+        end
+
+        local active_ability = boss:GetCurrentActiveAbility()
+        if boss:IsChanneling() or (IsValid(active_ability) and active_ability:IsInAbilityPhase()) then
+            ClearHook()
+            return THINK_INTERVAL
+        end
+
+        local origin = boss:GetAbsOrigin()
+        local home_distance = (origin - home):Length2D()
+        returning = home_distance > LEASH_RADIUS or (returning and home_distance > HOME_RADIUS)
+        local can_cast = not boss:IsSilenced()
+
+        if pending_hook then
+            if returning or not can_cast or (origin - pending_hook.origin):Length2D() > HOOK_ORIGIN_TOLERANCE then
+                ClearHook()
+                return THINK_INTERVAL
+            end
+
+            local remaining = pending_hook.release_time - GameRules:GetGameTime()
+            if remaining > 0.001 then
+                return math.min(remaining, HOOK_WINDUP_INTERVAL)
+            end
+
+            local position = pending_hook.position
+            ClearHook()
+            if CanHook(hook, origin, position) then
+                boss:CastAbilityOnPosition(position, hook, -1)
+            end
+            return THINK_INTERVAL
+        end
+
+        local now = GameRules:GetGameTime()
+        local scene
+        if not returning then
+            local interrupt_range = 0
+            if can_cast and IsReady(dismember) then interrupt_range = dismember:GetCastRange(origin, nil) end
+            if can_cast and IsReady(hook) then interrupt_range = math.max(interrupt_range, hook:GetCastRange(origin, nil)) end
+            scene = Survey(boss, home, origin, now, previous, focus, interrupt_range)
+        end
+        previous = scene and scene.seen or {}
+        focus = scene and scene.target
+        local target = focus
+        local rot_active = IsValid(rot) and rot:GetToggleState()
+
+        if not target then
+            flank = nil
+            if can_cast and rot_active then
+                boss:CastAbilityToggle(rot, -1)
+            elseif home_distance > HOME_RADIUS then
+                returning = true
+                boss:MoveToPosition(home)
+            elseif IsValid(boss:GetAttackTarget()) then
+                boss:Stop()
+            elseif not returning and not boss:IsMuted() and boss:GetHealth() < 0.75 * boss:GetMaxHealth()
+                and not boss:HasModifier("modifier_item_urn_heal") then
+                local urn = boss:FindItemInInventory("item_urn_of_shadows")
+                if IsReady(urn) and urn:GetCurrentCharges() > 1 then
+                    boss:CastAbilityOnTarget(boss, urn, -1)
+                end
+            end
+            return THINK_INTERVAL
+        end
+
+        local target_position = target:GetAbsOrigin()
+        local distance = (target_position - origin):Length2D()
+        local enemy_hero = scene.seen[target].hero
+        local can_grab = can_cast and (enemy_hero or target:IsChanneling()) and CanTarget(boss, dismember, target, origin)
+        if can_grab and target:IsChanneling() then
+            boss:CastAbilityOnTarget(target, dismember, -1)
+            return THINK_INTERVAL
+        end
+        if TryDefense(boss, scene) then return THINK_INTERVAL end
+
+        if can_cast then
+            local hook_interval = TryHook(origin, scene, now, distance)
+            if hook_interval then return hook_interval end
+        end
+        flank = nil
+
+        if can_cast and IsValid(rot) then
+            local rot_radius = rot:GetSpecialValueFor("rot_radius")
+            if rot_radius <= 0 then
+                rot_radius = 250
+            end
+            if (rot_active and scene.nearest > rot_radius + ROT_HYSTERESIS)
+                or (not rot_active and scene.nearest <= rot_radius and IsReady(rot)) then
+                boss:CastAbilityToggle(rot, -1)
+                return THINK_INTERVAL
+            end
+        end
+
+        local urn = boss:FindItemInInventory("item_urn_of_shadows")
+        if can_grab then
+            boss:CastAbilityOnTarget(target, dismember, -1)
+        elseif enemy_hero and not boss:IsMuted() and distance >= 500 and CanTarget(boss, urn, target, origin)
+            and urn:GetCurrentCharges() > 0 and not target:HasModifier("modifier_item_urn_damage") then
+            boss:CastAbilityOnTarget(target, urn, -1)
+        elseif can_cast and distance <= 250 and not boss:IsRooted() and IsReady(earthshock)
+            and bit.band(earthshock:GetBehaviorInt(), DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
+            boss:CastAbilityNoTarget(earthshock, -1)
+        elseif can_cast and distance <= 250 and IsReady(overpower)
+            and bit.band(overpower:GetBehaviorInt(), DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
+            boss:CastAbilityNoTarget(overpower, -1)
+        elseif boss:GetAttackTarget() ~= target then
+            boss:MoveToTargetToAttack(target)
+        end
+        return THINK_INTERVAL
+    end, THINK_INTERVAL)
 end

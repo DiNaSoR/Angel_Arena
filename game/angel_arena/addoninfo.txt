@@ -1,12 +1,18 @@
-"AddonInfo"
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
 {
-	"version"		"v0.1"
-	"TeamCount" 	"2"
-	"maps"			"angel_arena"
-	"IsPlayable"	"1"
-	"angel_arena"
-	{
-					"MaxPlayers"                    "10"
-					"TeamCount"						"2"
-	}
+    TeamCount = 2
+    IsPlayable = 1
+    DefaultMap = "angel_arena"
+    MaxPlayers = 10
+    maps =
+    [
+        "angel_arena",
+    ]
+    map_options =
+    [
+        {
+            map = "angel_arena"
+            MaxPlayers = 10
+        },
+    ]
 }

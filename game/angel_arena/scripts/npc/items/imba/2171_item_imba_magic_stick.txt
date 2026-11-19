@@ -8,8 +8,9 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"2171"
-		"BaseClass"						"item_datadriven"
-		"AbilityTextureName" 			"custom/imba_magic_stick"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/imba/item_stick.lua"
+		"AbilityTextureName" 			"imba_custom/imba_magic_stick"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"Model"							"models/props_gameplay/magic_wand.vmdl"
 
@@ -48,55 +49,6 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"restore_per_charge"	"15"
-			}
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"items/imba/item_stick.lua"
-				"Function"				"MagicStick"
-
-				"sound_cast"			"DOTA_Item.MagicStick.Activate"
-				"particle_cast"			"particles/items2_fx/magic_stick.vpcf"
-			}
-		}
-
-		"Modifiers"
-		{
-			"modifier_item_imba_magic_stick_aura"
-			{
-				"Passive"				"1"
-				"IsHidden"				"1"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
-
-				"Aura"					"modifier_item_imba_magic_stick_effect"
-				"Aura_Radius"			"%charge_radius"
-				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
-				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
-				"Aura_ApplyToCaster"	"0"
-			}
-
-			"modifier_item_imba_magic_stick_effect"
-			{
-				"Passive"				"0"
-				"IsHidden"				"1"
-				"IsDebuff"				"1"
-				"IsPurgable"			"0"
-
-				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
-
-				"OnSpentMana"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/imba/item_stick.lua"
-						"Function"		"MagicStickCharge"
-					}
-				}
 			}
 		}
 	}

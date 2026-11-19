@@ -135,7 +135,7 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"Abilities/lordofdeath_boss_splitter.lua"
+				"ScriptFile"	"abilities/lordofdeath_boss_splitter.lua"
 				"Function"		"projectileHit"
 				"Target"		"TARGET"
 			}
@@ -147,7 +147,7 @@
 			{
 				"RunScript"
 				{
-					"ScriptFile"	"Abilities/lordofdeath_boss_basic_skill.lua"
+					"ScriptFile"	"abilities/lordofdeath_boss_basic_skill.lua"
 					"Function"		"death_animation"
 				}
 			}

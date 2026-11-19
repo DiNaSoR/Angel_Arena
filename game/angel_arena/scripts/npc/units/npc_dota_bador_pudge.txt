@@ -28,6 +28,7 @@
 		"precache"
 		{
 			"model"					"models/heroes/pudge/pudge.vmdl"
+			"particle"				"particles/ui_mouseactions/range_finder_line.vpcf"
 		}
 
 		// Abilities

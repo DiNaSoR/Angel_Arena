@@ -70,7 +70,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"Items/items.lua"
+				"ScriptFile"	"items/items.lua"
 				"Function"		"HephaestusRespawn"
 			}
 		}
@@ -96,7 +96,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Items/items.lua"
+						"ScriptFile"	"items/items.lua"
 						"Function"		"HephaestusRegen"
 					}
 				}
@@ -104,7 +104,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Items/items.lua"
+						"ScriptFile"	"items/items.lua"
 						"Function"		"DestroyHephaestusRegen"
 					}
 				}

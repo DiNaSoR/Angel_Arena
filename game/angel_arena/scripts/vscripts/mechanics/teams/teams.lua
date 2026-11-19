@@ -81,22 +81,19 @@ Teams.Data = Teams.Data or {
 }
 
 function Teams:Initialize()
-	PlayerTables:CreateTable("teams", {}, AllPlayersInterval)
+    PlayerTables:CreateTable("teams", {}, true)
 
-	local mapinfo = LoadKeyValues("addoninfo.txt")[GetMapName()]
-	local num = math.floor(mapinfo.MaxPlayers / mapinfo.TeamCount)
-	local count = 0
-	for team, data in pairsByKeys(Teams.Data) do
-		local playerCount = count < mapinfo.TeamCount and num or 0
-		GameRules:SetCustomGameTeamMaxPlayers(team, playerCount)
-		count = count + 1
-		Teams.Data[team].count = playerCount
-		Teams.Data[team].enabled = playerCount > 0
+    for team, data in pairs(Teams.Data) do
+        local enabled = team == DOTA_TEAM_GOODGUYS or team == DOTA_TEAM_BADGUYS
+        data.count = enabled and AA_PLAYERS_PER_TEAM or 0
+        data.enabled = enabled
+        GameRules:SetCustomGameTeamMaxPlayers(team, data.count)
 
-		if USE_CUSTOM_TEAM_COLORS then
-			SetTeamCustomHealthbarColor(team, data.color[1], data.color[2], data.color[3])
-		end
-	end
+        if USE_CUSTOM_TEAM_COLORS then
+            local color = TEAM_COLORS[team] or data.color
+            SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
+        end
+    end
 end
 
 function Teams:PostInitialize()

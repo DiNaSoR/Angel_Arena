@@ -1,0 +1,12 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/arena_setup.css" />
+  </styles>
+  <Panel class="ArenaSetup" hittest="false" hittestchildren="false">
+    <Panel class="ArenaSetupRules">
+      <Label class="ArenaSetupTitle" text="#arena_setup_objectives" />
+      <Label class="ArenaSetupRule" text="#arena_loading_kills" />
+      <Label class="ArenaSetupRule ArenaSetupBossRule" text="#arena_loading_boss" />
+    </Panel>
+  </Panel>
+</root>

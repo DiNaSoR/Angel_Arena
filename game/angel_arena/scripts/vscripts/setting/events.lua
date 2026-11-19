@@ -1,70 +1,58 @@
+local ArenaScore = require('mechanics/match/score')
+
+local function ResolveDeathEntity(index)
+  local entityIndex = tonumber(index)
+  if not entityIndex or entityIndex <= 0 then
+    return nil
+  end
+  local entity = EntIndexToHScript(entityIndex)
+  if entity and IsValidEntity(entity) then
+    return entity
+  end
+end
+
 --	This file contains all barebones-registered events and has already set up the passed-in parameters for your use.
 --------------------------------------------------------------
 --	On Hero Death
 --------------------------------------------------------------
-function GameMode:OnHeroDeath(keys)
-    --PrintTable("GameMode:OnHeroDeath",keys)
-    --DebugPrintTable("GameMode:OnHeroDeath",keys)
-    local ent = EntIndexToHScript(keys.entindex_killed)
-    local hero = ent:GetPlayerOwner()
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
-    if hero then
-        Timers:CreateTimer(0.1,function() hero:SetKillCamUnit(nil) end) 
+function GameMode:OnHeroDeath(hero)
+    local player = hero:GetPlayerOwner()
+    if player then
+        Timers:CreateTimer(0.1, function()
+            if IsValidEntity(player) then
+                player:SetKillCamUnit(nil)
+            end
+        end)
     end
-    --print("Hero [" .. ent:GetUnitName() .. "] killed by [" .. attacker:GetUnitName() .. "]")
 end
 --------------------------------------------------------------
 --	On Disconnect
 --------------------------------------------------------------
-function GameMode:OnDisconnect(keys)
-  --DebugPrint('[DEBUG] Player Disconnected ' .. tostring(keys.userid))
-  --DebugPrintTable(keys)
+local function ApplyDuelVisitorForPlayer(playerID)
+  if playerID and PlayerResource:IsValidPlayerID(playerID) then
+    Duel:SetUpVisitorsForHero(PlayerResource:GetSelectedHeroEntity(playerID))
+  end
+end
 
-  local name = keys.name
-  local networkid = keys.networkid
-  local reason = keys.reason
-  local userid = keys.userid
+function GameMode:OnDisconnect(keys)
+  ApplyDuelVisitorForPlayer(keys.PlayerID)
 end
 --------------------------------------------------------------
 --	On Game Rules State Change
 --	The overall game state has changed
 --	game event object for OnGameRulesStateChange
 --------------------------------------------------------------
-function GameMode:OnGameRulesStateChange(keys)
-  --print("Angel Arena GameRules State Changed")
-  --DebugPrint("[DEBUG] GameRules State Changed")
-  --DebugPrintTable(keys)
-
-  local newState = GameRules:State_Get()
-  -- Waiting for players to load
-  if newState == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
-  
-  print("[Angel Arena] Game Change to waiting for players to load")
-  -- Hero selection
-  elseif  newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-  print("[Angel Arena] Game Change to hero selection")
-  --EmitGlobalSound("angel_arena.allahremix")
-  -- Strategy time started
-  elseif  newState == DOTA_GAMERULES_STATE_STRATEGY_TIME then
-  print("[Angel Arena] Game Change to strategy time")
-    GameMode:OnStrategyTime()
-  -- Pre-Game started
-  elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
-  print("[Angel Arena] Game Change to pre game")
-    GameMode:OnPreGame()
-  --Game in progress
-  elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-  print("[Angel Arena] Game Change to game in progress")
-    GameMode:OnGameInProgress()
-
-  -- Hero Selection
-  --[[elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
-    for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-				local playerHandle = PlayerResource:GetPlayer(nPlayerID)
-				PlayerResource:SetHasRandomed(nPlayerID)
-				PlayerResource:SetHasRepicked(nPlayerID)
-				playerHandle:MakeRandomHeroSelection()
-		end]]
+function GameMode:OnGameRulesStateChange()
+  local state = GameRules:State_Get()
+  if state == DOTA_GAMERULES_STATE_STRATEGY_TIME then
+    self:OnStrategyTime()
+  elseif state == DOTA_GAMERULES_STATE_PRE_GAME then
+    self:OnPreGame()
+  elseif state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+    self:OnGameInProgress()
+  elseif state >= DOTA_GAMERULES_STATE_POST_GAME then
+    ArenaScore.SetPhase(self, "finished")
+    Duel:FinishMatch()
   end
 end
 --------------------------------------------------------------
@@ -73,45 +61,49 @@ end
 --	game event object for OnNPCSpawned
 --------------------------------------------------------------
 function GameMode:OnNPCSpawned(keys)
-	--print("[Angel Arena] NPC Spawned")
-  local npc = EntIndexToHScript(keys.entindex)
+  local npc = keys.entindex and EntIndexToHScript(keys.entindex)
+  if not npc or not IsValidEntity(npc) or not npc.IsHero or not npc:IsHero() then
+    return
+  end
 
-	-- Replace hero corpse with grave so they can rez him again.
-  if npc:IsRealHero() and npc.bFirstSpawned == nil then
-			npc.bFirstSpawned = true
-			GameMode:OnHeroInGame(npc)
-	else--if --npc:IsRealHero() and npc.grave then
-		-- remove the player grave
-		  --UTIL_Remove(npc.grave)
-	end
+  if npc:IsRealHero() and not npc.bFirstSpawned then
+    self:OnHeroInGame(npc)
+    npc.bFirstSpawned = true
+  end
 
+  local attemptsRemaining = 10
+  Timers:CreateTimer(function()
+    if not IsValidEntity(npc) or not npc:IsAlive() then
+      return
+    end
 
-  --Check if its hero then if its truehero to apply Visitor for Duel
-  if npc:IsHero() then
-		--HeroVoice:OnNPCSpawned(npc)
-		Timers:CreateTimer(function()
-			if IsValidEntity(npc) and npc:IsAlive() and npc:IsHero() and npc:GetPlayerOwner() then
-				Physics:Unit(npc)
-				npc:SetAutoUnstuck(true)
-				if npc.ModelOverride then
-					npc:SetModel(npc.ModelOverride)
-					npc:SetOriginalModel(npc.ModelOverride)
-				end
-				--if not npc:IsWukongsSummon() then
-					if npc:IsTrueHero() then
-						  PlayerTables:SetTableValue("player_hero_indexes", npc:GetPlayerID(), npc:GetEntityIndex())
-						  --[[if IsValidEntity(npc.BloodstoneDummies) then
-							    UTIL_Remove(npc.BloodstoneDummies)
-							    npc.BloodstoneDummies = nil
-						  end]]
-						  if not npc.OnDuel and Duel:IsDuelOngoing() then
-							  Duel:SetUpVisitor(npc)
-						  end
-					end
-				--end
-			end
-		end)
-	end
+    local playerID = npc:GetPlayerOwnerID()
+    local hasPlayerID = PlayerResource:IsValidPlayerID(playerID)
+    local isTrueHero = npc:IsTrueHero()
+    if isTrueHero and (not hasPlayerID or PlayerResource:GetSelectedHeroEntity(playerID) ~= npc) then
+      -- Hero ownership and selection can arrive after npc_spawned.
+      attemptsRemaining = attemptsRemaining - 1
+      if attemptsRemaining > 0 then
+        return 0.1
+      end
+      return
+    end
+    if not hasPlayerID and not npc:GetPlayerOwner() then
+      return
+    end
+
+    Physics:Unit(npc)
+    npc:SetAutoUnstuck(true)
+    if npc.ModelOverride then
+      npc:SetModel(npc.ModelOverride)
+      npc:SetOriginalModel(npc.ModelOverride)
+    end
+
+    if isTrueHero then
+      PlayerTables:SetTableValue("player_hero_indexes", playerID, npc:GetEntityIndex())
+      Duel:SetUpVisitorsForHero(npc)
+    end
+  end)
 end
 --------------------------------------------------------------
 --	OnEntityHurt
@@ -120,65 +112,9 @@ end
 --	game event object for OnEntityHurt
 --------------------------------------------------------------
 function GameMode:OnEntityHurt(keys)
-  DebugPrint("[DEBUG] Entity Hurt")
-  DebugPrintTable(keys)
-
-  local damagebits = keys.damagebits -- This might always be 0 and therefore useless
-  if keys.entindex_attacker ~= nil and keys.entindex_killed ~= nil then
-    local entCause = EntIndexToHScript(keys.entindex_attacker)
-    local entVictim = EntIndexToHScript(keys.entindex_killed)
-
-    -- The ability/item used to damage, or nil if not damaged by an item/ability
-    local damagingAbility = nil
-
-    if keys.entindex_inflictor ~= nil then
-      damagingAbility = EntIndexToHScript( keys.entindex_inflictor )
-    end
-
-    if entVictim.hurtEvent then
-      entVictim.hurtEvent.broadcast(keys)
-    end
-  end
-end
---------------------------------------------------------------
---	OnPlayerHurt
---------------------------------------------------------------
-function GameMode:OnPlayerHurt(event)
-  print("OnPlayerHurt triggered")
-  
-  local damagebits = event.damagebits
-  print("Damagebits:", damagebits)
-
-  if event.entindex_attacker ~= nil and event.entindex_victim ~= nil then
-      local entCause = EntIndexToHScript(event.entindex_attacker)
-      local entVictim = EntIndexToHScript(event.entindex_victim)
-      print("Attacker and victim entities found")
-
-      local damagingAbility = nil
-
-      if event.entindex_inflictor ~= nil then
-          damagingAbility = EntIndexToHScript(event.entindex_inflictor)
-          print("Damaging ability found")
-      else
-          print("No damaging ability found")
-      end
-
-      if entVictim.hurtEvent then
-          entVictim.hurtEvent.broadcast(event)
-          print("Victim hurt event broadcasted")
-      else
-          print("No victim hurt event found")
-      end
-
-      -- Increment AI points if the attacker is thisEntity
-      if entCause == thisEntity then
-          ai_points = ai_points + 1
-          print("AI points incremented:", ai_points)
-      else
-          print("Attacker is not thisEntity")
-      end
-  else
-      print("Attacker or victim entity not found")
+  local victim = keys.entindex_killed and EntIndexToHScript(keys.entindex_killed)
+  if victim and IsValidEntity(victim) and victim.hurtEvent then
+    victim.hurtEvent.broadcast(keys)
   end
 end
 
@@ -188,20 +124,6 @@ end
 --	game event object for OnItemPickedUp
 --------------------------------------------------------------
 function GameMode:OnItemPickedUp(keys)
-  --DebugPrint( '[DEBUG] OnItemPickedUp' )
-  --DebugPrintTable(keys)
-
-  local unitEntity = nil
-  if keys.UnitEntitIndex then
-    unitEntity = EntIndexToHScript(keys.UnitEntitIndex)
-  elseif keys.HeroEntityIndex then
-    unitEntity = EntIndexToHScript(keys.HeroEntityIndex)
-  end
-
-  local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
-  local player = PlayerResource:GetPlayer(keys.PlayerID)
-  local itemname = keys.itemname
-  
   goldpickup(keys)
 end
 --------------------------------------------------------------
@@ -210,14 +132,7 @@ end
 -- game event object for OnPlayerReconnect
 --------------------------------------------------------------
 function GameMode:OnPlayerReconnect(keys)
-  --DebugPrint( '[DEBUG] OnPlayerReconnect' )
-  --DebugPrintTable(keys)
-
-  local playID = keys.PlayerID
-  if not playID then
-    return
-  end
-
+  ApplyDuelVisitorForPlayer(keys.PlayerID)
 end
 --------------------------------------------------------------
 --	On Item Purchased
@@ -440,42 +355,6 @@ function GameMode:OnPlayerTakeTowerDamage(keys)
 end
 
 --------------------------------------------------------------
---OnPlayerPickHero
---A player picked a hero
---game event object for OnPlayerPickHero
---------------------------------------------------------------
-function GameMode:OnPlayerPickHero(keys)
-	--PrintTable("OnPlayerPickHero",keys)
-	--DebugPrint('[DEBUG] OnPlayerPickHero')
-	--DebugPrintTable(keys)
-
-  local heroClass 	= keys.hero
-  local heroEntity 	= EntIndexToHScript(keys.heroindex)
-  local player 		  = EntIndexToHScript(keys.player)
-  local playerID 	  = player:GetPlayerID()
-   
-
-    --drop = Vector(-2752, -1280, 129.354)
-    --local unit = CreateUnitByName("npc_lord_of_death_boss", drop, true, nil, nil, DOTA_TEAM_NEUTRALS)
- 	
-    --hero.creeps = 0
-    --hero.bosses = 0
-    --hero.deaths = 0
-    --hero.rating = 0
-   -- hero.lumber = 3
-   -- FireGameEvent('cgm_player_lumber_changed', { player_ID = playerID, lumber = hero.lumber })
-    
-    table.insert(tHeroes, hero)
-    --print(table.insert(tHeroes, hero))
-    
-    --nHeroCount = nHeroCount + 1
-    
-   -- player:SetTeam(DOTA_TEAM_GOODGUYS)
-   -- PlayerResource:UpdateTeamSlot(playerID, DOTA_TEAM_GOODGUYS,true)
-    --hero:SetTeam(DOTA_TEAM_GOODGUYS)
-end
-
---------------------------------------------------------------
 -- ReadGameConfiguration
 -- Read and assign configurable keyvalues if applicable
 --------------------------------------------------------------
@@ -507,139 +386,35 @@ end]]
 -- An entity died
 -- game event object for keys
 --------------------------------------------------------------
-function GameMode:OnEntityKilled( keys )
-
-	-- The Unit that was Killed
-	local killedUnit = EntIndexToHScript( keys.entindex_killed )
-	-- The Killing entity
-	local killerEntity = nil
-	-- Get Unit Name that was Killed
-	local unitName = killedUnit:GetUnitName()
-	-- The Unit that was Attacked
-	local attacker = EntIndexToHScript(keys.entindex_attacker)
-	--local ownedHeroAtt = PlayerResource:GetSelectedHeroEntity(attacker:GetPlayerOwnerID())
-
-  if keys.entindex_attacker ~= nil then
-    killerEntity = EntIndexToHScript( keys.entindex_attacker )
+function GameMode:OnEntityKilled(keys)
+  local killedUnit = ResolveDeathEntity(keys.entindex_killed)
+  if not killedUnit then
+    return
   end
+  local attacker = ResolveDeathEntity(keys.entindex_attacker)
 
-  -- The ability/item used to kill, or nil if not killed by an item/ability
-  local killerAbility = nil
-
-  if keys.entindex_inflictor ~= nil then
-    killerAbility = EntIndexToHScript( keys.entindex_inflictor )
-  end
-  
-	-- Player owner of the unit
-	local player = killedUnit:GetPlayerOwner()
-
-  local damagebits = keys.damagebits -- This might always be 0 and therefore useless
-
-	
-  -- Fire ent killed event
   if killedUnit.deathEvent then
-      killedUnit.deathEvent.broadcast(keys)
+    killedUnit.deathEvent.broadcast(keys)
   end
 
-  if killedUnit.IsRealHero and killedUnit:IsRealHero() then
-    --OnHeroDiedEvent(killedUnit)
-  end
-  
-	--This code just checking is it creature or creep ?
-	if killedUnit:IsCreature() or killedUnit:IsCreep() then
-	    --print("[Angel Arena] Creature/Creep Killed: ["..killedUnit:GetUnitName().."] Killer: [".. killerEntity:GetUnitName().."]")
-	 	--DebugPrint("KILLED, KILLER: " .. killedUnit:GetUnitName() .. " -- " .. killerEntity:GetUnitName())
-     -- RollDrops(killedUnit)
-        
-  end
-	
-	--This code to check if this is real hero when they die place grave in hero place then add point to the team
-	if killedUnit and killedUnit:IsRealHero() then 
-		  --print("[Angel Arena] HERO Killed: [".. killedUnit:GetUnitName() .."] killer: [".. killerEntity:GetUnitName().."]")
-		  --local grave = CreateUnitByName("player_gravestone", killedUnit:GetAbsOrigin(), true, killedUnit, killedUnit, killedUnit:GetTeamNumber())
-		  --killedUnit.grave = grave
+  if killedUnit.IsTrueHero and killedUnit:IsTrueHero() and not killedUnit:IsIllusion()
+    and not killedUnit:IsClone() and not killedUnit:IsReincarnating() then
+    ArenaScore.RecordHeroKill(self, killedUnit, attacker)
+    self:OnHeroDeath(killedUnit)
+    killedUnit:SetTimeUntilRespawn(killedUnit:CalculateRespawnTime())
 
-		if killedUnit:GetTeam() == DOTA_TEAM_BADGUYS and killerEntity:GetTeam() == DOTA_TEAM_GOODGUYS then
-			  self.nRadiantKills = self.nRadiantKills + 1
-			  if END_GAME_ON_KILLS and self.nRadiantKills >= KILLS_TO_END_GAME_FOR_TEAM then
-				  GameRules:SetSafeToLeave( true )
-				  GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-			  end
-		elseif killedUnit:GetTeam() == DOTA_TEAM_GOODGUYS and killerEntity:GetTeam() == DOTA_TEAM_BADGUYS then
-			  self.nDireKills = self.nDireKills + 1
-			  if END_GAME_ON_KILLS and self.nDireKills >= KILLS_TO_END_GAME_FOR_TEAM then
-				  GameRules:SetSafeToLeave( true )
-				  GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
-			  end
-	  end
-
-		    if SHOW_KILLS_ON_TOPBAR then
-			    GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_BADGUYS, self.nDireKills )
-			    GameRules:GetGameModeEntity():SetTopBarTeamValue ( DOTA_TEAM_GOODGUYS, self.nRadiantKills )
-		    end
-		    --print("On Hero Death key started")
-		    GameMode:OnHeroDeath(keys)
-	end
-
-
-
-
-  if killedUnit then
-      if killedUnit:IsHero() then
-        --killedUnit:RemoveModifierByName("modifier_shard_of_true_sight") -- For some reason simple KV modifier not removes on death without this
-        if killedUnit:IsRealHero() then
-          local respawnTime = killedUnit:CalculateRespawnTime()
-          killedUnit:SetTimeUntilRespawn(respawnTime)
-          --MeepoFixes:ShareRespawnTime(killedUnit, respawnTime)
-          --killedUnit.RespawnTimeModifierBloodstone = nil
-          --killedUnit.RespawnTimeModifierSaiReleaseOfForge = nil
-
-          if killedUnit.OnDuel and Duel:IsDuelOngoing() then
-            --print(" I AM IN DUEL AND I DIDED")
-            killedUnit:SetTimeUntilRespawn(respawnTime)
-            killedUnit.OnDuel = nil
-            killedUnit.ArenaBeforeTpLocation = nil
-            if Duel:GetWinner() ~= nil then
-              Duel:EndDuel()
-            end
-          end
-          --[[if not IsValidEntity(killerEntity) or not killerEntity.GetPlayerOwner or not IsValidEntity(killerEntity:GetPlayerOwner()) then
-            Kills:OnEntityKilled(killedUnit:GetPlayerOwner(), nil)
-          elseif killerEntity == killedUnit then
-            local player = killedUnit:GetPlayerOwner()
-            Kills:OnEntityKilled(player, player)
-          end]]
-        end
+    if killedUnit.OnDuel and Duel:IsDuelOngoing() then
+      killedUnit.OnDuel = nil
+      killedUnit.ArenaBeforeTpLocation = nil
+      if Duel:GetWinner() ~= nil then
+        Duel:EndDuel()
       end
-
-      --if killedUnit:IsRealCreep() then
-        --Spawner.Creeps[killedUnit.SSpawner] = Spawner.Creeps[killedUnit.SSpawner] - 1
-      --end
-
-      --[[if killerEntity then
-        for _, individual_hero in ipairs(HeroList:GetAllHeroes()) do
-          if individual_hero:IsAlive() and individual_hero:HasModifier("modifier_shinobu_hide_in_shadows_invisibility") then
-            local shinobu_hide_in_shadows = individual_hero:FindAbilityByName("shinobu_hide_in_shadows")
-            if individual_hero:GetTeam() == killedUnit:GetTeam() and individual_hero:GetRangeToUnit(killedUnit) <= shinobu_hide_in_shadows:GetAbilitySpecial("ally_radius") then
-              individual_hero:SetHealth(individual_hero:GetMaxHealth())
-              shinobu_hide_in_shadows:ApplyDataDrivenModifier(individual_hero, individual_hero, "modifier_shinobu_hide_in_shadows_rage", nil)
-            end
-          end
-        end]]
-
-        --[[if killerEntity:GetTeamNumber() ~= killedUnit:GetTeamNumber() and (killerEntity.GetPlayerID or killerEntity.GetPlayerOwnerID) then
-          local plId = killerEntity.GetPlayerID ~= nil and killerEntity:GetPlayerID() or killerEntity:GetPlayerOwnerID()
-          if plId > -1 and not (killerEntity.HasModifier and killerEntity:HasModifier("modifier_item_golden_eagle_relic_enabled")) then
-            local gold = RandomInt(killedUnit:GetMinimumGoldBounty(), killedUnit:GetMaximumGoldBounty())
-            --Gold:ModifyGold(plId, gold)
-            SendOverheadEventMessage(killerEntity:GetPlayerOwner(), OVERHEAD_ALERT_GOLD, killedUnit, gold, killerEntity:GetPlayerOwner())
-          end
-        end
-      end]]
+    end
   end
 
-	-- MiniBosses Check
-	checkminibosses(keys)
+  if killedUnit.GetUnitName then
+    checkminibosses(self, killedUnit, attacker)
+  end
 end
 
 --------------------------------------------------------------
@@ -656,39 +431,38 @@ end
 -- game event object for OnConnectFull
 --------------------------------------------------------------
 function GameMode:OnConnectFull(keys)
-  --DebugPrint('[DEBUG] OnConnectFull')
-  --DebugPrintTable(keys)
-  
-  GameMode:CaptureGameMode()
-  local entIndex = keys.index+1
-  -- The Player entity of the joining user
-  local player = EntIndexToHScript(entIndex)
-  local ply = EntIndexToHScript(entIndex)
-  
-  -- Check if the player variable is not nil before using it
-  if player ~= nil then
-    -- The Player ID of the joining player
-    local playerID = player:GetPlayerID()
-    
-    -- Update the user ID table with this user
-    self.vUserIds[keys.userid] = player
-    self.vUserIds[keys.userid] = ply
-  
-    -- Update the Steam ID table
-    self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = player
-    self.vSteamIds[PlayerResource:GetSteamAccountID(playerID)] = ply
-    
-    -- If the player is a broadcaster flag it in the Broadcasters table
-    if PlayerResource:IsBroadcaster(playerID) then
-      self.vBroadcasters[keys.userid] = 1
-      return
-    end
-  
-    table.insert(tPlayers,player)
-    nPlayers = nPlayers + 1
-  else
-    print("Error: Player entity not found.")
+  local playerID = keys.PlayerID
+  local player
+  if playerID and PlayerResource:IsValidPlayerID(playerID) then
+    player = PlayerResource:GetPlayer(playerID)
   end
+  if not player and keys.index and keys.index >= 0 then
+    player = EntIndexToHScript(keys.index + 1)
+  end
+  if not player or not IsValidEntity(player) or not player.GetPlayerID then
+    return
+  end
+
+  playerID = player:GetPlayerID()
+  if not PlayerResource:IsValidPlayerID(playerID) then
+    return
+  end
+  if keys.userid then
+    self.vUserIds[keys.userid] = player
+  end
+  local steamID = PlayerResource:GetSteamAccountID(playerID)
+  if steamID and steamID ~= 0 then
+    self.vSteamIds[steamID] = player
+  end
+
+  if PlayerResource:IsBroadcaster(playerID) then
+    if keys.userid then
+      self.vBroadcasters[keys.userid] = 1
+    end
+    return
+  end
+  self.vPlayers[playerID] = player
+  Duel:SetUpVisitorsForHero(PlayerResource:GetSelectedHeroEntity(playerID))
 end
 
 

@@ -1,34 +1,42 @@
-modifier_creep_loot = class({
-  	IsHidden =      function() return true end,
-	  IsPurgable =    function() return false end,
-	  IsPermanent =   function() return true end,
-})
+modifier_creep_loot = class({})
+
+function modifier_creep_loot:IsHidden() return true end
+function modifier_creep_loot:IsPurgable() return false end
 
 function modifier_creep_loot:OnCreated(keys)
-  self.locationString = keys.locationString
+    if IsServer() then
+        self.campID = tonumber(keys.campID)
+        self.difficulty = tonumber(keys.difficulty)
+    end
 end
 
 function modifier_creep_loot:DeclareFunctions()
-  return {
-    MODIFIER_EVENT_ON_DEATH,
-    MODIFIER_EVENT_ON_DOMINATED
-  }
+    return { MODIFIER_EVENT_ON_DEATH, MODIFIER_EVENT_ON_DOMINATED }
 end
 
-function modifier_creep_loot:OnDeath(keys)
-  local parent = self:GetParent()
-  if keys.unit == parent then
-    local itemToDrop = CreepItemDrop:RandomDropItemName(self.locationString)
-    if itemToDrop ~= "" and itemToDrop ~= nil then
-      CreepItemDrop:CreateDrop(itemToDrop, parent:GetAbsOrigin())
+function modifier_creep_loot:OnDeath(event)
+    if not IsServer() or self.dropRolled or GameRules:State_Get() ~= DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+        return
     end
-  end
+    local parent = self:GetParent()
+    local attacker = event.attacker
+    if event.unit ~= parent or parent:GetTeamNumber() ~= DOTA_TEAM_NEUTRALS
+        or not attacker or not IsValidEntity(attacker) or not attacker.GetTeamNumber then
+        return
+    end
+
+    local team = attacker:GetTeamNumber()
+    if team ~= DOTA_TEAM_GOODGUYS and team ~= DOTA_TEAM_BADGUYS then return end
+
+    self.dropRolled = true
+    local item = CreepItemDrop:RandomDropItemName(self.campID, self.difficulty)
+    if item then
+        CreepItemDrop:CreateDrop(item, parent:GetAbsOrigin())
+    end
 end
 
-function modifier_creep_loot:OnDominated(keys)
-  local parent = self:GetParent()
-  if keys.unit == parent then
-    -- Remove self when creeps are dominated
-    self:Destroy()
-  end
+function modifier_creep_loot:OnDominated(event)
+    if IsServer() and event.unit == self:GetParent() then
+        self:Destroy()
+    end
 end

@@ -95,7 +95,7 @@
 	{
 		"RunScript"
 		{
-			"ScriptFile"	"Items/items.lua"
+			"ScriptFile"	"items/items.lua"
 			"Function"		"AthenaHeal"
 		}
 		"FireSound"

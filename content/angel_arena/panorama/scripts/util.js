@@ -17,7 +17,7 @@ var PlayerTables = GameUI.CustomUIConfig().PlayerTables;
 
 function FindDotaHudElement (id) {
   var hud = GetDotaHud();
-  return hud.FindChildTraverse(id);
+  return hud ? hud.FindChildTraverse(id) : null;
 }
 
 function GetDotaHud () {

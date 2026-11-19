@@ -8,52 +8,53 @@
 */
 'use strict';
 
-var console = {
-  log: $.Msg.bind($)
-};
-
 // settings
 var useFormatting = 'half';
 
 (function () {
   PlayerTables.SubscribeNetTableListener('gold', onGoldChange);
+  onGoldChange('gold', PlayerTables.GetAllTableValues('gold'));
 }());
-
-//function onQueryChange () {
-//  onGoldChange('gold', PlayerTables.GetAllTableValues('gold'));
-//}
 
 function onGoldChange (table, data) {
   var playerID = Game.GetLocalPlayerID();
-  var gold = data.gold[playerID];
+  var gold = data && data.gold ? data.gold[playerID] : undefined;
+  if (gold === undefined || gold === null) {
+    return;
+  }
 
   UpdateGoldHud(gold);
   UpdateGoldTooltip(gold);
 }
 
 function UpdateGoldHud (gold) {
-  var GoldLabel = FindDotaHudElement('ShopButton').FindChildTraverse('GoldLabel');
+  var shopButton = FindDotaHudElement('ShopButton');
+  var goldLabel = shopButton && shopButton.FindChildTraverse('GoldLabel');
+  if (!goldLabel) {
+    return;
+  }
 
   if (useFormatting === 'full') {
-    GoldLabel.text = FormatGold(gold);
+    goldLabel.text = FormatGold(gold);
   } else if (useFormatting === 'half') {
-    GoldLabel.text = FormatComma(gold);
+    goldLabel.text = FormatComma(gold);
   } else {
-    GoldLabel.text = gold;
+    goldLabel.text = gold;
   }
 }
 
 function UpdateGoldTooltip (gold) {
-  // HACK this spews error when attempting to change the tooltip if it is not visible
-  try {
-    var tooltipLabels = FindDotaHudElement('DOTAHUDGoldTooltip').FindChildTraverse('Contents');
+  var tooltip = FindDotaHudElement('DOTAHUDGoldTooltip');
+  var contents = tooltip && tooltip.FindChildTraverse('Contents');
+  if (!contents || contents.GetChildCount() < 2) {
+    return;
+  }
 
-    label = tooltipLabels.GetChild(0);
-    label.text = label.text.replace(/: [0-9]+/, ': ' + gold);
-
-    label = tooltipLabels.GetChild(1);
-    label.style.visibility = 'collapse';
-  } catch (e) {}
+  var total = contents.GetChild(0);
+  if (typeof total.text === 'string') {
+    total.text = total.text.replace(/: [0-9]+/, ': ' + gold);
+  }
+  contents.GetChild(1).style.visibility = 'collapse';
 }
 
 /*

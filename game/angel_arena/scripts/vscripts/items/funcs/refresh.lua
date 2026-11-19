@@ -1,17 +1,13 @@
-local not_refreshing_items = {
-	"item_black_king_bar" = 1,
-}
-
 function Refresh(event)
-	local caster = event.caster
+    local caster = event and event.caster
+    if not caster or caster:IsNull() then
+        return
+    end
 
-	-- refreshing abilities
-	for i = 0, caster:GetAbilityCount() - 1 do
-		local ability = caster:GetAbilityByIndex( i )
-		if ability and ability ~= keys.ability then
-			ability:EndCooldown()
-		end
-	end
-
-	-- refreshing items
+    for i = 0, caster:GetAbilityCount() - 1 do
+        local ability = caster:GetAbilityByIndex(i)
+        if ability and not ability:IsNull() and ability ~= event.ability then
+            ability:EndCooldown()
+        end
+    end
 end

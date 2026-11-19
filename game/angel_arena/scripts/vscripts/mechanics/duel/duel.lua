@@ -2,6 +2,7 @@
 --	Duel Globals
 --------------------------------------------------------------
 DUEL_SETTINGS = {
+	OpeningDelay = 300,
 	DelaysFromLast = {
 		[0] = 300,
 		[30] = 240,
@@ -17,6 +18,13 @@ DUEL_SETTINGS = {
 DOTA_DUEL_STATUS_NONE = 0
 DOTA_DUEL_STATUS_WATING = 1
 DOTA_DUEL_STATUS_IN_PROGRESS = 2
+local DOTA_DUEL_STATUS_FINISHED = 3
+
+local duelPhases = {
+	[DOTA_DUEL_STATUS_WATING] = "waiting",
+	[DOTA_DUEL_STATUS_IN_PROGRESS] = "active",
+	[DOTA_DUEL_STATUS_FINISHED] = "finished",
+}
 --------------------------------------------------------------
 --	Duel Class
 --------------------------------------------------------------
@@ -29,6 +37,7 @@ if Duel == nil then
 	Duel.TimesTeamWins = {}
 	Duel.AnnouncerCountdownCooldowns = {}
 	Duel.DuelCounter = 0
+	Duel.PreparedUnits = {}
 	Duel.DuelBox1 = Vector(0,0,0)
 	Duel.DuelBox2 = Vector(0,0,0)
 end
@@ -36,31 +45,48 @@ end
 --	Duel Timer from Globals table
 --------------------------------------------------------------
 function Duel:SetDuelTimer(duration)
-	Duel.DuelTimerEndTime = GameRules:GetGameTime() + duration
+	Duel.DuelTimerEndTime = duration and GameRules:GetGameTime() + duration or 0
 	PlayerTables:SetTableValue("arena", "duel_end_time", Duel.DuelTimerEndTime)
+	CustomNetTables:SetTableValue("arena_match", "duel", {
+		phase = duelPhases[Duel.DuelStatus],
+		deadline = Duel.DuelTimerEndTime,
+	})
 end
 --------------------------------------------------------------
 --	Duel Timer for Global Timer
 --	Create Physics Collider
 --------------------------------------------------------------
 function Duel:CreateGlobalTimer()
-	Duel.DuelStatus = DOTA_DUEL_STATUS_WATING
-	Duel:SetDuelTimer(-GameRules:GetDOTATime(false, true))
-	Timers:CreateTimer(Dynamic_Wrap(Duel, 'GlobalThink'))
+	local corner1 = Entities:FindByName(nil, "target_mark_arena_blocker_1")
+	local corner2 = Entities:FindByName(nil, "target_mark_arena_blocker_2")
+	local angels = Entities:FindByName(nil, "target_mark_arena_team" .. DOTA_TEAM_GOODGUYS)
+	local demons = Entities:FindByName(nil, "target_mark_arena_team" .. DOTA_TEAM_BADGUYS)
+	if not (corner1 and corner2 and angels and demons) then
+		print("[Angel Arena] Duel requires two arena corners and both team destinations")
+		return
+	end
 
-	--Physics:RemoveCollider("collider_box_blocker_arena")
-	Duel.DuelBox1 = Entities:FindByName(nil, "target_mark_arena_blocker_1"):GetAbsOrigin()
-	Duel.DuelBox2 = Entities:FindByName(nil, "target_mark_arena_blocker_2"):GetAbsOrigin()
+	Duel.SpawnPositions = {
+		[DOTA_TEAM_GOODGUYS] = angels:GetAbsOrigin(),
+		[DOTA_TEAM_BADGUYS] = demons:GetAbsOrigin(),
+	}
+	Duel.DuelBox1 = corner1:GetAbsOrigin()
+	Duel.DuelBox2 = corner2:GetAbsOrigin()
 	local collider = Physics:AddCollider("collider_box_blocker_arena", Physics:ColliderFromProfile("boxblocker"))
 	collider.box = CreateSimpleBox(Duel.DuelBox2, Duel.DuelBox1)
 	collider.findClearSpace = true
-	--collider.draw = true
-	collider.test = function(self, unit)
+	collider.test = function(_, unit)
 		if not IsPhysicsUnit(unit) and unit.IsConsideredHero and unit:IsConsideredHero() then
 			Physics:Unit(unit)
 		end
 		return IsPhysicsUnit(unit) and Duel.DuelStatus == DOTA_DUEL_STATUS_WATING and not unit.OnDuel
 	end
+
+	Duel.DuelStatus = DOTA_DUEL_STATUS_WATING
+	Duel:SetDuelTimer(DUEL_SETTINGS.OpeningDelay)
+	Timers:CreateTimer(function()
+		return Duel:GlobalThink()
+	end)
 end
 --------------------------------------------------------------
 --	Duel Global Thinker
@@ -68,6 +94,13 @@ end
 --	Start and End trigger for duel
 --------------------------------------------------------------
 function Duel:GlobalThink()
+	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+		Duel:FinishMatch()
+	end
+	if Duel.DuelStatus == DOTA_DUEL_STATUS_FINISHED then
+		return
+	end
+
 	local now = GameRules:GetGameTime()
 	for i = 1, 10 do
 		local diff = now + i - Duel.DuelTimerEndTime
@@ -90,99 +123,94 @@ end
 --	Statring the Duel find heroes and count them
 --	Teleport them to mark points in Map
 --------------------------------------------------------------
+local function DuelUnitsForHero(hero)
+	local units = {hero}
+	if hero:GetUnitName() == "npc_dota_hero_meepo" then
+		for _, unit in ipairs(HeroList:GetAllHeroes()) do
+			if unit:IsClone() and unit:GetCloneSource() == hero then
+				units[#units + 1] = unit
+			end
+		end
+	end
+	return units
+end
+
 function Duel:StartDuel()
-	Duel.heroes_teams_for_duel = {}
-	for playerID = 0, DOTA_MAX_TEAM_PLAYERS - 1  do
-		if PlayerResource:IsValidPlayerID(playerID) and not IsPlayerAbandoned(playerID) then
+	local heroesByTeam = {
+		[DOTA_TEAM_GOODGUYS] = {},
+		[DOTA_TEAM_BADGUYS] = {},
+	}
+	local visitors = {}
+	for playerID = 0, DOTA_MAX_TEAM_PLAYERS - 1 do
+		if PlayerResource:IsValidPlayerID(playerID) then
 			local team = PlayerResource:GetTeam(playerID)
 			local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-			if IsValidEntity(hero) then
-				Duel.heroes_teams_for_duel[team] = Duel.heroes_teams_for_duel[team] or {}
-				table.insert(Duel.heroes_teams_for_duel[team], hero)
-			end
-		end
-	end
-	local heroes_in_teams = {}
-	for i, v in pairs(Duel.heroes_teams_for_duel) do
-		for _, unit in pairs(v) do
-			local pid = unit:GetPlayerOwnerID()
-			if not unit:IsAlive() then
-				unit:RespawnHero(false, false)
-			end
-			if PlayerResource:IsValidPlayerID(pid) and GetConnectionState(pid) == DOTA_CONNECTION_STATE_CONNECTED then
-				heroes_in_teams[i] = (heroes_in_teams[i] or 0) + 1
-			end
-		end
-	end
-	if next(heroes_in_teams) ~= nil then
-		local heroes_to_fight_n = math.min(unpack(table.iterate(heroes_in_teams)))
-	if heroes_to_fight_n > 0 and table.count(heroes_in_teams) > 1 then
-		EmitAnnouncerSound("announcer_ann_custom_mode_20")
-		Duel.IsFirstDuel = Duel.DuelCounter == 0
-		Duel:SetDuelTimer(DUEL_SETTINGS.DurationBase + DUEL_SETTINGS.DurationForPlayer * heroes_to_fight_n)
-		Duel.DuelStatus = DOTA_DUEL_STATUS_IN_PROGRESS
-		local rndtbl = {}
-		table.merge(rndtbl, Duel.heroes_teams_for_duel)
-		for i,v in pairs(rndtbl) do
-			if #v > 0 then
-				table.shuffle(v)
-				local count = 0
-				repeat
-					local unit = v[1]
-					if IsValidEntity(unit) then
-						local pid = unit:GetPlayerOwnerID()
-						if not unit.DuelChecked and unit:IsAlive() and PlayerResource:IsValidPlayerID(pid) and GetConnectionState(pid) == DOTA_CONNECTION_STATE_CONNECTED then
-							unit.OnDuel = true
-							Duel:FillPreduelUnitData(unit)
-							local health = unit:GetMaxHealth()
-							unit:SetHealth(unit:HasAbility("shinobu_vampire_blood") and health * 0.5 or health)
-							unit:SetMana(unit:GetMaxMana())
-							count = count + 1
-						end
-						unit.DuelChecked = true
-					end
-					table.shuffle(v)
-				until count >= heroes_to_fight_n
-			end
-		end
-		for team,tab in pairs(Duel.heroes_teams_for_duel) do
-			for _,_unit in pairs(tab) do
-				for _,unit in ipairs(_unit:GetFullName() == "npc_dota_hero_meepo" and MeepoFixes:FindMeepos(_unit, true) or {_unit}) do
-				--	for _,v in ipairs(DUEL_PURGED_MODIFIERS) do
-					--	if unit:HasModifier(v) then
-					--		unit:RemoveModifierByName(v)
-					--	end
-					--end
-					if unit:HasModifier("modifier_item_tango_arena") then
-						unit:SetModifierStackCount("modifier_item_tango_arena", unit, math.round(unit:GetModifierStackCount("modifier_item_tango_arena", unit) * 0.5))
-					end
-					if unit.PocketItem then
-						UTIL_Remove(unit.PocketItem)
-					end
-					if _unit.OnDuel then
-						unit.ArenaBeforeTpLocation = unit:GetAbsOrigin()
-						ProjectileManager:ProjectileDodge(unit)
-						unit:FindClearSpaceForUnitAndSetCamera(Entities:FindByName(nil, "target_mark_arena_team" .. team):GetAbsOrigin())
-						EmitGlobalSound("angel_arena.duelstartmusic")
-					elseif unit:IsAlive() then
-						Duel:SetUpVisitor(unit)
-					end
+			if heroesByTeam[team] and IsValidEntity(hero) then
+				if GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
+					table.insert(heroesByTeam[team], hero)
+				else
+					visitors[#visitors + 1] = hero
 				end
 			end
 		end
-		CustomGameEventManager:Send_ServerToAllClients("create_custom_toast", {
-			type = "generic",
-			text = "#custom_toast_DuelStarted",
-			variables = {
-				["{duel_index}"] = Duel.DuelCounter
-			}
-		})
-
-	else
-		Duel:EndDuelLogic(false, true)
-		Notifications:TopToAll({text="#duel_no_heroes", duration=5})
 	end
-end
+
+	local fightersPerTeam = math.min(#heroesByTeam[DOTA_TEAM_GOODGUYS], #heroesByTeam[DOTA_TEAM_BADGUYS])
+	if fightersPerTeam == 0 then
+		Duel:EndDuelLogic(false, true)
+		Notifications:TopToAll({text = "#duel_no_heroes", duration = 5})
+		return
+	end
+
+	Duel.heroes_teams_for_duel = {}
+	Duel.PreparedUnits = {}
+	Duel.IsFirstDuel = Duel.DuelCounter == 0
+	Duel.DuelStatus = DOTA_DUEL_STATUS_IN_PROGRESS
+	Duel:SetDuelTimer(DUEL_SETTINGS.DurationBase + DUEL_SETTINGS.DurationForPlayer * fightersPerTeam)
+
+	for team, heroes in pairs(heroesByTeam) do
+		table.shuffle(heroes)
+		local fighters = {}
+		Duel.heroes_teams_for_duel[team] = fighters
+		for index, hero in ipairs(heroes) do
+			if index <= fightersPerTeam then
+				fighters[#fighters + 1] = hero
+				hero.OnDuel = true
+				if not hero:IsAlive() then
+					hero:RespawnHero(false, false)
+				end
+
+				for _, unit in ipairs(DuelUnitsForHero(hero)) do
+					if unit:IsAlive() then
+						unit.OnDuel = true
+						unit.ArenaBeforeTpLocation = unit:GetAbsOrigin()
+						Duel:FillPreduelUnitData(unit)
+						local health = unit:GetMaxHealth()
+						unit:SetHealth(unit:HasAbility("shinobu_vampire_blood") and health * 0.5 or health)
+						unit:SetMana(unit:GetMaxMana())
+						if unit.PocketItem then
+							UTIL_Remove(unit.PocketItem)
+						end
+						ProjectileManager:ProjectileDodge(unit)
+						unit:FindClearSpaceForUnitAndSetCamera(Duel.SpawnPositions[team])
+					end
+				end
+			else
+				visitors[#visitors + 1] = hero
+			end
+		end
+	end
+	for _, hero in ipairs(visitors) do
+		Duel:SetUpVisitorsForHero(hero)
+	end
+
+	EmitAnnouncerSound("announcer_ann_custom_mode_20")
+	EmitGlobalSound("angel_arena.duelstartmusic")
+	CustomGameEventManager:Send_ServerToAllClients("create_custom_toast", {
+		type = "generic",
+		text = "#custom_toast_DuelStarted",
+		variables = {["{duel_index}"] = Duel.DuelCounter + 1},
+	})
 end
 --------------------------------------------------------------
 --	Duel Endding
@@ -211,7 +239,7 @@ function Duel:EndDuel()
 		end
 		for _,v in ipairs(Duel.heroes_teams_for_duel[winner]) do
 			if IsValidEntity(v) then
-				--Gold:ModifyGold(v, goldAmount)
+				Gold:ModifyGold(v:GetPlayerOwnerID(), goldAmount)
 				v:ModifyPlayerStat("Duels_Won", 1)
 			end
 		end
@@ -229,7 +257,7 @@ function Duel:GetWinner()
 	local teams = {}
 	for team,tab in pairs(Duel.heroes_teams_for_duel) do
 		for _,unit in pairs(tab) do
-			if IsValidEntity(unit) and unit:IsAlive() then
+			if IsValidEntity(unit) and (unit:IsAlive() or unit:IsReincarnating()) then
 				if not table.contains(teams, team) and unit.OnDuel then
 					table.insert(teams, team)
 				end
@@ -242,37 +270,58 @@ end
 --	Duel setup the visitor
 --------------------------------------------------------------
 function Duel:SetUpVisitor(unit)
-	unit.ArenaBeforeTpLocation = unit.ArenaBeforeTpLocation or (unit:GetUnitName() == FORCE_PICKED_HERO and FindFountain(unit:GetTeamNumber()):GetAbsOrigin() or unit:GetAbsOrigin())
+	local fountain = unit:GetUnitName() == FORCE_PICKED_HERO and FindFountain(unit:GetTeamNumber())
+	unit.ArenaBeforeTpLocation = unit.ArenaBeforeTpLocation or (fountain and fountain:GetAbsOrigin()) or unit:GetAbsOrigin()
 	Duel:FillPreduelUnitData(unit)
 	ProjectileManager:ProjectileDodge(unit)
 	unit:AddNewModifier(unit, nil, "modifier_hero_out_of_game", {})
 end
+
+function Duel:SetUpVisitorsForHero(hero)
+	if not Duel:IsDuelOngoing() or not hero or not IsValidEntity(hero) or hero.OnDuel then
+		return
+	end
+	for _, unit in ipairs(DuelUnitsForHero(hero)) do
+		if unit:IsAlive() and not unit:HasModifier("modifier_hero_out_of_game") then
+			Duel:SetUpVisitor(unit)
+		end
+	end
+end
 --------------------------------------------------------------
 --	Endding Duel Logic ???
 --------------------------------------------------------------
-function Duel:EndDuelLogic(bEndForUnits, timeUpdate)
+function Duel:EndDuelLogic(restoreUnits, updateTimer)
 	Duel.EntIndexer = {}
-	Duel.DuelStatus = DOTA_DUEL_STATUS_WATING
+	Duel.DuelStatus = updateTimer and DOTA_DUEL_STATUS_WATING or DOTA_DUEL_STATUS_FINISHED
 	Duel.heroes_teams_for_duel = {}
-	if bEndForUnits then
-		for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1  do
-			if PlayerResource:IsValidPlayerID(playerID) then
-				local _hero = PlayerResource:GetSelectedHeroEntity(playerID)
-				if not PlayerResource:IsPlayerAbandoned(playerID) and IsValidEntity(_hero) then
-					for _,hero in ipairs(_hero:GetFullName() == "npc_dota_hero_meepo" and MeepoFixes:FindMeepos(_hero, true) or {_hero}) do
-						Duel:EndDuelForUnit(hero)
-					end
-				end
+	if restoreUnits then
+		for unit in pairs(Duel.PreparedUnits) do
+			if IsValidEntity(unit) then
+				Duel:EndDuelForUnit(unit)
 			end
 		end
 	end
-	Events:Emit("Duel/end")
-	if timeUpdate then
-		local delay = table.nearestOrLowerKey(DUEL_SETTINGS.DelaysFromLast, GetDOTATimeInMinutesFull())
+	Duel.PreparedUnits = {}
+	Heroes_In_Arena_Zone = {}
+
+	if restoreUnits or updateTimer then
+		Events:Emit("Duel/end")
+	end
+	if updateTimer then
+		local minute = math.max(0, GetDOTATimeInMinutesFull())
+		local delay = table.nearestOrLowerKey(DUEL_SETTINGS.DelaysFromLast, minute)
 		Timers:CreateTimer(2, function()
-			EmitAnnouncerSound("announcer_ann_custom_timer_0" .. delay/60)
+			EmitAnnouncerSound("announcer_ann_custom_timer_0" .. delay / 60)
 		end)
 		Duel:SetDuelTimer(delay)
+	else
+		Duel:SetDuelTimer()
+	end
+end
+
+function Duel:FinishMatch()
+	if Duel.DuelStatus ~= DOTA_DUEL_STATUS_FINISHED then
+		Duel:EndDuelLogic(Duel:IsDuelOngoing(), false)
 	end
 end
 --------------------------------------------------------------
@@ -283,37 +332,63 @@ end
 --------------------------------------------------------------
 function Duel:EndDuelForUnit(unit)
 	unit:RemoveModifierByName("modifier_hero_out_of_game")
-	Timers:CreateTimer(0.1, function()
-		if IsValidEntity(unit) and unit:IsAlive() and unit.StatusBeforeArena then
-			if unit.StatusBeforeArena.Health then unit:SetHealth(unit.StatusBeforeArena.Health) end
-			if unit.StatusBeforeArena.Mana then unit:SetMana(unit.StatusBeforeArena.Mana) end
-			for ability,v in pairs(unit.StatusBeforeArena.AbilityCooldowns or {}) do
+	local previous = unit.StatusBeforeArena
+	unit.StatusBeforeArena = nil
+	local matchFinished = Duel.DuelStatus == DOTA_DUEL_STATUS_FINISHED
+	if previous and unit:IsAlive() then
+		local function RestoreStats()
+			if not IsValidEntity(unit) or not unit:IsAlive() then
+				return
+			end
+			unit:SetHealth(previous.Health)
+			unit:SetMana(previous.Mana)
+			for ability, cooldown in pairs(previous.AbilityCooldowns) do
 				if IsValidEntity(ability) and unit:HasAbility(ability:GetAbilityName()) then
 					ability:EndCooldown()
-					ability:StartCooldown(v)
+					ability:StartCooldown(cooldown)
 				end
 			end
-			for item,v in pairs(unit.StatusBeforeArena.ItemCooldowns or {}) do
+			for item, cooldown in pairs(previous.ItemCooldowns) do
 				if IsValidEntity(item) then
 					item:EndCooldown()
-					item:StartCooldown(v)
+					item:StartCooldown(cooldown)
 				end
 			end
-			unit.StatusBeforeArena = nil
 		end
-	end)
+		if matchFinished then
+			RestoreStats()
+		else
+			Timers:CreateTimer(0.1, RestoreStats)
+		end
+	end
 
-	if unit.FindClearSpaceForUnitAndSetCamera then
-		local pos = unit.ArenaBeforeTpLocation
-		if not pos then
-			pos = FindFountain(unit:GetTeamNumber()):GetAbsOrigin()
-		end
+	local position = unit.ArenaBeforeTpLocation
+	if not position then
+		local fountain = FindFountain(unit:GetTeamNumber())
+		position = fountain and fountain:GetAbsOrigin()
+	end
+	if position and unit:IsAlive() then
 		ProjectileManager:ProjectileDodge(unit)
-		unit:FindClearSpaceForUnitAndSetCamera(pos)
+		if matchFinished then
+			FindClearSpaceForUnit(unit, position, true)
+		else
+			unit:FindClearSpaceForUnitAndSetCamera(position)
+		end
+	elseif position and not matchFinished and unit:IsReincarnating() then
+		Timers:CreateTimer(function()
+			if not IsValidEntity(unit) or Duel.DuelStatus == DOTA_DUEL_STATUS_FINISHED or unit.OnDuel then
+				return
+			end
+			if unit:IsAlive() then
+				ProjectileManager:ProjectileDodge(unit)
+				unit:FindClearSpaceForUnitAndSetCamera(position)
+			elseif unit:IsReincarnating() then
+				return 0.2
+			end
+		end)
 	end
 	unit.OnDuel = nil
 	unit.ArenaBeforeTpLocation = nil
-	unit.DuelChecked = nil
 end
 --------------------------------------------------------------
 --	Pre Duel Units Data
@@ -321,6 +396,10 @@ end
 --	Check if we can reset item cooldown
 --------------------------------------------------------------
 function Duel:FillPreduelUnitData(unit)
+	if Duel.PreparedUnits[unit] then
+		return
+	end
+	Duel.PreparedUnits[unit] = true
 	unit.StatusBeforeArena = {
 		Health = unit:GetHealth(),
 		Mana = unit:GetMana(),

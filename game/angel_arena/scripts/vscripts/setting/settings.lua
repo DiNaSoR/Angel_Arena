@@ -1,11 +1,10 @@
-BAREBONES_DEBUG_SPEW = true
+BAREBONES_DEBUG_SPEW = false
 --------------------------------------------------------------
 -- All KeyValues[KV] Files Global value
 --------------------------------------------------------------
-AA_VERSION                                   = LoadKeyValues("addoninfo.txt").version
-DROPS_TABLE                                  = LoadKeyValues("scripts/npc/kv/item_test.kv")
-CustomNetTables:SetTableValue("info", "version", { value = AA_VERSION })
---SPAWN_INFO_KV                               = LoadKeyValues("scripts/npc/kv/spawn_info.kv")
+AA_VERSION = "v0.1"
+AA_PLAYERS_PER_TEAM = 5 -- Keep the Workshop lobby capacity in addoninfo.txt in sync.
+DROPS_TABLE = LoadKeyValues("scripts/npc/kv/item_test.kv") or {}
 
 --IMBA KV------------------------------------------------------
 --HERO_ABILITY_LIST                           = LoadKeyValues("scripts/npc/kv/imba/nonhidden_ability_list.kv")
@@ -70,7 +69,7 @@ USE_UNSEEN_FOG_OF_WAR                       = false                 -- Should we
 USE_STANDARD_DOTA_BOT_THINKING              = true		            -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
 USE_STANDARD_HERO_GOLD_BOUNTY               = true		            -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 --------------------------------------------------------------
-USE_CUSTOM_TOP_BAR_VALUES                   = false			        -- Should we do customized top bar values or use the default kill count per team?
+USE_CUSTOM_TOP_BAR_VALUES                   = true			        -- Should we do customized top bar values or use the default kill count per team?
 TOP_BAR_VISIBLE                             = true					-- Should we display the top bar score/count at all?
 SHOW_KILLS_ON_TOPBAR                        = true					-- Should we display kills only on the top bar? (No denies, suicides, kills by neutrals)  Requires USE_CUSTOM_TOP_BAR_VALUES
 --------------------------------------------------------------
@@ -114,7 +113,6 @@ ENABLE_AUTO_LAUNCH                          = true                  -- Should we
 AUTO_LAUNCH_DELAY                           = 30                    -- How long should the default team selection launch timer be?  The default for custom games is 30.  Setting to 0 will skip team selection.
 LOCK_TEAM_SETUP                             = false                 -- Should we lock the teams initially?  Note that the host can still unlock the teams
 --------------------------------------------------------------
-tHeroes 		                            = {}				    -- Heros Table.
 tPlayers 		                            = {}					-- Players Table.
 nPlayers 		                            = 0						-- Number of players Table.
 --------------------------------------------------------------
@@ -126,8 +124,7 @@ Dialog3                                     = false 				-- Dialog 3.
 -- Creeps and Camps
 CREEP_SPAWN_INTERVAL                        = 5                    -- number of seconds between each creep spawn
 INITIAL_CREEP_DELAY                         = 5                    -- number of seconds to wait before spawning the first wave of creeps
-BOTTLE_DESPAWN_TIME                         = 60                    -- Time until Bottles despawn
-CREEP_GROWTH                                = 1
+CAMP_LOOT_DESPAWN_TIME                      = 60                    -- Time until unclaimed camp loot despawns.
 --------------------------------------------------------------
 FACING_DOWN 	                            = Vector(0, -1, -0)		--Facing Forward direction
 FACING_RIGHT 	                            = Vector(1, 0, -0)		--Facing Forward direction
@@ -143,12 +140,11 @@ ENABLED_RUNES[DOTA_RUNE_REGENERATION]       = true
 ENABLED_RUNES[DOTA_RUNE_BOUNTY]             = true
 ENABLED_RUNES[DOTA_RUNE_ARCANE]             = true
 ------------------------------------------------------------------------------------------------------------------------------------------------
-MAX_NUMBER_OF_TEAMS                         = 2                     -- How many potential teams can be in this game mode?
-USE_CUSTOM_TEAM_COLORS                      = false                 -- Should we use custom team colors?
+USE_CUSTOM_TEAM_COLORS                      = true                  -- Use the faction colors shown in the match HUD.
 USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS          = true                  -- Should we use custom team colors to color the players/minimap?
 TEAM_COLORS                                 = {}                    -- If USE_CUSTOM_TEAM_COLORS is set, use these colors.
-TEAM_COLORS[DOTA_TEAM_GOODGUYS]             = { 61, 210, 150 }      --    Teal
-TEAM_COLORS[DOTA_TEAM_BADGUYS]              = { 243, 201, 9 }       --    Yellow
+TEAM_COLORS[DOTA_TEAM_GOODGUYS]             = { 128, 218, 219 }     -- Angels
+TEAM_COLORS[DOTA_TEAM_BADGUYS]              = { 255, 156, 118 }     -- Demons
 TEAM_COLORS[DOTA_TEAM_CUSTOM_1]             = { 197, 77, 168 }      --    Pink
 TEAM_COLORS[DOTA_TEAM_CUSTOM_2]             = { 255, 108, 0 }       --    Orange
 TEAM_COLORS[DOTA_TEAM_CUSTOM_3]             = { 52, 85, 255 }       --    Blue
@@ -158,18 +154,6 @@ TEAM_COLORS[DOTA_TEAM_CUSTOM_6]             = { 27, 192, 216 }      --    Cyan
 TEAM_COLORS[DOTA_TEAM_CUSTOM_7]             = { 199, 228, 13 }      --    Olive
 TEAM_COLORS[DOTA_TEAM_CUSTOM_8]             = { 140, 42, 244 }      --    Purple
 --------------------------------------------------------------
-USE_AUTOMATIC_PLAYERS_PER_TEAM              = false                 -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
-CUSTOM_TEAM_PLAYER_COUNT                    = {}                    -- If we're not automatically setting the number of players per team, use this table
-CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 5
-CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 5
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_1] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_2] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_3] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_4] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_5] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_6] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_7] = 1
--- CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_CUSTOM_8] = 1
 ------------------------------------------------------------------------------------------------------------------------------------------------
 --[[Future 1v1 duel test system
 --nHeroCount    	= 0
@@ -178,7 +162,6 @@ nHeroCount    	= 0
 nDeathHeroes  	= 0
 nDeathCreeps  	= 0
 tPlayers 		= {}
-tHeroes 		= {}
 --------------------------------------------------------------
 PRE_DUEL_TIME = 5
 IsDuelOccured = false

@@ -1,145 +1,90 @@
---[[
-  Author:
-    Angel Arena Blackstars
-    Chronophylos
-  Credits:
-    Angel Arena Blackstars
-]]
-
-
-if Gold == nil then
-  print ( '[gold/gold] creating new Gold object' )
-  Gold = class({})
-end
+-- Angel Arena Blackstars / Chronophylos
+Gold = Gold or class({})
 
 local GOLD_CAP = 90000
+local overflow = {}
 
-function Gold:Init()
-  -- a table for every player
-  print("Create Gold Table")
-  PlayerTables:CreateTable("gold", {
-    gold = {}
-  }, totable(PlayerResource:GetAllTeamPlayerIDs()))
-
-    -- start think timer
-  Timers:CreateTimer(1, Dynamic_Wrap(Gold, "Think"))
-end
-
-function Gold:UpdatePlayerGold(unitvar, newGold)
-  local playerID = UnitVarToPlayerID(unitvar)
-  if playerID and playerID > -1 then
-    -- get full tree,
-    --[[local allgold = PlayerTables:GetTableValue("gold", "gold")
-    allgold[playerID] = PLAYER_GOLD[playerID].SavedGold
-
-    PlayerTables:SetTableValue("gold", "gold", allgold)
-
-    local player = PlayerResource:GetPlayer(playerID)
-    CustomGameEventManager:Send_ServerToAllClients("oaa_update_gold", {
-      gold = allgold
-    })]]--
-    local tableGold = PlayerTables:GetTableValue("gold", "gold")
-    tableGold[playerID] = newGold
-    PlayerTables:SetTableValue("gold", "gold", tableGold)
-
-    newGold = math.min(GOLD_CAP, newGold)
-    PlayerResource:SetGold(playerID, newGold, false)
-    PlayerResource:SetGold(playerID, 0, true)
+local function GetPlayerID(unit)
+  local playerID = UnitVarToPlayerID(unit)
+  if playerID and PlayerResource:IsValidPlayerID(playerID) then
+    return playerID
   end
 end
 
---[[
-  Author:
-    Chronophylos
-  Credits:
-    Angel Arena Blackstar
-  Description:
-    Add Gold to all players via our custom Gold API
-]]
+local function PublishGold(playerID, total)
+  local balances = PlayerTables:GetTableValue("gold", "gold")
+  if balances[playerID] ~= total then
+    balances[playerID] = total
+    PlayerTables:SetTableValue("gold", "gold", balances)
+  end
+end
+
+local function UpdateGold(playerID, native, total, reliable, reason)
+  local desired = math.min(GOLD_CAP, total)
+  if desired ~= native then
+    PlayerResource:ModifyGold(playerID, desired - native, reliable == true, reason or DOTA_ModifyGold_Unspecified)
+  end
+
+  -- Keep only the portion above the engine-facing balance on the server.
+  overflow[playerID] = math.max(0, total - GOLD_CAP)
+  PublishGold(playerID, PlayerResource:GetGold(playerID) + overflow[playerID])
+end
+
+function Gold:Init()
+  Timers:CreateTimer(1, Dynamic_Wrap(self, "Think"), self)
+end
+
 function Gold:Think()
-  foreach(function(i)
-    if PlayerResource:IsValidPlayerID(i) then
-      local gameState = GameRules:State_Get()
-      if gameState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS or gameState == DOTA_GAMERULES_STATE_PRE_GAME then
-
-        local currentGold = Gold:GetGold(i)
-        local currentDotaGold = PlayerResource:GetGold(i)
-
-        local newGold = currentGold
-        local newDotaGold = currentDotaGold
-
-        if currentGold > GOLD_CAP then
-          newGold = currentGold + currentDotaGold - GOLD_CAP
-        else
-          newGold = currentDotaGold
-        end
-
-        if newGold > GOLD_CAP then
-          newDotaGold = GOLD_CAP
-        else
-          newDotaGold = newGold
-        end
-
-        if newGold ~= currentGold or newDotaGold ~= currentDotaGold then
-          Gold:SetGold(i, newGold)
-          PlayerResource:SetGold(i, newDotaGold, false)
-          PlayerResource:SetGold(i, 0, true)
-        end
+  local state = GameRules:State_Get()
+  if state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS or state == DOTA_GAMERULES_STATE_PRE_GAME then
+    for _, playerID in ipairs(PlayerResource:GetAllTeamPlayerIDs()) do
+      if PlayerResource:IsValidPlayerID(playerID) then
+        local native = PlayerResource:GetGold(playerID)
+        UpdateGold(playerID, native, native + (overflow[playerID] or 0))
       end
     end
-  end, PlayerResource:GetAllTeamPlayerIDs())
+  end
   return 0.2
 end
 
-
-function Gold:ClearGold(unitvar)
-  Gold:SetGold(unitvar, 0)
+function Gold:ClearGold(unit)
+  self:SetGold(unit, 0)
 end
 
-function Gold:SetGold(unitvar, gold)
-  local playerID = UnitVarToPlayerID(unitvar)
-  --PLAYER_GOLD[playerID].SavedGold = math.floor(gold)
-  local newGold = math.floor(gold)
-  Gold:UpdatePlayerGold(playerID, newGold)
-end
-
-function Gold:ModifyGold(unitvar, gold, bReliable, iReason)
-  if gold > 0 then
-    Gold:AddGold(unitvar, gold)
-  elseif gold < 0 then
-    Gold:RemoveGold(unitvar, -gold)
+function Gold:SetGold(unit, total)
+  local playerID = GetPlayerID(unit)
+  if playerID then
+    UpdateGold(playerID, PlayerResource:GetGold(playerID), math.max(0, math.floor(total)))
   end
 end
 
-function Gold:RemoveGold(unitvar, gold)
-  local playerID = UnitVarToPlayerID(unitvar)
-  --  PLAYER_GOLD[playerID].SavedGold = math.max((PLAYER_GOLD[playerID].SavedGold or 0) - math.ceil(gold), 0)
-  local oldGold = PlayerTables:GetTableValue("gold", "gold")[playerID]
-  local newGold = math.max((oldGold or 0) - math.ceil(gold), 0)
-  Gold:UpdatePlayerGold(playerID, newGold)
+function Gold:ModifyGold(unit, amount, reliable, reason)
+  local playerID = GetPlayerID(unit)
+  if playerID then
+    local native = PlayerResource:GetGold(playerID)
+    local total = math.max(0, native + (overflow[playerID] or 0) + math.floor(amount))
+    UpdateGold(playerID, native, total, reliable, reason)
+  end
 end
 
-function Gold:AddGold(unitvar, gold)
-  --[[DebugPrint("[Gold] AddGold")
-  DebugPrint("arg.unitvar: " .. unitvar)
-  DebugPrint("arg.gold: " .. gold)
-  DebugPrintTable(PLAYER_GOLD)]]
-  local playerID = UnitVarToPlayerID(unitvar)
-  --PLAYER_GOLD[playerID].SavedGold = (PLAYER_GOLD[playerID].SavedGold or 0) + math.floor(gold)
-  local oldGold = PlayerTables:GetTableValue("gold", "gold")[playerID]
-  local newGold = (oldGold or 0) + math.floor(gold)
-  Gold:UpdatePlayerGold(playerID, newGold)
+function Gold:RemoveGold(unit, amount)
+  self:ModifyGold(unit, -amount)
 end
 
-function Gold:AddGoldWithMessage(unit, gold, optPlayerID)
-  local player = optPlayerID and PlayerResource:GetPlayer(optPlayerID) or PlayerResource:GetPlayer(UnitVarToPlayerID(unit))
-  SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, unit, math.floor(gold), player)
-  Gold:AddGold(optPlayerID or unit, gold)
+function Gold:AddGold(unit, amount)
+  self:ModifyGold(unit, amount)
 end
 
-function Gold:GetGold(unitvar)
-  local playerID = UnitVarToPlayerID(unitvar)
-  local currentGold = PlayerTables:GetTableValue("gold", "gold")[playerID]
-  --return math.floor(PLAYER_GOLD[playerID].SavedGold or 0)
-  return math.floor(currentGold or 0)
+function Gold:AddGoldWithMessage(unit, amount, playerID)
+  playerID = GetPlayerID(playerID or unit)
+  if playerID then
+    local player = PlayerResource:GetPlayer(playerID)
+    SendOverheadEventMessage(player, OVERHEAD_ALERT_GOLD, unit, math.floor(amount), player)
+    self:AddGold(playerID, amount)
+  end
+end
+
+function Gold:GetGold(unit)
+  local playerID = GetPlayerID(unit)
+  return playerID and PlayerResource:GetGold(playerID) + (overflow[playerID] or 0) or 0
 end

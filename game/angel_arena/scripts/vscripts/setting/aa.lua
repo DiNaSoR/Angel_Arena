@@ -1,3 +1,5 @@
+local ArenaScore = require('mechanics/match/score')
+
 --------------------------------------------------------------
 -- Angel Arena GameMode Class
 --------------------------------------------------------------
@@ -88,49 +90,8 @@ end
 --The hero parameter is the hero entity that just spawned in
 --------------------------------------------------------------
 function GameMode:OnHeroInGame(hero)
-  	--print("[Angel Arena] Hero spawned in game for first time")
-
-	local player 	= PlayerResource:GetPlayer(hero:GetPlayerID())
-	local pID 		= hero:GetPlayerOwnerID()
-	local pOID 		= hero:GetPlayerID()
-	local heroName 	= hero:GetUnitName()
-
-	-- Initialize custom stats this is global values for spellpower/healingpower
-	hero.spellPower = 0
-	hero.healingPower = 0
-
-	
-	
-	--[[ Initialize stat allocation
-	hero.STR = 0
-	hero.AGI = 0
-	hero.INT = 0]]
-
-	-- Give Item
-	--local item = CreateItem("item_searing_flame_of_prometheus", hero, hero)
-	--hero:AddItem(item)
-
-	--print("give ability")
-	--hero:AddAbility("crystal_maiden_brilliance_aura")
-	--hero:FindAbilityByName("crystal_maiden_brilliance_aura"):SetLevel(1)
-
-	--[[Abilities
-	local abil1 = hero:GetAbilityByIndex(0)
-	local abil2 = hero:GetAbilityByIndex(1)
-	local abil3 = hero:GetAbilityByIndex(2)
-	local abil4 = hero:GetAbilityByIndex(3)
-	local abil5 = hero:GetAbilityByIndex(4)
-	local abil6 = hero:GetAbilityByIndex(5)
-	if abil1 ~= nil then abil1:SetLevel(1) end
-	if abil2 ~= nil then abil2:SetLevel(1) end
-	if abil3 ~= nil then abil3:SetLevel(1) end
-	if abil4 ~= nil then abil4:SetLevel(1) end
-	if abil5 ~= nil then abil5:SetLevel(1) end
-	if abil6 ~= nil then abil6:SetLevel(1) end
-	--hero:AddAbility("example_ability")
-
-	-- Give 2 extra stat points to spend
-	hero:SetAbilityPoints(3)]]	
+    hero.spellPower = 0
+    hero.healingPower = 0
 end
 --------------------------------------------------------------
 --On Strategy Time
@@ -143,54 +104,36 @@ end
 --On Pre Game
 --------------------------------------------------------------
 function GameMode:OnPreGame()
-	--[[ initialize modules
-	InitModule(PointsManager)
-	InitModule(Gold)
-	InitModule(BlinkBlock)
-	InitModule(ZoneControl)
-	InitModule(AbilityLevels)
-	InitModule(SellBlackList)
-	InitModule(Glyph)
-	InitModule(BubbleOrbFilter)
-	InitModule(ReactiveFilter)
-	InitModule(NGP)
-	InitModule(Doors)
-	InitModule(HeroKillGold)]]
-	InitModule(Gold)
-	--InitModule(HeroProgression)
+    if self.preGameStarted then
+        return
+    end
+    self.preGameStarted = true
 
-	--This code will calculate how many players in each team adds them and muli it by 10 to give final score to win the game.
-	PLAYER_COUNT_GOODGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-	PLAYER_COUNT_BADGUYS 		= PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-	KILLS_TO_END_GAME_FOR_TEAM 	= math.floor(PLAYER_COUNT_GOODGUYS + PLAYER_COUNT_BADGUYS) * 10
+    InitModule(Gold)
 
-	GameMode:PostLoadPrecache()
-	GameMode:OnAllPlayersLoaded()
+    PLAYER_COUNT_GOODGUYS = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
+    PLAYER_COUNT_BADGUYS = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
+    if KILLS_TO_END_GAME_FOR_TEAM <= 0 then
+        KILLS_TO_END_GAME_FOR_TEAM = math.max(1, PLAYER_COUNT_GOODGUYS + PLAYER_COUNT_BADGUYS) * 10
+    end
+    ArenaScore.SetPhase(self, 'pre_game')
+
+    self:PostLoadPrecache()
+    self:OnAllPlayersLoaded()
 end
 
---------------------------------------------------------------
---This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this point,
---gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
---is useful for starting any game logic timers/thinkers, beginning the first round, etc.
---------------------------------------------------------------
 function GameMode:OnGameInProgress()
-	print("[Angel Arena] The game has officially begun")
+    if self.gameInProgress then
+        return
+    end
+    self:OnPreGame()
+    self.gameInProgress = true
+    ArenaScore.SetPhase(self, 'in_progress')
 
-	-- initialize modules
-	InitModule(CreepPower)
-	InitModule(CreepCamps)
-	InitModule(CreepItemDrop)
-	--[[InitModule(CaveHandler)
-	InitModule(Duels)
-	InitModule(BossSpawner)
-	InitModule(BottleCounter)
-	InitModule(DuelRunes)
-	InitModule(FinalDuel)
-	InitModule(PlayerConnection)]]
-  
-	welcomemsg()
-	--firedueltimer()
-	Duel:CreateGlobalTimer()
+    print("[Angel Arena] The game has officially begun")
+    InitModule(CreepCamps)
+    welcomemsg()
+    Duel:CreateGlobalTimer()
 end
 --------------------------------------------------------------
 -- Modules
@@ -200,5 +143,3 @@ function InitModule(myModule)
     myModule:Init()
   end
 end
--- This function initializes the game mode and is called before anyone loads into the game
--- It can be used to pre-initialize any values/tables that will be needed later

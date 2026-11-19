@@ -1,217 +1,65 @@
-SAMURAI_MINIBOSS_AI_VERSION = "0.1"
---------------------------------------------------------------
--- Setting
---------------------------------------------------------------
-HOOK_SOUNDBOX = {	"pudge_pud_ability_hook_01",
-					"pudge_pud_ability_hook_02",
-					"pudge_pud_ability_hook_03",
-					"pudge_pud_ability_hook_04", 
-					"pudge_pud_ability_hook_05", 
-					"pudge_pud_ability_hook_06", 
-					"pudge_pud_ability_hook_07", 
-					"pudge_pud_ability_hook_08"
-				}
-DISM_SOUNDBOX = {	"pudge_pud_attack_08",
-					"pudge_pud_attack_09",
-					"pudge_pud_attack_10",
-					"pudge_pud_attack_11", 
-					"pudge_pud_attack_12", 
-					"pudge_pud_attack_13"
-				}
-RUNNING_SOUNDBOX = {"pudge_pud_laugh_01",
-					"pudge_pud_laugh_02",
-					"pudge_pud_laugh_03",
-					"pudge_pud_laugh_04", 
-					"pudge_pud_laugh_05", 
-					"pudge_pud_laugh_06", 
-					"pudge_pud_laugh_07"
-					}
-PUDGE_DIALOG = 	{	"YEAH RUN AWAY LITTLE GIRL!",
-					"slag!.Slag!.SLAG!",
-					"WHAT A WANKER!",
-					"HAHA YOU THOUGHT YOU CAN TAKE ME?", 
-					"JUST AS I THOUGHT!", 
-					"TURN YOUR FACE AND NEVER COME BACK!", 
-					"I WILL STEP ON YOUR FACE IF YOU STEP HERE AGAIN!"
-				}											
---------------------------------------------------------------
--- InitGameMode
---------------------------------------------------------------
-function 	Spawn( entityKeyValues )
-				Pudgespeech = true
-				print("[Angel Arena] Starting AI for "..thisEntity:GetUnitName().." "..SAMURAI_MINIBOSS_AI_VERSION)
-				hook 	= thisEntity:FindAbilityByName("dragon_knight_dragon_blood")
-				rot 	= thisEntity:FindAbilityByName("clinkz_strafe")
-				dism 	= thisEntity:FindAbilityByName("kunkka_tidebringer")
+local THINK_INTERVAL = 0.5
+local ACQUISITION_RADIUS = 1300
+local LEASH_RADIUS = 1400
+local HOME_RADIUS = 50
 
-				thisEntity:SetContextThink("Hook", Hook, 1)
-				thisEntity:SetContextThink("Dism", Dism, 1)
-				thisEntity:SetContextThink("AIThinking", AIThinking, 0.5)
-				--thisEntity:SetContextThink("CastItemName", CastItemName, 0.5)
+local function FindTarget(boss, home, origin)
+    local enemies = FindUnitsInRadius(
+        boss:GetTeamNumber(), origin, nil, ACQUISITION_RADIUS,
+        DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+        DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE
+            + DOTA_UNIT_TARGET_FLAG_NO_INVIS,
+        FIND_CLOSEST, false
+    )
+
+    for _, enemy in ipairs(enemies) do
+        if not enemy:IsNull() and enemy:IsAlive()
+            and (enemy:GetAbsOrigin() - home):Length2D() <= LEASH_RADIUS then
+            return enemy
+        end
+    end
 end
---------------------------------------------------------------
--- AI Behavior
---------------------------------------------------------------
-function AIThinking()
 
-	local point = Vector(1613.43, 6631.75, 39.2126)
-	local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-    
-    if thisEntity:IsNull() or not thisEntity:IsAlive() then
-        return nil
-    end	
-
-    if #units <= 0 then
-    	thisEntity:MoveToPosition(point)
+function Spawn()
+    local boss = thisEntity
+    if not boss or boss:IsNull() then
+        return
     end
 
-    if (point - thisEntity:GetOrigin()):Length() > 1400 then
-        thisEntity:MoveToPosition(point)
-        dialogpudge()
-    end
- 
-    return 0.5;
+    local home = boss:GetAbsOrigin()
+    local returning = false
+
+    boss:SetContextThink("SamuraiThink", function()
+        if boss:IsNull() or not boss:IsAlive() then
+            return nil
+        end
+        if boss:IsStunned() or boss:IsHexed() then
+            return THINK_INTERVAL
+        end
+
+        local origin = boss:GetAbsOrigin()
+        local home_distance = (origin - home):Length2D()
+        returning = home_distance > LEASH_RADIUS or (returning and home_distance > HOME_RADIUS)
+        local target = not returning and FindTarget(boss, home, origin)
+        if not target then
+            if home_distance > HOME_RADIUS then
+                returning = true
+                boss:MoveToPosition(home)
+            elseif boss:GetAttackTarget() then
+                boss:Stop()
+            end
+            return THINK_INTERVAL
+        end
+
+        local strafe = boss:FindAbilityByName("clinkz_strafe")
+        local distance = (target:GetAbsOrigin() - origin):Length2D()
+        if distance <= boss:Script_GetAttackRange() and not boss:IsSilenced()
+            and strafe and not strafe:IsNull() and strafe:IsFullyCastable()
+            and bit.band(strafe:GetBehaviorInt(), DOTA_ABILITY_BEHAVIOR_NO_TARGET) ~= 0 then
+            boss:CastAbilityNoTarget(strafe, -1)
+        elseif boss:GetAttackTarget() ~= target then
+            boss:MoveToTargetToAttack(target)
+        end
+        return THINK_INTERVAL
+    end, THINK_INTERVAL)
 end
-
---------------------------------------------------------------
--- Bador Dialopudge
---------------------------------------------------------------
-function dialogpudge()
---Msg("PUDGE_DIALOG")
---print("Bador")
-end
-
---//--------------------------------------------------------------------------------------
---//	Hook
---//--------------------------------------------------------------------------------------
-function Hook()
-
-	if hook:IsFullyCastable() then
-
-		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 1300, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-
-		if units ~= nil then
-			if #units >= 1 then
-				local index = RandomInt( 1, #units )
-				local target = units[index]
-				
-				thisEntity:CastAbilityOnPosition(target:GetAbsOrigin(), hook, -1)
-				--print("Pudge Hook")
-				EmitSoundOn(HOOK_SOUNDBOX[RandomInt(1,8)], target)
-				
-
-
-			else 
-
-			end
-		end	
-	else
-		--print("[Bador] Hook no ready")	
-	end
-	return 1
-end
-
---//--------------------------------------------------------------------------------------
---//	cast Urn
---//--------------------------------------------------------------------------------------
-function CastItemName()
-	--print("CastItemNmae run")
-	local healthRemaining = thisEntity:GetHealth() / thisEntity:GetMaxHealth()
-	local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 950, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-	local index = RandomInt( 1, #units )
-	local target = units[index]
-	if units ~= nil then
-		if #units >= 1 then
-		    for i=0,5 do
-		        local item = thisEntity:GetItemInSlot(i)
-		        if item and item:GetAbilityName() == "item_urn_of_shadows" and (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() > 700 then
-		        	--print("casting urn")
-		            thisEntity:CastAbilityOnTarget(target, item, -1)
-
-				--[[elseif item and item:GetAbilityName() == "item_force_staff" and (target:GetAbsOrigin() - thisEntity:GetAbsOrigin()):Length2D() > 300 then
-		        	thisEntity:CastAbilityOnTarget(target, item, -1)]]
-
-				elseif item and item:GetAbilityName() == "item_shivas_guard" and healthRemaining <= 0.75 then
-		        	--print("casting Shiva Guard")
-		            thisEntity:CastAbilityNoTarget(item, -1)
-
-		        elseif item and item:GetAbilityName() == "item_lotus_orb" and healthRemaining <= 0.85 then
-		        	--print("casting Lotus Orb")
-		            thisEntity:CastAbilityOnTarget(thisEntity, item, -1)
-
-		        elseif item and item:GetAbilityName() == "item_blade_mail" and healthRemaining <= 0.95 then
-		        	--print("casting Blade Mail")
-		            thisEntity:CastAbilityNoTarget(item, -1)
-				else
-
-		        end
-		    end
-		end
-	end
-	return 1
-end
-
-
-
-
---//--------------------------------------------------------------------------------------
---//	Dismember
---//--------------------------------------------------------------------------------------
-function Dism()
-
-
-	if dism:IsFullyCastable() then
-
-		local units = FindUnitsInRadius( thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES + DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, FIND_CLOSEST, false)
-
-		if units ~= nil then
-			if #units >= 1 then
-				local index = RandomInt( 1, #units )
-				local target = units[index]
-				
-				thisEntity:CastAbilityOnTarget(target, dism, -1)
-				thisEntity:CastAbilityToggle(rot, -1)
-				EmitSoundOn(DISM_SOUNDBOX[RandomInt(1,6)], target)
-
-			end
-		end	
-	end
-
-	local cooldown = math.floor(dism:GetCooldownTimeRemaining())
-
-	if cooldown == 20 and rot:GetToggleState() == true then
-		--print(rot:GetToggleState())
-		thisEntity:CastAbilityToggle(rot, -1)
-		--print(rot:GetToggleState())
-	else
-		--print(cooldown)
-	end
-
-	return 1
-end
-
---[[function goback()
-
-		local unit = Entities:FindByName(nil,"npc_dota_bador_pudge")
-		--local unit = EntIndexToHScript(index)
-		local position = Vector (-128,256,128)
-		--local initial_neutral_position = position
-
-		--local waypoint = Entities:FindByNameNearest( "path_1", thisEntity:GetOrigin(), 0 )
-				--waypoint = unit:GetAbsOrigin()
-
-				if unit:entindex:Length2D() > 900 then
-					print("[Bador] Ok i cant chase this dude")
-							unit:MoveToPosition(position) 
-				
-					return math.random(2,6)
-				--[[if unit:GetAttackTarget() == nil then
-					print("I am running back sorry")
-					thisEntity:SetInitialGoalEntity( waypoint )
-					thisEntity:MoveToPositionAggressive( waypoint:GetOrigin() )
-				else
-							print("[Bador] I can get them dont worry")
-					return nil
-				end
-	--return 1	
-end]]

@@ -3,6 +3,7 @@
   custom_net_tables =
   [
     "team_scores",
+    "arena_match",
 	  "selection",
     "info",
     "stat_display",

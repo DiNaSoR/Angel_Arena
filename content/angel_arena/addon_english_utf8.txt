@@ -10,10 +10,28 @@
 		"DOTA_GAMEMODE_15" 											"Get Ready!"
 
 		"angeldeultimer"    										"<font color='#E8D505' size='16'>Duel will finish after %quest_current_value% seconds</font>"
-		"aa_duel_5v5"												"<font color='#386BE8' size='18'>Be Prepared to Duel after each 10 min</font>"
+		"aa_duel_5v5"												"<font color='#386BE8' size='18'>Watch the HUD for the next duel.</font>"
 		"dueltimerQuest"											"<font color='#E8D505' size='16'>TIME LEFT TO DUEL! %quest_current_value% seconds</font>"
 		"arenawallQuest"											"Prepare To Fight in %quest_current_value% seconds"
 
+
+		"arena_team_angels"		"Angels"
+		"arena_team_demons"		"Demons"
+		"arena_kill_target"		"Kill target"
+		"arena_match_waiting"		"Preparing the arena"
+		"arena_match_live"		"Match live"
+		"arena_match_angels_win"		"Angels win"
+		"arena_match_demons_win"		"Demons win"
+		"arena_match_boss_defeated"		"Arena boss defeated"
+		"arena_match_target_reached"		"Kill target reached"
+		"arena_loading_premise"		"Angels and Demons fight for control of the arena. Clear camps and collect gear before challenging the other team."
+		"arena_loading_kills"		"Reach the hero kill target when it is enabled."
+		"arena_loading_boss"		"Land the killing blow on Bador to win for your team."
+
+		"arena_duel_waiting"		"Next duel"
+		"arena_duel_active"		"Duel ends"
+		"arena_boss_only_objective"		"Defeat Bador"
+		"arena_setup_objectives"		"How to win"
 
 		// TopTitle-Start Popup
 		// ************************************************************************************************************************
@@ -39,13 +57,13 @@
 		// Team strings
 		// ************************************************************************************************************************
 		"DOTA_GoodGuysCaps"											"ANGELS"
-		"DOTA_BadGuysCaps"											"DEMONES"
+		"DOTA_BadGuysCaps"											"DEMONS"
 		"Unassigned"      											"Unassigned Team"
 		"Spectator"       											"Spectator Team"
 		"Neutrals"        											"Neutral Team"
 		"NoTeam"          											"No Team"
 		"DOTA_GoodGuys"   											"ANGELS"
-		"DOTA_BadGuys"    											"DEMONES"
+		"DOTA_BadGuys"    											"DEMONS"
 		
 
 		// Winner strings

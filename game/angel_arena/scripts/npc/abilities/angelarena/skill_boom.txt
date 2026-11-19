@@ -45,7 +45,7 @@
 		{	
 			"RunScript"
 			{
-				"ScriptFile"	"abilities\skill_boom.lua"
+				"ScriptFile"	"abilities/skill_boom.lua"
 				"Function"		"boomber"
 			}
 		}
@@ -54,7 +54,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"abilities\skill_boom.lua"
+				"ScriptFile"	"abilities/skill_boom.lua"
 				"Function"		"boomber"
 			}
 		}

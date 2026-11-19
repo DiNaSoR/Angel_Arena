@@ -66,45 +66,34 @@ end
 
 -- called after a unit dies, starts a timer to spawn a new unit near the original spawn location
 function RespawnCreep( event )
+	local unit = event.caster
+	if not unit or unit:IsNull() then return end
 
-	-- get the unit name to respawn
-	local unit = event.caster 
-	local unit_name = unit:GetUnitName()
-
-	-- get the area the unit belongs to
 	local unit_area = unit.area
-	local area_table = GameMode.SpawnInfoKV[unit_area]
+	local area_table = GameMode and GameMode.SpawnInfoKV and GameMode.SpawnInfoKV[unit_area]
+	if not area_table then return end -- Camp-managed creeps have their own respawn timer.
 
-	-- get the unit respawn time from the spawn_info table
-	local unitTableIndex = getUnitIndex(area_table,unit_name)
-	local respawn_time = area_table[unit_name].RespawnTime
+	local unit_name = unit:GetUnitName()
+	local unit_config = area_table[unit_name]
+	local respawn_time = unit_config and tonumber(unit_config.RespawnTime)
+	if not respawn_time then return end
 
-	Timers:CreateTimer({
-    endTime = respawn_time,
-    callback = function()
-    	-- we have to check to which area this unit belongs
-    	if IsAreaActive(unit_area) then
-			-- get a new position and create the unit
-			local new_position = GetFreePositionInAreaFor(unit_area,unit_name)
-			local new_unit = CreateUnitByName(unit_name, new_position:GetOrigin(), true, nil, nil, DOTA_TEAM_NEUTRALS)
-			print("Respawned unit in "..respawn_time.. " seconds on ",new_position:GetOrigin())
+	Timers:CreateTimer(respawn_time, function()
+		if not IsAreaActive(unit_area) then return end
+		local creep_list = GetAreaCreepList(unit_area)
+		if not creep_list then return end
+		local index = getIndex(creep_list, unit)
+		if index < 1 then return end
 
-			-- variate facing of the unit
-			new_unit:SetForwardVector(RandomVector(5000))
-			-- set the area to respawn easier
-			new_unit.area = unit_area 
+		local position = GetFreePositionInAreaFor(unit_area, unit_name)
+		if not position then return end
+		local replacement = CreateUnitByName(unit_name, position:GetOrigin(), true, nil, nil, DOTA_TEAM_NEUTRALS)
+		if not replacement then return end
 
-			-- get the creep list to add and remove
-			local creep_list = GetAreaCreepList(unit_area)
-
-			-- add the new_unit handle to the area creep list
-			table.insert(creep_list,new_unit)
-			-- remove the old unit
-			table.remove(creep_list,getIndex(creep_list, unit))
-		end
-    end
-  	})
-
+		replacement:SetForwardVector(RandomVector(5000))
+		replacement.area = unit_area
+		creep_list[index] = replacement
+	end)
 end
 
 ------------------
@@ -239,6 +228,7 @@ function GetFreePositionInAreaFor( areaName, unitName )
 end
 
 function GetEmptyPosition( list )
+	if not list or #list == 0 then return end
 	print("Finding empty location")
 	local counter = 0
 	position = list[RandomInt(1, #list)]

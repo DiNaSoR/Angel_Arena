@@ -63,7 +63,7 @@
 			}
 			"RunScript"
 			{
-				"ScriptFile"	"Abilities/lordofdeath_boss_dive"
+				"ScriptFile"	"abilities/lordofdeath_boss_dive.lua"
 				"Function"		"begin_dive"
 			}
 			"ApplyModifier"
@@ -91,7 +91,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Abilities/lordofdeath_boss_dive.lua"
+						"ScriptFile"	"abilities/lordofdeath_boss_dive.lua"
 						"Function"		"slide_think"
 					}
 				}
@@ -99,7 +99,7 @@
 				{
 					"RunScript"
 					{
-						"ScriptFile"	"Abilities/lordofdeath_boss_dive.lua"
+						"ScriptFile"	"abilities/lordofdeath_boss_dive.lua"
 						"Function"		"slide_end"
 					}
 				}

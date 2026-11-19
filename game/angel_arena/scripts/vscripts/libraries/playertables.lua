@@ -139,23 +139,19 @@ function PlayerTables:copy(obj, seen)
 end
 
 function PlayerTables:PlayerTables_Connected(args)
-  --print('PlayerTables_Connected')
-  --PrintTable(args)
-
-  local pid = args.pid
-  if not pid then
+  local pid = args.PlayerID
+  if not pid or not PlayerResource:IsValidPlayerID(pid) then
     return
   end
 
   local player = PlayerResource:GetPlayer(pid)
-  --print('player: ', player)
-
+  if not player then
+    return
+  end
 
   for k,v in pairs(PlayerTables.subscriptions) do
     if v[pid] then
-      if player then  
-        CustomGameEventManager:Send_ServerToPlayer(player, "pt_fu", {name=k, table=PlayerTables.tables[k]} )
-      end
+      CustomGameEventManager:Send_ServerToPlayer(player, "pt_fu", {name=k, table=PlayerTables.tables[k]})
     end
   end
 end

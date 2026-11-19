@@ -130,7 +130,7 @@ function SendPID()
     return;
   }
 
-  GameEvents.SendCustomGameEventToServer( "PlayerTables_Connected", {pid:pid} );
+  GameEvents.SendCustomGameEventToServer( "PlayerTables_Connected", {} );
 }
 
 

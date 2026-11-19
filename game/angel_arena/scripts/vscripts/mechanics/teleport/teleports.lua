@@ -1,320 +1,78 @@
---------------------------------------------------------------
--- Teleport Setting
---------------------------------------------------------------
-CAMERA_TIMER_FOLLOW = 0.2
+local CAMERA_TIMER_FOLLOW = 0.2
 
-
-
-
---------------------------------------------------------------
--- Heal All and Reset Ability
---------------------------------------------------------------
 function Healall()
-        local allHeroes = HeroList:GetAllHeroes()
-        for _,hero in pairs(allHeroes) do 
-                hero:SetMana(hero:GetMaxMana()) 
-                hero:SetHealth(hero:GetMaxHealth())
-                
-                for i=0,15 do 
-                        local ability = hero:GetAbilityByIndex(i)
-                        if ability then 
-                                        ability:EndCooldown() 
-                        end 
-                end
+    for _, hero in pairs(HeroList:GetAllHeroes()) do
+        hero:SetMana(hero:GetMaxMana())
+        hero:SetHealth(hero:GetMaxHealth())
+
+        for i = 0, hero:GetAbilityCount() - 1 do
+            local ability = hero:GetAbilityByIndex(i)
+            if ability then
+                ability:EndCooldown()
+            end
         end
+    end
 end
 
+local function Teleport(trigger, radiant_destination, dire_destination)
+    local unit = trigger and trigger.activator
+    if not IsValidEntity(unit) or not unit:IsBaseNPC() or not unit:IsAlive() then
+        return
+    end
 
---------------------------------------------------------------
--- Teleport from base to North Port
---------------------------------------------------------------
+    local team = unit:GetTeamNumber()
+    local destination
+    if team == DOTA_TEAM_GOODGUYS then
+        destination = radiant_destination
+    elseif team == DOTA_TEAM_BADGUYS then
+        destination = dire_destination
+    end
+    if not destination then
+        return
+    end
+
+    local marker = Entities:FindByName(nil, destination)
+    if not IsValidEntity(marker) then
+        return
+    end
+
+    FindClearSpaceForUnit(unit, marker:GetAbsOrigin(), false)
+    unit:Stop()
+    if unit:IsRealHero() then
+        local player_id = unit:GetPlayerOwnerID()
+        if PlayerResource:IsValidPlayerID(player_id) then
+            PlayerResource:SetCameraTarget(player_id, unit)
+            Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
+                PlayerResource:SetCameraTarget(player_id, nil)
+            end)
+        end
+    end
+end
+
 function Basetonorthport(trigger)
-local   activator   = trigger.activator
--- playerID = get the hero which is the player real ID
-local   playerID    = activator:GetPlayerID()
--- Get the position of the "point_teleport_spot"-entity we put in our map
-local   point =  Entities:FindByName( nil, "Northportbase" ):GetAbsOrigin()
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-        end
-        
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then 
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-
-        local   point =  Entities:FindByName( nil, "Northportbase" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        return nil 
+    Teleport(trigger, "Northportbase", "Northportbase")
 end
 
 function Northporttobase(trigger)
-
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-                -- Get the position of the "point_teleport_spot"-entity we put in our map
-        local   point =  Entities:FindByName( nil, "teleport_good_out" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then 
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-
-        local   point =  Entities:FindByName( nil, "teleport_good_in" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        return nil 
+    Teleport(trigger, "teleport_good_out", "teleport_good_in")
 end
 
 function Basetosouthport(trigger)
-
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-                -- Get the position of the "point_teleport_spot"-entity we put in our map
-        local   point =  Entities:FindByName( nil, "Southportbase" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then 
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-
-        local   point =  Entities:FindByName( nil, "Southportbase" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        return nil 
+    Teleport(trigger, "Southportbase", "Southportbase")
 end
 
 function Southporttobase(trigger)
-
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-                -- Get the position of the "point_teleport_spot"-entity we put in our map
-        local   point =  Entities:FindByName( nil, "teleport_good_out" ):GetAbsOrigin()
-
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then 
-            local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-
-        local   point =  Entities:FindByName( nil, "teleport_good_in" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        end
-        return nil 
+    Teleport(trigger, "teleport_good_out", "teleport_good_in")
 end
 
---------------------------------------------------------------
--- Teleport Tigger Activator outside the arena
---------------------------------------------------------------
 function arenateleport(trigger)
-
-
-        if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS or trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then
-                -- activator = eaither hero or npc entity
-                local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-
-                local   point = Entities:FindByName( nil, "arenaoutside" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-                trigger.activator:Stop()
-        end     
-        
-        return nil              
-
+    Teleport(trigger, "arenaoutside", "arenaoutside")
 end
 
 function telegoodout(trigger)
-
-	if trigger.activator:GetTeamNumber() == DOTA_TEAM_BADGUYS then
-                local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                local   playerID    = activator:GetPlayerID()
-                -- Get the position of the "point_teleport_spot"-entity we put in our map
-                local   point =  Entities:FindByName( nil, "teleport_good_out" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-                
-        	
-	end	
-        return nil
-
+    Teleport(trigger, nil, "teleport_good_out")
 end
 
 function telegoodin(trigger)
-local   activator   = trigger.activator
-local   playerID    = activator:GetPlayerID()
-	if trigger.activator:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-        --local   activator   = trigger.activator
-                -- playerID = get the hero which is the player real ID
-                --local   playerID    = activator:GetPlayerID()
-                -- Get the position of the "point_teleport_spot"-entity we put in our map
-        local   point =  Entities:FindByName( nil, "teleport_good_in" ):GetAbsOrigin()
-
-                -- Find a spot for the hero around 'point' and teleports to it
-                FindClearSpaceForUnit(trigger.activator, point, false)
-                PlayerResource:SetCameraTarget(playerID, activator)
-                Timers:CreateTimer(CAMERA_TIMER_FOLLOW, function()
-                    PlayerResource:SetCameraTarget(playerID, nil)
-                    end)
-                -- Stop the hero, so he doesn't move
-
-                trigger.activator:Stop()
-                -- Refocus the camera of said player to the position of the teleported hero.
-
-               
-	end	
-        return nil		
-
+    Teleport(trigger, "teleport_good_in")
 end
-
-
---[[
-
-          for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do 
-        if PlayerResource:GetTeam( nPlayerID ) == DOTA_TEAM_BADGUYS then
-            local entHero = PlayerResource:GetSelectedHeroEntity( nPlayerID )
-           -- PlayerResource:SetCameraTarget(entHero, nil)
-            
-            entHero.original_position = entHero:GetAbsOrigin()
-
-            FindClearSpaceForUnit(entHero, point, false)
-            --SendToConsole("dota_camera_center")
-            GameMode:RepositionPlayerCamera(event)
-            entHero:Stop()
-            Healall()
-            --Timers:CreateTimer(3, function()
-          -- FindClearSpaceForUnit(entHero, entHero.original_position, false)
-     -- return 1.0
-  --  end
-  --)
-            
-
-        end
-    end
-
-]]

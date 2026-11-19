@@ -15,3 +15,8 @@ game/dota_addons/angel_arena/resource/overviews/*
 
 # Map Files
 *.vpk
+
+# Workshop Tools compiles Panorama from content sources.
+/game/angel_arena/panorama/**/*.vcss_c
+/game/angel_arena/panorama/**/*.vjs_c
+/game/angel_arena/panorama/**/*.vxml_c

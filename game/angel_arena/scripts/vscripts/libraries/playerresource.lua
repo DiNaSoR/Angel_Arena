@@ -205,7 +205,7 @@ end
 -- ???
 ---------------------------------------------------------------------------
 function CDOTA_PlayerResource:GetAllTeamPlayerIDs()
-  return filter(partial(self.IsValidPlayerID, self), range(0, self:GetPlayerCount()))
+  return filter(partial(self.IsValidPlayerID, self), range(0, DOTA_MAX_TEAM_PLAYERS - 1))
 end
 ---------------------------------------------------------------------------
 -- ???
@@ -217,7 +217,7 @@ end
 -- ???
 ---------------------------------------------------------------------------
 function CDOTA_PlayerResource:GetPlayerIDsForTeam(team)
-  return filter(function(id) return self:GetTeam(id) == team end, range(0, self:GetPlayerCount()))
+  return filter(function(id) return self:GetTeam(id) == team end, self:GetAllTeamPlayerIDs())
 end
 ---------------------------------------------------------------------------
 -- ???

@@ -52,7 +52,7 @@
 		{
 			"RunScript"
 			{
-				"ScriptFile"	"Abilities/lordofdeath_boss_splitter"
+				"ScriptFile"	"abilities/lordofdeath_boss_splitter.lua"
 				"Function"		"begin_splitter"
 			}
 		}

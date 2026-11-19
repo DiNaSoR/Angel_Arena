@@ -94,7 +94,7 @@
 
 		"RunScript"
 		{
-			"ScriptFile"	"scripts/vscripts/Abilities/time_walk.lua"
+			"ScriptFile"	"abilities/time_walk.lua"
 			"Function"		"TimeWalk"
 			"Target"		"POINT"
 			"caster_modifier"	"modifier_time_walk_datadriven"

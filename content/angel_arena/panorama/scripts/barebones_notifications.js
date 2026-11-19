@@ -91,8 +91,8 @@ function AddNotification(msg, panel) {
     notification.hittest = false;
   } else{
     notification.html = true;
-    var text = msg.text || "No Text provided";
-    notification.text = $.Localize(text)
+    var text = msg.text == null ? '' : String(msg.text);
+    notification.text = text.charAt(0) === '#' ? $.Localize(text) : text;
     notification.hittest = false;
     notification.AddClass('TitleText');
   }
