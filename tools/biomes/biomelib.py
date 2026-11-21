@@ -203,6 +203,16 @@ def as_list(value):
     return value or []
 
 
+def loot_items(monsters, boss):
+    """Every loot item a biome names: monsters.loot (by tier) and the boss's reward.loot. The tier
+    table arrives as a JSON list when its tiers run 1..N without gaps, else as an object."""
+    items = []
+    for tier_items in as_list((monsters or {}).get("loot")):
+        items += as_list(tier_items)
+    items += as_list(((boss or {}).get("reward") or {}).get("loot"))
+    return items
+
+
 # ------------------------------------------------------------------------------- tooltips
 
 _FRAGMENT_LINE = re.compile(r'^\s*"([^"]+)"\s+"((?:[^"\\]|\\.)*)"\s*(?://.*)?$')
@@ -331,12 +341,10 @@ def biome_problems(biome, tokens=None, stock_items=None):
                 elif themed and unit in units and ability not in [v for k, v in units[unit] if re.match(r"Ability\d+$", k)]:
                     problems.append("monster %s: ai names %s, which the unit does not have" % (unit, ability))
         known_items = custom_item_names()
-        loot = monsters.get("loot") or {}
-        for items in (loot.values() if isinstance(loot, dict) else loot):
-            for item in items or []:
-                if item not in known_items and (stock_items is None or item not in stock_items) \
-                        and (item.startswith("item_arena_") or stock_items is not None):
-                    problems.append("loot item %s does not exist" % item)
+        for item in loot_items(monsters, None):
+            if item not in known_items and (stock_items is None or item not in stock_items) \
+                    and (item.startswith("item_arena_") or stock_items is not None):
+                problems.append("loot item %s does not exist" % item)
 
     if boss:
         unit = boss.get("unit")
@@ -350,6 +358,9 @@ def biome_problems(biome, tokens=None, stock_items=None):
                 elif first(abilities.get(spec["name"], []), "MaxLevel") not in (None, str(len(as_list(boss.get("phases"))))):
                     problems.append("boss ability %s: MaxLevel must equal the number of phases (%d)"
                                     % (spec["name"], len(as_list(boss.get("phases")))))
+        for extra in as_list(boss.get("extra_units")):
+            if extra not in units:
+                problems.append("boss extra unit %s is not in %s" % (extra, rel(paths["units_kv"])))
         for summon in as_list(boss.get("summons")):
             if summon not in units:
                 problems.append("boss summon %s is not in %s" % (summon, rel(paths["units_kv"])))

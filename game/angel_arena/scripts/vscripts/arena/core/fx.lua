@@ -61,12 +61,24 @@ function ArenaFxCore.Circle(position, radius, delay)
     return index
 end
 
--- A warning line on the ground between two points.
-function ArenaFxCore.Line(from, to)
+local function Segment(from, to)
     local index = ParticleManager:CreateParticle(ArenaFxCore.PARTICLES.line, PATTACH_WORLDORIGIN, nil)
     ParticleManager:SetParticleControl(index, 0, from)
     ParticleManager:SetParticleControl(index, 1, to)
     return index
+end
+
+-- A warning line on the ground between two points. With a `width`, two more lines mark the edges
+-- of the strip that will be hit (the line particle itself has no width). Returns what Stop takes.
+function ArenaFxCore.Line(from, to, width)
+    local center = Segment(from, to)
+    local dx, dy = to.x - from.x, to.y - from.y
+    local length = math.sqrt(dx * dx + dy * dy)
+    if not width or width <= 0 or length < 1 then
+        return center
+    end
+    local side = Vector(-dy / length * width / 2, dx / length * width / 2, 0)
+    return { center, Segment(from + side, to + side), Segment(from - side, to - side) }
 end
 
 -- A one-shot effect at a point. `radius`, when given, goes to control point 1, where most of

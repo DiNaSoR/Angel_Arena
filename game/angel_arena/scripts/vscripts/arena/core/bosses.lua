@@ -161,15 +161,17 @@ function ArenaBosses:Spawn(state, now)
     end
     self:SetPhase(state, 1)
 
-    local hints = {}
+    local hints, order = {}, {}
     for _, spec in ipairs(def.abilities) do
         hints[spec.name] = spec
+        order[#order + 1] = spec.name
     end
     state.brain = ArenaMonsterAI.Attach(unit, {
         home = unit:GetAbsOrigin(),
         leash = def.leash,
         aggro = def.aggro or self.DEFAULT_AGGRO,
         hints = hints,
+        order = order,
         interval = self.BRAIN_INTERVAL,
         group = {},
         onThink = function()
@@ -241,6 +243,7 @@ function ArenaBosses:Reset(state)
     unit:SetHealth(unit:GetMaxHealth())
     self:SetPhase(state, 1)
     self:ClearAdds(state)
+    ArenaModifiers.CancelStrikes(unit)
 end
 
 -- Spawns a helper for a boss ability (for example a summon). `caster` is the boss. The helper

@@ -1,0 +1,121 @@
+// Tooltips and announcements of the desert biome (the Sunken Dunes).
+// Merged into both localization files by: python tools/biomes/build_biomes.py
+// Format: one "token"  "text" pair per line. In ability descriptions %name% is the ability's
+// AbilityValues entry of that name; %name%%% prints it followed by a percent sign.
+
+//------------------------------------------------------------------------------ units
+"npc_arena_desert_dune_kobold"									"Dune Kobold"
+"npc_arena_desert_skitterer"									"Sand Skitterer"
+"npc_arena_desert_ridge_slinger"								"Ridge Slinger"
+"npc_arena_desert_oasis_lurker"									"Oasis Lurker"
+"npc_arena_desert_dust_outrider"								"Dust Outrider"
+"npc_arena_desert_sandscale_basilisk"							"Sandscale Basilisk"
+"npc_arena_desert_sun_priest"									"Sun Priest"
+"npc_arena_desert_dune_behemoth"								"Dune Behemoth"
+"npc_arena_desert_storm_khan"									"Sirocco Khan"
+"npc_arena_desert_boss"											"Ankharos, the Sunken King"
+
+//-------------------------------------------------------------------------- abilities
+"DOTA_Tooltip_ability_arena_desert_ambush"						"Ambush"
+"DOTA_Tooltip_ability_arena_desert_ambush_Description"			"Dives into the sand and bursts up under an enemy %delay% seconds later. A ring marks the spot: anyone still inside takes %damage% magic damage and is stunned for %stun_duration% seconds."
+"DOTA_Tooltip_ability_arena_desert_ambush_radius"				"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_ambush_delay"				"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_desert_ambush_damage"				"DAMAGE:"
+"DOTA_Tooltip_ability_arena_desert_ambush_stun_duration"		"STUN:"
+
+"DOTA_Tooltip_ability_arena_desert_dust_kick"					"Dust Kick"
+"DOTA_Tooltip_ability_arena_desert_dust_kick_Description"		"Rears and kicks sand down a line that shows on the ground first. Enemies on it take %damage% magic damage and have a %miss_chance%%% chance to miss their attacks for %blind_duration% seconds."
+"DOTA_Tooltip_ability_arena_desert_dust_kick_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_desert_dust_kick_miss_chance"		"%MISS CHANCE:"
+"DOTA_Tooltip_ability_arena_desert_dust_kick_blind_duration"	"BLIND DURATION:"
+
+"DOTA_Tooltip_ability_arena_desert_withering_venom"				"Withering Venom"
+"DOTA_Tooltip_ability_arena_desert_withering_venom_Description"	"Each bite adds a dose of venom, up to %max_stacks%. Every dose deals %damage_per_stack% magic damage each second and slows by %slow_per_stack%%%. The venom fades %duration% seconds after the last bite."
+"DOTA_Tooltip_ability_arena_desert_withering_venom_max_stacks"	"MAX DOSES:"
+"DOTA_Tooltip_ability_arena_desert_withering_venom_damage_per_stack"	"DAMAGE PER DOSE:"
+"DOTA_Tooltip_ability_arena_desert_withering_venom_slow_per_stack"	"%SLOW PER DOSE:"
+
+"DOTA_Tooltip_ability_arena_desert_sun_brand"					"Sun Brand"
+"DOTA_Tooltip_ability_arena_desert_sun_brand_Description"		"Brands an enemy with the sun's mark. After %delay% seconds the sun strikes everyone within %radius% of the bearer for %damage% magic damage. The ring around the bearer shows the blast: keep it away from friends."
+"DOTA_Tooltip_ability_arena_desert_sun_brand_delay"				"DELAY:"
+"DOTA_Tooltip_ability_arena_desert_sun_brand_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_sun_brand_damage"			"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_desert_heat_shimmer"				"Heat Shimmer"
+"DOTA_Tooltip_ability_arena_desert_heat_shimmer_Description"	"The air ripples like a mirage: allies within %radius% gain %evasion%%% evasion for %duration% seconds."
+"DOTA_Tooltip_ability_arena_desert_heat_shimmer_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_heat_shimmer_evasion"		"%EVASION:"
+
+"DOTA_Tooltip_ability_arena_desert_quicksand"					"Quicksand"
+"DOTA_Tooltip_ability_arena_desert_quicksand_Description"		"Turns the ground to quicksand for %duration% seconds. Enemies inside take %damage_per_second% magic damage each second and sink deeper every half second, %slow_per_stack%%% slower each time. At %max_stacks% they are held fast for %root_duration% seconds. Get out early."
+"DOTA_Tooltip_ability_arena_desert_quicksand_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_quicksand_damage_per_second"	"DAMAGE PER SECOND:"
+"DOTA_Tooltip_ability_arena_desert_quicksand_root_duration"		"HOLD DURATION:"
+
+"DOTA_Tooltip_ability_arena_desert_dune_slam"					"Dune Slam"
+"DOTA_Tooltip_ability_arena_desert_dune_slam_Description"		"Rears up while a ring closes around it, then slams the dune: enemies within %radius% take %damage% magic damage and are thrown %knockback% units away. Step out of the ring before it closes."
+"DOTA_Tooltip_ability_arena_desert_dune_slam_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_dune_slam_damage"			"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_desert_sandstorm"					"Sandstorm"
+"DOTA_Tooltip_ability_arena_desert_sandstorm_Description"		"Wraps itself in a storm for %duration% seconds. Enemies within %radius% take %damage_per_second% magic damage each second and have a %miss_chance%%% chance to miss."
+"DOTA_Tooltip_ability_arena_desert_sandstorm_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_desert_sandstorm_damage_per_second"	"DAMAGE PER SECOND:"
+"DOTA_Tooltip_ability_arena_desert_sandstorm_miss_chance"		"%MISS CHANCE:"
+
+"DOTA_Tooltip_ability_arena_desert_sirocco_gust"				"Sirocco Gust"
+"DOTA_Tooltip_ability_arena_desert_sirocco_gust_Description"	"Draws a line on the sand, then blasts hot wind down it: enemies on the line take %damage% magic damage and are thrown %knockback% units back."
+"DOTA_Tooltip_ability_arena_desert_sirocco_gust_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_desert_sirocco_gust_knockback"		"KNOCKBACK:"
+
+"DOTA_Tooltip_ability_arena_desert_boss_caustic_venom"			"Caustic Venom"
+"DOTA_Tooltip_ability_arena_desert_boss_caustic_venom_Description"	"Each blow adds a dose of venom that deals %damage_per_stack% magic damage per dose each second. One dose short of %max_stacks% a ring opens around the victim; the next blow bursts the venom for %burst_damage% magic damage to everyone inside it. Whoever holds Ankharos should stand alone. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_desert_boss_caustic_venom_max_stacks"	"DOSES TO BURST:"
+"DOTA_Tooltip_ability_arena_desert_boss_caustic_venom_burst_damage"	"BURST DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_desert_boss_undermine"				"Undermine"
+"DOTA_Tooltip_ability_arena_desert_boss_undermine_Description"	"Sinks into the dunes, untouchable, while a ring opens where an enemy stood. After %delay% seconds Ankharos erupts there: %damage% magic damage and a %stun_duration% second stun to anyone inside. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_desert_boss_undermine_delay"		"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_desert_boss_undermine_damage"		"DAMAGE:"
+"DOTA_Tooltip_ability_arena_desert_boss_undermine_stun_duration"	"STUN:"
+
+"DOTA_Tooltip_ability_arena_desert_boss_sirocco"				"Sirocco"
+"DOTA_Tooltip_ability_arena_desert_boss_sirocco_Description"	"Lines open toward the %lines% nearest heroes. After %delay% seconds a scouring wind tears down each one: %damage% magic damage, a %miss_chance%%% chance to miss for %blind_duration% seconds, and a shove of %knockback% units. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_desert_boss_sirocco_lines"			"LINES:"
+"DOTA_Tooltip_ability_arena_desert_boss_sirocco_delay"			"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_desert_boss_sirocco_damage"			"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_desert_boss_sun_brand"				"Brand of the Sun"
+"DOTA_Tooltip_ability_arena_desert_boss_sun_brand_Description"	"Brands every hero nearby. After %delay% seconds each brand bursts for %damage% magic damage on everyone within %radius% of its bearer, so heroes standing together take every blast. Spread out. Used from its second phase."
+"DOTA_Tooltip_ability_arena_desert_boss_sun_brand_delay"		"DELAY:"
+"DOTA_Tooltip_ability_arena_desert_boss_sun_brand_damage"		"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_desert_boss_dune_collapse"			"Dune Collapse"
+"DOTA_Tooltip_ability_arena_desert_boss_dune_collapse_Description"	"The buried temple gives way. Rings open under every hero nearby and in %count% places around Ankharos; after %delay% seconds the sand falls in, dealing %damage% magic damage and holding anyone inside for %root_duration% seconds. Used in its last phase."
+"DOTA_Tooltip_ability_arena_desert_boss_dune_collapse_damage"	"DAMAGE:"
+"DOTA_Tooltip_ability_arena_desert_boss_dune_collapse_root_duration"	"HOLD DURATION:"
+
+//-------------------------------------------------------------------------- modifiers
+"DOTA_Tooltip_modifier_arena_desert_blinded"					"Sand-Blind"
+"DOTA_Tooltip_modifier_arena_desert_blinded_Description"		"Sand in the eyes: %dMODIFIER_PROPERTY_MISS_PERCENTAGE%%% chance for attacks to miss."
+"DOTA_Tooltip_modifier_arena_desert_sunk"						"Swallowed"
+"DOTA_Tooltip_modifier_arena_desert_sunk_Description"			"Held fast by the sand: cannot move."
+"DOTA_Tooltip_modifier_arena_desert_withering"					"Withering Venom"
+"DOTA_Tooltip_modifier_arena_desert_withering_Description"		"Poisoned: taking %dMODIFIER_PROPERTY_TOOLTIP% damage each second and moving %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% slower. Each bite adds a dose."
+"DOTA_Tooltip_modifier_arena_desert_sun_brand"					"Sun Brand"
+"DOTA_Tooltip_modifier_arena_desert_sun_brand_Description"		"The sun will strike everyone within %dMODIFIER_PROPERTY_TOOLTIP% of you when this runs out. Move away from your allies!"
+"DOTA_Tooltip_modifier_arena_desert_heat_shimmer"				"Heat Shimmer"
+"DOTA_Tooltip_modifier_arena_desert_heat_shimmer_Description"	"A mirage in the heat: %dMODIFIER_PROPERTY_EVASION_CONSTANT%%% evasion."
+"DOTA_Tooltip_modifier_arena_desert_sinking"					"Sinking"
+"DOTA_Tooltip_modifier_arena_desert_sinking_Description"		"Sinking into quicksand: %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% movement speed. Sink all the way and the sand holds you. Get out!"
+"DOTA_Tooltip_modifier_arena_desert_sandstorm"					"Sandstorm"
+"DOTA_Tooltip_modifier_arena_desert_sandstorm_Description"		"Wrapped in a storm that scours and blinds enemies within %dMODIFIER_PROPERTY_TOOLTIP%."
+"DOTA_Tooltip_modifier_arena_desert_caustic"					"Caustic Venom"
+"DOTA_Tooltip_modifier_arena_desert_caustic_Description"		"Each dose burns every second. At %dMODIFIER_PROPERTY_TOOLTIP% doses the venom bursts over everyone near you. When the ring appears, stand clear of your allies."
+
+//---------------------------------------------------------------------- announcements
+"arena_desert_boss_soon"										"The sands of the Sunken Dunes begin to shift. Ankharos, the Sunken King, rises in one minute."
+"arena_desert_boss_awakens"										"Ankharos, the Sunken King, has risen from the Sunken Dunes!"
+"arena_desert_boss_phase_2"										"The Sunken King calls down the sun: brands burn on every hero near him. Spread out!"
+"arena_desert_boss_phase_3"										"The buried temple is collapsing! The ground gives way all around the Sunken King."
+"arena_desert_boss_slain"										" slew Ankharos, the Sunken King! Every hero on the team earns gold and experience."

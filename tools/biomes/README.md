@@ -76,10 +76,20 @@ needs a change, ask instead of editing it: three people are working in parallel.
 3. **Monsters** (`monsters.lua`). Stats at minute 0 for each unit, then for tiers 1 to 4 a list of
    groups. In a group put the leader first and minions after: late in the match the camp gets one
    more copy of the **last** monster. Tougher tiers should differ in more than health: more
-   monsters, abilities, ranged and melee mixes.
+   monsters, abilities, ranged and melee mixes. `loot` adds items to a tier's drop pool:
+   `[1]` to `[4]` are the camp tiers, and `[5]` is the pool beyond elite, which elite champions
+   drop from (and which bosses draw on together with their own `reward.loot`).
 4. **Boss** (`boss.lua`). `phases` are health fractions (first 1.0, then decreasing). List
-   abilities in priority order with the first phase that uses them. Use `lock` on telegraphed
-   moves so the boss does not stack two warnings at once.
+   abilities in priority order with the first phase that uses them: the brain tries them in this
+   order, whatever their slots in the unit file. Use `lock` on telegraphed moves so the boss does
+   not stack two warnings at once. Units the boss fights beside go in `summons` (they need stats in
+   `monsters.lua`, see Summons below); units an ability creates itself and only needs precached
+   (a pillar, a wall, a dummy) go in `extra_units`, which needs no stats.
+   Size the kit to the ground at the boss marker: a ring or wave that reaches past the clearing
+   asks players to dodge into cliffs or lava. On the new map the boss markers are ice
+   (-5888, 6656) on the high plateau, green (256, 6272), desert (3712, 6528) and lava (2048, -2944);
+   the lava boss's clearing is only about 640 units in radius, with lava pools and columns beyond,
+   on a plain of roughly 3500 x 1800.
 5. **Effects** (`fx.lua`). Put every particle and sound your scripts use here and read them from
    `FX.particles.x` / `FX.sounds.x` in `abilities.lua`, so they are precached and checked.
 6. **Tooltips** (`tools/biomes/tooltips/ice.txt`): a name for every unit; name and
@@ -106,7 +116,8 @@ in `monsters.lua` (`ai = { arena_ice_x = { ... } }`) or on the boss ability entr
 | `ally_health_below = 0.5` | for `ally`: how hurt the ally must be (default 0.7) |
 | `lock = 1.5` | after casting, wait this long before casting anything else |
 
-Passive and toggle abilities are never cast by the brain.
+Passive and toggle abilities are never cast by the brain. A camp monster tries its abilities in
+unit KV slot order (`Ability1` first); a boss in the order of its `abilities` list in `boss.lua`.
 
 ### Writing abilities that load on the client
 
@@ -135,13 +146,20 @@ Dangerous moves must be dodgeable, and players must be able to see them coming:
   `ArenaFxCore.Stop(...)` in `OnAbilityPhaseInterrupted` and `OnSpellStart` (Bramble Slam).
 * **Delayed hit somewhere else**: create the shared thinker
   `CreateModifierThinker(caster, self, "modifier_arena_delayed_strike", { duration = delay, shape = "circle", radius = r }, point, caster:GetTeamNumber(), false)`
-  (or `shape = "line", x2 = ..., y2 = ..., width = w` for a line). When the warning runs out your
-  ability's `OnArenaStrike(position, data)` runs; it does nothing if the caster died meanwhile.
-  (Root Eruption, Falling Timber.)
+  (or `shape = "line", x2 = ..., y2 = ..., width = w` for a line; the line is drawn with both edges
+  of its width). When the warning runs out your ability's `OnArenaStrike(position, data)` runs; it
+  does nothing if the caster died meanwhile, and a boss that resets (dragged out of its lair)
+  removes its strikes still on the ground. (Root Eruption, Falling Timber.) Lasting ground effects
+  your ability makes with its own thinkers (burning ground, clouds) are not removed by a reset:
+  keep them short, or remove them in your own code.
 * **Channelled**: draw the ring in `OnSpellStart`, resolve in `OnChannelFinish(interrupted)`; a stun
   cancels it (Thorn Nova).
 * **Summons**: `ArenaBosses.Summon(caster, "npc_arena_ice_x", position, duration)`; the unit needs
   stats in `monsters.lua` and must be listed in the boss's `summons`.
+* **Shared modifiers on the client**: `addon_init.lua` requires `arena/core/modifiers` on the server
+  and every client before the game mode loads, so the camp, champion and boss modifiers exist
+  everywhere. Biome modifiers are linked when the client loads your `abilities.lua`; a modifier you
+  put on units with no ability behind it would need the same early require, so ask first.
 
 ## Checking your work
 

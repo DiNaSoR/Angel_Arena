@@ -29,8 +29,11 @@ ArenaModifiers.RETURNING = { move = 50, regen = 8 }  -- percent speed, percent m
 ArenaModifiers.ENRAGED = { attack = 35, move = 8, damage = 15 }  -- per stack (one stack per phase after the first)
 ArenaModifiers.BOSS = { status_resistance = 25 }
 
+-- addon_init.lua requires this file before the game mode loads, on the server and on every client,
+-- so the shared modifiers are linked everywhere. Nothing here may need game-mode globals at load
+-- time, and `class` may not exist yet that early: a plain table is a valid modifier class too.
 local function Define(name, hidden)
-    local modifier = class({})
+    local modifier = class and class({}) or {}
     function modifier:IsHidden() return hidden end
     function modifier:IsPurgable() return false end
     _G[name] = modifier
@@ -161,7 +164,9 @@ function enraged:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
 -- will be struck; players see the warning for the thinker's duration, then the ability's
 -- OnArenaStrike(position, data) runs and decides what the hit does.
 --   shape "circle": data.radius
---   shape "line":   data.x2, data.y2 (far end), data.width
+--   shape "line":   data.x2, data.y2 (far end), data.width (both edges of the strip are drawn)
+-- ArenaModifiers.CancelStrikes(caster) removes a caster's pending strikes without hitting (a boss
+-- that resets does this).
 -- Any other numbers passed in the table reach OnArenaStrike unchanged.
 local strike = Define("modifier_arena_delayed_strike", true)
 
@@ -173,9 +178,14 @@ function strike:OnCreated(data)
     local origin = self:GetParent():GetAbsOrigin()
     if self.data.shape == "line" then
         local far = Vector(self.data.x2 or origin.x, self.data.y2 or origin.y, origin.z)
-        self.warning = ArenaFxCore.Line(origin, GetGroundPosition(far, nil))
+        self.warning = ArenaFxCore.Line(origin, GetGroundPosition(far, nil), self.data.width)
     else
         self.warning = ArenaFxCore.Circle(origin, self.data.radius or 200, self:GetDuration())
+    end
+    local caster = self:GetCaster()
+    if caster then
+        caster.arenaStrikes = caster.arenaStrikes or {}
+        caster.arenaStrikes[self] = true
     end
 end
 
@@ -186,11 +196,28 @@ function strike:OnDestroy()
     local parent = self:GetParent()
     local ability = self:GetAbility()
     local caster = self:GetCaster()
+    if caster and caster.arenaStrikes then
+        caster.arenaStrikes[self] = nil
+    end
     -- A dead caster's pending strikes fizzle, so killing a boss mid-cast is always safe.
-    if ability and not ability:IsNull() and ability.OnArenaStrike and caster and not caster:IsNull() and caster:IsAlive() then
+    if not self.cancelled and ability and not ability:IsNull() and ability.OnArenaStrike
+        and caster and not caster:IsNull() and caster:IsAlive() then
         ability:OnArenaStrike(parent:GetAbsOrigin(), self.data)
     end
     UTIL_Remove(parent)
+end
+
+function ArenaModifiers.CancelStrikes(caster)
+    local pending = {}
+    for modifier in pairs(caster and caster.arenaStrikes or {}) do
+        pending[#pending + 1] = modifier
+    end
+    for _, modifier in ipairs(pending) do
+        modifier.cancelled = true
+        if not modifier:IsNull() then
+            modifier:Destroy()
+        end
+    end
 end
 
 return ArenaModifiers

@@ -11,8 +11,5 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_match.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_shop.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
-    <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
-    <CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
   </Panel>
 </root>

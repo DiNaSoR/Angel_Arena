@@ -41,10 +41,11 @@ GREEN, DIRE, DESERT, SNOW = 0, 1, 2, 3          # tileset slots after the swap
 PROP = {name: i for i, name in enumerate(RADIANT_PROPS + ["extra1", "extra2"])}
 
 # Lakes that stay wet: (x0, y0, x1, y1) in height-sample coordinates.
-LAKES = {"green": (512, 6144, 2048, 6912), "desert": (5632, 3328, 6400, 4096)}
-# Lava pools: the rectangle of height samples sunk by one level.
-LAVA_POOLS = [(1792, -2560, 2304, -2304), (2816, -3840, 3072, -3328), (1536, -3584, 1792, -3328),
-              (3328, -2304, 3584, -2048), (2304, -4608, 2816, -4352)]
+LAKES = {"green": (1024, 6400, 2048, 6912), "desert": (5632, 3328, 6400, 4096)}
+# Where each boss should stand if there is room: the open spot nearest to this point is used.
+BOSS_ANCHOR = {"ice": (-6200, 6700), "green": (300, 6500), "desert": (3700, 6500), "lava": (2300, -2700)}
+# Walkways that must stay clear: (x, y, radius). The first is the long ramp up to the frozen plateau.
+WALKWAYS = [(-2600, 7000, 520), (-3300, 7000, 420), (-4000, 7000, 420), (-4700, 7000, 420)]
 REGION_TITLES = {"Work in Progress": ["Emerald Wilds", "Frozen Crown"]}
 
 
@@ -55,12 +56,12 @@ def biome_of(x, y):
             return "arena"
         if x < -5376 and y < 2816:
             return "wilds"      # a strip behind the Angel base wall that cannot be walked to
-        if (x < -3328 and y >= 3712) or (x < -5376):
+        if x < -3328 or (x < -2816 and y >= 5376):
             return "ice"
         if x < 2560:
             return "green"
         return "desert"
-    if x >= 1280 and -5376 <= y < -1536:
+    if x >= 0 and -5376 <= y < -1536:
         return "lava"
     return "wilds"
 
@@ -92,7 +93,8 @@ class Builder:
         self.m = m
         self.rng = random.Random(SEED)
         self.cat = Catalog()
-        self.reserved = []          # (x, y, r): keep trees and scattered props out
+        self.reserved = []          # (x, y, r): clearings; no trees, camps or landmarks inside
+        self.cores = []             # (x, y, r): the middle of each clearing, kept free of everything
         self.props = []             # (x, y, r) of placed models, for spacing
         self.markers = []           # {"name", "x", "y"}
         self.landmarks = []         # {"model", "x", "y"}
@@ -146,13 +148,17 @@ class Builder:
                 return True
         return False
 
-    def open_spot(self, x, y, r, tree_r=None):
-        """A place where a model of radius r fits: level ground, no trees, nothing reserved or placed."""
-        return (self.flat_at(x, y, r) and not self.trees_near(x, y, tree_r if tree_r is not None else r + 64)
-                and not self.near(self.reserved, x, y, r) and not self.near(self.props, x, y, r))
+    def open_spot(self, x, y, r, tree_r=None, loose=False):
+        """A place where a model of radius r fits: level ground, no trees, nothing reserved or placed.
 
-    def reserve(self, x, y, r):
+        `loose` is for small dressing, which may sit in the outer part of a clearing."""
+        return (self.flat_at(x, y, r) and not self.trees_near(x, y, tree_r if tree_r is not None else r + 64)
+                and not self.near(self.cores if loose else self.reserved, x, y, r * 0.5 if loose else r)
+                and not self.near(self.props, x, y, r * 0.6 if loose else r))
+
+    def reserve(self, x, y, r, core=None):
         self.reserved.append((x, y, r))
+        self.cores.append((x, y, core if core is not None else r * 0.55))
 
     def noise(self, key, x, y, scale):
         """Smooth value noise in 0..1."""
@@ -160,7 +166,7 @@ class Builder:
 
         def corner(ix, iy):
             if (ix, iy) not in table:
-                table[(ix, iy)] = random.Random(hash((SEED, key, ix, iy)) & 0xffffffff).random()
+                table[(ix, iy)] = random.Random("%d/%s/%d/%d" % (SEED, key, ix, iy)).random()
             return table[(ix, iy)]
 
         fx, fy = x / scale, y / scale
@@ -224,7 +230,7 @@ class Builder:
             if self.flat_at(px, py, 64):
                 self.model(tail, px, py, yaw=math.degrees(a) + (180 if face_in else 0), scale=scale, radius=r, block=block)
 
-    def scatter(self, biome, tails, count, radius, scale=(0.8, 1.25), key=None, where=None, clear_trees=96, dz=0.0):
+    def scatter(self, biome, tails, count, radius, scale=(0.8, 1.25), key=None, where=None, clear_trees=64, dz=0.0):
         """Drop `count` models from `tails` on open ground of a region, spaced by `radius`."""
         spots = [p for p in self.candidates(biome, 96) if where is None or where(*p)]
         self.rng.shuffle(spots)
@@ -236,7 +242,7 @@ class Builder:
             y += self.rng.uniform(-40, 40)
             if key and self.noise(key, x, y, 900) < 0.42:
                 continue
-            if not self.open_spot(x, y, radius, clear_trees):
+            if not self.open_spot(x, y, radius, clear_trees, loose=True):
                 continue
             self.model(self.rng.choice(tails), x, y, scale=self.rng.uniform(*scale), radius=radius, dz=dz)
             placed += 1
@@ -256,6 +262,29 @@ class Builder:
                 best = (score, x, y)
         return (best[1], best[2]) if best else None
 
+    def place_spot(self, biome, radius, avoid=(), prefer=None):
+        """Room for a landmark: open ground if there is any, otherwise level ground with its trees removed."""
+        p = self.best_spot(biome, radius, avoid=avoid, prefer=prefer, tree_r=radius - 100)
+        if not p:
+            p = self.best_spot(biome, radius, avoid=avoid, prefer=prefer, tree_r=0)
+            if p:
+                self.clear_trees(p[0], p[1], radius - 40)
+        return p
+
+    def thin_forest(self, biome, key, keep):
+        """Open clearings in a region's forest: trees go where smooth noise is above `keep`."""
+        m = self.m
+        removed = 0
+        for j in range(OBJS):
+            for i in range(OBJS):
+                if not m.tree_at(i, j):
+                    continue
+                x, y = -HALF + i * 64, -HALF + j * 64
+                if biome_of(x, y) == biome and self.noise(key, x, y, 800) > keep:
+                    m.paint_tree(i, j, 0)
+                    removed += 1
+        self.counts[biome + " trees cleared"] = removed
+
     # ---- steps -----------------------------------------------------------------------------
     def tilesets(self):
         m = self.m
@@ -263,16 +292,51 @@ class Builder:
         m.set_tileset(SNOW, "maps/tilesets/radiant_snow_basic.vmap", RADIANT_PROPS + ["snow_drifts"], RADIANT_TREES)
         ts = m.grid("cellsTileSet")
         ots = m.grid("objectsTileSet")
+        crossed = []
+
+        def shape(cx, cy):
+            p = m._pattern(cx, cy)
+            turns = [p]
+            for _ in range(3):
+                sw, se, nw, ne = turns[-1]
+                turns.append((nw, sw, ne, se))
+            return min(turns)
+
+        # cliff shapes the base map already shows in a Radiant tileset
+        known = set(shape(cx, cy) for cy in range(CELLS) for cx in range(CELLS) if ts[cy * CELLS + cx] == GREEN)
+        # Hand-picked Dire tiles (stairs) and the cells around them stay as they are: the stair tile
+        # reaches into its neighbour, and a Radiant tileset left a hole there.
+        var = m.grid("cellsVariationId")
+        stairs = set()
+        for cy in range(CELLS):
+            for cx in range(CELLS):
+                if var[cy * CELLS + cx] >= 3 and ts[cy * CELLS + cx] == DIRE:
+                    stairs.update((cx + dx, cy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1))
+        kept = 0
         for cy in range(CELLS):
             for cx in range(CELLS):
                 b = biome_of(-HALF + cx * 256 + 128, -HALF + cy * 256 + 128)
                 if b in TILESET:
+                    if ts[cy * CELLS + cx] == DIRE:
+                        if shape(cx, cy) not in known or (cx, cy) in stairs:
+                            kept += 1       # an unusual corner: it came out as a hole in sand, so it stays Dire rock
+                            continue
+                        crossed.append((cx, cy))
                     ts[cy * CELLS + cx] = TILESET[b]
+        self.counts["odd cliff cells left in the Dire tileset"] = kept
+        # The stored tile choice of a Dire cell names nodes that mean something else in a Radiant-family
+        # tileset (a stair tile came out as a hole). Flat cells get the plain land tile, the rest are
+        # left for the compiler to choose again.
+        m.clear_cell_choice(crossed)
+        m.make_land(crossed, dire=False)
+        self.counts["cells moved from Dire to a Radiant tileset"] = len(crossed)
         for j in range(OBJS):
             for i in range(OBJS):
                 k = j * OBJS + i
                 b = biome_of(-HALF + i * 64, -HALF + j * 64)
                 if b in TILESET:
+                    if (min(CELLS - 1, i // 4), min(CELLS - 1, j // 4)) in stairs and ots[k] == DIRE:
+                        continue
                     ots[k] = TILESET[b]
                 elif ots[k] in (DESERT, SNOW):
                     ots[k] = GREEN      # the few objects that used the two replaced tilesets
@@ -309,26 +373,36 @@ class Builder:
         self.counts["water samples before"] = len(wet_before)
 
     def lava_pools(self):
+        """Sink pools one level into the lava plain and fill them with lava."""
         m = self.m
-        made = 0
-        for x0, y0, x1, y1 in LAVA_POOLS:
-            if not self.flat_at((x0 + x1) / 2.0, (y0 + y1) / 2.0, max(x1 - x0, y1 - y0) / 2.0 + 300):
+        self.pools = []
+        hold = BOSS_ANCHOR["lava"] + (760,)     # leave the boss its clearing
+        self.reserved.append(hold)
+        for size in ((512, 256), (256, 256), (256, 512), (256, 256), (512, 256), (256, 256), (256, 256)):
+            half = max(size) / 2.0 + 300
+            p = self.best_spot("lava", half, avoid=[(x, y) for x, y, _ in self.pools] + [(0, -1536)], tree_r=0)
+            if not p:
                 continue
-            if self.trees_near((x0 + x1) / 2.0, (y0 + y1) / 2.0, max(x1 - x0, y1 - y0) / 2.0 + 330):
-                self.clear_trees((x0 + x1) / 2.0, (y0 + y1) / 2.0, max(x1 - x0, y1 - y0) / 2.0 + 330)
+            x0 = round((p[0] - size[0] / 2.0) / 256.0) * 256
+            y0 = round((p[1] - size[1] / 2.0) / 256.0) * 256
+            x1, y1 = x0 + size[0], y0 + size[1]
+            cx, cy = (x0 + x1) / 2.0, (y0 + y1) / 2.0
+            if not self.flat_at(cx, cy, half - 60) or self.near(self.reserved, cx, cy, half - 60):
+                continue
+            self.clear_trees(cx, cy, half)
             unknown = m.set_height(x0, y0, x1, y1, delta=-1)
             if unknown:
                 raise RuntimeError("lava pool made a shape the tileset has no tile for: %r" % (unknown,))
-            floor = m.ground((x0 + x1) / 2.0, (y0 + y1) / 2.0)
+            floor = m.ground(cx, cy)
             m.add_plane("blends/dire_lava", x0 - 236, y0 - 236, x1 + 236, y1 + 236, floor + 44)
-            cx, cy = (x0 + x1) / 2.0, (y0 + y1) / 2.0
-            self.reserve(cx, cy, max(x1 - x0, y1 - y0) / 2.0 + 330)
+            self.reserve(cx, cy, half)
+            self.pools.append((cx, cy, half))
             self.particle("pit_lava_glow", cx, cy, 60)
             self.particle("dire_lava_gloops_10sec", cx - 60, cy + 40, 50)
             self.particle("dire_lava_gloops_7sec", cx + 80, cy - 60, 50)
             self.landmarks.append({"model": "lava pool", "x": round(cx), "y": round(cy)})
-            made += 1
-        self.counts["lava pools"] = made
+        self.reserved.remove(hold)
+        self.counts["lava pools"] = len(self.pools)
 
     def clear_trees(self, x, y, r):
         m = self.m
@@ -341,6 +415,15 @@ class Builder:
 
     def existing_entities(self):
         """Keep clear of everything the base map already has."""
+        # ramps and stairs: a blocked ramp cuts a whole area off (the first build put a tree on the
+        # foot of the ramp to the frozen plateau)
+        for x, y, r in WALKWAYS:
+            self.reserve(x, y, r, core=r)
+        var = self.m.grid("cellsVariationId")
+        for cy in range(CELLS):
+            for cx in range(CELLS):
+                if var[cy * CELLS + cx] >= 3:       # hand-picked tiles: stairs
+                    self.reserve(-HALF + cx * 256 + 128, -HALF + cy * 256 + 128, 460, core=460)
         text = self.m.text
         for m in re.finditer(r'"classname" "string" "([^"]+)"(.*?)"origin" "vector3" "([^"]+)"', text, re.S):
             cls, body, origin = m.group(1), m.group(2), m.group(3)
@@ -362,17 +445,37 @@ class Builder:
         for mm in re.finditer(r'"targetname" "string" "creep_camp"(.*?)"origin" "vector3" "([^"]+)"', m.text, re.S):
             x, y, _ = [float(v) for v in mm.group(2).split()]
             found.append((mm.start(), x, y))
-        # camps on new land first, so difficulty can be ranked over a region's whole set
         want = {"ice": 6, "green": 7, "desert": 7, "lava": 6}
         spots = {b: [(x, y, None) for _, x, y in found if biome_of(x, y) == b] for b in list(want) + ["wilds"]}
+        # one boss per themed region, in the widest clearing away from the camps that already exist;
+        # placed before the new camps because it needs the most room
+        self.boss = {}
+        for _, x, y in found:
+            self.reserve(x, y, 430)
+        for b in want:
+            taken = [(x, y) for x, y, _ in spots[b]]
+            p = None
+            ax, ay = BOSS_ANCHOR[b]
+            # the roomiest clearing that is still close to the anchor
+            p = None
+            for radius in (640, 540, 460, 400):
+                q = self.best_spot(b, radius, tree_r=0, prefer=lambda x, y: -math.hypot(x - ax, y - ay))
+                if q and (p is None or math.hypot(q[0] - ax, q[1] - ay) < math.hypot(p[0] - ax, p[1] - ay) - 500):
+                    p = q
+            if not p:
+                raise RuntimeError("no room for the %s boss" % b)
+            self.marker("arena_boss_" + b, p[0], p[1])
+            self.boss[b] = p
+            self.reserve(p[0], p[1], 520)
+            self.clear_trees(p[0], p[1], 560)
         for b, total in want.items():
             while len(spots[b]) < total:
                 taken = [(x, y) for x, y, _ in spots[b]]
-                p = self.best_spot(b, 400, avoid=taken + [centre[b]], tree_r=330)
-                if not p or min([math.hypot(p[0] - ax, p[1] - ay) for ax, ay in taken] or [9e9]) < 900:
+                p = self.best_spot(b, 360, avoid=taken + [centre[b]], tree_r=300)
+                if not p or min([math.hypot(p[0] - ax, p[1] - ay) for ax, ay in taken] or [9e9]) < 800:
                     # nowhere open enough: take level ground under trees and clear it
-                    p = self.best_spot(b, 400, avoid=taken + [centre[b]], tree_r=0)
-                    if not p or min([math.hypot(p[0] - ax, p[1] - ay) for ax, ay in taken] or [9e9]) < 900:
+                    p = self.best_spot(b, 360, avoid=taken + [centre[b]], tree_r=0)
+                    if not p or min([math.hypot(p[0] - ax, p[1] - ay) for ax, ay in taken] or [9e9]) < 800:
                         break
                     self.clear_trees(p[0], p[1], 380)
                 spots[b].append((p[0], p[1], "new"))
@@ -405,21 +508,6 @@ class Builder:
             assert text[start:start + len(old)] == old
             text = text[:start] + '"targetname" "string" "%s"' % name + text[start + len(old):]
         m.text = text
-        # one boss per themed region, in the widest clearing away from its camps
-        self.boss = {}
-        for b in want:
-            taken = [(p["x"], p["y"]) for p in self.markers if "_%s_" % b in p["name"]]
-            p = None
-            for radius, tree_r in ((760, 640), (640, 520), (540, 420), (640, 0), (540, 0), (460, 0)):
-                p = self.best_spot(b, radius, avoid=taken + [centre[b]], tree_r=tree_r)
-                if p:
-                    break
-            if not p:
-                raise RuntimeError("no room for the %s boss" % b)
-            self.marker("arena_boss_" + b, p[0], p[1])
-            self.boss[b] = p
-            self.reserve(p[0], p[1], 520)
-            self.clear_trees(p[0], p[1], 560)
 
     def forests(self):
         """Grow trees on the drained land so it is not one open field."""
@@ -441,8 +529,8 @@ class Builder:
                         n = self.noise("jungle", x, y, 700)
                         lake = LAKES["green"]
                         shore = max(lake[0] - x, x - lake[2], lake[1] - y, y - lake[3], 0)
-                        dense = n > 0.44 or (shore < 260 and n > 0.3)
-                        if dense and (i + j) % 2 == 0 and self.rng.random() < 0.9:
+                        dense = n > 0.34 or shore < 260
+                        if dense and (i + j) % 2 == 0:
                             kind = 5 if shore < 330 and self.rng.random() < 0.6 else self.rng.choice((2, 2, 3, 3, 3, 1))
                             m.paint_tree(i, j, kind, tileset=GREEN, size=self.rng.choice((1, 2, 2)))
                             planted += 1
@@ -450,7 +538,7 @@ class Builder:
                         n = self.noise("palms", x, y, 620)
                         lake = LAKES["desert"]
                         shore = max(lake[0] - x, x - lake[2], lake[1] - y, y - lake[3], 0)
-                        if (n > 0.66 and (i + j) % 2 == 0 and self.rng.random() < 0.75) or \
+                        if (n > 0.47 and (i + j) % 2 == 0 and self.rng.random() < 0.85) or \
                                 (shore < 300 and (i + j) % 2 == 0 and self.rng.random() < 0.55):
                             m.paint_tree(i, j, self.rng.choice((1, 2, 3, 4, 5)), tileset=DESERT, size=self.rng.choice((1, 2, 2)))
                             planted += 1
@@ -460,11 +548,11 @@ class Builder:
         """Let each tileset scatter its own ruins, drifts, statues and plants."""
         m = self.m
         plan = {
-            "desert": [(13, 0.010), (14, 0.022), (3, 0.004)],     # ruins, sand drifts, statues
-            "ice": [(13, 0.03), (3, 0.003)],                       # snow drifts, statues
-            "green": [(9, 0.02), (6, 0.002)],                      # grass clumps, statues (base map's own order)
+            "desert": [(13, 0.035), (14, 0.07), (3, 0.012)],      # ruins, sand drifts, statues
+            "ice": [(13, 0.10), (3, 0.008)],                       # snow drifts, statues
+            "green": [(9, 0.06), (6, 0.006)],                      # grass clumps, statues (base map's own order)
         }
-        plants = {"desert": 0.03, "ice": 0.0, "green": 0.06}
+        plants = {"desert": 0.08, "ice": 0.0, "green": 0.14}
         n = 0
         for j in range(2, OBJS - 2):
             for i in range(2, OBJS - 2):
@@ -484,7 +572,7 @@ class Builder:
                     choice = (0, self.rng.choice((1, 2, 3)))
                 if choice is None or choice == (0, 0):
                     continue
-                if not self.flat_at(x, y, 96) or self.near(self.reserved, x, y, 60) or self.near(self.props, x, y, 100):
+                if not self.flat_at(x, y, 96) or self.near(self.cores, x, y, 60) or self.near(self.props, x, y, 100):
                     continue
                 if choice[0] and self.trees_near(x, y, 160):
                     continue
@@ -503,17 +591,17 @@ class Builder:
         bx, by = self.boss["ice"]
         self.ring("ice_spike_lrg", bx, by, 600, 7, scale=1.5, r=120, block=True, start=0.3)
         self.ring("crystal001_refract", bx, by, 690, 7, scale=1.3, r=90, start=0.75)
-        p = self.best_spot("ice", 430, avoid=[(bx, by)], tree_r=300)
+        p = self.place_spot("ice", 300, avoid=[(bx, by)])
         if p:
-            self.model("frostivus_ancient_snow", p[0], p[1], scale=0.8, radius=330, block=True, landmark=True)
-            self.reserve(p[0], p[1], 430)
-        p = self.best_spot("ice", 400, avoid=[(bx, by)] + [(l["x"], l["y"]) for l in self.landmarks], tree_r=260)
+            self.model("frostivus_ancient_snow", p[0], p[1], scale=0.6, radius=230, block=True, landmark=True)
+            self.reserve(p[0], p[1], 300)
+        p = self.place_spot("ice", 300, avoid=[(bx, by)] + [(l["x"], l["y"]) for l in self.landmarks])
         if p:
-            self.model("whale_skeleton", p[0], p[1], scale=1.0, radius=300, block=True, landmark=True)
-            self.reserve(p[0], p[1], 400)
+            self.model("whale_skeleton", p[0], p[1], scale=0.8, radius=230, block=True, landmark=True)
+            self.reserve(p[0], p[1], 300)
         # a Tuskarr camp beside the easiest ice camp
         easy = [mk for mk in self.markers if mk["name"] == "arena_camp_ice_1"]
-        p = self.best_spot("ice", 330, prefer=lambda x, y: -min([math.hypot(x - e["x"], y - e["y"]) for e in easy] or [0]), tree_r=220)
+        p = self.place_spot("ice", 330, prefer=lambda x, y: -min([math.hypot(x - e["x"], y - e["y"]) for e in easy] or [0]))
         if p:
             x, y = p
             self.model("tuskhouse01", x - 150, y + 110, yaw=300, scale=0.9, radius=170, block=True, landmark=True)
@@ -566,15 +654,9 @@ class Builder:
             self.model("chest_treasure_02_open", x + 80, y - 10, yaw=250, radius=40)
             self.reserve(x, y, 430)
         # the oasis
-        lx0, ly0, lx1, ly1 = LAKES["desert"]
-        for k in range(14):
-            a = 2 * math.pi * k / 14
-            x = (lx0 + lx1) / 2 + math.cos(a) * ((lx1 - lx0) / 2 + 90)
-            y = (ly0 + ly1) / 2 + math.sin(a) * ((ly1 - ly0) / 2 + 90)
-            self.model(self.rng.choice(("cattails001", "lily_pads001")), x, y, radius=0, dz=-6)
         n = self.scatter("desert", ["bones004_set_tintable", "bones001_set_tintable", "bones002_set_tintable",
-                                    "rib_cage001", "succulent_fat", "desert_thorns01"], 110, 110, scale=(0.9, 1.5))
-        n += self.scatter("desert", ["rock_ground001", "land_rock001a", "cliff_rock001"], 40, 170, scale=(0.6, 1.1), key="dunes")
+                                    "succulent_fat", "succulent_fat", "desert_thorns01", "desert_thorns01"], 70, 130, scale=(0.9, 1.5))
+        n += self.scatter("desert", ["rock_ground001", "land_rock001a", "cliff_rock001"], 70, 170, scale=(0.6, 1.2), key="dunes")
         self.counts["desert scatter"] = n
         for x, y in self.grid_points("desert", 1500):
             self.particle("desert_sand_drift", x, y, 60)
@@ -584,13 +666,18 @@ class Builder:
         self.ring("bad_column001", bx, by, 610, 8, scale=1.1, r=90, block=True, start=0.2)
         for a in (0.6, 2.2, 3.75, 5.3):
             self.fire("bad_column_torch", bx + math.cos(a) * 500, by + math.sin(a) * 500, flame="fire_torch", flame_z=250, radius=80)
-        p = self.best_spot("lava", 430, avoid=[(bx, by)], tree_r=260)
+        p = self.place_spot("lava", 430, avoid=[(bx, by)])
         if p:
             self.model("dragon_statue001", p[0], p[1], scale=1.3, radius=250, block=True, landmark=True)
             self.reserve(p[0], p[1], 430)
         n = self.scatter("lava", ["bad_crystals001", "badside_rocks001", "badside_rocks002", "badside_rocks003",
                                   "badside_rocks004", "stalagmite_cluster_01"], 55, 160, scale=(0.8, 1.5), key="lava_rocks")
-        n += self.scatter("lava", ["ground_crack_molten", "ground_crack_molten", "lava_flow_clump"], 45, 150, scale=(1.0, 1.9), dz=2)
+        n += self.scatter("lava", ["ground_crack_molten", "ground_crack_molten", "lava_flow_clump"], 60, 150, scale=(1.6, 3.0), dz=2)
+        torches = 0
+        for x, y in self.candidates("lava", 512):
+            if torches < 14 and self.open_spot(x, y, 110, 64, loose=True):
+                self.fire("bad_column_torch", x, y, flame="fire_torch", flame_z=250, radius=110)
+                torches += 1
         n += self.scatter("lava", ["badside_bones001", "badside_bones002", "badside_bones003", "dead_head001a",
                                    "battle_debris1", "badside_hands001", "spike_fence001a", "bad_standard001",
                                    "bad_column001_broken001", "bad_column001_broken002"], 80, 120, scale=(0.9, 1.3))
@@ -618,12 +705,6 @@ class Builder:
             self.model(tail, p[0], p[1], scale=self.rng.uniform(0.8, 1.1), radius=190, block=True, landmark=True)
             self.reserve(p[0], p[1], 300)
             made += 1
-        lx0, ly0, lx1, ly1 = LAKES["green"]
-        for k in range(22):
-            a = 2 * math.pi * k / 22
-            x = (lx0 + lx1) / 2 + math.cos(a) * ((lx1 - lx0) / 2 + 70)
-            y = (ly0 + ly1) / 2 + math.sin(a) * ((ly1 - ly0) / 2 + 70)
-            self.model(self.rng.choice(("river_rocks001", "river_rocks002", "river_rocks003", "fern001")), x, y, radius=0)
         n = self.scatter("green", ["bush_jungle_00", "bush_jungle_01", "bush_palm_01", "fern001", "flower_jungle_01",
                                    "flower_jungle_02", "flower_jungle_03", "mushroom_wild001", "glowing_fungus"],
                          170, 100, scale=(0.9, 1.5))
@@ -638,7 +719,7 @@ class Builder:
         """The untouched middle of the map: light dressing only."""
         graves = lambda x, y: y < -5500 and -4200 < x < 3600
         n = self.scatter("wilds", ["gravestone001", "gravestone002", "gravestone003", "gravestone004", "gravestone005",
-                                   "coffin001", "graveyard_fence001", "graveyard_fence002"], 70, 120, where=graves, key="graves")
+                                   "coffin001", "graveyard_fence001", "graveyard_fence003", "crypt_tomb_01", "gravehands"], 70, 120, where=graves, key="graves")
         forest = lambda x, y: x < -1500 and -1700 < y < 2200
         n += self.scatter("wilds", ["flower_jungle_01", "flower_jungle_02", "fern001", "mushroom_wild001",
                                     "small_rock_cluster_01"], 70, 100, where=forest)
@@ -676,6 +757,8 @@ class Builder:
         self.tilesets()
         self.drain()
         self.existing_entities()
+        self.thin_forest("lava", "lava_clearings", 0.42)
+        self.thin_forest("ice", "ice_clearings", 0.62)
         self.lava_pools()
         self.camps()
         self.ice()
@@ -687,7 +770,7 @@ class Builder:
         self.wilds()
         self.titles()
         return {"markers": sorted(self.markers, key=lambda p: (p["name"], p["x"], p["y"])),
-                "landmarks": self.landmarks, "lakes": LAKES, "lava_pools": LAVA_POOLS, "counts": self.counts}
+                "landmarks": self.landmarks, "lakes": LAKES, "counts": self.counts}
 
 
 def main():
@@ -712,8 +795,8 @@ def main():
     builder.m.save(out_text)
     out = os.path.join(ROOT, "content", "angel_arena", "maps", args.name + ".vmap")
     to_binary(out_text, out)
-    if args.name == "angel_arena":
-        open(LAYOUT, "w", encoding="utf-8", newline="\n").write(text)
+    layout_path = LAYOUT if args.name == "angel_arena" else os.path.join(tempfile.gettempdir(), "aa_layout_%s.json" % args.name)
+    open(layout_path, "w", encoding="utf-8", newline="\n").write(text)
     for k, v in sorted(layout["counts"].items()):
         print("%-28s %s" % (k, v))
     print("markers:", len(layout["markers"]), "landmarks:", len(layout["landmarks"]))

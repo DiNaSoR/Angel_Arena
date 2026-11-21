@@ -1,0 +1,120 @@
+// Tooltips and announcements of the lava biome (the Scorched Reach).
+// Merged into both localization files by: python tools/biomes/build_biomes.py
+// Format: one "token"  "text" pair per line. In ability descriptions %name% is the ability's
+// AbilityValues entry of that name; %name%%% prints it followed by a percent sign.
+
+//------------------------------------------------------------------------------ units
+"npc_arena_lava_ember_sprite"									"Ember Sprite"
+"npc_arena_lava_ashen_satyr"									"Ashen Satyr"
+"npc_arena_lava_cinder_acolyte"									"Cinder Acolyte"
+"npc_arena_lava_flame_brawler"									"Flame Brawler"
+"npc_arena_lava_magma_drake"									"Magma Drake"
+"npc_arena_lava_slag_golem"										"Slag Golem"
+"npc_arena_lava_cinder_hexer"									"Cinder Hexer"
+"npc_arena_lava_infernal_golem"									"Infernal Golem"
+"npc_arena_lava_magma_wyrm"										"Magma Wyrm"
+"npc_arena_lava_boss"											"The Cinder Tyrant"
+
+//-------------------------------------------------------------------------- abilities
+"DOTA_Tooltip_ability_arena_lava_volatile_core"					"Volatile Core"
+"DOTA_Tooltip_ability_arena_lava_volatile_core_Description"		"When killed by an enemy, a ring closes around the body and after %delay% seconds it bursts: %damage% magic damage within %radius%, and the ground burns for %fire_duration% seconds. Break stops it."
+"DOTA_Tooltip_ability_arena_lava_volatile_core_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_lava_volatile_core_damage"			"BLAST DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_volatile_core_fire_dps"		"FIRE DAMAGE PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_lava_smouldering_blows"				"Smouldering Blows"
+"DOTA_Tooltip_ability_arena_lava_smouldering_blows_Description"	"Every attack adds %heat_stacks% stack of Heat to its target. Each stack of Heat burns for %heat_dps% magic damage per second, up to 10 stacks; Heat cools off 4 seconds after the last new stack."
+"DOTA_Tooltip_ability_arena_lava_smouldering_blows_heat_dps"	"HEAT DAMAGE PER STACK:"
+
+"DOTA_Tooltip_ability_arena_lava_melting_strikes"				"Melting Strikes"
+"DOTA_Tooltip_ability_arena_lava_melting_strikes_Description"	"Every attack melts the target's armor by %armor_per_stack%, stacking up to %max_stacks% times. The armor comes back %melt_duration% seconds after the last hit."
+"DOTA_Tooltip_ability_arena_lava_melting_strikes_armor_per_stack"	"ARMOR PER HIT:"
+"DOTA_Tooltip_ability_arena_lava_melting_strikes_max_stacks"	"MAX STACKS:"
+
+"DOTA_Tooltip_ability_arena_lava_cinder_spit"					"Cinder Spit"
+"DOTA_Tooltip_ability_arena_lava_cinder_spit_Description"		"Spits a burning cinder at an enemy: %damage% magic damage and %heat_stacks% stacks of Heat, each burning for %heat_dps% damage per second."
+"DOTA_Tooltip_ability_arena_lava_cinder_spit_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_cinder_spit_heat_stacks"		"HEAT STACKS:"
+
+"DOTA_Tooltip_ability_arena_lava_eruption_slam"					"Eruption Slam"
+"DOTA_Tooltip_ability_arena_lava_eruption_slam_Description"		"Rears up while a ring closes around it, then splits the ground: enemies within %radius% take %damage% magic damage, and the ground burns for %fire_duration% seconds, dealing %fire_dps% damage per second. Leave the ring, then stay out of the fire."
+"DOTA_Tooltip_ability_arena_lava_eruption_slam_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_lava_eruption_slam_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_eruption_slam_fire_dps"		"FIRE DAMAGE PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_lava_searing_brand"					"Searing Brand"
+"DOTA_Tooltip_ability_arena_lava_searing_brand_Description"		"Brands an enemy. After %delay% seconds the brand explodes, dealing %damage% magic damage to the bearer and every ally within %radius% of it. Move away from your team, or dispel the brand."
+"DOTA_Tooltip_ability_arena_lava_searing_brand_delay"			"FUSE:"
+"DOTA_Tooltip_ability_arena_lava_searing_brand_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_searing_brand_radius"			"RADIUS:"
+
+"DOTA_Tooltip_ability_arena_lava_kindle"						"Kindle"
+"DOTA_Tooltip_ability_arena_lava_kindle_Description"			"Sets an ally's weapons alight for %duration% seconds: +%attack_speed% attack speed, and each of its attacks adds a stack of Heat burning for %heat_dps% per second."
+"DOTA_Tooltip_ability_arena_lava_kindle_attack_speed"			"ATTACK SPEED:"
+
+"DOTA_Tooltip_ability_arena_lava_hellfire_aura"					"Hellfire Aura"
+"DOTA_Tooltip_ability_arena_lava_hellfire_aura_Description"		"Every second, enemies within %radius% take %burn_damage% magic damage and gain a stack of Heat burning for %heat_dps% per second. Do not linger."
+"DOTA_Tooltip_ability_arena_lava_hellfire_aura_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_lava_hellfire_aura_burn_damage"		"BURN PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_lava_death_throes"					"Death Throes"
+"DOTA_Tooltip_ability_arena_lava_death_throes_Description"		"When killed by an enemy, a wide ring closes around the body and after %delay% seconds it erupts: %damage% magic damage within %radius%, and the ground burns for %fire_duration% seconds. Break stops it."
+"DOTA_Tooltip_ability_arena_lava_death_throes_damage"			"BLAST DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_death_throes_radius"			"RADIUS:"
+
+"DOTA_Tooltip_ability_arena_lava_lava_bomb"						"Lava Bomb"
+"DOTA_Tooltip_ability_arena_lava_lava_bomb_Description"			"Lobs a ball of lava. A ring marks where it falls; after %delay% seconds it lands for %damage% magic damage within %radius% and leaves burning ground for %fire_duration% seconds."
+"DOTA_Tooltip_ability_arena_lava_lava_bomb_damage"				"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_lava_bomb_fire_dps"			"FIRE DAMAGE PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_lava_searing_breath"				"Searing Breath"
+"DOTA_Tooltip_ability_arena_lava_searing_breath_Description"	"Draws a breath while a line marks its path. After %delay% seconds everything on the line takes %damage% magic damage and %melt_stacks% stacks of Melting Armor."
+"DOTA_Tooltip_ability_arena_lava_searing_breath_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_searing_breath_armor_per_stack"	"ARMOR PER STACK:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_heart_of_the_volcano"		"Heart of the Volcano"
+"DOTA_Tooltip_ability_arena_lava_boss_heart_of_the_volcano_Description"	"Plants itself and channels while a great ring closes around it. When it finishes, everything within %radius% burns for %damage% magic damage and %heat_stacks% stacks of Heat, except whoever stands in the small ring at its feet (%safe_radius%). Run to it, not away, or stun it. Used in its last phase."
+"DOTA_Tooltip_ability_arena_lava_boss_heart_of_the_volcano_damage"	"DAMAGE:"
+"DOTA_Tooltip_ability_arena_lava_boss_heart_of_the_volcano_safe_radius"	"SAFE RADIUS:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_caldera_wake"				"Caldera Wake"
+"DOTA_Tooltip_ability_arena_lava_boss_caldera_wake_Description"	"%waves% waves of eruptions roll outward from the Tyrant, each a ring of circles with gaps between them. Each circle erupts for %damage% magic damage when it closes. Stand in a gap, at its feet, or where a wave has already passed. From its second phase the eruptions leave burning ground."
+"DOTA_Tooltip_ability_arena_lava_boss_caldera_wake_waves"		"WAVES:"
+"DOTA_Tooltip_ability_arena_lava_boss_caldera_wake_damage"		"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_pyroclast_barrage"		"Pyroclast Barrage"
+"DOTA_Tooltip_ability_arena_lava_boss_pyroclast_barrage_Description"	"Calls %meteors% meteors down on one enemy, one after another. Each is marked by a ring where the target stood and lands %delay% seconds later for %damage% magic damage, Heat and burning ground. Keep moving. Used from its second phase."
+"DOTA_Tooltip_ability_arena_lava_boss_pyroclast_barrage_meteors"	"METEORS:"
+"DOTA_Tooltip_ability_arena_lava_boss_pyroclast_barrage_damage"	"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_brood_of_cinders"			"Brood of Cinders"
+"DOTA_Tooltip_ability_arena_lava_boss_brood_of_cinders_Description"	"Calls %count% ember sprites out of the ground for %duration% seconds, up to %max_alive% at a time. They burst when killed, so do not kill them at your feet. Used from its second phase."
+"DOTA_Tooltip_ability_arena_lava_boss_brood_of_cinders_count"	"SPRITES:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_searing_presence"			"Searing Presence"
+"DOTA_Tooltip_ability_arena_lava_boss_searing_presence_Description"	"Enemies within %radius% of the Tyrant gain a stack of Heat every second, each burning for %heat_dps% per second. Step away for 4 seconds to cool off."
+"DOTA_Tooltip_ability_arena_lava_boss_searing_presence_radius"	"RADIUS:"
+"DOTA_Tooltip_ability_arena_lava_boss_searing_presence_heat_dps"	"HEAT DAMAGE PER STACK:"
+
+"DOTA_Tooltip_ability_arena_lava_boss_infernal_brand"			"Infernal Brand"
+"DOTA_Tooltip_ability_arena_lava_boss_infernal_brand_Description"	"Each blow melts the target's armor by %armor_per_stack%, stacking up to %max_stacks% times for %melt_duration% seconds."
+"DOTA_Tooltip_ability_arena_lava_boss_infernal_brand_armor_per_stack"	"ARMOR PER HIT:"
+
+//-------------------------------------------------------------------------- modifiers
+"DOTA_Tooltip_modifier_arena_lava_heat"							"Heat"
+"DOTA_Tooltip_modifier_arena_lava_heat_Description"				"%dMODIFIER_PROPERTY_TOOLTIP% stacks of Heat, each burning every second. Get out of the fight for 4 seconds and it cools off."
+"DOTA_Tooltip_modifier_arena_lava_melting"						"Melting Armor"
+"DOTA_Tooltip_modifier_arena_lava_melting_Description"			"Armor melting: %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor."
+"DOTA_Tooltip_modifier_arena_lava_burning"						"Burning Ground"
+"DOTA_Tooltip_modifier_arena_lava_burning_Description"			"Standing in fire. Step out of it."
+"DOTA_Tooltip_modifier_arena_lava_searing_brand"				"Searing Brand"
+"DOTA_Tooltip_modifier_arena_lava_searing_brand_Description"	"This brand explodes when it runs out, hurting you and every ally beside you. Move away from your team or dispel it."
+"DOTA_Tooltip_modifier_arena_lava_kindled"						"Kindled"
+"DOTA_Tooltip_modifier_arena_lava_kindled_Description"			"+%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% attack speed; attacks add Heat."
+
+//---------------------------------------------------------------------- announcements
+"arena_lava_boss_soon"											"The ground shakes in the Scorched Reach. The Cinder Tyrant rises in one minute."
+"arena_lava_boss_awakens"										"The Cinder Tyrant has risen in the Scorched Reach!"
+"arena_lava_boss_phase_2"										"The Tyrant's armor cracks and the lava answers: meteors and ember sprites join the fight!"
+"arena_lava_boss_phase_3"										"The Tyrant's heart is overloading. When the great ring closes, run TO it!"
+"arena_lava_boss_slain"											" brought down the Cinder Tyrant! Every hero on the team earns gold and experience."

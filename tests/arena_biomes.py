@@ -94,7 +94,7 @@ this line is not a token
                                  "tiers": [[["npc_arena_test_ghost"]]], "loot": {"1": ["item_arena_does_not_exist"]}},
                     "boss": {"unit": "npc_arena_test_boss", "phases": [{"health": 1}, {"health": 0.5}],
                              "abilities": [{"name": "arena_test_smash", "phase": 1}, {"name": "arena_test_absent", "phase": 2}],
-                             "summons": ["npc_arena_test_nobody"], "reward": {"gold": 1, "xp": 1, "loot": []}}}
+                             "summons": ["npc_arena_test_nobody"], "extra_units": ["npc_arena_test_ghost_wall"], "reward": {"gold": 1, "xp": 1, "loot": []}}}
 
         biomelib.files, biomelib.load_lua, biomelib.TOOLTIPS = fake_files, fake_load, tips
         original_names = biomelib.biome_names
@@ -123,6 +123,7 @@ this line is not a token
         "boss ability arena_test_absent is not on npc_arena_test_boss",
         "MaxLevel must equal the number of phases (2)",
         "boss summon npc_arena_test_nobody",
+        "boss extra unit npc_arena_test_ghost_wall is not in",
         "arena_test_boss_soon has no tooltip",
         "arena_test_boss_phase_2 has no tooltip",
         "npc_arena_green_sproutling must start with one of",
@@ -130,6 +131,15 @@ this line is not a token
     ]
     for fragment in expected:
         assert fragment in text, "the checker missed: %s\n--- it reported:\n%s" % (fragment, text)
+
+
+def check_loot_shapes():
+    """Loot tiers arrive from Lua as a JSON list (tiers 1..N) or an object (gaps); both are read."""
+    boss = {"reward": {"loot": ["item_c"]}}
+    assert biomelib.loot_items({"loot": [["item_a"], ["item_b"]]}, boss) == ["item_a", "item_b", "item_c"]
+    assert biomelib.loot_items({"loot": {"3": ["item_a"], "5": ["item_b"]}}, None) == ["item_a", "item_b"]
+    lava = biomelib.load_lua("lava")
+    assert isinstance(lava["monsters"]["loot"], list) and len(biomelib.loot_items(lava["monsters"], None)) >= 5
 
 
 def check_assets_when_available():
@@ -145,6 +155,7 @@ def main():
     check_generated()
     check_shipped_biomes()
     check_checker_catches_mistakes()
+    check_loot_shapes()
     check_assets_when_available()
     print("Checked the arena biomes: tooltips, cross-file references, the green reference biome and the checker itself")
 

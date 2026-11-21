@@ -119,18 +119,31 @@ function sunk:GetEffectAttachType() return PATTACH_ABSORIGIN_FOLLOW end
 -- out. Whoever burrows always comes back up when this ends, wherever it was left.
 local burrowed = Define("modifier_arena_desert_burrowed", { hidden = true, purgable = false })
 
+-- Wearables (the boss's head, claws and tail) are separate entities: hide them with the body.
+local NODRAW = 32   -- EF_NODRAW
+local function ShowWearables(parent, show)
+    if not parent.GetChildren then return end
+    for _, child in pairs(parent:GetChildren() or {}) do
+        if child and not child:IsNull() and child.GetClassname and child:GetClassname() == "dota_item_wearable" then
+            if show then child:RemoveEffects(NODRAW) else child:AddEffects(NODRAW) end
+        end
+    end
+end
+
 function burrowed:OnCreated()
     if not IsServer() then return end
     local parent = self:GetParent()
     ArenaFxCore.Burst(P.burrow, parent:GetAbsOrigin())
     parent:EmitSound(S.burrow_in)
     parent:AddNoDraw()
+    ShowWearables(parent, false)
 end
 function burrowed:OnDestroy()
     if not IsServer() then return end
     local parent = self:GetParent()
     if parent:IsNull() then return end
     parent:RemoveNoDraw()
+    ShowWearables(parent, true)
     FindClearSpaceForUnit(parent, parent:GetAbsOrigin(), true)
 end
 function burrowed:CheckState()

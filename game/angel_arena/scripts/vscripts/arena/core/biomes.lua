@@ -33,8 +33,12 @@ local function Log(message)
 end
 
 -- Loads one biome file. Returns its table, or nil and a message when it is broken. An absent
--- file returns nil and no message.
-local function Load(path)
+-- file returns nil and no message. `fresh` forgets the cached copy first, so an edited file is
+-- read again (ArenaBiomes.Load(true), for example after script_reload).
+local function Load(path, fresh)
+    if fresh then
+        package.loaded[path] = nil
+    end
     local ok, result = pcall(require, path)
     if not ok then
         local message = tostring(result)
@@ -235,12 +239,14 @@ function ArenaBiomes.ValidateBoss(biome, data)
         end
         ValidateLoot(problems, "boss.lua reward.loot", reward.loot)
     end
-    if data.summons ~= nil then
-        if type(data.summons) ~= "table" then
-            problems[#problems + 1] = "boss.lua: summons must be a list of unit names"
-        else
-            for _, unit in ipairs(data.summons) do
-                if type(unit) ~= "string" then problems[#problems + 1] = "boss.lua: summons must be unit names" end
+    for _, key in ipairs({ "summons", "extra_units" }) do
+        if data[key] ~= nil then
+            if type(data[key]) ~= "table" then
+                problems[#problems + 1] = "boss.lua: " .. key .. " must be a list of unit names"
+            else
+                for _, unit in ipairs(data[key]) do
+                    if type(unit) ~= "string" then problems[#problems + 1] = "boss.lua: " .. key .. " must be unit names" end
+                end
             end
         end
     end
@@ -289,7 +295,7 @@ function ArenaBiomes.Load(force)
             { key = "fx", check = ArenaBiomes.ValidateFx },
         }
         for _, part in ipairs(parts) do
-            local data, failure = Load(base .. part.key)
+            local data, failure = Load(base .. part.key, force)
             local problems = failure and { failure } or (data and part.check(name, data)) or {}
             if data or failure then
                 if #problems > 0 then
@@ -361,6 +367,7 @@ function ArenaBiomes.Units()
         if entry.boss then
             Add(entry.boss.unit)
             for _, unit in ipairs(entry.boss.summons or {}) do Add(unit) end
+            for _, unit in ipairs(entry.boss.extra_units or {}) do Add(unit) end
         end
     end
     return units

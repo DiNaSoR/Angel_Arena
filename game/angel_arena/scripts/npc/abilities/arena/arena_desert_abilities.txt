@@ -1,5 +1,329 @@
-// Abilities of the desert biome. Not built yet: add them here following tools/biomes/README.md.
-// Keep this file (npc_abilities_custom.txt includes it); an empty block is harmless.
+// Abilities of the desert biome (the Sunken Dunes). Included from npc_abilities_custom.txt.
+// Every ability is scripted in arena/biomes/desert/abilities.lua (class name = ability name).
+// Monster abilities have four levels: a camp's tier sets the starting level and the match clock
+// raises it (arena/core/tiers.lua). Boss abilities have three: the level is the boss's phase.
+// Tooltips: tools/biomes/tooltips/desert.txt (merged by tools/biomes/build_biomes.py).
 "DOTAAbilities"
 {
+	//==================================================================== oasis lurker
+	"arena_desert_ambush"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"nyx_assassin_burrow"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"12 11 10 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"225"
+			"delay"						"1.1 1.0 0.9 0.9"
+			"damage"					"80 130 190 260"
+			"stun_duration"				"0.5 0.6 0.7 0.8"
+		}
+	}
+
+	//=================================================================== dust outrider
+	"arena_desert_dust_kick"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"brewmaster_drunken_haze"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"450"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"10 9 8 7"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"length"					"550"
+			"width"						"175"
+			"damage"					"50 85 125 175"
+			"miss_chance"				"30 35 40 45"
+			"blind_duration"			"3"
+		}
+	}
+
+	//============================================================== sandscale basilisk
+	"arena_desert_withering_venom"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"viper_poison_attack"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"max_stacks"				"4 5 6 7"
+			"damage_per_stack"			"6 9 13 18"
+			"slow_per_stack"			"4"
+			"duration"					"4"
+		}
+	}
+
+	//====================================================================== sun priest
+	"arena_desert_sun_brand"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"invoker_sun_strike"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"13 12 11 10"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"delay"						"2.5"
+			"radius"					"300"
+			"damage"					"110 170 240 330"
+		}
+	}
+
+	"arena_desert_heat_shimmer"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"phantom_assassin_blur"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"18 17 16 15"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"500"
+			"duration"					"4"
+			"evasion"					"25 30 35 40"
+		}
+	}
+
+	//=================================================================== dune behemoth
+	"arena_desert_quicksand"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_sand_storm"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"16 15 14 13"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"300"
+			"duration"					"6"
+			"damage_per_second"			"30 45 65 90"
+			"slow_per_stack"			"10"
+			"max_stacks"				"5"
+			"root_duration"				"0.8 1.0 1.2 1.4"
+		}
+	}
+
+	"arena_desert_dune_slam"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"big_thunder_lizard_slam"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.9"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"12 11 10 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"350"
+			"damage"					"150 220 300 400"
+			"knockback"					"250"
+		}
+	}
+
+	//==================================================================== sirocco khan
+	"arena_desert_sandstorm"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"20 19 18 17"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"450"
+			"duration"					"5"
+			"damage_per_second"			"35 55 80 110"
+			"miss_chance"				"25 30 35 40"
+		}
+	}
+
+	"arena_desert_sirocco_gust"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_burrowstrike_secondary"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.6"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"13 12 11 10"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"length"					"800"
+			"width"						"200"
+			"damage"					"110 170 240 320"
+			"knockback"					"350"
+		}
+	}
+
+	//============================================================================ boss
+	"arena_desert_boss_caustic_venom"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_caustic_finale"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"max_stacks"				"5 4 4"
+			"duration"					"6"
+			"damage_per_stack"			"15 25 35"
+			"burst_radius"				"325"
+			"burst_damage"				"350 450 600"
+		}
+	}
+
+	"arena_desert_boss_undermine"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_burrowstrike"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"1100"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"				"12 10 8"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"325"
+			"delay"						"1.8 1.6 1.4"
+			"damage"					"450 600 800"
+			"stun_duration"				"1.0 1.2 1.4"
+		}
+	}
+
+	"arena_desert_boss_sirocco"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_burrowstrike_alt"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"				"14 12 10"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"search_radius"				"1000"
+			"lines"						"1 2 3"
+			"length"					"1200"
+			"width"						"250"
+			"delay"						"1.5 1.3 1.1"
+			"damage"					"350 450 600"
+			"knockback"					"400"
+			"miss_chance"				"40 50 60"
+			"blind_duration"			"3"
+		}
+	}
+
+	"arena_desert_boss_sun_brand"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"invoker_sun_strike_ad"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"				"20 18 15"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"search_radius"				"1200"
+			"delay"						"3.0 3.0 2.6"
+			"radius"					"325"
+			"damage"					"400 400 550"
+		}
+	}
+
+	"arena_desert_boss_dune_collapse"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/desert/abilities.lua"
+		"AbilityTextureName"			"sandking_epicenter"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.8"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"				"24 24 18"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"search_radius"				"1200"
+			"count"						"6 6 8"
+			"scatter"					"900"
+			"radius"					"275"
+			"delay"						"2.0"
+			"damage"					"500 500 650"
+			"root_duration"				"1.5"
+		}
+	}
 }

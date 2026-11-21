@@ -218,11 +218,7 @@ class Checker:
                 self.problems.append("%s ability %s: icon %s is not one of Dota's spell icons" % (name, ability, icon))
         stock = self.stock_items()
         custom = biomelib.custom_item_names()
-        loot = []
-        for items in ((data.get("monsters") or {}).get("loot") or {}).values() if isinstance((data.get("monsters") or {}).get("loot"), dict) else []:
-            loot += items or []
-        loot += biomelib.as_list(((boss.get("reward") or {}).get("loot")))
-        for item in loot:
+        for item in biomelib.loot_items(data.get("monsters"), boss):
             if item not in custom and stock is not None and item not in stock:
                 self.problems.append("%s loot item %s is neither an addon item nor a Dota item" % (name, item))
         if name == "wilds" and stock is not None:

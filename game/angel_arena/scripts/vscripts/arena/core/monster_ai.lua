@@ -6,7 +6,9 @@
 --      ignoring everything until it arrives (so monsters cannot be kited across the map);
 --   2. picks a target: whatever hit it or its group recently, else the nearest visible enemy
 --      within `aggro`, but never one standing outside the leash;
---   3. uses the first ready ability (in slot order) whose conditions hold, else attacks.
+--   3. uses the first ready ability whose conditions hold, else attacks. Abilities are tried in
+--      `order` when one is given (a boss: the order of boss.lua's `abilities` list), then any
+--      others in unit slot order (camp monsters: the order of Ability1, Ability2... in the unit KV).
 --
 -- How an ability is used comes from its KV behaviour, so most abilities need no hints at all:
 --   unit target, enemy team   -> cast on the target              ("enemy")
@@ -56,6 +58,7 @@ function ArenaMonsterAI.Attach(unit, options)
         leash = options.leash or 900,
         aggro = options.aggro or 0,
         hints = options.hints or {},
+        order = options.order,
         group = options.group,
         interval = options.interval or ArenaMonsterAI.THINK_INTERVAL,
         onThink = options.onThink,
@@ -208,9 +211,8 @@ function ArenaMonsterAI.TryCast(brain, target, origin, now)
     if now < brain.lockUntil or unit:IsSilenced() or unit:IsMuted() then
         return false
     end
-    for index = 0, unit:GetAbilityCount() - 1 do
-        local ability = unit:GetAbilityByIndex(index)
-        if ability and ability:GetLevel() > 0 and not ability:IsHidden() and ability:IsFullyCastable()
+    for _, ability in ipairs(ArenaMonsterAI.Abilities(brain)) do
+        if ability:GetLevel() > 0 and not ability:IsHidden() and ability:IsFullyCastable()
             and now >= (brain.retryAt[ability:GetAbilityName()] or 0) then
             local hint = brain.hints[ability:GetAbilityName()] or {}
             if ArenaMonsterAI.Use(brain, ability, hint, target, origin, now) then
@@ -219,6 +221,28 @@ function ArenaMonsterAI.TryCast(brain, target, origin, now)
         end
     end
     return false
+end
+
+-- The unit's abilities in the order the brain tries them: the names in `brain.order` first, then
+-- every other ability in slot order.
+function ArenaMonsterAI.Abilities(brain)
+    local unit = brain.unit
+    local list, seen = {}, {}
+    for _, name in ipairs(brain.order or {}) do
+        local ability = unit:FindAbilityByName(name)
+        if ability and not seen[name] then
+            seen[name] = true
+            list[#list + 1] = ability
+        end
+    end
+    for index = 0, unit:GetAbilityCount() - 1 do
+        local ability = unit:GetAbilityByIndex(index)
+        if ability and not seen[ability:GetAbilityName()] then
+            seen[ability:GetAbilityName()] = true
+            list[#list + 1] = ability
+        end
+    end
+    return list
 end
 
 function ArenaMonsterAI.ReturnHome(brain)

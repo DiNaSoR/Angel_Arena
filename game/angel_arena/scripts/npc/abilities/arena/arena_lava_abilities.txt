@@ -1,5 +1,375 @@
-// Abilities of the lava biome. Not built yet: add them here following tools/biomes/README.md.
-// Keep this file (npc_abilities_custom.txt includes it); an empty block is harmless.
+// Abilities of the lava biome (the Scorched Reach). Included from npc_abilities_custom.txt.
+// Every ability is scripted in arena/biomes/lava/abilities.lua (class name = ability name).
+// Monster abilities have four levels: a camp's tier sets the starting level and the match clock
+// raises it (arena/core/tiers.lua). Boss abilities have three: the level is the boss's phase.
+// Shared keys: heat_dps is the burn of one stack of Heat per second; armor_per_stack, max_stacks
+// and melt_duration describe Melting Armor; fire_dps and fire_duration the burning ground left behind.
+// Tooltips: tools/biomes/tooltips/lava.txt (merged by tools/biomes/build_biomes.py).
 "DOTAAbilities"
 {
+	//==================================================================== ember sprite
+	"arena_lava_volatile_core"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"warlock_imp_explode"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"delay"						"1.0"
+			"radius"					"250"
+			"damage"					"90 140 200 280"
+			"fire_dps"					"20 30 45 60"
+			"fire_duration"				"3"
+		}
+	}
+
+	//===================================================================== ashen satyr
+	"arena_lava_smouldering_blows"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"huskar_burning_spear"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"heat_stacks"				"1"
+			"heat_dps"					"5 8 12 16"
+		}
+	}
+
+	//=================================================================== flame brawler
+	"arena_lava_melting_strikes"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"doom_bringer_infernal_blade"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"melt_stacks"				"1"
+			"armor_per_stack"			"1 1.5 2 2.5"
+			"max_stacks"				"6 6 8 8"
+			"melt_duration"				"5"
+		}
+	}
+
+	//===================================================================== magma drake
+	"arena_lava_cinder_spit"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"ogre_magi_ignite"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"8 7 6 5"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"damage"					"70 110 160 220"
+			"heat_stacks"				"2 2 3 3"
+			"heat_dps"					"6 9 13 18"
+			"projectile_speed"			"1000"
+		}
+	}
+
+	//====================================================================== slag golem
+	"arena_lava_eruption_slam"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"abyssal_underlord_firestorm"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.9"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"11 10 9 8"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"300"
+			"damage"					"140 220 320 440"
+			"fire_dps"					"35 55 80 110"
+			"fire_duration"				"4"
+		}
+	}
+
+	//==================================================================== cinder hexer
+	"arena_lava_searing_brand"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"doom_bringer_doom"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"12 11 10 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"delay"						"3"
+			"radius"					"300"
+			"damage"					"160 240 340 460"
+		}
+	}
+
+	"arena_lava_kindle"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"ogre_magi_bloodlust"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"14 13 12 11"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"attack_speed"				"30 45 60 80"
+			"heat_dps"					"6 9 13 18"
+			"duration"					"6"
+		}
+	}
+
+	//================================================================== infernal golem
+	"arena_lava_hellfire_aura"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"warlock_golem_permanent_immolation"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"radius"					"325"
+			"burn_damage"				"20 30 45 60"
+			"heat_dps"					"10 15 22 30"
+		}
+	}
+
+	"arena_lava_death_throes"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"techies_suicide"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"delay"						"1.5"
+			"radius"					"425"
+			"damage"					"300 450 650 900"
+			"fire_dps"					"50 75 110 150"
+			"fire_duration"				"5"
+		}
+	}
+
+	//===================================================================== magma wyrm
+	"arena_lava_lava_bomb"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"black_dragon_fireball"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"850"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"9 8 7 6"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"250"
+			"delay"						"1.1"
+			"damage"					"180 280 400 550"
+			"fire_dps"					"45 70 100 140"
+			"fire_duration"				"5"
+		}
+	}
+
+	"arena_lava_searing_breath"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"dragon_knight_breathe_fire"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"12 11 10 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"length"					"800"
+			"width"						"175"
+			"delay"						"0.9"
+			"damage"					"160 250 360 500"
+			"melt_stacks"				"3"
+			"armor_per_stack"			"1 1.5 2 2.5"
+			"max_stacks"				"8"
+			"melt_duration"				"6"
+		}
+	}
+
+	//============================================================================ boss
+	"arena_lava_boss_heart_of_the_volcano"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"phoenix_supernova"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.3"
+		"AbilityChannelTime"			"3.0 3.0 2.6"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"				"22"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"1000"
+			"safe_radius"				"275"
+			"damage"					"1100 1100 1400"
+			"heat_stacks"				"4"
+			"heat_dps"					"25"
+		}
+	}
+
+	"arena_lava_boss_caldera_wake"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"lina_light_strike_array"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"				"13 12 10"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"waves"						"2 3 3"
+			"spacing"					"325"
+			"radius"					"175"
+			"first_delay"				"1.2"
+			"wave_delay"				"0.6 0.5 0.45"
+			"damage"					"380 480 620"
+			"fire_dps"					"0 60 90"
+			"fire_duration"				"0 4 5"
+		}
+	}
+
+	"arena_lava_boss_pyroclast_barrage"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"invoker_chaos_meteor"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"1200"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"				"14 14 11"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"meteors"					"4 4 6"
+			"interval"					"0.7 0.7 0.55"
+			"delay"						"1.0"
+			"radius"					"225"
+			"damage"					"300 300 420"
+			"heat_stacks"				"1"
+			"heat_dps"					"15 15 22"
+			"fire_dps"					"50 50 80"
+			"fire_duration"				"3"
+		}
+	}
+
+	"arena_lava_boss_brood_of_cinders"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"invoker_forge_spirit"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"				"28 28 22"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"count"						"2 3 4"
+			"max_alive"					"6"
+			"duration"					"25"
+		}
+	}
+
+	"arena_lava_boss_searing_presence"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"doom_bringer_scorched_earth"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"radius"					"650"
+			"heat_dps"					"12 18 25"
+		}
+	}
+
+	"arena_lava_boss_infernal_brand"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/lava/abilities.lua"
+		"AbilityTextureName"			"warlock_golem_flaming_fists"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityValues"
+		{
+			"melt_stacks"				"1"
+			"armor_per_stack"			"1 1.5 2"
+			"max_stacks"				"10"
+			"melt_duration"				"6"
+		}
+	}
 }

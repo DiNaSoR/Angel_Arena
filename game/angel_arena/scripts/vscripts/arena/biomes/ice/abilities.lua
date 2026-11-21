@@ -132,14 +132,17 @@ local function Shatter(target, attacker, ability, bonus)
 end
 
 -- One more stack of Brittle from `ability` (its armor_per_stack, max_stacks and duration).
+-- Returns the new stack count (0 when nothing was applied).
 local function Crack(target, caster, ability)
-    if not Alive(target) or target:IsBuilding() then return end
+    if not Alive(target) or target:IsBuilding() then return 0 end
     local duration = ability:GetSpecialValueFor("duration")
     local brittle = target:FindModifierByName(BRITTLE)
         or target:AddNewModifier(caster, ability, BRITTLE, { duration = duration })
-    if not brittle then return end
-    brittle:SetStackCount(math.min(ability:GetSpecialValueFor("max_stacks"), brittle:GetStackCount() + 1))
+    if not brittle then return 0 end
+    local count = math.min(ability:GetSpecialValueFor("max_stacks"), brittle:GetStackCount() + 1)
+    brittle:SetStackCount(count)
     brittle:SetDuration(duration, true)
+    return count
 end
 
 -- For the tests: the numbers and helpers above.
@@ -203,8 +206,7 @@ local function BrittleOnHit(name)
             or ability:GetLevel() < 1 or not IsFoe(parent, event.target) then
             return
         end
-        Crack(event.target, parent, ability)
-        if event.target:GetModifierStackCount(BRITTLE, parent) == 1 then
+        if Crack(event.target, parent, ability) == 1 then
             event.target:EmitSound(S.brittle)
         end
     end
@@ -294,6 +296,7 @@ function blizzard:OnIntervalThink()
     local caster = self:GetCaster()
     local attacker = Alive(caster) and caster or thinker
     local ability = self:GetAbility()
+    if not Valid(ability) then ability = nil end
     local seen = {}
     for _, enemy in ipairs(Enemies(thinker:GetTeamNumber(), thinker:GetAbsOrigin(), self.radius)) do
         Hit(enemy, attacker, ability, self.dps * blizzard.TICK)

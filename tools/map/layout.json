@@ -1,0 +1,318 @@
+{
+ "counts": {
+  "cells moved from Dire to a Radiant tileset": 93,
+  "desert scatter": 84,
+  "green scatter": 205,
+  "ice scatter": 103,
+  "ice trees cleared": 182,
+  "lava pools": 4,
+  "lava scatter": 68,
+  "lava trees cleared": 189,
+  "models": 756,
+  "odd cliff cells left in the Dire tileset": 9,
+  "particles": 139,
+  "sea cells drained": 238,
+  "tileset props and plants": 61,
+  "trees planted": 143,
+  "water samples before": 369,
+  "wilds scatter": 200
+ },
+ "lakes": {
+  "desert": [
+   5632,
+   3328,
+   6400,
+   4096
+  ],
+  "green": [
+   1024,
+   6400,
+   2048,
+   6912
+  ]
+ },
+ "landmarks": [
+  {
+   "model": "lava pool",
+   "x": 3328,
+   "y": -1920
+  },
+  {
+   "model": "lava pool",
+   "x": 640,
+   "y": -3968
+  },
+  {
+   "model": "lava pool",
+   "x": 896,
+   "y": -2560
+  },
+  {
+   "model": "lava pool",
+   "x": 128,
+   "y": -1920
+  },
+  {
+   "model": "frostivus_ancient_snow",
+   "x": -3456,
+   "y": 2304
+  },
+  {
+   "model": "ancient_giant_skeleton",
+   "x": 4232,
+   "y": 6858
+  },
+  {
+   "model": "stoneforest01",
+   "x": 3006,
+   "y": 2304
+  },
+  {
+   "model": "stoneforest01",
+   "x": 7015,
+   "y": 5024
+  },
+  {
+   "model": "stoneforest01",
+   "x": 5041,
+   "y": 5037
+  },
+  {
+   "model": "midas_throne",
+   "x": 4736,
+   "y": 6294
+  },
+  {
+   "model": "jungle_temple_01",
+   "x": 256,
+   "y": 6892
+  },
+  {
+   "model": "kapok_002",
+   "x": -640,
+   "y": 3072
+  },
+  {
+   "model": "kapok_004",
+   "x": -2304,
+   "y": 3712
+  },
+  {
+   "model": "kapok_001",
+   "x": 128,
+   "y": 4480
+  },
+  {
+   "model": "jungle_pitcher_tree",
+   "x": -1152,
+   "y": 4352
+  },
+  {
+   "model": "mushroom_cavern_01",
+   "x": 512,
+   "y": 2560
+  },
+  {
+   "model": "kapok_002",
+   "x": -1664,
+   "y": 2432
+  },
+  {
+   "model": "mushroom_cavern_01",
+   "x": -1536,
+   "y": 3328
+  }
+ ],
+ "markers": [
+  {
+   "name": "arena_boss_desert",
+   "x": 3712,
+   "y": 6528
+  },
+  {
+   "name": "arena_boss_green",
+   "x": 256,
+   "y": 6272
+  },
+  {
+   "name": "arena_boss_ice",
+   "x": -5888,
+   "y": 6656
+  },
+  {
+   "name": "arena_boss_lava",
+   "x": 2048,
+   "y": -2944
+  },
+  {
+   "name": "arena_camp_desert_1",
+   "x": 3648,
+   "y": 2560
+  },
+  {
+   "name": "arena_camp_desert_1",
+   "x": 3682,
+   "y": 4562
+  },
+  {
+   "name": "arena_camp_desert_2",
+   "x": 2944,
+   "y": 6016
+  },
+  {
+   "name": "arena_camp_desert_2",
+   "x": 5376,
+   "y": 2688
+  },
+  {
+   "name": "arena_camp_desert_3",
+   "x": 5888,
+   "y": 5248
+  },
+  {
+   "name": "arena_camp_desert_3",
+   "x": 7040,
+   "y": 3456
+  },
+  {
+   "name": "arena_camp_desert_4",
+   "x": 4736,
+   "y": 7040
+  },
+  {
+   "name": "arena_camp_green_1",
+   "x": -400,
+   "y": 3840
+  },
+  {
+   "name": "arena_camp_green_1",
+   "x": 1152,
+   "y": 3072
+  },
+  {
+   "name": "arena_camp_green_2",
+   "x": -2432,
+   "y": 2432
+  },
+  {
+   "name": "arena_camp_green_2",
+   "x": 896,
+   "y": 4352
+  },
+  {
+   "name": "arena_camp_green_3",
+   "x": -2640,
+   "y": 4416
+  },
+  {
+   "name": "arena_camp_green_3",
+   "x": 2176,
+   "y": 4480
+  },
+  {
+   "name": "arena_camp_green_4",
+   "x": -1920,
+   "y": 6400
+  },
+  {
+   "name": "arena_camp_ice_1",
+   "x": -4224,
+   "y": 2560
+  },
+  {
+   "name": "arena_camp_ice_1",
+   "x": -3712,
+   "y": 3456
+  },
+  {
+   "name": "arena_camp_ice_2",
+   "x": -4480,
+   "y": 4480
+  },
+  {
+   "name": "arena_camp_ice_2",
+   "x": -4352,
+   "y": 5760
+  },
+  {
+   "name": "arena_camp_ice_3",
+   "x": -3072,
+   "y": 6016
+  },
+  {
+   "name": "arena_camp_ice_4",
+   "x": -6774,
+   "y": 3713
+  },
+  {
+   "name": "arena_camp_lava_1",
+   "x": 2304,
+   "y": -2048
+  },
+  {
+   "name": "arena_camp_lava_2",
+   "x": 1408,
+   "y": -4224
+  },
+  {
+   "name": "arena_camp_lava_3",
+   "x": 3690,
+   "y": -2838
+  },
+  {
+   "name": "arena_camp_lava_4",
+   "x": 3968,
+   "y": -4352
+  },
+  {
+   "name": "arena_camp_wilds_1",
+   "x": -6822,
+   "y": -2643
+  },
+  {
+   "name": "arena_camp_wilds_1",
+   "x": -4032,
+   "y": -4064
+  },
+  {
+   "name": "arena_camp_wilds_1",
+   "x": -2624,
+   "y": -4224
+  },
+  {
+   "name": "arena_camp_wilds_2",
+   "x": -1968,
+   "y": -5952
+  },
+  {
+   "name": "arena_camp_wilds_2",
+   "x": -304,
+   "y": -3136
+  },
+  {
+   "name": "arena_camp_wilds_2",
+   "x": 3344,
+   "y": -5824
+  },
+  {
+   "name": "arena_camp_wilds_3",
+   "x": -2800,
+   "y": -7040
+  },
+  {
+   "name": "arena_camp_wilds_3",
+   "x": 1232,
+   "y": -5696
+  },
+  {
+   "name": "arena_camp_wilds_4",
+   "x": -48,
+   "y": -7104
+  },
+  {
+   "name": "arena_camp_wilds_4",
+   "x": 1744,
+   "y": -7104
+  }
+ ]
+}

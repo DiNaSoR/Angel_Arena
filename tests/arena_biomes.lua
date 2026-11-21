@@ -120,8 +120,19 @@ local function ReadKV(path)
     return block()
 end
 
-local UNIT_KV = ReadKV("game/angel_arena/scripts/npc/units/arena/arena_green_units.txt")
-local ABILITY_KV = ReadKV("game/angel_arena/scripts/npc/abilities/arena/arena_green_abilities.txt")
+-- Every themed biome's units and abilities, merged (names are biome-prefixed, so they cannot clash).
+local THEMED = { "green", "desert", "ice", "lava" }
+local UNIT_KV, ABILITY_KV, UNIT_BIOME = {}, {}, {}
+for _, biome in ipairs(THEMED) do
+    for name, definition in pairs(ReadKV("game/angel_arena/scripts/npc/units/arena/arena_" .. biome .. "_units.txt")) do
+        assert(UNIT_KV[name] == nil, "unit defined twice: " .. name)
+        UNIT_KV[name], UNIT_BIOME[name] = definition, biome
+    end
+    for name, definition in pairs(ReadKV("game/angel_arena/scripts/npc/abilities/arena/arena_" .. biome .. "_abilities.txt")) do
+        assert(ABILITY_KV[name] == nil, "ability defined twice: " .. name)
+        ABILITY_KV[name] = definition
+    end
+end
 
 local function Flags(text)
     local total = 0
@@ -261,6 +272,7 @@ end
 
 -------------------------------------------------------------------------------- abilities
 
+local PerLevel
 local Ability = {}
 function Ability:GetAbilityName() return self.name end
 function Ability:GetLevel() return self.level end
@@ -276,8 +288,8 @@ function Ability:IsCooldownReady() return now >= (self.readyAt or 0) end
 function Ability:GetAbilityTargetType() return Flags(self.kv.AbilityUnitTargetType) end
 function Ability:GetAbilityTargetFlags() return 0 end
 function Ability:GetCastRange() return tonumber(self.kv.AbilityCastRange or 0) end
-function Ability:GetCastPoint() return tonumber(self.kv.AbilityCastPoint or 0) end
-local function PerLevel(text, level)
+function Ability:GetCastPoint() return PerLevel(self.kv.AbilityCastPoint or 0, self.level) end
+function PerLevel(text, level)
     local values = {}
     for number in tostring(text):gmatch("%S+") do values[#values + 1] = tonumber(number) end
     return values[math.min(math.max(level, 1), #values)] or 0
@@ -569,13 +581,23 @@ local biomes = ArenaBiomes.Load()
 for _, name in ipairs(ArenaBiomes.NAMES) do
     check(#biomes[name].problems == 0, name .. " biome files pass validation: " .. table.concat(biomes[name].problems, "; "))
 end
-check(biomes.green.monsters and biomes.green.boss and biomes.green.fx, "green has monsters, a boss and effects")
-check(biomes.wilds.monsters and #biomes.wilds.monsters.tiers[4] > 0, "wilds has an elite tier")
-for _, name in ipairs({ "desert", "ice", "lava" }) do
-    check(biomes[name].monsters == nil and biomes[name].boss == nil, name .. " has no files yet and that is harmless")
+for _, name in ipairs(THEMED) do
+    check(biomes[name].monsters and biomes[name].boss and biomes[name].fx, name .. " has monsters, a boss and effects")
+    for tier = 1, 4 do
+        check(#biomes[name].monsters.tiers[tier] > 0, name .. " has tier " .. tier .. " groups")
+    end
 end
-local groups, pool = ArenaBiomes.Pool("ice", 2)
+check(biomes.wilds.monsters and #biomes.wilds.monsters.tiers[4] > 0, "wilds has an elite tier")
+-- A biome with no files at all (a made-up one, added to the list for the rest of this test) loads
+-- harmlessly and borrows the wilds pool for its camps.
+table.insert(ArenaBiomes.NAMES, "testland")
+biomes = ArenaBiomes.Load(true)
+check(biomes.testland and #biomes.testland.problems == 0 and biomes.testland.monsters == nil and biomes.testland.boss == nil,
+    "a biome with no files is harmless")
+local groups, pool = ArenaBiomes.Pool("testland", 2)
 check(pool == biomes.wilds.monsters and groups == biomes.wilds.monsters.tiers[2], "a biome without monsters borrows the wilds pool")
+groups, pool = ArenaBiomes.Pool("ice", 2)
+check(pool == biomes.ice.monsters, "a biome with monsters uses its own pool")
 check(ArenaBiomes.Monster("npc_arena_green_thicket_bear").health == 1900, "monster stats are found by unit name")
 
 -- Every scripted ability of every biome is a real class in its biome's script.
@@ -616,14 +638,21 @@ check(Mentions(biomes.desert.problems, "npc_arena_desert_missing is not in monst
 check(Mentions(biomes.desert.problems, "tiers are 1 to 4"), "a tier outside 1..4 is reported")
 check(Mentions(biomes.ice.problems, "phase 3 needs a health fraction below"), "phases out of order are reported")
 check(Mentions(biomes.ice.problems, "needs a phase between 1 and 3"), "an ability for a phase that does not exist is reported")
-check(biomes.desert.monsters == nil and biomes.ice.boss == nil and biomes.green.monsters, "only the broken parts are switched off")
+check(biomes.desert.monsters == nil and biomes.ice.boss == nil and biomes.lava.monsters == nil and biomes.green.monsters,
+    "the broken parts are switched off")
+check(biomes.desert.boss and biomes.ice.monsters and biomes.lava.boss, "...and only those: the rest of each biome still loads")
+package.preload["arena/biomes/testland/boss"] = function() return "not a table" end
+biomes = ArenaBiomes.Load(true)
+check(Mentions(biomes.testland.problems, "boss: must return a table"), "a file returning the wrong thing is reported")
 check(Logged("lava monsters switched off"), "switched-off parts are announced in the console")
-for _, path in ipairs({ "arena/biomes/lava/monsters", "arena/biomes/desert/monsters", "arena/biomes/ice/boss" }) do
+for _, path in ipairs({ "arena/biomes/lava/monsters", "arena/biomes/desert/monsters", "arena/biomes/ice/boss", "arena/biomes/testland/boss" }) do
     package.preload[path] = nil
     package.loaded[path] = nil
 end
 biomes = ArenaBiomes.Load(true)
-check(#biomes.desert.problems == 0 and #biomes.lava.problems == 0, "biomes load cleanly again")
+check(#biomes.desert.problems == 0 and #biomes.lava.problems == 0 and #biomes.testland.problems == 0,
+    "biomes load cleanly again")
+check(biomes.desert.monsters and biomes.lava.monsters and biomes.ice.boss, "Load(true) reads the real files again, not a cached copy")
 
 ------------------------------------------------------------------------ tiers and growth
 
@@ -656,8 +685,11 @@ end
 markers = {
     arena_camp_green_3 = { Marker(0, 0) },
     arena_camp_wilds_1 = { Marker(3000, 0) },
-    arena_camp_ice_2 = { Marker(-3000, 0) },
-    arena_boss_green = { Marker(6000, 0) },
+    arena_camp_testland_2 = { Marker(-3000, 0) },
+    arena_boss_green = { Marker(6000, 0) },          -- the lifecycle test below is laid out around this
+    arena_boss_ice = { Marker(-5888, 6656) },        -- the other three at their places on the new map
+    arena_boss_desert = { Marker(3712, 6528) },
+    arena_boss_lava = { Marker(2048, -2944) },
     creep_camp = { Marker(9000, 9000) },
 }
 ArenaWorld:Init()
@@ -675,16 +707,15 @@ for name in pairs(expected) do
 end
 check(not asked.creep_camp, "legacy markers are ignored when the map has arena markers")
 check(#ArenaCamps.camps == 3 and ArenaCamps.source == "arena", "one camp per arena marker")
-check(#ArenaBosses.states == 1 and ArenaBosses.states[1].biome == "green", "the green boss found its marker")
-check(Logged("no arena_boss_wilds marker") == false and Logged("no arena_boss_desert") == false,
-    "biomes without a boss do not look for a boss marker")
+check(#ArenaBosses.states == 4, "all four biome bosses found their markers")
+check(not asked.arena_boss_wilds and not asked.arena_boss_testland, "biomes without a boss do not look for a boss marker")
 check(#timers == 2 and timers[1].delay == INITIAL_CREEP_DELAY, "camps start after the creep delay")
 ArenaWorld:Init()
 check(#timers == 2, "starting twice does nothing")
 
 local campByName = {}
 for _, camp in ipairs(ArenaCamps.camps) do campByName[camp.name] = camp end
-local green, wilds, ice = campByName.arena_camp_green_3, campByName.arena_camp_wilds_1, campByName.arena_camp_ice_2
+local green, wilds, ice = campByName.arena_camp_green_3, campByName.arena_camp_wilds_1, campByName.arena_camp_testland_2
 
 ------------------------------------------------------------------------- first spawns
 
@@ -712,8 +743,8 @@ local wildsUnits = Members(wilds)
 check(#wildsUnits == 2 and wildsUnits[1].name == "npc_dota_neutral_kobold_tunneler", "wilds tier 1 spawns kobolds")
 check(wildsUnits[1]:FindAbilityByName("neutral_upgrade") == nil, "Dota's own neutral growth is removed from stock creeps")
 local iceUnits = Members(ice)
-check(#iceUnits == 3 and iceUnits[1].name == "npc_dota_neutral_harpy_storm", "an ice camp without ice monsters uses wilds tier 2")
-check(Logged("ice has no tier 2 monsters yet"), "borrowing the wilds pool is announced once")
+check(#iceUnits == 3 and iceUnits[1].name == "npc_dota_neutral_harpy_storm", "a camp of a biome without monsters uses wilds tier 2")
+check(Logged("testland has no tier 2 monsters yet"), "borrowing the wilds pool is announced once")
 
 ------------------------------------------------------------------- respawn gating
 
@@ -887,7 +918,10 @@ check(regrown.maxHealth == math.ceil(1900 * 1.1) and regrown.health == math.ceil
 ------------------------------------------------------------------------------- the boss
 
 local bossTick = timers[2].callback
-local bossState = ArenaBosses.states[1]
+local bossState
+for _, candidate in ipairs(ArenaBosses.states) do
+    if candidate.biome == "green" then bossState = candidate end
+end
 heroes = { [0] = Hero(DOTA_TEAM_GOODGUYS, At(-9000, 0)), [1] = Hero(DOTA_TEAM_GOODGUYS, At(-9000, 0)),
     [2] = Hero(DOTA_TEAM_BADGUYS, At(-9000, 0)), [3] = Hero(DOTA_TEAM_BADGUYS, At(-9000, 0)) }
 notifications = {}
@@ -942,7 +976,14 @@ check(sprouts[1].arenaBrain.group == bossState.brain.group and bossState.brain.g
 call:OnSpellStart()
 check(ArenaBosses.CountAdds(boss) == 6, "never more than max_alive summons")
 
--- Leash: dragged out, it walks home, heals and starts over.
+-- Leash: dragged out, it walks home, heals and starts over; strikes it left on the ground are void.
+local eruptionMove = boss:FindAbilityByName("arena_green_boss_root_eruption")
+eruptionMove:OnSpellStart()
+local pendingStrikes = {}
+for unit in pairs(world) do
+    if unit.thinker and unit.modifiers.modifier_arena_delayed_strike then pendingStrikes[#pendingStrikes + 1] = unit end
+end
+check(#pendingStrikes > 0, "the boss has a strike on the ground")
 boss.origin = At(6000 + 1500, 0)
 Think(boss)
 check(bossState.brain.returning, "past its leash the boss turns home")
@@ -951,6 +992,9 @@ Think(boss)
 check(boss.health == boss.maxHealth and bossState.phase == 1 and not boss:HasModifier("modifier_arena_boss_enraged")
     and Level("arena_green_boss_falling_timber") == 0, "home again it heals and resets to phase 1")
 check(ArenaBosses.CountAdds(boss) == 0, "a reset clears its summons")
+damage = {}
+check(pendingStrikes[1].removed and #damage == 0 and next(boss.arenaStrikes) == nil,
+    "a reset removes its pending strikes without them landing")
 
 -- Reward, announcement and return.
 goldPaid, drops, notifications = {}, {}, {}
@@ -984,6 +1028,33 @@ UTIL_Remove(vanished)
 now = now + 1
 bossTick()
 check(bossState.unit == nil and bossState.nextSpawn == now + 480, "a boss removed without a death event is noticed and returns later")
+
+-- Every biome's boss came at its own time, at its marker, at its phase 1 strength, and its brain
+-- tries abilities in the order boss.lua lists them.
+for _, state in ipairs(ArenaBosses.states) do
+    local def = state.def
+    if state.biome ~= "green" then
+        local unit = state.unit
+        check(unit and unit.name == def.unit and Distance(unit.origin, markers["arena_boss_" .. state.biome][1]:GetAbsOrigin()) == 0,
+            state.biome .. " boss appeared at its marker")
+        check(unit.maxHealth == def.stats.health and unit.modifiers.modifier_arena_boss:GetStackCount() == 1, state.biome .. " boss at base strength")
+        for _, spec in ipairs(def.abilities) do
+            local ability = unit:FindAbilityByName(spec.name)
+            check(ability, state.biome .. " boss has " .. spec.name)
+            check((spec.phase == 1) == (ability:GetLevel() > 0), spec.name .. " is learned exactly from phase " .. spec.phase)
+        end
+    end
+    local listed = {}
+    for index, spec in ipairs(def.abilities) do listed[index] = spec.name end
+    check(table.concat(state.brain and state.brain.order or listed, ",") == table.concat(listed, ","),
+        state.biome .. " boss brain follows the boss.lua order")
+end
+local probe = CreateUnitByName("npc_arena_green_boss", At(-20000, 0), true, nil, nil, DOTA_TEAM_NEUTRALS)
+local tried = ArenaMonsterAI.Abilities({ unit = probe, order = { "arena_green_boss_call_of_the_grove", "arena_green_boss_falling_timber" } })
+check(tried[1].name == "arena_green_boss_call_of_the_grove" and tried[2].name == "arena_green_boss_falling_timber"
+    and tried[3].name == "arena_green_boss_thorn_nova" and #tried == 4, "listed abilities first, then the rest in slot order")
+probe.alive = false
+world[probe] = nil
 
 -------------------------------------------------------------------- green ability scripts
 
@@ -1130,6 +1201,7 @@ check(damage[1].damage == 700 and target:HasModifier("modifier_arena_green_thorn
 
 local timber = warden:FindAbilityByName("arena_green_boss_falling_timber")
 timber:SetLevel(2)
+local linesBefore = Created(ArenaFxCore.PARTICLES.line)
 timber.cursorPosition = At(1000, -8000)
 target.origin = At(600, -8000 + 50)
 timber:OnSpellStart()
@@ -1138,6 +1210,7 @@ for unit in pairs(world) do
 end
 local line = strikes[1].modifiers.modifier_arena_delayed_strike
 check(line.data.shape == "line" and line.data.x2 == 1100 and line.duration == 1.2, "falling timber marks a line toward the target")
+check(Created(ArenaFxCore.PARTICLES.line) == linesBefore + 3, "a wide line shows its centre and both edges")
 damage = {}
 line:Destroy()
 check(damage[1].victim == target and damage[1].damage == 600 and target.modifiers.modifier_stunned.duration == 1.2,
@@ -1183,6 +1256,43 @@ local byX = {}
 for _, camp in ipairs(fallback) do byX[camp.origin.x] = camp.tier end
 check(byX[4000] == 1 and byX[200] == 4, "without fountains the edge of the map counts as home")
 
+------------------------------------------------------- every biome's camps, every tier
+
+for unit in pairs(world) do world[unit] = nil end
+now = 0
+rollFloat = 0.99
+local sweepX = 0
+for _, biome in ipairs(THEMED) do
+    local data = biomes[biome].monsters
+    for tier = 1, 4 do
+        sweepX = sweepX + 4000
+        local camp = { id = 5000 + sweepX, name = "arena_camp_" .. biome .. "_" .. tier, biome = biome, tier = tier,
+            origin = At(sweepX, -20000), units = {}, group = {} }
+        before = #created
+        ArenaCamps:Spawn(camp, 0)
+        local spawned = Spawned(before)
+        local group = data.tiers[tier][1]
+        check(#spawned == #ArenaTiers.Composition(group, tier, 0), camp.name .. " spawns its first group")
+        for index, unit in ipairs(spawned) do
+            check(unit.name == group[index] and UNIT_BIOME[unit.name] == biome, camp.name .. " spawns " .. tostring(group[index]))
+            local stats = ArenaTiers.Stats(data.monsters[unit.name], 0)
+            check(unit.maxHealth == stats.health and unit.damage == stats.damage and unit.gold == stats.gold,
+                unit.name .. " has its monsters.lua stats")
+            check(unit.thinks.ArenaMonsterAI and unit.arenaBrain.leash == ArenaTiers.Profile(tier).leash, unit.name .. " has the brain")
+            for _, ability in ipairs(unit.abilities) do
+                check(ability:GetLevel() == math.min(ArenaTiers.AbilityLevel(tier, 0), ability:GetMaxLevel()),
+                    unit.name .. " " .. ability.name .. " starts at the tier's level")
+            end
+            local monster = data.monsters[unit.name]
+            for name in pairs(monster.ai or {}) do
+                check(unit:FindAbilityByName(name), unit.name .. " has the ability its ai hint names: " .. name)
+            end
+            unit.alive = false
+            world[unit] = nil
+        end
+    end
+end
+
 ---------------------------------------------------------------------- precache and wiring
 
 precached = { units = {}, resources = {} }
@@ -1191,9 +1301,25 @@ for name in pairs(UNIT_KV) do
     check(precached.units[name], name .. " is precached")
 end
 check(precached.units.npc_dota_neutral_black_dragon, "stock wilds creeps are precached")
-check(precached.resources[biomes.green.fx.particles.root_burst] == "particle" and precached.resources[ArenaFxCore.PARTICLES.circle] == "particle",
-    "biome and shared particles are precached")
-check(precached.resources["soundevents/game_sounds_heroes/game_sounds_treant.vsndevts"] == "soundfile", "biome sound files are precached")
+check(precached.resources[ArenaFxCore.PARTICLES.circle] == "particle", "shared particles are precached")
+for _, biome in ipairs(THEMED) do
+    local fx, boss = biomes[biome].fx, biomes[biome].boss
+    for key, particle in pairs(fx.particles or {}) do
+        check(precached.resources[particle] == "particle", biome .. " particle " .. key .. " is precached")
+    end
+    for _, file in ipairs(fx.soundfiles or {}) do
+        check(precached.resources[file] == "soundfile", biome .. " sound file " .. file .. " is precached")
+    end
+    for _, model in ipairs(fx.models or {}) do
+        check(precached.resources[model] == "model", biome .. " model " .. model .. " is precached")
+    end
+    for _, particle in pairs(boss.effects or {}) do
+        check(precached.resources[particle] == "particle", biome .. " boss effect is precached")
+    end
+    for _, unit in ipairs(boss.extra_units or {}) do
+        check(precached.units[unit], biome .. " boss extra unit " .. unit .. " is precached")
+    end
+end
 
 local function Contains(path, text)
     local file = assert(io.open(path, "rb"))
@@ -1295,6 +1421,25 @@ for _, script in ipairs(clientScripts) do
         end
     end
     check(count > 0, script .. ".lua links its own modifiers")
+end
+
+-- addon_init.lua runs on the server and on every client before the game mode (and before anything
+-- else in the addon), so what it requires may rely on nothing but the engine. Run it that way, even
+-- without `class`, on a "client" and on a "server" with no game-mode globals.
+for _, side in ipairs({ "client", "server" }) do
+    local env = ClientSandbox()
+    env.class = nil
+    env.IsServer = function() return side == "server" end
+    local chunk = assert(loadfile(VSCRIPTS .. "addon_init.lua"))
+    setfenv(chunk, env)
+    local printed = {}
+    env.print = function(text) printed[#printed + 1] = tostring(text) end
+    check(pcall(chunk) and #printed == 0, "addon_init.lua runs cleanly on the " .. side .. ": " .. table.concat(printed, "; "))
+    for name, path in pairs(linked) do
+        if path == "arena/core/modifiers.lua" then
+            check(env.links[name] == path and type(rawget(env, name)) == "table", name .. " is linked on the " .. side .. " by addon_init.lua")
+        end
+    end
 end
 
 print = realPrint

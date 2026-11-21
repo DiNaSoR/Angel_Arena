@@ -1,12 +1,19 @@
 """Edit a Dota 2 Hammer map (.vmap) as text.
 
 Hammer saves maps as binary DMX. `dmxconvert.exe` (shipped with the Dota workshop tools) converts
-that losslessly to the `keyvalues2` text encoding and back, so this module works on the text form:
-it can read and rewrite the tile grid arrays (heights, tilesets, trees) and add point entities.
+that losslessly to the `keyvalues2` text encoding and back, so this module works on the text form.
+It can retarget the tile grid's tileset slots, raise and lower terrain, turn water into land,
+paint trees and tileset props, add point entities, models and flat brush slabs.
 
-    m = VMap.load("angel_arena.kv2.vmap")
+    m = VMap.load("map.kv2.vmap")            # text made with to_text()
+    m.learn_orientations()
+    m.set_height(0, 0, 256, 256, delta=-1)
     m.add_entity("prop_static", (0, 0, 128), {"model": "models/props_tree/tree_pine_01.vmdl"})
-    m.save("out.kv2.vmap")
+    m.save("out.kv2.vmap")                    # then to_binary()
+
+Grid sizes: 64 x 64 cells of 256 units, 65 x 65 height samples, 257 x 257 object slots 64 units
+apart, 513 x 513 paint samples 32 units apart. World z of height level h is 128 + 128 * h.
+See README.md in this folder for what each stored array means.
 """
 import random
 import re
@@ -223,42 +230,6 @@ class VMap:
         m = infos[index]
         body = arr("propTypes", prop_types) + arr("treeTypes", tree_types) + arr("plantTypes", plant_types)
         self.text = self.text[:m.start(1)] + body + self.text[m.end(1):]
-
-    def add_tileset(self, path, prop_types, tree_types, plant_types=("none", "sparse", "moderate", "thick")):
-        """Reference another Valve tileset from the tile grid and return its index."""
-        have = self.tilesets()
-        if path in have:
-            return have.index(path)
-        index = len(have)
-        blocks = list(re.finditer(r'\n\t{5}"CMapTileObject"\n\t{5}\{\n.*?\n\t{5}\}', self.text, re.S))
-        last = blocks[-1]
-        block = last.group(0)
-        block = re.sub(r'"elementid" "[0-9a-f-]+"', lambda m: '"elementid" "%s"' % self._uuid(), block)
-        block = re.sub(r'"nodeID" "int" "\d+"', '"nodeID" "int" "%d"' % self._next_node, block, count=1)
-        self._next_node += 1
-        block = re.sub(r'"referenceID" "uint64" "0x[0-9a-f]+"',
-                       '"referenceID" "uint64" "0x%016x"' % self._rng.getrandbits(64), block, count=1)
-        block = re.sub(r'"tileSetMapIndex" "int" "\d+"', '"tileSetMapIndex" "int" "%d"' % index, block)
-        block = re.sub(r'"targetMapPath" "string" "[^"]+"', '"targetMapPath" "string" "%s"' % path, block)
-        self.text = self.text[:last.end()] + "," + block + self.text[last.end():]
-
-        # the grid node lists every tileset path again
-        key = '"targetMapPath%d" "string"' % (index - 1) if index > 1 else '"targetMapPath" "string"'
-        m = re.search(r'\n\t{4}%s "[^"]+"' % re.escape(key), self.text)
-        self.text = self.text[:m.end()] + '\n\t\t\t\t"targetMapPath%d" "string" "%s"' % (index, path) + self.text[m.end():]
-        m = re.search(r'\n\t{4}"skyboxMapPath%d" "string" "[^"]*"' % (index - 1), self.text)
-        self.text = self.text[:m.end()] + '\n\t\t\t\t"skyboxMapPath%d" "string" ""' % index + self.text[m.end():]
-
-        def arr(name, values):
-            body = ",\n".join('\t\t\t\t\t\t\t\t\t"%s"' % v for v in values)
-            return '\t\t\t\t\t\t\t\t"%s" "string_array" \n\t\t\t\t\t\t\t\t[\n%s\n\t\t\t\t\t\t\t\t]\n' % (name, body)
-
-        info = ('\t\t\t\t\t\t\t"CDmeTileSetMapInfo"\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t"id" "elementid" "%s"\n' % self._uuid()
-                + arr("propTypes", prop_types) + arr("treeTypes", tree_types) + arr("plantTypes", plant_types)
-                + "\t\t\t\t\t\t\t}")
-        m = re.search(r'"tileSetMapInfo" "element_array" \n\t{6}\[\n.*?\n\t{7}\}(?=\n\t{6}\])', self.text, re.S)
-        self.text = self.text[:m.end()] + ",\n" + info + self.text[m.end():]
-        return index
 
     # ---- terrain shape ---------------------------------------------------------------------
     def _pattern(self, cx, cy):

@@ -1,0 +1,105 @@
+// Tooltips and announcements of the ice biome (the Frostfang Reach).
+// Merged into both localization files by: python tools/biomes/build_biomes.py
+// Format: one "token"  "text" pair per line. In ability descriptions %name% is the ability's
+// AbilityValues entry of that name; %name%%% prints it followed by a percent sign.
+// The "5 stacks" below is COLD.freeze_at in arena/biomes/ice/abilities.lua
+// (tests/arena_ice.lua checks they still agree); the other cold numbers come from the modifiers.
+
+//------------------------------------------------------------------------------ units
+"npc_arena_ice_frost_kobold"									"Frost Kobold"
+"npc_arena_ice_snow_gnoll"										"Snowfang Gnoll"
+"npc_arena_ice_frostbitten_thrall"								"Frostbitten Thrall"
+"npc_arena_ice_rime_wraith"										"Rime Wraith"
+"npc_arena_ice_tuskarr_raider"									"Tuskarr Raider"
+"npc_arena_ice_frostbitten_shaman"								"Frostbitten Shaman"
+"npc_arena_ice_rimebloat"										"Rimebloat"
+"npc_arena_ice_ogreseal_brute"									"Ogre-Seal Brute"
+"npc_arena_ice_rime_revenant"									"Rime Revenant"
+"npc_arena_ice_boss"											"Hoarfrost, the Glacier Giant"
+"npc_arena_ice_glacial_pillar"									"Glacial Pillar"
+
+//-------------------------------------------------------------------------- abilities
+"DOTA_Tooltip_ability_arena_ice_rime_bolt"						"Rime Bolt"
+"DOTA_Tooltip_ability_arena_ice_rime_bolt_Description"			"Hurls a shard of rime at an enemy: %damage% magic damage and %chill_stacks% stacks of Chill. At 5 stacks of Chill a unit is Frozen."
+"DOTA_Tooltip_ability_arena_ice_rime_bolt_damage"				"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_rime_bolt_chill_stacks"			"CHILL STACKS:"
+
+"DOTA_Tooltip_ability_arena_ice_brittle_blows"					"Brittle Blows"
+"DOTA_Tooltip_ability_arena_ice_brittle_blows_Description"		"Every blow cracks the target's armour: -%armor_per_stack% armor per hit, up to %max_stacks% times, for %duration% seconds after the last hit."
+"DOTA_Tooltip_ability_arena_ice_brittle_blows_armor_per_stack"	"ARMOR LOST PER HIT:"
+"DOTA_Tooltip_ability_arena_ice_brittle_blows_max_stacks"		"MAX STACKS:"
+
+"DOTA_Tooltip_ability_arena_ice_blizzard"						"Blizzard"
+"DOTA_Tooltip_ability_arena_ice_blizzard_Description"			"Calls a blizzard that rages for %duration% seconds. Enemies inside take %damage_per_second% magic damage each second, and anyone who stands still in it gains a stack of Chill every half second. Keep moving."
+"DOTA_Tooltip_ability_arena_ice_blizzard_radius"				"RADIUS:"
+"DOTA_Tooltip_ability_arena_ice_blizzard_damage_per_second"		"DAMAGE PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_ice_rime_shell"						"Rime Shell"
+"DOTA_Tooltip_ability_arena_ice_rime_shell_Description"			"Coats an ally in ice for %duration% seconds: +%armor% armor, and every melee attacker that strikes it gains %chill_stacks% stack of Chill."
+"DOTA_Tooltip_ability_arena_ice_rime_shell_armor"				"BONUS ARMOR:"
+
+"DOTA_Tooltip_ability_arena_ice_rime_burst"						"Rime Burst"
+"DOTA_Tooltip_ability_arena_ice_rime_burst_Description"			"When the Rimebloat dies, a ring closes over its body. After %delay% seconds it bursts: enemies within %radius% take %damage% magic damage and gain %chill_stacks% stacks of Chill. Step away from the body."
+"DOTA_Tooltip_ability_arena_ice_rime_burst_delay"				"DELAY:"
+"DOTA_Tooltip_ability_arena_ice_rime_burst_damage"				"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_rime_burst_radius"				"RADIUS:"
+
+"DOTA_Tooltip_ability_arena_ice_shatter_slam"					"Shatter Slam"
+"DOTA_Tooltip_ability_arena_ice_shatter_slam_Description"		"Rears up while a ring closes around it, then slams the ice: enemies within %radius% take %damage% magic damage and gain %chill_stacks% stacks of Chill. Frozen enemies shatter instead, taking %shatter_pct%%% more damage and breaking free. Step out of the ring."
+"DOTA_Tooltip_ability_arena_ice_shatter_slam_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_shatter_slam_shatter_pct"		"%SHATTER BONUS:"
+
+"DOTA_Tooltip_ability_arena_ice_glacial_tomb"					"Glacial Tomb"
+"DOTA_Tooltip_ability_arena_ice_glacial_tomb_Description"		"A ring closes under an enemy. After %delay% seconds the ice seals: everyone still inside takes %damage% magic damage and is Frozen for %freeze_duration% seconds."
+"DOTA_Tooltip_ability_arena_ice_glacial_tomb_delay"				"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_ice_glacial_tomb_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_glacial_tomb_freeze_duration"	"FREEZE:"
+
+"DOTA_Tooltip_ability_arena_ice_cold_grasp"						"Cold Grasp"
+"DOTA_Tooltip_ability_arena_ice_cold_grasp_Description"			"Each attack adds %chill_stacks% stack of Chill to its target."
+
+"DOTA_Tooltip_ability_arena_ice_boss_absolute_zero"				"Absolute Zero"
+"DOTA_Tooltip_ability_arena_ice_boss_absolute_zero_Description"	"The giant draws in every scrap of warmth while a vast ring closes around it and %pillar_count% ice pillars rise. When it finishes, every enemy within %radius% who is not sheltering beside a pillar takes %damage% magic damage and is Frozen for %freeze_duration% seconds. Shelter by a pillar, leave the ring, or stun the giant to stop it. Used in its last phase."
+"DOTA_Tooltip_ability_arena_ice_boss_absolute_zero_radius"		"RADIUS:"
+"DOTA_Tooltip_ability_arena_ice_boss_absolute_zero_damage"		"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_boss_absolute_zero_freeze_duration"	"FREEZE:"
+
+"DOTA_Tooltip_ability_arena_ice_boss_icefall"					"Icefall"
+"DOTA_Tooltip_ability_arena_ice_boss_icefall_Description"		"Icicles fall in %waves% rings around the giant, the nearest ring first and each further ring %wave_delay% seconds later. Each icicle deals %damage% magic damage and %chill_stacks% stacks of Chill; Frozen enemies shatter for %shatter_pct%%% more. The giant's feet are safe, and so is a ring that has already fallen. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_ice_boss_icefall_waves"				"RINGS:"
+"DOTA_Tooltip_ability_arena_ice_boss_icefall_first_delay"		"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_ice_boss_icefall_damage"			"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_ice_boss_frost_breath"				"Frost Breath"
+"DOTA_Tooltip_ability_arena_ice_boss_frost_breath_Description"	"Three lines mark a cone in front of the giant while it draws breath, then it exhales: enemies in the cone take %damage% magic damage and gain %chill_stacks% stacks of Chill. Frozen enemies shatter for %shatter_pct%%% more. Get out of the cone or behind the giant. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_ice_boss_frost_breath_damage"		"DAMAGE:"
+"DOTA_Tooltip_ability_arena_ice_boss_frost_breath_chill_stacks"	"CHILL STACKS:"
+
+"DOTA_Tooltip_ability_arena_ice_boss_frigid_fists"				"Frigid Fists"
+"DOTA_Tooltip_ability_arena_ice_boss_frigid_fists_Description"	"Every blow of the giant cracks its target's armour: -%armor_per_stack% armor per hit, up to %max_stacks% times, for %duration% seconds after the last hit. Trade the tank before the armour is gone."
+"DOTA_Tooltip_ability_arena_ice_boss_frigid_fists_armor_per_stack"	"ARMOR LOST PER HIT:"
+
+"DOTA_Tooltip_ability_arena_ice_boss_whiteout"					"Whiteout"
+"DOTA_Tooltip_ability_arena_ice_boss_whiteout_Description"		"From its second phase a blizzard follows the giant. Every second, each enemy hero within %radius% that has moved less than %still_distance% since the last second gains %chill_stacks% Chill. Keep moving."
+"DOTA_Tooltip_ability_arena_ice_boss_whiteout_radius"			"RADIUS:"
+
+//-------------------------------------------------------------------------- modifiers
+"DOTA_Tooltip_modifier_arena_ice_chill"							"Chill"
+"DOTA_Tooltip_modifier_arena_ice_chill_Description"				"Numbed by the cold: %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% movement speed and %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% attack speed. At 5 stacks you are Frozen."
+"DOTA_Tooltip_modifier_arena_ice_frozen"						"Frozen"
+"DOTA_Tooltip_modifier_arena_ice_frozen_Description"			"Encased in ice: cannot move, attack or cast. Some ice attacks shatter frozen targets for extra damage."
+"DOTA_Tooltip_modifier_arena_ice_thawing"						"Thawing"
+"DOTA_Tooltip_modifier_arena_ice_thawing_Description"			"Just broke out of the ice: Chill cannot take hold for %dMODIFIER_PROPERTY_TOOLTIP% seconds."
+"DOTA_Tooltip_modifier_arena_ice_brittle"						"Brittle"
+"DOTA_Tooltip_modifier_arena_ice_brittle_Description"			"Armour cracked by the cold: %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor."
+"DOTA_Tooltip_modifier_arena_ice_rime_shell"					"Rime Shell"
+"DOTA_Tooltip_modifier_arena_ice_rime_shell_Description"		"+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor. Melee attackers that strike it are chilled."
+"DOTA_Tooltip_modifier_arena_ice_whiteout"						"Whiteout"
+"DOTA_Tooltip_modifier_arena_ice_whiteout_Description"			"Caught in the giant's blizzard: every second you move less than %dMODIFIER_PROPERTY_TOOLTIP% you gain Chill. Keep moving."
+
+//---------------------------------------------------------------------- announcements
+"arena_ice_boss_soon"											"Hoarfrost, the Glacier Giant, stirs beneath the Frostfang Reach. It wakes in one minute."
+"arena_ice_boss_awakens"										"Hoarfrost, the Glacier Giant, has broken out of the ice in the Frostfang Reach!"
+"arena_ice_boss_phase_2"										"A whiteout swallows the giant's lair: keep moving or freeze!"
+"arena_ice_boss_phase_3"										"Hoarfrost draws in all the warmth of the north. Shelter by the ice pillars!"
+"arena_ice_boss_slain"											" shattered Hoarfrost, the Glacier Giant! Every hero on the team earns gold and experience."

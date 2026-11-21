@@ -33,12 +33,14 @@ Run these commands from the repository root with Lua 5.1, Node.js and Python ins
 ```bash
 find game/angel_arena/scripts/vscripts -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 find content/angel_arena/panorama/scripts -name '*.js' -print0 | xargs -0 -n1 node --check
+# includes tests/arena_biomes.lua and the biome tests arena_ice.lua, arena_desert.lua, arena_lava.lua
 for test in tests/*.lua; do lua5.1 "$test" || exit; done
 node tests/panorama_match.js
 node tests/panorama_setup.js
 python3 tests/npc_references.py
 python3 tests/arena_items.py
 python3 tests/arena_biomes.py
+python3 tests/arena_map.py
 python3 tests/workshop_deploy.py
 ```
 
