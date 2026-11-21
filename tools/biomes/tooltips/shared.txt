@@ -1,0 +1,22 @@
+// Tooltips for the parts every biome shares (arena/core/modifiers.lua).
+// Merged into both localization files by: python tools/biomes/build_biomes.py
+// Format: one "token"  "text" pair per line. %dMODIFIER_PROPERTY_...% shows the modifier's own number.
+
+"DOTA_Tooltip_modifier_arena_monster_returning"					"Returning Home"
+"DOTA_Tooltip_modifier_arena_monster_returning_Description"		"Pulled too far from its post, this monster walks back. On the way it moves %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% faster and regains %dMODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE%%% of its health each second."
+
+"DOTA_Tooltip_modifier_arena_champion"							"Champion"
+"DOTA_Tooltip_modifier_arena_champion_Description"				"A champion of its kind: far tougher and stronger than the rest of its camp. It always drops an item from a better loot pool."
+"DOTA_Tooltip_modifier_arena_champion_mighty"					"Mighty"
+"DOTA_Tooltip_modifier_arena_champion_mighty_Description"		"Deals %dMODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE%%% more attack damage."
+"DOTA_Tooltip_modifier_arena_champion_swift"					"Swift"
+"DOTA_Tooltip_modifier_arena_champion_swift_Description"		"Moves %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% faster and has %dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% more attack speed."
+"DOTA_Tooltip_modifier_arena_champion_vampiric"					"Vampiric"
+"DOTA_Tooltip_modifier_arena_champion_vampiric_Description"		"Heals for %dMODIFIER_PROPERTY_TOOLTIP%%% of the damage its attacks deal."
+"DOTA_Tooltip_modifier_arena_champion_stoneskin"				"Stoneskin"
+"DOTA_Tooltip_modifier_arena_champion_stoneskin_Description"	"Has %dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% more armor and %dMODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS%%% more magic resistance."
+
+"DOTA_Tooltip_modifier_arena_boss"								"Biome Boss"
+"DOTA_Tooltip_modifier_arena_boss_Description"					"Appearance %dMODIFIER_PROPERTY_TOOLTIP%. Comes back stronger every time it is slain. Disables on it last %dMODIFIER_PROPERTY_STATUS_RESISTANCE_STACKING%%% shorter. Dragged out of its lair, it goes home and heals."
+"DOTA_Tooltip_modifier_arena_boss_enraged"						"Enraged"
+"DOTA_Tooltip_modifier_arena_boss_enraged_Description"			"Wounded and furious: +%dMODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT% attack speed, +%dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% movement speed and +%dMODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE%%% attack damage. Grows with every phase."

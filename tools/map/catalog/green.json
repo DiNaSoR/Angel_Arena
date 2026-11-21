@@ -1,0 +1,1351 @@
+{
+ "trees": [
+  {
+   "path": "maps/jungle_assets/trees/kapok/export/kapok_002.vmdl",
+   "note": "Giant kapok jungle tree; main tree of radiant/dire_jungle_basic",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/trees/kapok/export/kapok_004.vmdl",
+   "note": "Kapok jungle tree; jungle tilesets",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/trees/pitcher/jungle_pitcher_tree.vmdl",
+   "note": "Giant pitcher-plant tree; jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushroom_cavern_01.vmdl",
+   "note": "Giant mushroom; cavern tilesets place it as a tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_01.vmdl",
+   "note": "Bamboo clump; radiant tilesets tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/trees/kapok/export/kapok_001.vmdl",
+   "note": "Kapok jungle tree",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/trees/kapok/export/kapok_003.vmdl",
+   "note": "Kapok jungle tree",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/trees/flytrap/jungle_flytrap01.vmdl",
+   "note": "Giant flytrap plant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushroom_cavern_02.vmdl",
+   "note": "Giant mushroom; cavern tilesets tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushroom_cavern_03.vmdl",
+   "note": "Giant mushroom",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushroom_inkycap_01.vmdl",
+   "note": "Inkycap mushroom; dire_cavern_basic tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/spores/spores_cavern_01.vmdl",
+   "note": "Spore stalk; radiant_cavern_basic tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/spores/spores_cavern_04.vmdl",
+   "note": "Spore stalk; cavern tilesets tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_02.vmdl",
+   "note": "Bamboo clump",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_03.vmdl",
+   "note": "Bamboo clump",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_00.vmdl",
+   "note": "Bamboo clump",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_02e.vmdl",
+   "note": "Palm; jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_02b.vmdl",
+   "note": "Palm; jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_01.vmdl",
+   "note": "Lush oak (default Radiant tree)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_01b.vmdl",
+   "note": "Lush oak variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_02.vmdl",
+   "note": "Lush oak variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_spring_01.vmdl",
+   "note": "Spring oak; radiant_spring_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_spring_02.vmdl",
+   "note": "Spring oak",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_cine_00_10k.vmdl",
+   "note": "High-detail cinematic tree (heavy; hero tree for a clearing)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/temple_tree001.vmdl",
+   "note": "Temple tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/mango_tree.vmdl",
+   "note": "Mango tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/newbloom_tree.vmdl",
+   "note": "New Bloom blossom tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/cypress/tree_cypress008.vmdl",
+   "note": "Cypress; coloseum/ti10 tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/trees/journey_maple/journey_maple02.vmdl",
+   "note": "Maple; journey + radiant_jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/trees/ti10_goldenbirch001.vmdl",
+   "note": "Golden birch; ti10 tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_04.vmdl",
+   "note": "Oak",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_05.vmdl",
+   "note": "Oak",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "rocks": [
+  {
+   "path": "models/props_nature/river_rocks001.vmdl",
+   "note": "River rocks; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/rocks/journey_stoneforest03.vmdl",
+   "note": "Mossy stone-forest pillar (journey)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock_wall001a.vmdl",
+   "note": "River-edge rock wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_rock001.vmdl",
+   "note": "Cliff rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/small_rock_cluster_01.vmdl",
+   "note": "Small rock cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks002.vmdl",
+   "note": "River rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks003.vmdl",
+   "note": "River rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks004.vmdl",
+   "note": "River rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks005.vmdl",
+   "note": "River rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/rock_ground001.vmdl",
+   "note": "Ground rock; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/rock_ground002.vmdl",
+   "note": "Ground rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/campfire_rocks001.vmdl",
+   "note": "Rock group",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/campfire_rocks003.vmdl",
+   "note": "Rock group",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock001a.vmdl",
+   "note": "River-edge rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock003a.vmdl",
+   "note": "River-edge rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock005a.vmdl",
+   "note": "River-edge rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock008a.vmdl",
+   "note": "River-edge rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock_wall003a.vmdl",
+   "note": "Rock wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/small_rock_cluster_02.vmdl",
+   "note": "Rock cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/small_rock_cluster_03.vmdl",
+   "note": "Rock cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/rocks/journey_stoneforest04.vmdl",
+   "note": "Journey stone pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/cliffs/cliff_straight_ti10_01.vmdl",
+   "note": "TI10 cliff (straight)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/cliffs/cliff_buttress_ti10_01.vmdl",
+   "note": "TI10 cliff buttress",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cropcircle_rocks001.vmdl",
+   "note": "Ring rocks; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "structures": [
+  {
+   "path": "maps/jungle_assets/temple/jungle_temple_01.vmdl",
+   "note": "Jungle temple building - landmark",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_entrance_01.vmdl",
+   "note": "Jungle temple entrance",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_statue_01.vmdl",
+   "note": "Jungle temple statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_serpent_wall001.vmdl",
+   "note": "Serpent wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_stair_column_serpent.vmdl",
+   "note": "Serpent stair column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_entrance_door_01.vmdl",
+   "note": "Temple entrance door",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_column_01.vmdl",
+   "note": "Temple column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_column_02.vmdl",
+   "note": "Temple column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_str_01.vmdl",
+   "note": "Temple wall (straight)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_endcap_01_headpiece.vmdl",
+   "note": "Temple endcap head carving",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_spout.vmdl",
+   "note": "Temple water spout (pair with dynamic_water_temple_spout particle)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_serpent_wall002.vmdl",
+   "note": "Serpent wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_serpent_wall003.vmdl",
+   "note": "Serpent wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_monkeyhead001.vmdl",
+   "note": "Monkey-head statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/temple_pillar_ivy001.vmdl",
+   "note": "Ivy-covered pillar",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/temple_pillar_ivy002.vmdl",
+   "note": "Ivy-covered pillar",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/temple_wall_ivy001.vmdl",
+   "note": "Ivy-covered wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/classical_column001_ivy001.vmdl",
+   "note": "Classical column with ivy",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/classical_fountain001_ivy.vmdl",
+   "note": "Ivy-covered fountain",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dark_statue/dark_statue_vines.vmdl",
+   "note": "Vine-covered dark statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_main_l.vmdl",
+   "note": "Large ruined arch/wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_02.vmdl",
+   "note": "Ruin piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_moon.vmdl",
+   "note": "Moon ruin piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_pedestal.vmdl",
+   "note": "Ruin pedestal",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/vines_wall001.vmdl",
+   "note": "Vine wall; jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/statue_garden001.vmdl",
+   "note": "Garden statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/building_garden001.vmdl",
+   "note": "Garden building",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/gazebo/gazebo_ti10_01.vmdl",
+   "note": "TI10 gazebo",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_consumables/balloons/frogling_balloon/water_creep_camp_huts.vmdl",
+   "note": "Frog stilt huts (water creep camp); snow tilesets place these",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/leanto_fur.vmdl",
+   "note": "Lean-to shelter; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sniper_hut.vmdl",
+   "note": "Small hut",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/radiant_statue002.vmdl",
+   "note": "Radiant statue; radiant_jungle_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gryphon_statue001.vmdl",
+   "note": "Gryphon statue",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "clutter": [
+  {
+   "path": "maps/jungle_assets/bushes/bush_jungle_00.vmdl",
+   "note": "Jungle bush",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/fern001.vmdl",
+   "note": "Fern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/flower_jungle_01.vmdl",
+   "note": "Jungle flowers; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/mushroom_wild001.vmdl",
+   "note": "Wild mushrooms (mines tileset uses them as trees)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/roots/roots_bottom_01.vmdl",
+   "note": "Big jungle roots",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/bush_jungle_01.vmdl",
+   "note": "Jungle bush",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/bush_palm_01.vmdl",
+   "note": "Palm bush; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/flower_jungle_02.vmdl",
+   "note": "Jungle flowers",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/flower_jungle_03.vmdl",
+   "note": "Jungle flowers",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/flower_jungle_04.vmdl",
+   "note": "Jungle flowers",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/bushes/ivy_jungle_02.vmdl",
+   "note": "Jungle ivy",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/plants/jungle_pitcher01.vmdl",
+   "note": "Pitcher plant",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/roots/roots_top_01.vmdl",
+   "note": "Hanging canopy roots",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_rubble_01.vmdl",
+   "note": "Temple rubble",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_rubble_05.vmdl",
+   "note": "Temple rubble",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/bushes/bush_dire_summer_01.vmdl",
+   "note": "Summer bush; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/bushes/bush_ti10_001.vmdl",
+   "note": "TI10 bush",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushrooms_cavern_small_01.vmdl",
+   "note": "Small cavern mushrooms",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushrooms_cavern_small_03.vmdl",
+   "note": "Small cavern mushrooms",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/plants/schizophyllum01.vmdl",
+   "note": "Shelf fungus",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/fern002.vmdl",
+   "note": "Fern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/fern003.vmdl",
+   "note": "Fern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/flowers001.vmdl",
+   "note": "Flowers",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/flowers002.vmdl",
+   "note": "Flowers",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/grass_clump_02e.vmdl",
+   "note": "Grass clump; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/grass_clump_tintable_00a.vmdl",
+   "note": "Tintable grass clump",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/bush_00.vmdl",
+   "note": "Bush",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/bush_spring_00.vmdl",
+   "note": "Spring bush",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/plant001.vmdl",
+   "note": "Plant",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/ivy001.vmdl",
+   "note": "Ivy",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/roots001.vmdl",
+   "note": "Roots",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/log001.vmdl",
+   "note": "Fallen log",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/stump001.vmdl",
+   "note": "Stump",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/leaf_pile.vmdl",
+   "note": "Leaf pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/mushroom_wild002.vmdl",
+   "note": "Mushrooms",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/mushroom_morel.vmdl",
+   "note": "Morel mushroom",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cattails002.vmdl",
+   "note": "Cattails",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/wildlife_frog001.vmdl",
+   "note": "Frog critter; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/great_hornbill/great_hornbill.vmdl",
+   "note": "Hornbill bird critter; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/wildlife/snake/jungle_snake.vmdl",
+   "note": "Jungle snake critter; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/monkey/monkey22.vmdl",
+   "note": "Monkey critter",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "lights": [
+  {
+   "path": "maps/jungle_assets/temple/temple_bowl_coals_01.vmdl",
+   "note": "Temple fire bowl with coals; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/glowing_fungus.vmdl",
+   "note": "Glowing fungus",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/glow_worms/glow_worms_01.vmdl",
+   "note": "Glow worms (cavern)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_cave/glowing_vines_01.vmdl",
+   "note": "Glowing vines",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/lanterns/lantern_jrny_radiant_1.vmdl",
+   "note": "Journey stone lantern",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_bowl_01.vmdl",
+   "note": "Temple bowl (unlit)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/chinese_lantern001.vmdl",
+   "note": "Paper lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/chinese_lantern002.vmdl",
+   "note": "Paper lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_consumables/balloons/frogling_balloon/water_creep_camp_torch.vmdl",
+   "note": "Frog-camp torch; snow/other tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/crownfall_assets/lamps/crownfall_lamp_radiant.vmdl",
+   "note": "Crownfall terrain lamp",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/radiant_lightrays.vmdl",
+   "note": "Light-shaft card; jungle tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/lightrays/lightrays_cavern_01.vmdl",
+   "note": "Cavern light rays",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/glow_00.vmdl",
+   "note": "Glow card; radiant_jungle_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles001.vmdl",
+   "note": "Candles; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "water_lava": [
+  {
+   "path": "models/effects/waterfall_00.vmdl",
+   "note": "Waterfall sheet",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_pour_smooth_ext_00.vmdl",
+   "note": "Smooth waterfall pour",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/water_edges_00.vmdl",
+   "note": "Water-edge foam strip; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/water/water_puddle_lrg_fx.vmdl",
+   "note": "Jungle puddle (fx model)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/lily_pads_edge_00.vmdl",
+   "note": "Lily pad edge strip; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_01.vmdl",
+   "note": "Waterfall sheet",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_02.vmdl",
+   "note": "Waterfall sheet",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_mist_01.vmdl",
+   "note": "Waterfall mist card",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_pour_splash_00.vmdl",
+   "note": "Waterfall splash",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_contact_radial_00.vmdl",
+   "note": "Waterfall contact ripples",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/water/water_runoff_fx.vmdl",
+   "note": "Water runoff (fx model)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/water/water_puddle_sml_fx.vmdl",
+   "note": "Small puddle (fx model)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/pond_garden001.vmdl",
+   "note": "Garden pond",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/lily_pads001.vmdl",
+   "note": "Lily pads",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/foliage/lily_pads_journey_001.vmdl",
+   "note": "Journey lily pads; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/trees/journey_fountain/journey_fountain.vmdl",
+   "note": "Journey fountain tree-structure",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/waterfall_hole.vmdl",
+   "note": "Waterfall hole",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/map_riverflow_model.vmdl",
+   "note": "River flow model",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "ambient_particles": [
+  {
+   "path": "particles/world_creature_fx/fireflies.vpcf",
+   "note": "Creature ambience: fireflies; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/butterflies_512.vpcf",
+   "note": "Creature ambience: butterflies; radiant_jungle_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/particles/dynamic_water_temple_spout.vpcf",
+   "note": "World: temple water spout; jungle tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fog_lowpatch.vpcf",
+   "note": "World: low fog patch",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/map_riverflow_waterfall_splash.vpcf",
+   "note": "World: waterfall splash; every tileset",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/fireflies_large_w_light.vpcf",
+   "note": "Creature ambience: large fireflies with light",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/dragonflies_group.vpcf",
+   "note": "Creature ambience: dragonflies; jungle tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/moths.vpcf",
+   "note": "Creature ambience: moths",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/bugs_swamp.vpcf",
+   "note": "Creature ambience: swamp bugs",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/bugs_swamp_large.vpcf",
+   "note": "Creature ambience: big swamp bugs",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/birds_01.vpcf",
+   "note": "Creature ambience: birds",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/bluebirds.vpcf",
+   "note": "Creature ambience: bluebirds",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/butterflies.vpcf",
+   "note": "Creature ambience: butterflies",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/particles/fireflies_radiant_cavern.vpcf",
+   "note": "World: cavern fireflies; cavern tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/particles/bees_swarm_01.vpcf",
+   "note": "World: bee swarm (summer terrain)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/particles/summer_terrain_seeds.vpcf",
+   "note": "Terrain ambience: floating seeds",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_spring.vpcf",
+   "note": "Weather: spring (blossoms)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/spring_terrain.vpcf",
+   "note": "Terrain ambience: spring terrain",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/rain.vpcf",
+   "note": "Weather: rain",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/rain_storm.vpcf",
+   "note": "Weather: rainstorm",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_moonlight_fireflies.vpcf",
+   "note": "Weather: moonlight fireflies",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_moonlight_sunray.vpcf",
+   "note": "Weather: moonlight sun rays",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/particles/dynamic_water_runoff_128.vpcf",
+   "note": "World: water runoff 128",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/map_riverflow_waterfall_top_splash.vpcf",
+   "note": "World: waterfall top splash",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/map_riverflow_waterfall_splash_mist.vpcf",
+   "note": "World: waterfall mist",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fog_lowpatch6.vpcf",
+   "note": "World: fog patch variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/hoodwink/debut/particles/hoodwink_showcase_env_godray_conopy.vpcf",
+   "note": "Debut scene: canopy god rays (showcase fx)",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "creatures": [
+  {
+   "path": "models/mh_monsters/rathian/rathian.vmdl",
+   "note": "Rathian, Monster Hunter green wyvern - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_jungle_stalker/n_creep_gargoyle_jungle_stalker.vmdl",
+   "note": "Jungle stalker (ancient neutral) - BOSS/ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/treant_protector/treant_protector.vmdl",
+   "note": "Treant Protector hero - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ancient_frog/n_creep_ancient_frog.vmdl",
+   "note": "Ancient frog - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_high_priest.vmdl",
+   "note": "Forest troll priest (caster) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ancient_frog/n_creep_ancient_frog_mage.vmdl",
+   "note": "Ancient frog mage - ELITE caster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_froglet/n_creep_froglet.vmdl",
+   "note": "Froglet - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_froglet/n_creep_froglet_mage.vmdl",
+   "note": "Froglet mage - FODDER caster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_berserker.vmdl",
+   "note": "Forest troll berserker - FODDER/MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl",
+   "note": "Satyr mindstealer - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_satyr_spawn_a/n_creep_satyr_spawn_a.vmdl",
+   "note": "Satyr spawn - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl",
+   "note": "Hellbear/furbolg - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_harpy_a/n_creep_harpy_a.vmdl",
+   "note": "Harpy scout - FODDER flyer",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl",
+   "note": "Harpy stormcrafter - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_worg_large/n_creep_worg_large.vmdl",
+   "note": "Wolf (large) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_worg_small/n_creep_worg_small.vmdl",
+   "note": "Wolf (small) - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl",
+   "note": "Neutral beast (exact creature unchecked) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_tadpole/n_creep_tadpole_v2.vmdl",
+   "note": "Tadpole - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushling_anim_model.vmdl",
+   "note": "Animated mushling (cavern terrain critter) - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushling02_anim_model.vmdl",
+   "note": "Animated mushling variant - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/mushrooms/mushling03_anim_model.vmdl",
+   "note": "Animated mushling variant - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/mh_monsters/gore_magala/gore_magala.vmdl",
+   "note": "Gore Magala (Monster Hunter) - BOSS (dark jungle)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/furion/treant.vmdl",
+   "note": "Nature's Prophet treant summon - FODDER/MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/lone_druid/spirit_bear.vmdl",
+   "note": "Lone Druid spirit bear - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/lone_druid/true_form.vmdl",
+   "note": "Lone Druid bear true form - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/ursa/ursa.vmdl",
+   "note": "Ursa hero - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/venomancer/venomancer.vmdl",
+   "note": "Venomancer (arms/jaw/tail separate) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/viper/viper.vmdl",
+   "note": "Viper netherdrake (back separate) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/enchantress/enchantress.vmdl",
+   "note": "Enchantress (dress/hair/etc separate) - ELITE caster",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/lycan/lycan_wolf.vmdl",
+   "note": "Lycan wolf summon - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/ti9_chameleon_radiant/ti9_chameleon_radiant_melee.vmdl",
+   "note": "Chameleon lane creep (TI9) - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/ti9_chameleon_radiant/ti9_chameleon_radiant_melee_mega.vmdl",
+   "note": "Chameleon mega creep - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/nian/nian_creep.vmdl",
+   "note": "Nian (New Bloom beast) - BOSS",
+   "size": "huge",
+   "size_verified": false
+  }
+ ],
+ "sounds": []
+}

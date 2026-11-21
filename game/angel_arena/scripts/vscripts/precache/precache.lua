@@ -138,6 +138,11 @@ function PrecacheManager:StartPrecache( context )
 	PrecacheResource( "model_folder", "models/heroes/shadow_fiend/", context)
 	PrecacheResource( "model", "models/props_structures/gravestone005.vmdl", context)
 
+	-- Effects used by the Angel Arena item set. Shop items are not precached on their own.
+	require("items/arena/arena_fx").Precache(context)
+	-- Biome monsters, bosses and their effects (arena/biomes/*). Spawned by Lua, so never precached by a hero.
+	require("arena/core/biomes").Precache(context)
+
 	print("[Angel Arena] Loading precache End")
 	aa_modifier(context)
 end

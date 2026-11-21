@@ -2,7 +2,7 @@
 {
 "item_adamantium_helm"
 {
-	"ID"                            "1355"
+	"ID"                            "10025"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"adamantium_helm"

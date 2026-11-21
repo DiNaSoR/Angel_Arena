@@ -1,38 +1,9 @@
+<!-- Runs with the in-game HUD. It has no visible panels of its own: the script shows the kill
+     target and the duel timer inside Dota's top bar. -->
 <root>
-  <styles>
-    <include src="file://{resources}/styles/custom_game/arena_match.css" />
-  </styles>
   <scripts>
+    <include src="file://{resources}/scripts/custom_game/arena_skin.js" />
     <include src="file://{resources}/scripts/custom_game/arena_match.js" />
   </scripts>
-  <Panel class="ArenaMatchHud" hittest="false" hittestchildren="false">
-    <Panel class="ArenaScoreboard">
-      <Panel id="Angels" class="TeamScore Angels">
-        <Label class="TeamName" text="#arena_team_angels" />
-        <Label id="AngelsScore" class="Score" />
-        <Panel class="TeamProgress">
-          <Panel id="AngelsFill" class="ProgressFill" />
-        </Panel>
-      </Panel>
-      <Panel class="MatchCenter">
-        <Panel class="MatchObjective">
-          <Label class="TargetTitle" text="#arena_kill_target" />
-          <Label id="KillTarget" class="TargetValue" />
-          <Label class="BossObjective" text="#arena_boss_only_objective" />
-          <Label id="MatchPhase" class="MatchDetail" />
-        </Panel>
-        <Panel class="MatchOutcome">
-          <Label id="Winner" class="Winner" />
-          <Label id="VictoryReason" class="MatchDetail" />
-        </Panel>
-      </Panel>
-      <Panel id="Demons" class="TeamScore Demons">
-        <Label class="TeamName" text="#arena_team_demons" />
-        <Label id="DemonsScore" class="Score" />
-        <Panel class="TeamProgress">
-          <Panel id="DemonsFill" class="ProgressFill" />
-        </Panel>
-      </Panel>
-    </Panel>
-  </Panel>
+  <Panel hittest="false" style="width: 100%; height: 100%;" />
 </root>

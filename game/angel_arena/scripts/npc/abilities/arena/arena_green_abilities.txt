@@ -1,0 +1,278 @@
+// Abilities of the green biome (the Verdant Wilds). Included from npc_abilities_custom.txt.
+// Every ability is scripted in arena/biomes/green/abilities.lua (class name = ability name).
+// Monster abilities have four levels: a camp's tier sets the starting level and the match clock
+// raises it (arena/core/tiers.lua). Boss abilities have three: the level is the boss's phase.
+// Tooltips: tools/biomes/tooltips/green.txt (merged by tools/biomes/build_biomes.py).
+"DOTAAbilities"
+{
+	//==================================================================== thorn archer
+	"arena_green_thorn_shot"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"warpine_raider_seed_shot"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"650"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"9 8 7 6"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"damage"					"60 90 130 180"
+			"slow"						"20 25 30 35"
+			"slow_duration"				"2"
+			"projectile_speed"			"1100"
+		}
+	}
+
+	//======================================================================= vine wolf
+	"arena_green_entangling_bite"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"lone_druid_spirit_bear_entangle"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"AbilityValues"
+		{
+			"attacks"					"4 4 3 3"
+			"root_duration"				"0.8 1.0 1.2 1.4"
+			"bonus_damage"				"30 50 75 100"
+		}
+	}
+
+	//==================================================================== thicket bear
+	"arena_green_bramble_slam"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"centaur_hoof_stomp"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.8"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"10 9 8 7"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"325"
+			"damage"					"100 160 230 320"
+			"slow"						"30 35 40 45"
+			"slow_duration"				"2.5"
+		}
+	}
+
+	//==================================================================== spore shaman
+	"arena_green_spore_cloud"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"alchemist_acid_spray"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"14 13 12 11"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"275"
+			"duration"					"5"
+			"damage_per_second"			"25 40 60 85"
+			"miss_chance"				"20 25 30 35"
+		}
+	}
+
+	"arena_green_mending_sap"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"forest_troll_high_priest_heal"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"12 11 10 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"heal"						"150 250 380 550"
+			"regen"						"10 15 22 30"
+			"duration"					"5"
+		}
+	}
+
+	//====================================================================== grove hulk
+	"arena_green_root_grasp"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"treant_overgrowth"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"550"
+		"AbilityCastPoint"				"0.4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"13 12 11 10"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"duration"					"1.4 1.6 1.8 2.0"
+			"damage_per_second"			"40 60 85 115"
+		}
+	}
+
+	"arena_green_bark_skin"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"treant_living_armor"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"22 20 18 16"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"armor"						"8 12 16 20"
+			"regen"						"20 35 50 70"
+			"duration"					"6"
+		}
+	}
+
+	//================================================================= strangler bloom
+	"arena_green_venom_spit"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"venomancer_venomous_gale"
+		"MaxLevel"						"4"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"750"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"AbilityCooldown"				"8 7 6 5"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"damage"					"40 70 100 140"
+			"poison_dps"				"20 35 50 70"
+			"slow"						"15 20 25 30"
+			"duration"					"4"
+			"projectile_speed"			"900"
+		}
+	}
+
+	//============================================================================ boss
+	"arena_green_boss_thorn_nova"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"treant_natures_grasp"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.1"
+		"AbilityChannelTime"			"1.6 1.4 1.2"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"				"16 14 12"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"radius"					"500"
+			"damage"					"500 700 950"
+			"slow"						"40"
+			"slow_duration"				"2"
+		}
+	}
+
+	"arena_green_boss_root_eruption"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"treant_overgrowth"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"				"13 11 9"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"search_radius"				"1200"
+			"radius"					"250"
+			"delay"						"1.6 1.4 1.2"
+			"damage"					"350 450 600"
+			"root_duration"				"1.5 1.75 2.0"
+		}
+	}
+
+	"arena_green_boss_falling_timber"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"tiny_toss_tree"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"				"12 10 8"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"length"					"1100"
+			"width"						"220"
+			"delay"						"1.4 1.2 1.0"
+			"damage"					"500 600 800"
+			"stun_duration"				"1.0 1.2 1.5"
+		}
+	}
+
+	"arena_green_boss_call_of_the_grove"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"arena/biomes/green/abilities.lua"
+		"AbilityTextureName"			"furion_force_of_nature"
+		"MaxLevel"						"3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCooldown"				"30 26 22"
+		"AbilityManaCost"				"0"
+		"AbilityValues"
+		{
+			"count"						"2 3 4"
+			"max_alive"					"6"
+			"duration"					"30"
+		}
+	}
+}

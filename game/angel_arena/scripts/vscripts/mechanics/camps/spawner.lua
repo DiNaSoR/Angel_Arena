@@ -1,3 +1,6 @@
+-- Superseded: the match now starts arena/index.lua (ArenaWorld) instead of CreepCamps, and the
+-- creep_camp markers are used through arena/core/markers.lua. Kept for tests/camps.lua and for
+-- item_drop.lua (CreepItemDrop), which the arena camps still use to drop loot.
 CreepCamps = CreepCamps or class({})
 
 -- Fields in each creep definition.

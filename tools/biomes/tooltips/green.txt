@@ -1,0 +1,104 @@
+// Tooltips and announcements of the green biome (the Verdant Wilds).
+// Merged into both localization files by: python tools/biomes/build_biomes.py
+// Format: one "token"  "text" pair per line. In ability descriptions %name% is the ability's
+// AbilityValues entry of that name; %name%%% prints it followed by a percent sign.
+
+//------------------------------------------------------------------------------ units
+"npc_arena_green_sproutling"									"Sproutling"
+"npc_arena_green_bramble_pup"									"Bramble Pup"
+"npc_arena_green_sporecap"										"Sporecap"
+"npc_arena_green_thorn_archer"									"Thorn Archer"
+"npc_arena_green_vine_wolf"										"Vine Wolf"
+"npc_arena_green_thicket_bear"									"Thicket Bear"
+"npc_arena_green_spore_shaman"									"Spore Shaman"
+"npc_arena_green_grove_hulk"									"Grove Hulk"
+"npc_arena_green_strangler_bloom"								"Strangler Bloom"
+"npc_arena_green_boss"											"Elder Grovewarden"
+
+//-------------------------------------------------------------------------- abilities
+"DOTA_Tooltip_ability_arena_green_thorn_shot"					"Thorn Shot"
+"DOTA_Tooltip_ability_arena_green_thorn_shot_Description"		"Looses a barbed thorn at an enemy, dealing %damage% magic damage and slowing it by %slow%%% for %slow_duration% seconds."
+"DOTA_Tooltip_ability_arena_green_thorn_shot_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_green_thorn_shot_slow"				"%SLOW:"
+"DOTA_Tooltip_ability_arena_green_thorn_shot_slow_duration"		"SLOW DURATION:"
+
+"DOTA_Tooltip_ability_arena_green_entangling_bite"				"Entangling Bite"
+"DOTA_Tooltip_ability_arena_green_entangling_bite_Description"	"Every %attacks% attacks on the same enemy, vines burst from the bite: the target takes %bonus_damage% extra magic damage and is rooted for %root_duration% seconds."
+"DOTA_Tooltip_ability_arena_green_entangling_bite_attacks"		"ATTACKS NEEDED:"
+"DOTA_Tooltip_ability_arena_green_entangling_bite_root_duration"	"ROOT DURATION:"
+"DOTA_Tooltip_ability_arena_green_entangling_bite_bonus_damage"	"BONUS DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_green_bramble_slam"					"Bramble Slam"
+"DOTA_Tooltip_ability_arena_green_bramble_slam_Description"		"Rears up while a ring closes on the ground around it, then slams down: enemies within %radius% take %damage% magic damage and are slowed by %slow%%% for %slow_duration% seconds. Step out of the ring before it closes."
+"DOTA_Tooltip_ability_arena_green_bramble_slam_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_green_bramble_slam_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_green_bramble_slam_slow"			"%SLOW:"
+
+"DOTA_Tooltip_ability_arena_green_spore_cloud"					"Spore Cloud"
+"DOTA_Tooltip_ability_arena_green_spore_cloud_Description"		"Bursts a cloud of choking spores that lingers for %duration% seconds. Enemies inside take %damage_per_second% magic damage each second and their attacks have a %miss_chance%%% chance to miss."
+"DOTA_Tooltip_ability_arena_green_spore_cloud_radius"			"RADIUS:"
+"DOTA_Tooltip_ability_arena_green_spore_cloud_damage_per_second"	"DAMAGE PER SECOND:"
+"DOTA_Tooltip_ability_arena_green_spore_cloud_miss_chance"		"%MISS CHANCE:"
+
+"DOTA_Tooltip_ability_arena_green_mending_sap"					"Mending Sap"
+"DOTA_Tooltip_ability_arena_green_mending_sap_Description"		"Coats a wounded ally in healing sap: it recovers %heal% health at once and %regen% more each second for %duration% seconds."
+"DOTA_Tooltip_ability_arena_green_mending_sap_heal"				"HEAL:"
+"DOTA_Tooltip_ability_arena_green_mending_sap_regen"			"HEALTH REGEN:"
+
+"DOTA_Tooltip_ability_arena_green_root_grasp"					"Root Grasp"
+"DOTA_Tooltip_ability_arena_green_root_grasp_Description"		"Roots tear out of the ground around an enemy, holding it in place for %duration% seconds and dealing %damage_per_second% magic damage each second."
+"DOTA_Tooltip_ability_arena_green_root_grasp_duration"			"DURATION:"
+"DOTA_Tooltip_ability_arena_green_root_grasp_damage_per_second"	"DAMAGE PER SECOND:"
+
+"DOTA_Tooltip_ability_arena_green_bark_skin"					"Bark Skin"
+"DOTA_Tooltip_ability_arena_green_bark_skin_Description"		"When badly hurt, grows a shell of living bark for %duration% seconds: +%armor% armor and +%regen% health regeneration."
+"DOTA_Tooltip_ability_arena_green_bark_skin_armor"				"BONUS ARMOR:"
+"DOTA_Tooltip_ability_arena_green_bark_skin_regen"				"HEALTH REGEN:"
+
+"DOTA_Tooltip_ability_arena_green_venom_spit"					"Venom Spit"
+"DOTA_Tooltip_ability_arena_green_venom_spit_Description"		"Spits venom at an enemy: %damage% magic damage on impact, then %poison_dps% each second and %slow%%% slower movement for %duration% seconds."
+"DOTA_Tooltip_ability_arena_green_venom_spit_damage"			"DAMAGE:"
+"DOTA_Tooltip_ability_arena_green_venom_spit_poison_dps"		"POISON PER SECOND:"
+"DOTA_Tooltip_ability_arena_green_venom_spit_slow"				"%SLOW:"
+
+"DOTA_Tooltip_ability_arena_green_boss_thorn_nova"				"Thorn Nova"
+"DOTA_Tooltip_ability_arena_green_boss_thorn_nova_Description"	"Plants its roots and gathers its strength while a ring closes around it, then thorns burst out: enemies within %radius% take %damage% magic damage and are slowed by %slow%%%. Leave the ring, or stun the Grovewarden to stop it. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_green_boss_thorn_nova_radius"		"RADIUS:"
+"DOTA_Tooltip_ability_arena_green_boss_thorn_nova_damage"		"DAMAGE:"
+
+"DOTA_Tooltip_ability_arena_green_boss_root_eruption"			"Root Eruption"
+"DOTA_Tooltip_ability_arena_green_boss_root_eruption_Description"	"A ring closes under every enemy hero nearby. After %delay% seconds roots erupt from each ring, dealing %damage% magic damage and rooting anyone inside for %root_duration% seconds. Keep moving. Each level is one of its phases."
+"DOTA_Tooltip_ability_arena_green_boss_root_eruption_delay"		"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_green_boss_root_eruption_damage"	"DAMAGE:"
+"DOTA_Tooltip_ability_arena_green_boss_root_eruption_root_duration"	"ROOT DURATION:"
+
+"DOTA_Tooltip_ability_arena_green_boss_falling_timber"			"Falling Timber"
+"DOTA_Tooltip_ability_arena_green_boss_falling_timber_Description"	"Marks a line toward an enemy where a great tree will fall. After %delay% seconds everything on the line takes %damage% magic damage and is stunned for %stun_duration% seconds. Used from its second phase."
+"DOTA_Tooltip_ability_arena_green_boss_falling_timber_delay"	"WARNING TIME:"
+"DOTA_Tooltip_ability_arena_green_boss_falling_timber_damage"	"DAMAGE:"
+"DOTA_Tooltip_ability_arena_green_boss_falling_timber_stun_duration"	"STUN:"
+
+"DOTA_Tooltip_ability_arena_green_boss_call_of_the_grove"		"Call of the Grove"
+"DOTA_Tooltip_ability_arena_green_boss_call_of_the_grove_Description"	"Calls %count% sproutlings out of the earth to fight for %duration% seconds, up to %max_alive% at a time. They wither when the Grovewarden falls. Used from its second phase."
+"DOTA_Tooltip_ability_arena_green_boss_call_of_the_grove_count"	"SPROUTLINGS:"
+
+//-------------------------------------------------------------------------- modifiers
+"DOTA_Tooltip_modifier_arena_green_rooted"						"Rooted"
+"DOTA_Tooltip_modifier_arena_green_rooted_Description"			"Held fast by roots: cannot move."
+"DOTA_Tooltip_modifier_arena_green_thorned"						"Thorned"
+"DOTA_Tooltip_modifier_arena_green_thorned_Description"			"Thorns slow movement by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%%."
+"DOTA_Tooltip_modifier_arena_green_spore_sickness"				"Spore Sickness"
+"DOTA_Tooltip_modifier_arena_green_spore_sickness_Description"	"Choking on spores: %dMODIFIER_PROPERTY_MISS_PERCENTAGE%%% chance for attacks to miss."
+"DOTA_Tooltip_modifier_arena_green_mending_sap"					"Mending Sap"
+"DOTA_Tooltip_modifier_arena_green_mending_sap_Description"		"Regenerating %dMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT% health each second."
+"DOTA_Tooltip_modifier_arena_green_bark_skin"					"Bark Skin"
+"DOTA_Tooltip_modifier_arena_green_bark_skin_Description"		"+%dMODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS% armor and +%dMODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT% health regeneration."
+"DOTA_Tooltip_modifier_arena_green_venom"						"Venom"
+"DOTA_Tooltip_modifier_arena_green_venom_Description"			"Poisoned: taking damage over time and moving %dMODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE%%% slower."
+
+//---------------------------------------------------------------------- announcements
+"arena_green_boss_soon"											"The Elder Grovewarden stirs in the Verdant Wilds. It wakes in one minute."
+"arena_green_boss_awakens"										"The Elder Grovewarden has awakened in the Verdant Wilds!"
+"arena_green_boss_phase_2"										"The Grovewarden roars and the forest answers: falling trees and sproutlings join the fight!"
+"arena_green_boss_phase_3"										"The Grovewarden is enraged. Its roots strike faster and harder!"
+"arena_green_boss_slain"										" slew the Elder Grovewarden! Every hero on the team earns gold and experience."

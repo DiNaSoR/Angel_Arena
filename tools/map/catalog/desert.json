@@ -1,0 +1,1177 @@
+{
+ "trees": [
+  {
+   "path": "models/props_tree/palm_02e.vmdl",
+   "note": "Palm tree; main tree of radiant_desert_basic (and jungle)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_03a.vmdl",
+   "note": "Palm tree; radiant_desert_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_cactus01.vmdl",
+   "note": "Saguaro-style cactus; desert tilesets place it as a tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_baobab.vmdl",
+   "note": "Baobab tree; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_cactus02.vmdl",
+   "note": "Cactus; radiant_desert_basic tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_02b.vmdl",
+   "note": "Palm; radiant_desert_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_02d.vmdl",
+   "note": "Palm; radiant_desert_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_03.vmdl",
+   "note": "Palm; radiant_desert_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_02c.vmdl",
+   "note": "Palm",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_01.vmdl",
+   "note": "Palm",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/palm_cloth_01.vmdl",
+   "note": "Palm with cloth canopy (oasis camp)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_cactus03.vmdl",
+   "note": "Cactus; radiant_desert_basic tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_baobab02.vmdl",
+   "note": "Baobab; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_baobab03.vmdl",
+   "note": "Baobab; dire_desert_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_baobab04.vmdl",
+   "note": "Baobab",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert001.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert002.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert003.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert004.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert005.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_desert006.vmdl",
+   "note": "Desert tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004_tint.vmdl",
+   "note": "Tintable Dire tree; dire_desert_basic tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree007_tintable.vmdl",
+   "note": "Tintable bare Dire tree; dire_desert_basic tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_01.vmdl",
+   "note": "Dead tree (name-based)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_02.vmdl",
+   "note": "Dead tree variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/olive/tree_oldolive.vmdl",
+   "note": "Gnarled old olive tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/olive/tree_oldolive2.vmdl",
+   "note": "Old olive variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/temple_tree001.vmdl",
+   "note": "Temple tree; dire_temple tileset",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "rocks": [
+  {
+   "path": "models/props/stoneforest/stoneforest01.vmdl",
+   "note": "Tall stone-forest rock pillar (mesa / hoodoo look)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/stoneforest/stoneforest02.vmdl",
+   "note": "Stone-forest pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_rock001.vmdl",
+   "note": "Cliff rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/land_rock001a.vmdl",
+   "note": "Land rock boulder",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/rock_ground001.vmdl",
+   "note": "Ground rock slab; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/stoneforest/stoneforest03.vmdl",
+   "note": "Stone-forest pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/stoneforest/stoneforest04.vmdl",
+   "note": "Stone-forest pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/rocks/journey_stoneforest01.vmdl",
+   "note": "Journey-terrain stone-forest pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/rocks/journey_stoneforest02.vmdl",
+   "note": "Journey stone-forest pillar",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_rock002.vmdl",
+   "note": "Cliff rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/land_rock002a.vmdl",
+   "note": "Land rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/land_rock003a.vmdl",
+   "note": "Land rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/rock_ground002.vmdl",
+   "note": "Ground rock slab; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cropcircle_rocks001.vmdl",
+   "note": "Standing ring rocks; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cropcircle_rocks002.vmdl",
+   "note": "Ring rocks",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cropcircle_rocks003.vmdl",
+   "note": "Ring rocks",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall005.vmdl",
+   "note": "Cliff wall; dire_desert_basic",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall001.vmdl",
+   "note": "Cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall003.vmdl",
+   "note": "Cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/chipped_rocks001.vmdl",
+   "note": "Chipped rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/chipped_rocks002.vmdl",
+   "note": "Chipped rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/chipped_rocks003.vmdl",
+   "note": "Chipped rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks003.vmdl",
+   "note": "River rocks; heavily used in desert tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/campfire_rocks002.vmdl",
+   "note": "Rock group; desert tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock_wall001a.vmdl",
+   "note": "Rock wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/riveredge_rock_wall002a.vmdl",
+   "note": "Rock wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_mines/mines_rocks_pile_01a.vmdl",
+   "note": "Rock pile (mines kit)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/side_buildings/cf_event_bg_rock.vmdl",
+   "note": "Crownfall background rock (event)",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "structures": [
+  {
+   "path": "models/props_structures/obelisk001.vmdl",
+   "note": "Stone obelisk; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ancient_giant_skeleton.vmdl",
+   "note": "Giant creature skeleton - landmark bones",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/midas_throne/midas_throne.vmdl",
+   "note": "Golden Midas throne (temple tileset) - treasure landmark",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column_temple_dire_00.vmdl",
+   "note": "Temple column; dire_temple tileset",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/temple_statue001.vmdl",
+   "note": "Temple statue; radiant_temple tileset",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/obelisk001b.vmdl",
+   "note": "Obelisk variant; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column001b.vmdl",
+   "note": "Column; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column001c.vmdl",
+   "note": "Broken column; desert tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue001.vmdl",
+   "note": "Statue; dire_desert_basic and temples",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stair_block002.vmdl",
+   "note": "Stair block; dire_desert_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stair_block003.vmdl",
+   "note": "Stair block; desert/temple tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/temple_statue002.vmdl",
+   "note": "Temple statue; dire_temple",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ancient_wall_statue001.vmdl",
+   "note": "Ancient wall statue; temple tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/statues/priest/statue_priest.vmdl",
+   "note": "Priest statue; temple tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column_temple_dire_01.vmdl",
+   "note": "Temple column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column_temple_dire_02.vmdl",
+   "note": "Temple column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/column_temple_radiant_00.vmdl",
+   "note": "Temple column (radiant)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_monkeyhead001.vmdl",
+   "note": "Monkey-head statue; temple tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_ruins001a.vmdl",
+   "note": "Stone ruins piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_ruins002a.vmdl",
+   "note": "Stone ruins piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_ruins003a.vmdl",
+   "note": "Stone ruins piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_ruins004a.vmdl",
+   "note": "Stone ruins piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_ruins005a.vmdl",
+   "note": "Stone ruins piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_column001a.vmdl",
+   "note": "Stone column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_column003a.vmdl",
+   "note": "Stone column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_01.vmdl",
+   "note": "Ruined wall piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_main_l.vmdl",
+   "note": "Large ruined arch/wall (left)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ruins/spring_ruins_main_r.vmdl",
+   "note": "Large ruined arch/wall (right)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stone_guard_statue_001.vmdl",
+   "note": "Stone guardian statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/rock_statue001.vmdl",
+   "note": "Rock-carved statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ram_statue.vmdl",
+   "note": "Ram statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/tent_dk_large.vmdl",
+   "note": "Large war tent",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/tent_dk_med.vmdl",
+   "note": "Medium tent",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/tent_dk_small.vmdl",
+   "note": "Small tent",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/tent_01a.vmdl",
+   "note": "Camp tent",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/wagon_wood_02_centaur.vmdl",
+   "note": "Centaur wooden wagon",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ship_broken001.vmdl",
+   "note": "Broken ship hull (stranded wreck)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/well_skull.vmdl",
+   "note": "Skull-carved well",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/old_well.vmdl",
+   "note": "Old well",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/whale_skeleton.vmdl",
+   "note": "Whale skeleton (desert bones landmark)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_dragon001.vmdl",
+   "note": "Dragon skull",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_bull001.vmdl",
+   "note": "Bull skull",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/imperia_throne/imperia_throne.vmdl",
+   "note": "Crownfall throne (event)",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "clutter": [
+  {
+   "path": "models/props_bones/bones004_set_tintable.vmdl",
+   "note": "Bone pile (tintable); desert tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_thorns01.vmdl",
+   "note": "Thorn bush; dire_desert_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/succulent_fat.vmdl",
+   "note": "Fat succulent; radiant_desert_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/wood_spikes001.vmdl",
+   "note": "Wooden spike barricade; dire_desert_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/rib_cage001.vmdl",
+   "note": "Rib cage",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/bones001_set_tintable.vmdl",
+   "note": "Bone pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/bones002_set_tintable.vmdl",
+   "note": "Bone pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/bones003_set_tintable.vmdl",
+   "note": "Bone pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/bones_ribcage001.vmdl",
+   "note": "Ribcage bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skeleton_design001.vmdl",
+   "note": "Skeleton remains",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skeleton_design002.vmdl",
+   "note": "Skeleton remains",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_ram001.vmdl",
+   "note": "Ram skull",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_thorns02.vmdl",
+   "note": "Thorn bush",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/desert_thorns03.vmdl",
+   "note": "Thorn bush",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/desert/succulent_leafy.vmdl",
+   "note": "Leafy succulent",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/wood_spikes004.vmdl",
+   "note": "Wooden spikes",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/wood_spikes007.vmdl",
+   "note": "Wooden spikes",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/skeleton001.vmdl",
+   "note": "Skeleton debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/skeleton002.vmdl",
+   "note": "Skeleton debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/clay_pot001.vmdl",
+   "note": "Clay pot",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/clay_pot003.vmdl",
+   "note": "Clay pot",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/terracotta_pot001.vmdl",
+   "note": "Terracotta pot; temple tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/terracotta_pot003.vmdl",
+   "note": "Terracotta pot",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/sack_bag_00.vmdl",
+   "note": "Sack",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/sack_bag_02.vmdl",
+   "note": "Sack",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/crate_01.vmdl",
+   "note": "Crate",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/basket001.vmdl",
+   "note": "Basket",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wagon_wheel001.vmdl",
+   "note": "Wagon wheel",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/sword001.vmdl",
+   "note": "Sword stuck in ground",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/urn002.vmdl",
+   "note": "Urn; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/scorpion001.vmdl",
+   "note": "Scorpion critter; radiant_desert_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/mesh/vulture001.vmdl",
+   "note": "Vulture critter; dire_desert_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/sand_fish_burrow/sand_fish_burrow.vmdl",
+   "note": "Sand-fish burrow mound (event)",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "lights": [
+  {
+   "path": "models/events/crownfall/survivors/architecture/palace/cf_palace_brazier.vmdl",
+   "note": "Crownfall palace brazier (event asset; flame may need a particle)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/roshan_torch.vmdl",
+   "note": "Tall torch (Roshan pit torch)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sconce_coloseum_000.vmdl",
+   "note": "Colosseum wall sconce",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/torch001.vmdl",
+   "note": "Torch post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ancient_caldron001.vmdl",
+   "note": "Ancient cauldron; temple tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sconce_coloseum_001.vmdl",
+   "note": "Colosseum sconce variant",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/architecture/palace/cf_palace_new_column_large_a_w_brazier.vmdl",
+   "note": "Palace column with brazier (event)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/architecture/palace/cf_palace_new_column_large_a_w_sconce.vmdl",
+   "note": "Palace column with sconce (event)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/camp_fire001.vmdl",
+   "note": "Campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern002.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles003.vmdl",
+   "note": "Candle cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/glow_00.vmdl",
+   "note": "Glow card; radiant_desert_basic",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "water_lava": [
+  {
+   "path": "models/effects/water_edges_00.vmdl",
+   "note": "Water-edge foam strip; desert tilesets (oasis edge)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/lily_pads001.vmdl",
+   "note": "Lily pads; desert tilesets (oasis)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/lily_pads_edge_00.vmdl",
+   "note": "Lily pad edge strip; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/classical_fountain001.vmdl",
+   "note": "Classical fountain (oasis plaza)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/water_edges_02.vmdl",
+   "note": "Water edge strip; desert tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cattails001.vmdl",
+   "note": "Cattail reeds; desert tilesets (oasis)",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "ambient_particles": [
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco.vpcf",
+   "note": "Weather: Sirocco sandstorm (cosmetic weather)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/desert_sand_drift.vpcf",
+   "note": "Terrain ambience: blowing sand drift (desert terrain)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/desert_terrain.vpcf",
+   "note": "Terrain ambience: desert terrain fx",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/particles/summer_terrain_heat.vpcf",
+   "note": "Terrain ambience: summer heat shimmer",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco_b.vpcf",
+   "note": "Weather: sirocco layer b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco_c.vpcf",
+   "note": "Weather: sirocco layer c",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco_d.vpcf",
+   "note": "Weather: sirocco layer d",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco_e.vpcf",
+   "note": "Weather: sirocco layer e",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_sirocco_f.vpcf",
+   "note": "Weather: sirocco layer f",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/particles/summer_terrain.vpcf",
+   "note": "Terrain ambience: summer terrain",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/summer_assets/particles/summer_terrain_motes.vpcf",
+   "note": "Terrain ambience: drifting motes",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fire_torch.vpcf",
+   "note": "World: torch fire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/lamp_flame_braser.vpcf",
+   "note": "World: brazier flame",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fire_camp_01.vpcf",
+   "note": "World: campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/flies.vpcf",
+   "note": "Creature ambience: flies (good over bones)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/moths.vpcf",
+   "note": "Creature ambience: moths; desert tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/dragonflies_group.vpcf",
+   "note": "Creature ambience: dragonflies; desert tilesets (oasis)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/lamp_flame_tintable.vpcf",
+   "note": "Tintable lamp flame; used by every Valve tileset",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "creatures": [
+  {
+   "path": "models/heroes/sand_king/sand_king.vmdl",
+   "note": "Sand King hero (arms/head/legs/tail are separate wearables - attach them) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/mh_monsters/seregios/seregios.vmdl",
+   "note": "Seregios, Monster Hunter golden wyvern - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl",
+   "note": "Big thunder lizard - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl",
+   "note": "Centaur conqueror - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/skeleton_boss/skeleton_boss.vmdl",
+   "note": "Crownfall skeleton boss (event) - BOSS (tomb guardian)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl",
+   "note": "Small thunder lizard - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_centaur_med/n_creep_centaur_med.vmdl",
+   "note": "Centaur courser - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl",
+   "note": "Vulture - FODDER flyer",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl",
+   "note": "Vulture variant - FODDER flyer",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll.vmdl",
+   "note": "Gnoll - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_kobold/kobold_b/n_creep_kobold_b.vmdl",
+   "note": "Kobold soldier - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl",
+   "note": "Kobold - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/skeleton_melee/skeleton_melee.vmdl",
+   "note": "Crownfall skeleton warrior (event) - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/golem_a/golem_a_enemy.vmdl",
+   "note": "Crownfall golem (event) - ELITE (sandstone golem)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/golem_b/golem_b_enemy.vmdl",
+   "note": "Crownfall golem b (event) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/sand_fish/sand_fish_dynamic.vmdl",
+   "note": "Crownfall sand fish (event; animation set unchecked) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/ti9_crocodilian_dire/ti9_crocodilian_dire_melee_mega.vmdl",
+   "note": "Crocodilian lane creep (TI9) - MID (oasis)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/ti9_crocodilian_dire/ti9_crocodilian_dire_melee.vmdl",
+   "note": "Crocodilian lane creep - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/nerubian_assassin/nerubian_assassin.vmdl",
+   "note": "Nyx Assassin hero (scarab; armor/helmet/weapon separate) - ELITE",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/weaver/weaver.vmdl",
+   "note": "Weaver hero (beetle; antlers/arms/legs separate) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/centaur/centaur.vmdl",
+   "note": "Centaur Warrunner hero (wearables separate) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/elder_titan/elder_titan.vmdl",
+   "note": "Elder Titan hero (wearables separate) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/broodmother/broodmother.vmdl",
+   "note": "Broodmother hero (wearables separate) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/broodmother/spiderling.vmdl",
+   "note": "Spiderling - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/scorpion001.vmdl",
+   "note": "Scorpion (ambient critter; probably no combat anims) - critter",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "sounds": []
+}

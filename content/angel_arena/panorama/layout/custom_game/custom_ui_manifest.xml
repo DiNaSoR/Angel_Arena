@@ -1,25 +1,18 @@
 <root>
   <scripts>
+    <include src="file://{resources}/scripts/custom_game/arena_ui_config.js" />
     <include src="file://{resources}/scripts/util.js" />
     <include src="file://{resources}/scripts/playertables/playertables_base.js" />
     <include src="file://{resources}/scripts/custom_game/gold.js" />
   </scripts>
-  <script>
-    GameUI.CustomUIConfig().team_colors = {};
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "#80dadb;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_BADGUYS] = "#ff9c76;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_1] = "#c54da8;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_2] = "#ff6c00;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_3] = "#3455FF;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_4] = "#65d413;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_5] = "#815336;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_6] = "#1bc0d8;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_7] = "#c7e40d;";
-    GameUI.CustomUIConfig().team_colors[DOTATeam_t.DOTA_TEAM_CUSTOM_8] = "#8c2af4;";
-  </script>
   <Panel>
     <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/arena_setup.xml" />
+    <CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/arena_pregame.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_match.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_shop.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_notifications.xml" />
+    <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
+    <CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
+    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/arena_debug.xml" />
   </Panel>
 </root>

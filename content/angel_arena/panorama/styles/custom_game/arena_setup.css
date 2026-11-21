@@ -1,43 +1,715 @@
+/*
+  Team select: Angels on the left, Demons on the right, the pillar of light between them.
+  The painted backdrop belongs to the loading screen layer (custom_loading_screen.css).
+  Palette: night stone #0b1019, vellum #f3e7d0, reliquary gold #d9a85b / #ffe2a0,
+           halo teal #80dadb (Angels), ember #ff9c76 (Demons).
+  Type:    Grenze for inscriptions, Radiance for everything that is read.
+*/
+
 .ArenaSetup
 {
   width: 100%;
   height: 100%;
 }
 
-.ArenaSetupRules
-{
-  vertical-align: bottom;
-  margin-left: 32px;
-  margin-bottom: 88px;
-  width: 375px;
-  flow-children: down;
-  padding: 13px 18px;
-  border-left: 2px solid #80dadb;
-  background-color: #111b27eb;
-}
-
-.ArenaSetupTitle, .ArenaSetupRule
-{
-  font-family: Radiance;
-}
-
-.ArenaSetupTitle
-{
-  color: #f9eee0;
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.ArenaSetupRule
+.SetupFrame
 {
   width: 100%;
-  color: #c3e4e5;
-  font-size: 17px;
-  white-space: normal;
+  height: 100%;
+  flow-children: right;
+  padding: 40px 96px 132px 96px;
 }
 
-.ArenaSetupBossRule
+/* ---------------------------------------------------------------- sides */
+
+.Side
 {
-  color: #ffc09b;
+  width: 430px;
+  margin-top: 26px;
+  flow-children: down;
+  transition-property: brightness, pre-transform-scale2d;
+  transition-duration: 0.18s;
+  transition-timing-function: ease-out;
+}
+
+.Side:hover
+{
+  brightness: 1.12;
+}
+
+.Side:active
+{
+  pre-transform-scale2d: 0.99;
+}
+
+.SideCrest
+{
+  width: 100%;
+  height: 260px;
+  margin-top: -12px;
+  margin-bottom: -12px;
+}
+
+/* A blurred copy of the sigil behind it: a glow that follows the crest's outline.
+   Both images are padded inside their panels. Blur, shadow and the breathing scale are drawn
+   within a panel's own bounds, so without the padding they are cut off flat at its edges. */
+.CrestAura
+{
+  width: 100%;
+  height: 100%;
+  padding: 34px 0px;
+  blur: gaussian( 9 );
+  brightness: 1.6;
+  opacity: 0.45;
+  animation-name: Breathe;
+  animation-duration: 3.6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.Mine .CrestAura
+{
+  brightness: 2.4;
+}
+
+@keyframes 'Breathe'
+{
+  0%
+  {
+    opacity: 0.3;
+  }
+
+  100%
+  {
+    opacity: 0.85;
+  }
+}
+
+.CrestSigil
+{
+  width: 100%;
+  height: 100%;
+  padding: 24px 0px;
+  img-shadow: 0px 6px 14px 1.2 #000000cc;
+  saturation: 0.75;
+  transition-property: saturation, padding;
+  transition-duration: 0.25s;
+}
+
+.DemonsSide .CrestSigil
+{
+  brightness: 1.35;
+}
+
+/* The chosen side's crest grows into its padding rather than past the panel. */
+.Mine .CrestSigil
+{
+  saturation: 1.1;
+  padding: 14px 0px;
+}
+
+.SideName
+{
+  horizontal-align: center;
+  margin-top: -6px;
+  font-family: Grenze;
+  font-weight: bold;
+  font-size: 66px;
+  text-shadow: 0px 3px 8px 2.5 #05070bee;
+}
+
+.AngelsSide .SideName
+{
+  color: #c9f6f4;
+}
+
+.DemonsSide .SideName
+{
+  color: #ffc8a8;
+}
+
+.SideCount
+{
+  horizontal-align: center;
+  margin-top: -6px;
+  font-family: Radiance;
+  font-size: 18px;
+  color: #a79f90;
+}
+
+.SideRule
+{
+  width: 100%;
+  height: 1px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.AngelsSide .SideRule
+{
+  background-color: gradient( linear, 0% 0%, 100% 0%, from( #80dadb00 ), color-stop( 0.5, #80dadbcc ), to( #80dadb00 ) );
+}
+
+.DemonsSide .SideRule
+{
+  background-color: gradient( linear, 0% 0%, 100% 0%, from( #ff9c7600 ), color-stop( 0.5, #ff9c76cc ), to( #ff9c7600 ) );
+}
+
+.Seats
+{
+  width: 100%;
+  flow-children: down;
+}
+
+.Seat
+{
+  width: 100%;
+  height: 52px;
+  margin-bottom: 6px;
+  flow-children: right;
+  background-color: #0a0e16b8;
+  border: 1px solid #ffffff12;
+}
+
+.Seat.Taken
+{
+  background-color: gradient( linear, 0% 0%, 100% 0%, from( #17212ef2 ), to( #0c1119e6 ) );
+  border: 1px solid #ffffff24;
+}
+
+.Seat.Local
+{
+  border: 1px solid #d9a85bcc;
+  box-shadow: #d9a85b40 0px 0px 10px 0px;
+}
+
+.SeatMark
+{
+  width: 3px;
+  height: 100%;
+}
+
+.AngelsSide .Taken .SeatMark
+{
+  background-color: #80dadb;
+}
+
+.DemonsSide .Taken .SeatMark
+{
+  background-color: #ff9c76;
+}
+
+.SeatAvatar
+{
+  width: 36px;
+  height: 36px;
+  margin-left: 10px;
+  vertical-align: center;
+  visibility: collapse;
+}
+
+.Taken .SeatAvatar
+{
+  visibility: visible;
+}
+
+.SeatName
+{
+  width: fill-parent-flow( 1 );
+  margin-left: 12px;
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 19px;
+  font-style: italic;
+  color: #6f6a62;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Taken .SeatName
+{
+  font-size: 22px;
+  font-style: normal;
+  color: #f3e7d0;
+}
+
+.SeatTag
+{
+  margin-right: 14px;
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 15px;
+  color: #d9a85b;
+}
+
+.SideAction
+{
+  width: 100%;
+  height: 58px;
+  margin-top: 8px;
+  border: 1px solid #ffffff2e;
+  background-color: #0a0e16cc;
+  transition-property: background-color, border;
+  transition-duration: 0.18s;
+}
+
+.AngelsSide .SideAction
+{
+  border: 1px solid #80dadb99;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #2c6f76e6 ), to( #173c44e6 ) );
+}
+
+.DemonsSide .SideAction
+{
+  border: 1px solid #ff9c7699;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #8a3323e6 ), to( #4d1a14e6 ) );
+}
+
+.AngelsSide:hover .SideAction
+{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #3c939be6 ), to( #1f5059e6 ) );
+}
+
+.DemonsSide:hover .SideAction
+{
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #b34430e6 ), to( #66231ae6 ) );
+}
+
+.SideAction Label
+{
+  horizontal-align: center;
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 21px;
+  font-weight: bold;
+  color: #fbf3e2;
+  text-shadow: 0px 1px 2px 2 #000000aa;
+}
+
+.ActionJoined, .ActionFull, .ActionLocked
+{
+  visibility: collapse;
+}
+
+/* Full, locked and joined each replace the call to action. Later rules win. */
+.Full .ActionJoin, .Locked .ActionJoin, .Mine .ActionJoin
+{
+  visibility: collapse;
+}
+
+.Full .ActionFull
+{
+  visibility: visible;
+}
+
+.Locked .ActionFull
+{
+  visibility: collapse;
+}
+
+.Locked .ActionLocked
+{
+  visibility: visible;
+}
+
+.Mine .ActionFull, .Mine .ActionLocked
+{
+  visibility: collapse;
+}
+
+.Mine .ActionJoined
+{
+  visibility: visible;
+  color: #ffe2a0;
+}
+
+.Full .SideAction, .Locked .SideAction, .Mine .SideAction,
+.Full:hover .SideAction, .Locked:hover .SideAction, .Mine:hover .SideAction
+{
+  background-color: #0a0e16cc;
+  border: 1px solid #ffffff2e;
+}
+
+.Mine .SideAction, .Mine:hover .SideAction
+{
+  border: 1px solid #d9a85bcc;
+}
+
+.SideAction .ActionFull, .SideAction .ActionLocked
+{
+  font-weight: normal;
+  color: #a79f90;
+}
+
+/* --------------------------------------------------------------- centre */
+
+.Centre
+{
+  width: fill-parent-flow( 1 );
+  height: 100%;
+  flow-children: down;
+}
+
+.Title
+{
+  horizontal-align: center;
+  margin-top: 6px;
+  font-family: Grenze;
+  font-weight: bold;
+  font-size: 104px;
+  color: #fbefd6;
+  text-shadow: 0px 4px 14px 3 #05070bf2;
+}
+
+.Divider
+{
+  width: 560px;
+  height: 85px;
+  horizontal-align: center;
+  margin-top: -22px;
+}
+
+.Countdown
+{
+  width: 380px;
+  height: 380px;
+  horizontal-align: center;
+  margin-top: 14px;
+}
+
+/* Soft light behind the medallion: the foot of the pillar in the backdrop. */
+.CountdownGlow
+{
+  width: 100%;
+  height: 100%;
+  background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #ffb84a99 ), to( #ffb84a00 ) );
+}
+
+.CountdownRing
+{
+  width: 212px;
+  height: 212px;
+  horizontal-align: center;
+  vertical-align: center;
+  border-radius: 50%;
+  border: 2px solid #ffe2a0;
+  background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #241a0af7 ), to( #0b1019f2 ) );
+}
+
+.CountdownRingInner
+{
+  width: 184px;
+  height: 184px;
+  horizontal-align: center;
+  vertical-align: center;
+  border-radius: 50%;
+  border: 1px solid #d9a85b88;
+}
+
+.CountdownValue
+{
+  horizontal-align: center;
+  vertical-align: center;
+  margin-top: -6px;
+  font-family: Grenze;
+  font-weight: bold;
+  font-size: 112px;
+  color: #fff3d6;
+  visibility: collapse;
+}
+
+.Long .CountdownValue
+{
+  margin-top: 0px;
+  font-size: 58px;
+}
+
+.Counting .CountdownValue
+{
+  visibility: visible;
+}
+
+/* Shown while no countdown is running: the host has paused the clock. */
+.CountdownIdle
+{
+  width: 54px;
+  height: 54px;
+  horizontal-align: center;
+  vertical-align: center;
+  border: 2px solid #d9a85b;
+  transform: rotateZ( 45deg );
+}
+
+.Counting .CountdownIdle
+{
+  visibility: collapse;
+}
+
+.Final .CountdownGlow
+{
+  animation-name: LastSeconds;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes 'LastSeconds'
+{
+  0%
+  {
+    opacity: 0.7;
+    pre-transform-scale2d: 0.92;
+  }
+
+  100%
+  {
+    opacity: 1;
+    pre-transform-scale2d: 1.1;
+  }
+}
+
+.CountdownLabel
+{
+  horizontal-align: center;
+  margin-top: -58px;
+  font-family: Radiance;
+  font-size: 20px;
+  color: #ffe2a0;
+  text-shadow: 0px 1px 5px 4 #05070bff;
+}
+
+.Victory
+{
+  width: 560px;
+  horizontal-align: center;
+  margin-top: 52px;
+  padding: 16px 24px 18px 24px;
+  flow-children: down;
+  background-color: #080b12d9;
+  border-top: 1px solid #d9a85b99;
+  border-bottom: 1px solid #d9a85b33;
+}
+
+.VictoryTitle
+{
+  horizontal-align: center;
+  font-family: Grenze;
+  font-weight: bold;
+  font-size: 30px;
+  color: #ffe2a0;
+}
+
+.VictoryLine
+{
+  width: 100%;
+  margin-top: 8px;
+  flow-children: right;
+}
+
+.VictoryPip
+{
+  width: 9px;
+  height: 9px;
+  margin-top: 9px;
+  margin-right: 14px;
+  transform: rotateZ( 45deg );
+}
+
+.AngelsPip
+{
+  background-color: #80dadb;
+}
+
+.DemonsPip
+{
+  background-color: #ff9c76;
+}
+
+.VictoryText
+{
+  width: fill-parent-flow( 1 );
+  white-space: normal;
+  font-family: Radiance;
+  font-size: 19px;
+  line-height: 26px;
+  color: #e6dcc8;
+}
+
+/* --------------------------------------------------------------- footer */
+
+.Footer
+{
+  width: 100%;
+  height: 132px;
+  vertical-align: bottom;
+}
+
+.Wanderers
+{
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 40px;
+  flow-children: right;
+  visibility: collapse;
+}
+
+.Wanderers.Shown
+{
+  visibility: visible;
+}
+
+.WanderersTitle
+{
+  vertical-align: center;
+  margin-right: 16px;
+  font-family: Radiance;
+  font-size: 18px;
+  color: #a79f90;
+}
+
+.WanderersList
+{
+  flow-children: right;
+}
+
+.Wanderer
+{
+  height: 44px;
+  margin-right: 8px;
+  padding-right: 14px;
+  flow-children: right;
+  background-color: #0a0e16e6;
+  border: 1px solid #ffffff24;
+}
+
+.WandererAvatar
+{
+  width: 30px;
+  height: 30px;
+  margin-left: 7px;
+  vertical-align: center;
+}
+
+.WandererName
+{
+  margin-left: 10px;
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 18px;
+  color: #f3e7d0;
+}
+
+.SetupHint
+{
+  horizontal-align: center;
+  vertical-align: bottom;
+  margin-bottom: 92px;
+  padding: 8px 18px;
+  background-color: #1b1408f2;
+  border: 1px solid #d9a85b99;
+  font-family: Radiance;
+  font-size: 19px;
+  color: #ffe2a0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.2s;
+}
+
+.SetupHint.Shown
+{
+  opacity: 1;
+}
+
+.HostControls
+{
+  horizontal-align: right;
+  vertical-align: bottom;
+  margin-right: 96px;
+  margin-bottom: 34px;
+  flow-children: right;
+  visibility: collapse;
+}
+
+.IsHost .HostControls
+{
+  visibility: visible;
+}
+
+.QuietButton
+{
+  height: 56px;
+  margin-right: 12px;
+  padding: 0px 22px;
+  vertical-align: bottom;
+  background-color: #0a0e16e6;
+  border: 1px solid #d9a85b66;
+  transition-property: background-color, border;
+  transition-duration: 0.15s;
+}
+
+.QuietButton:hover
+{
+  background-color: #1b1408f2;
+  border: 1px solid #ffe2a0;
+}
+
+.QuietButton Label
+{
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 19px;
+  color: #f3e7d0;
+}
+
+.Locked .QuietButton
+{
+  visibility: collapse;
+}
+
+.StartButton
+{
+  height: 56px;
+  padding: 0px 34px;
+  vertical-align: bottom;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffd98f ), to( #c98a2e ) );
+  border: 1px solid #fff0c8;
+  box-shadow: #ffb84a55 0px 0px 18px 0px;
+  transition-property: brightness;
+  transition-duration: 0.15s;
+}
+
+.StartButton:hover
+{
+  brightness: 1.15;
+}
+
+.StartButton:active
+{
+  brightness: 0.9;
+}
+
+.StartButton Label
+{
+  vertical-align: center;
+  font-family: Radiance;
+  font-size: 21px;
+  font-weight: bold;
+  color: #241503;
+}
+
+.CancelLabel
+{
+  visibility: collapse;
+}
+
+.Locked .StartLabel
+{
+  visibility: collapse;
+}
+
+.Locked .CancelLabel
+{
+  visibility: visible;
 }

@@ -1,0 +1,1213 @@
+{
+ "trees": [
+  {
+   "path": "models/props_tree/tree_pine_01_heavysnow.vmdl",
+   "note": "Pine buried in heavy snow; placed as ent_dota_tree in radiant_snow_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_02_heavysnow.vmdl",
+   "note": "Second heavy-snow pine; radiant_snow_basic tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_snow_01.vmdl",
+   "note": "Snow-covered oak, main tree of radiant/dire_snow_basic (skins 7-11 used there)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_snow_01b.vmdl",
+   "note": "Snow oak variant; snow tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_snow_02.vmdl",
+   "note": "Snow oak variant; snow tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_snow_01.vmdl",
+   "note": "Snow pine (frosted variant of tree_pine_01)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_snow_02.vmdl",
+   "note": "Snow pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_snow_03b.vmdl",
+   "note": "Snow pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_snow_01.vmdl",
+   "note": "Snowy bamboo clump; radiant_snow_basic tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_snow_02.vmdl",
+   "note": "Snowy bamboo clump; radiant_snow_basic tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_bamboo_snow_03.vmdl",
+   "note": "Snowy bamboo clump",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree007.vmdl",
+   "note": "Dark bare Dire tree; radiant_snow_basic uses it as a tree (skin 1)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004.vmdl",
+   "note": "Dire tree; dire_snow_basic places it with skin \"0_snow\"",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004b.vmdl",
+   "note": "Dire tree variant; dire_snow_basic places it with skin \"0_snow\"",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_gnarly001.vmdl",
+   "note": "Gnarled bare tree; used in both snow tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_01.vmdl",
+   "note": "Dead leafless tree (name-based; good frozen-waste filler)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_02.vmdl",
+   "note": "Dead leafless tree variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/frostivus_tree.vmdl",
+   "note": "Decorated Frostivus tree; festive centrepiece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_01.vmdl",
+   "note": "Plain pine (radiant tilesets) - pair with snow ground",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_02.vmdl",
+   "note": "Plain pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_pine_03b.vmdl",
+   "note": "Plain pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_foliage/tree_pine01_8cluster.vmdl",
+   "note": "Cluster of 8 pines; backdrop/out-of-bounds filler",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_foliage/tree_pine01_4cluster.vmdl",
+   "note": "Cluster of 4 pines; backdrop filler",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/armandpine/armandpine_01.vmdl",
+   "note": "Armand pine (stylised conifer)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/armandpine/armandpine_02.vmdl",
+   "note": "Armand pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/armandpine/armandpine_03.vmdl",
+   "note": "Armand pine variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/trees/journey_armandpine/journey_armandpine_01.vmdl",
+   "note": "Journey-terrain conifer; radiant/dire_journey_basic tree",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "rocks": [
+  {
+   "path": "models/props_winter/ice_spike_lrg.vmdl",
+   "note": "Large ice spike / shard",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/ice_spike_med.vmdl",
+   "note": "Medium ice spike",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/crystal001_refract.vmdl",
+   "note": "Refractive crystal cluster; placed in radiant_snow_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall001_snow.vmdl",
+   "note": "Snow-capped cliff wall segment",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/ice_spike_sml.vmdl",
+   "note": "Small ice spike",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/crystal002_refract.vmdl",
+   "note": "Refractive crystal; radiant_snow_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/crystal003_refract.vmdl",
+   "note": "Refractive crystal; radiant_snow_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/crystal004_refract.vmdl",
+   "note": "Refractive crystal",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/crystal005_refract.vmdl",
+   "note": "Refractive crystal",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall002_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall003_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall004_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall005_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall006_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall007_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall008_snow.vmdl",
+   "note": "Snow cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/riveredge_rocks_small001_snow.vmdl",
+   "note": "Snow-dusted river-edge rocks; heavily used in radiant_snow_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/riveredge_rocks_small002_snow.vmdl",
+   "note": "Snow-dusted rocks; radiant_snow_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/riveredge_rocks_small003_snow.vmdl",
+   "note": "Snow-dusted rocks; radiant_snow_basic",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/riveredge_rocks_small005_snow.vmdl",
+   "note": "Snow-dusted rocks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stone_block004_snow.vmdl",
+   "note": "Snowy stone block; snow tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stone_block005_snow.vmdl",
+   "note": "Snowy stone block; snow tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal_shards_large_01.vmdl",
+   "note": "Large crystal shard cluster (Immortal Gardens/cavern terrain); reads as ice",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal_shards_large_02.vmdl",
+   "note": "Crystal shard cluster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal_shards_large_03.vmdl",
+   "note": "Crystal shard cluster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal_shards_large_04.vmdl",
+   "note": "Crystal shard cluster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal01.vmdl",
+   "note": "Cavern crystal",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal03.vmdl",
+   "note": "Cavern crystal; cavern tilesets use it as a tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal05.vmdl",
+   "note": "Cavern crystal",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/crystal_01.vmdl",
+   "note": "Crystal rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/crystal_02.vmdl",
+   "note": "Crystal rock",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks001.vmdl",
+   "note": "Generic river rocks; most-placed rock in snow tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/campfire_rocks001.vmdl",
+   "note": "Small rock group; heavily used in snow tilesets",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "structures": [
+  {
+   "path": "models/props_structures/snow_village_building_1.vmdl",
+   "note": "Snow-roofed village house",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/snow_village_tower_1.vmdl",
+   "note": "Snow village watchtower",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props/ice_biome/buildings/tuskhouse01.vmdl",
+   "note": "Tuskarr hut (Aghanim's Labyrinth ice biome)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_ancient/frostivus_igloo.vmdl",
+   "note": "Igloo",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/whale_skeleton.vmdl",
+   "note": "Giant whale skeleton - landmark bones",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/snow_village_building_2.vmdl",
+   "note": "Snow village house variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_ancient/frostivus_ancient_snow.vmdl",
+   "note": "Snow-covered Frostivus ancient tree-structure; boss-arena centrepiece",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_ancient/frostivus_ancient.vmdl",
+   "note": "Frostivus ancient (decorated)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_ancient/frostivus_ancient_bare.vmdl",
+   "note": "Frostivus ancient without decorations",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_snowman.vmdl",
+   "note": "Snowman",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_frostivus/frostivus_ancient/sled/elon_sled.vmdl",
+   "note": "Wooden sled",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/leanto_fur.vmdl",
+   "note": "Fur lean-to shelter; placed in both snow tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/leanto_sticks.vmdl",
+   "note": "Stick lean-to frame; snow tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/urn001_snow.vmdl",
+   "note": "Snow-covered urn",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_mystical001.vmdl",
+   "note": "Mystical statue; radiant_snow_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/waterfall_bridge_statue002_tintable.vmdl",
+   "note": "Bridge statue (tintable); radiant_snow_basic",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ramp_ext_lft_001a_snow.vmdl",
+   "note": "Snowy ramp/cliff-edge kit piece (snow tilesets)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ramp_wall_lft_001b_snow.vmdl",
+   "note": "Snowy ramp wall kit piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ramp_wall_rt_002b_snow.vmdl",
+   "note": "Snowy ramp wall kit piece",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/banner_radiant_winter.vmdl",
+   "note": "Radiant winter banner",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/logo_radiant_winter_large.vmdl",
+   "note": "Radiant winter ground logo / emblem",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/logo_dire_winter_medium.vmdl",
+   "note": "Dire winter emblem",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_moose001.vmdl",
+   "note": "Moose/elk skull",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/creep_camp001e_snow.vmdl",
+   "note": "Snowy neutral-camp prop",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "clutter": [
+  {
+   "path": "models/props_winter/snowdrift_001.vmdl",
+   "note": "Snow drift mound",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow01a.vmdl",
+   "note": "Snow drift; snow tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_01.vmdl",
+   "note": "Icicle cluster (hang from ledges)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_straight_lrg.vmdl",
+   "note": "Long straight snowdrift (edges/roadsides)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/log001_snow.vmdl",
+   "note": "Snowy fallen log",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_002.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_003.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_004.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_005.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_straight_med.vmdl",
+   "note": "Straight snowdrift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/snowdrift_straight_sml.vmdl",
+   "note": "Straight snowdrift",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow00a.vmdl",
+   "note": "Snow drift",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow00b.vmdl",
+   "note": "Snow drift; snow tilesets",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow00c.vmdl",
+   "note": "Snow drift",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow00d.vmdl",
+   "note": "Snow drift",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow01b.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow01c.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/drift_snow01d.vmdl",
+   "note": "Snow drift",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_02.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_03.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_04.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_05.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_06.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/icicle_07.vmdl",
+   "note": "Icicles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/grass_clump_snow_00a.vmdl",
+   "note": "Snowy grass clump",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001b_snow.vmdl",
+   "note": "Snowy wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001c_snow.vmdl",
+   "note": "Snowy wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001d_snow.vmdl",
+   "note": "Snowy wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001e_snow.vmdl",
+   "note": "Snowy wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/ramp_640_snow.vmdl",
+   "note": "Snowy ramp debris",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/nest_01.vmdl",
+   "note": "Straw nest (Frostivus greevil egg nest)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/egg.vmdl",
+   "note": "Greevil egg",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/present.vmdl",
+   "note": "Wrapped present",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_winter/straw_01.vmdl",
+   "note": "Straw pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_ram001.vmdl",
+   "note": "Ram skull",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/bones001_set_tintable.vmdl",
+   "note": "Bone pile (tintable)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/snow_owl001.vmdl",
+   "note": "Snow owl ambient critter; snow tilesets",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "lights": [
+  {
+   "path": "models/props_debris/camp_fire001.vmdl",
+   "note": "Campfire model (pair with particle fire_camp_01)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/torch001.vmdl",
+   "note": "Standing torch post (needs flame particle)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern001.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles002.vmdl",
+   "note": "Candle cluster; snow tilesets place candle_flame particles on these",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/glow_00.vmdl",
+   "note": "Glow card model; used in radiant_snow_basic",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/camp_fire002.vmdl",
+   "note": "Campfire variant",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles001.vmdl",
+   "note": "Candle cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles003.vmdl",
+   "note": "Candle cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles004.vmdl",
+   "note": "Candle cluster",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern002.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern003.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/radiant_lightrays.vmdl",
+   "note": "Light-shaft card; snow tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/lantern/lantern_of_sight.vmdl",
+   "note": "Lantern of Sight post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/cavern_assets/models/crystals/crystal03_base_radiant.vmdl",
+   "note": "Crystal on base (cavern) - cold glow look",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "water_lava": [
+  {
+   "path": "models/effects/waterfall_00.vmdl",
+   "note": "Waterfall sheet (an ice material waterfall_00_ice exists; skin not checked)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/water_edges_00.vmdl",
+   "note": "River edge foam strip (ice material water_edges_00_ice exists)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_destruction/ground_ice.vmdl",
+   "note": "Ground ice sheet (destruction prop; look unchecked)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_01.vmdl",
+   "note": "Waterfall sheet",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_02.vmdl",
+   "note": "Waterfall sheet",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_mist_00.vmdl",
+   "note": "Waterfall mist card",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/water_edges_01.vmdl",
+   "note": "River edge strip (ice material water_edges_01_ice exists)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/waterfall_cave.vmdl",
+   "note": "Cave waterfall",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "ambient_particles": [
+  {
+   "path": "particles/rain_fx/snow.vpcf",
+   "note": "Weather: falling snow (Valve weather fx)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_frostivus_snow.vpcf",
+   "note": "Weather: Frostivus snowfall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_plateau_snow.vpcf",
+   "note": "Weather: plateau snowfall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_drift.vpcf",
+   "note": "Weather: blowing snow drift (blizzard gusts)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_aurora.vpcf",
+   "note": "Weather: aurora sky (cosmetic weather)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_b.vpcf",
+   "note": "Weather: snow layer b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_c.vpcf",
+   "note": "Weather: snow layer c",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_outer.vpcf",
+   "note": "Weather: outer snow ring",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_drift_b.vpcf",
+   "note": "Weather: snow drift b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/snow_drift_c.vpcf",
+   "note": "Weather: snow drift c",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_snow.vpcf",
+   "note": "Weather: cosmetic snow weather",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/winter_terrain.vpcf",
+   "note": "Terrain ambience: winter terrain fx",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_frostivus_snow_b.vpcf",
+   "note": "Weather: Frostivus snow b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_frostivus_snow_c.vpcf",
+   "note": "Weather: Frostivus snow c",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_frostivus_snow_drift_b.vpcf",
+   "note": "Weather: Frostivus drift",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_plateau_snow_b.vpcf",
+   "note": "Weather: plateau snow b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_plateau_snow_c.vpcf",
+   "note": "Weather: plateau snow c",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/weather_plateau_snow_drift_b.vpcf",
+   "note": "Weather: plateau drift",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_aurora_beams.vpcf",
+   "note": "Weather: aurora beams",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fog_lowpatch.vpcf",
+   "note": "World: low ground fog patch",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fog_bank_01.vpcf",
+   "note": "World: fog bank",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/healing_campfire_flame.vpcf",
+   "note": "Frostivus campfire flame (event fx)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/healing_flame_braser.vpcf",
+   "note": "Frostivus brazier flame (event fx)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/winter_fx/healing_fire_torch_glow.vpcf",
+   "note": "Frostivus torch glow (event fx)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/neutral_fx/miniboss_frostivus_2024_snow.vpcf",
+   "note": "Frostivus 2024 miniboss snow (gameplay fx, may be one-shot)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/creatures/aghanim/aghanim_self_frost_mist.vpcf",
+   "note": "Aghanim boss frost mist (creature fx; check if it loops)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/events/crownfall/shmup/screenspace_fx/shmup_blizz.vpcf",
+   "note": "Crownfall minigame blizzard (screen-space; probably camera-attached, test before use)",
+   "size": "huge",
+   "size_verified": false
+  }
+ ],
+ "creatures": [
+  {
+   "path": "models/creeps/ice_biome/giant/ice_giant01.vmdl",
+   "note": "Ice giant (Aghanim's Labyrinth) - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/mh_monsters/barioth/barioth.vmdl",
+   "note": "Barioth, Monster Hunter ice wyvern - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/ogreseal/ogreseal.vmdl",
+   "note": "Ogre-seal brute (Labyrinth) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/undeadtusk/undead_tuskskeleton_armor01.vmdl",
+   "note": "Armoured undead tuskarr skeleton - ELITE",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/frostbitten/n_creep_frostbitten_shaman01.vmdl",
+   "note": "Frostbitten shaman (caster) - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/frostbitten/n_creep_frostbitten_01.vmdl",
+   "note": "Frostbitten creep - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/frostbitten/n_creep_frostbitten_swollen01.vmdl",
+   "note": "Swollen frostbitten - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/tuskfolk/tuskfolk001a_f.vmdl",
+   "note": "Tuskfolk (tuskarr villager) - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/tuskfolk/tuskfolk001b_f.vmdl",
+   "note": "Tuskfolk variant - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/tuskfolk/tuskfolk001c_f.vmdl",
+   "note": "Tuskfolk variant - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/undeadtusk/undead_tuskskeleton01.vmdl",
+   "note": "Undead tuskarr skeleton - FODDER/MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/undeadtusk/undead_tuskskeleton02.vmdl",
+   "note": "Undead tuskarr skeleton variant - FODDER/MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/ice_biome/diregull/diregull.vmdl",
+   "note": "Diregull (ice seabird, Labyrinth) - FODDER flyer",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ghost_b/n_creep_ghost_frost.vmdl",
+   "note": "Frost ghost neutral - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl",
+   "note": "Frost gnoll - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl",
+   "note": "Frost kobold - FODDER",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_troll_dark_b/n_creep_troll_dark_frost.vmdl",
+   "note": "Frost dark troll - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/frostivus/penguin/penguin.vmdl",
+   "note": "Frostivus penguin - FODDER / critter",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/frostivus/penguin/penguin_prime.vmdl",
+   "note": "Larger \"prime\" penguin - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/pets/icewrack_wolf/icewrack_wolf.vmdl",
+   "note": "Icewrack wolf pet - MID (pack animal)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/pets/icewrack_wolf_alt/icewrack_wolf_alt.vmdl",
+   "note": "Icewrack wolf alt - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/creep_dire_hulk/creep_dire_winter_ancient_hulk.vmdl",
+   "note": "Winter Dire ancient hulk (lane mega creep) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_winter_ancient_hulk.vmdl",
+   "note": "Winter Radiant ancient hulk - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/winterwyvern/winterwyvern.vmdl",
+   "note": "Winter Wyvern hero (crown/back are separate wearables) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/ancient_apparition/ancient_apparition.vmdl",
+   "note": "Ancient Apparition hero (shoulder/tail separate) - ELITE/BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/lich/lich.vmdl",
+   "note": "Lich hero (bracer/dress/horns separate) - ELITE caster",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/tuskarr/tuskarr.vmdl",
+   "note": "Tusk hero body - ELITE",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/courier/snowleopard/snowleopard_courier.vmdl",
+   "note": "Snow leopard courier - FODDER critter",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/courier/smeevil_mammoth/smeevil_mammoth.vmdl",
+   "note": "Mammoth smeevil courier - FODDER critter (cute)",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "sounds": []
+}

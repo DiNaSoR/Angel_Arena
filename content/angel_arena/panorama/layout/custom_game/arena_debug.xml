@@ -1,0 +1,6 @@
+<root>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/arena_debug.js" />
+  </scripts>
+  <Panel hittest="false" />
+</root>

@@ -67,6 +67,14 @@
 //#base "abilities/untested/retro/invoker_retro_firebolt.txt"
 
 //--------------------------------------------------------------
+//--------------------------------------------------------------
+// Arena biomes (one file per biome; see tools/biomes/README.md)
+//--------------------------------------------------------------
+#base "abilities/arena/arena_green_abilities.txt"
+#base "abilities/arena/arena_desert_abilities.txt"
+#base "abilities/arena/arena_ice_abilities.txt"
+#base "abilities/arena/arena_lava_abilities.txt"
+
 "DOTAAbilities"
 {
 }

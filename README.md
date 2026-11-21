@@ -35,11 +35,14 @@ find game/angel_arena/scripts/vscripts -name '*.lua' -print0 | xargs -0 -n1 luac
 find content/angel_arena/panorama/scripts -name '*.js' -print0 | xargs -0 -n1 node --check
 for test in tests/*.lua; do lua5.1 "$test" || exit; done
 node tests/panorama_match.js
+node tests/panorama_setup.js
 python3 tests/npc_references.py
+python3 tests/arena_items.py
+python3 tests/arena_biomes.py
 python3 tests/workshop_deploy.py
 ```
 
-The standalone checks exercise repository code with mocked Dota APIs and deploy into a temporary Steam-style directory. Hammer still needs to compile the shipped map and resolve its legacy prefab dependencies.
+Monster camps and biome bosses are built from per-biome files; see `tools/biomes/README.md`. The standalone checks exercise repository code with mocked Dota APIs and deploy into a temporary Steam-style directory. Hammer still needs to compile the shipped map and resolve its legacy prefab dependencies.
 
 ## References
 

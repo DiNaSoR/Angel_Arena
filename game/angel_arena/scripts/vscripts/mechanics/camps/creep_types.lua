@@ -1,4 +1,5 @@
 ---------------------------------------------------------------------------
+-- Superseded by arena/biomes/wilds/monsters.lua (the live camp data); kept for tests/camps.lua.
 -- Settings
 -- "creep name", Health, Mana, Damage, Armor, Gold Bounty, Exp Bounty
 ---------------------------------------------------------------------------

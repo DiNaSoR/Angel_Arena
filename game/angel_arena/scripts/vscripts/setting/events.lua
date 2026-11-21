@@ -414,6 +414,10 @@ function GameMode:OnEntityKilled(keys)
 
   if killedUnit.GetUnitName then
     checkminibosses(self, killedUnit, attacker)
+    -- Biome camp monsters and bosses (arena/index.lua): respawn timers, loot and boss rewards.
+    if ArenaWorld then
+      ArenaWorld.OnEntityKilled(killedUnit, attacker)
+    end
   end
 end
 

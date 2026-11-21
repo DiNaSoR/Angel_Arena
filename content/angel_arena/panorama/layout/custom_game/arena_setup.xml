@@ -1,12 +1,108 @@
+<!-- Team select shown during custom game setup. Its backdrop is drawn by the loading screen. -->
 <root>
   <styles>
     <include src="file://{resources}/styles/custom_game/arena_setup.css" />
   </styles>
-  <Panel class="ArenaSetup" hittest="false" hittestchildren="false">
-    <Panel class="ArenaSetupRules">
-      <Label class="ArenaSetupTitle" text="#arena_setup_objectives" />
-      <Label class="ArenaSetupRule" text="#arena_loading_kills" />
-      <Label class="ArenaSetupRule ArenaSetupBossRule" text="#arena_loading_boss" />
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/arena_setup.js" />
+  </scripts>
+  <snippets>
+    <snippet name="Seat">
+      <Panel class="Seat" hittest="false">
+        <Panel class="SeatMark" hittest="false" />
+        <DOTAAvatarImage id="SeatAvatar" class="SeatAvatar" hittest="false" />
+        <Label id="SeatName" class="SeatName" hittest="false" />
+        <Label id="SeatTag" class="SeatTag" hittest="false" />
+      </Panel>
+    </snippet>
+    <snippet name="Wanderer">
+      <Panel class="Wanderer" hittest="false">
+        <DOTAAvatarImage id="SeatAvatar" class="WandererAvatar" hittest="false" />
+        <Label id="SeatName" class="WandererName" hittest="false" />
+      </Panel>
+    </snippet>
+  </snippets>
+  <Panel class="ArenaSetup" hittest="false">
+    <Panel id="SetupFrame" class="SetupFrame" hittest="false">
+      <Button id="Angels" class="Side AngelsSide">
+        <Panel class="SideCrest" hittest="false">
+          <Image class="CrestAura" src="file://{images}/custom_game/arena_ui/sigil_angels.png" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+          <Image class="CrestSigil" src="file://{images}/custom_game/arena_ui/sigil_angels.png" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+        </Panel>
+        <Label class="SideName" text="#arena_team_angels" hittest="false" />
+        <Label id="AngelsCount" class="SideCount" text="#arena_setup_count" hittest="false" />
+        <Panel class="SideRule" hittest="false" />
+        <Panel id="AngelsSeats" class="Seats" hittest="false" />
+        <Panel class="SideAction" hittest="false">
+          <Label class="ActionJoin" text="#arena_setup_join_angels" hittest="false" />
+          <Label class="ActionJoined" text="#arena_setup_joined" hittest="false" />
+          <Label class="ActionFull" text="#arena_setup_full" hittest="false" />
+          <Label class="ActionLocked" text="#arena_setup_locked" hittest="false" />
+        </Panel>
+      </Button>
+
+      <Panel class="Centre" hittest="false">
+        <Label class="Title" text="#addon_game_name" hittest="false" />
+        <Image class="Divider" src="file://{images}/custom_game/arena_ui/divider.png" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+
+        <Panel id="Countdown" class="Countdown" hittest="false">
+          <Panel class="CountdownGlow" hittest="false" />
+          <Panel class="CountdownRing" hittest="false" />
+          <Panel class="CountdownRingInner" hittest="false" />
+          <Label id="CountdownValue" class="CountdownValue" hittest="false" />
+          <Panel class="CountdownIdle" hittest="false" />
+        </Panel>
+        <Label id="CountdownLabel" class="CountdownLabel" hittest="false" />
+
+        <Panel class="Victory" hittest="false">
+          <Label class="VictoryTitle" text="#arena_setup_objectives" hittest="false" />
+          <Panel class="VictoryLine" hittest="false">
+            <Panel class="VictoryPip AngelsPip" hittest="false" />
+            <Label class="VictoryText" text="#arena_loading_kills" hittest="false" />
+          </Panel>
+          <Panel class="VictoryLine" hittest="false">
+            <Panel class="VictoryPip DemonsPip" hittest="false" />
+            <Label class="VictoryText" text="#arena_loading_boss" hittest="false" />
+          </Panel>
+        </Panel>
+      </Panel>
+
+      <Button id="Demons" class="Side DemonsSide">
+        <Panel class="SideCrest" hittest="false">
+          <Image class="CrestAura" src="file://{images}/custom_game/arena_ui/sigil_demons.png" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+          <Image class="CrestSigil" src="file://{images}/custom_game/arena_ui/sigil_demons.png" scaling="stretch-to-fit-preserve-aspect" hittest="false" />
+        </Panel>
+        <Label class="SideName" text="#arena_team_demons" hittest="false" />
+        <Label id="DemonsCount" class="SideCount" text="#arena_setup_count" hittest="false" />
+        <Panel class="SideRule" hittest="false" />
+        <Panel id="DemonsSeats" class="Seats" hittest="false" />
+        <Panel class="SideAction" hittest="false">
+          <Label class="ActionJoin" text="#arena_setup_join_demons" hittest="false" />
+          <Label class="ActionJoined" text="#arena_setup_joined" hittest="false" />
+          <Label class="ActionFull" text="#arena_setup_full" hittest="false" />
+          <Label class="ActionLocked" text="#arena_setup_locked" hittest="false" />
+        </Panel>
+      </Button>
+    </Panel>
+
+    <Panel class="Footer" hittest="false">
+      <Panel id="Wanderers" class="Wanderers" hittest="false">
+        <Label class="WanderersTitle" text="#arena_setup_unassigned" hittest="false" />
+        <Panel id="WanderersList" class="WanderersList" hittest="false" />
+      </Panel>
+      <Label id="SetupHint" class="SetupHint" hittest="false" />
+      <Panel class="HostControls">
+        <Button id="AssignButton" class="QuietButton">
+          <Label text="#arena_setup_assign" hittest="false" />
+        </Button>
+        <Button id="ShuffleButton" class="QuietButton">
+          <Label text="#arena_setup_shuffle" hittest="false" />
+        </Button>
+        <Button id="StartButton" class="StartButton">
+          <Label class="StartLabel" text="#arena_setup_start" hittest="false" />
+          <Label class="CancelLabel" text="#arena_setup_cancel" hittest="false" />
+        </Button>
+      </Panel>
     </Panel>
   </Panel>
 </root>

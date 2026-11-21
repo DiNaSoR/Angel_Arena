@@ -1,0 +1,16 @@
+<!-- Runs during hero selection and strategy time. It has no visible panels of its own: the
+     script reskins Dota's pregame screens, and the images below are listed so they get compiled. -->
+<root>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/arena_skin.js" />
+    <include src="file://{resources}/scripts/custom_game/arena_pregame.js" />
+  </scripts>
+  <Panel hittest="false" style="width: 100%; height: 100%;">
+    <Panel style="visibility: collapse;" hittest="false">
+      <Image src="file://{images}/custom_game/arena_ui/hall_backdrop.png" />
+      <Image src="file://{images}/custom_game/arena_ui/sigil_angels.png" />
+      <Image src="file://{images}/custom_game/arena_ui/sigil_demons.png" />
+      <Image src="file://{images}/custom_game/arena_ui/frame_corner.png" />
+    </Panel>
+  </Panel>
+</root>

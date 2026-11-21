@@ -82,3 +82,72 @@
   color: #f6e3d5;
   background-color: gradient( linear, 0% 0%, 100% 0%, from( #5c332a77 ), to( #5c332a00 ) );
 }
+
+/* ------------------------------------------------- team select backdrop */
+
+.ArenaWelcome
+{
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
+.TeamSelect .ArenaWelcome
+{
+  opacity: 0;
+}
+
+.PledgeScene
+{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.9s;
+  transition-timing-function: ease-in-out;
+}
+
+.TeamSelect .PledgeScene
+{
+  opacity: 1;
+}
+
+.PledgeBackdrop, .PledgeShade
+{
+  width: 100%;
+  height: 100%;
+}
+
+/* Darkens the outer thirds so both rosters read against the painting. */
+.PledgeShade
+{
+  background-color: gradient( linear, 0% 0%, 100% 0%, from( #070a10eb ), color-stop( 0.30, #070a1094 ), color-stop( 0.44, #070a101f ), color-stop( 0.56, #070a101f ), color-stop( 0.70, #070a1094 ), to( #070a10eb ) );
+}
+
+.PledgeGlow
+{
+  width: 1000px;
+  height: 1000px;
+  vertical-align: center;
+  opacity: 0.4;
+}
+
+.AngelsGlow
+{
+  margin-left: -220px;
+  background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #2fa3ab66 ), to( #2fa3ab00 ) );
+}
+
+.DemonsGlow
+{
+  horizontal-align: right;
+  margin-right: -220px;
+  background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #c8402a66 ), to( #c8402a00 ) );
+}
+
+.PledgeFloor
+{
+  width: 100%;
+  height: 170px;
+  vertical-align: bottom;
+  background-color: gradient( linear, 0% 0%, 0% 100%, from( #05070b00 ), to( #05070be6 ) );
+}

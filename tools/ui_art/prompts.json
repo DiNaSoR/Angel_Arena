@@ -1,0 +1,55 @@
+[
+  {
+    "name": "pledge_backdrop",
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1920x1088",
+    "quality": "high",
+    "prompt": "Wide establishing shot from the floor of a vast ruined ancient coliseum at dusk, perfectly symmetrical composition. In the exact centre a thin pillar of golden light descends from stormy clouds onto a circular carved sigil in the arena floor. The left half of the arena belongs to heaven: pale marble arches, tall stone statues of angels with folded wings, cold teal and silver light, drifting motes of light. The right half belongs to hell: scorched black basalt arches, horned demon statues, rivers of lava beyond the walls, orange embers rising, red glow. The two halves meet at the pillar of light. The outer left third and outer right third of the frame fall into deep darkness with only faint silhouettes, leaving calm dark space. Low horizon, dramatic sky. {STYLE}"
+  },
+  {
+    "name": "hall_backdrop",
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1920x1088",
+    "quality": "high",
+    "prompt": "Interior of an immense dark stone hall beneath an ancient coliseum, the hall of champions, seen straight on and symmetrical. Rows of massive carved pillars recede into darkness on both sides, each with a low burning brazier at its base. Faint winged reliefs carved into the far wall. A soft shaft of dusty golden light falls from an opening high above onto the worn flagstone floor. Overall very dark and low contrast, deep blue-black shadows, the whole middle of the image is quiet near-black stone with subtle texture, detail and glow only near the left and right edges and along the bottom. {STYLE}"
+  },
+  {
+    "name": "sigil_angels",
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1024x1024",
+    "quality": "high",
+    "background": "transparent",
+    "prompt": "A single heraldic emblem on a fully transparent background, centred, front view: a radiant halo ring above an upright sword, flanked by two large spread feathered wings. Wrought from polished gold and pale silver with teal enamel inlays and a soft teal inner glow. Ornate engraved fantasy RPG crest, crisp silhouette, high detail, symmetrical, painted game-icon style. Nothing else in the image, no background, no text, no frame."
+  },
+  {
+    "name": "sigil_demons",
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1024x1024",
+    "quality": "high",
+    "background": "transparent",
+    "prompt": "A single heraldic emblem on a fully transparent background, centred, front view: a horned demonic skull helm above an upright jagged sword, flanked by two large spread bat-like leather wings. Forged from blackened iron and dark bronze with glowing ember-orange cracks and red enamel inlays, a soft fiery inner glow. Ornate engraved fantasy RPG crest, crisp silhouette, high detail, symmetrical, painted game-icon style. Nothing else in the image, no background, no text, no frame."
+  },
+  {
+    "name": "frame_corner",
+    "model": "gpt-image-2.5-flare",
+    "size": "1024x1024",
+    "quality": "high",
+    "background": "transparent",
+    "prompt": "A single ornate picture-frame corner piece on a fully transparent background: the top-left corner of an antique gilded frame, an L shape whose two thin straight arms run exactly along the top edge and the left edge of the image and meet in the top-left corner, with delicate gold filigree scrollwork and one small teal gem set in the corner. Polished engraved gold, fantasy RPG interface ornament, crisp edges, flat front view. The rest of the image is empty and transparent. No text."
+  },
+  {
+    "name": "divider",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x512",
+    "quality": "high",
+    "background": "transparent",
+    "prompt": "A single horizontal ornamental divider on a fully transparent background, centred: a thin straight engraved gold line that tapers to fine points at the far left and right, with a small symmetrical filigree flourish and a diamond-shaped gem in the middle, one half of the gem teal and the other half ember orange. Polished gold, fantasy RPG interface ornament, flat front view, crisp edges. Nothing else in the image. No text."
+  },
+  {
+    "name": "armory_header",
+    "model": "gpt-image-2.5-sunburst",
+    "size": "1536x512",
+    "quality": "high",
+    "prompt": "A wide still life painted as a dark banner image: an armoury shelf in a torchlit stone vault. On the left side old leather-bound spell tomes, potion flasks glowing faint teal and a heap of gold coins; on the right side a rack with an ornate sword, a round shield with a wing relief and a horned helm glowing ember red. The middle third of the image is dark empty stone wall fading to near black. Warm candlelight from the left, ember glow from the right, strong dark vignette, the bottom edge fades to black. {STYLE}"
+  }
+]

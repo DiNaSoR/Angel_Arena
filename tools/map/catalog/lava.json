@@ -1,0 +1,1201 @@
+{
+ "trees": [
+  {
+   "path": "models/props_tree/dire_tree008.vmdl",
+   "note": "Dark Dire tree (default Dire forest); reads charred near lava",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree007.vmdl",
+   "note": "Bare dark Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_01.vmdl",
+   "note": "Dead leafless tree (name-based)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_gnarly001.vmdl",
+   "note": "Gnarled bare tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree001.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree002.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree003.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004b.vmdl",
+   "note": "Dire tree variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree005.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree006.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree009.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree010.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree011.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree012.vmdl",
+   "note": "Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004_tint.vmdl",
+   "note": "Tintable Dire tree - tint dark red/black for charred look",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree007_tintable.vmdl",
+   "note": "Tintable bare Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree008_tintable.vmdl",
+   "note": "Tintable Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree009_tintable.vmdl",
+   "note": "Tintable Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_dead_02.vmdl",
+   "note": "Dead tree variant",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/cave_tree.vmdl",
+   "note": "Cave tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_split001.vmdl",
+   "note": "Split trunk tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree_stump001_tintable.vmdl",
+   "note": "Dire stump (tintable)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree_stump002_tintable.vmdl",
+   "note": "Dire stump",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree_stump003_tintable.vmdl",
+   "note": "Dire stump",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "rocks": [
+  {
+   "path": "models/props_rock/badside_rocks001.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_crystals001.vmdl",
+   "note": "Dire red crystals",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/rocks/rock_dire_ti10_01.vmdl",
+   "note": "TI10 terrain Dire rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/stalagmite_cluster_01.vmdl",
+   "note": "Stalagmite cluster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_rocks002.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_rocks003.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_rocks004.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_rocks005.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_rocks006.vmdl",
+   "note": "Dire-side rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_debris_rocks001.vmdl",
+   "note": "Dire rock debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/badside_debris_rocks002.vmdl",
+   "note": "Dire rock debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_crystals002.vmdl",
+   "note": "Dire crystals",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_crystals003.vmdl",
+   "note": "Dire crystals",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_magic_crystals001.vmdl",
+   "note": "Dire magic crystals",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/rocks/rock_dire_ti10_02.vmdl",
+   "note": "TI10 Dire rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/ti10_assets/rocks/rock_dire_ti10_03.vmdl",
+   "note": "TI10 Dire rock",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/stalagmite_01.vmdl",
+   "note": "Stalagmite",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/stalagmite_02.vmdl",
+   "note": "Stalagmite",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/stalagmite_03.vmdl",
+   "note": "Stalagmite",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/stalagmite_cluster_02.vmdl",
+   "note": "Stalagmite cluster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/reef_assets/models/props/rock/darkreef_direcliff001.vmdl",
+   "note": "Dark Dire cliff (reef terrain)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/reef_assets/models/props/rock/darkreef_direcliff002.vmdl",
+   "note": "Dark Dire cliff",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "maps/reef_assets/models/props/rock/darkreef_direcliff003.vmdl",
+   "note": "Dark Dire cliff",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall002.vmdl",
+   "note": "Cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall004.vmdl",
+   "note": "Cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/cliff_wall006.vmdl",
+   "note": "Cliff wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/rubble_small_02a.vmdl",
+   "note": "Rubble",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/rubble_small_02b.vmdl",
+   "note": "Rubble",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_mines/mines_rocks_pile_01b.vmdl",
+   "note": "Rock pile (mines kit)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/tower_dire_rock_golem_shard.vmdl",
+   "note": "Dire rock-golem shard",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "structures": [
+  {
+   "path": "models/props_structures/bad_ancient002.vmdl",
+   "note": "Dire Ancient (lava-fed fortress heart) - boss-arena centrepiece",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_magic_tower001.vmdl",
+   "note": "Dire magic tower",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dark_statue/dark_statue.vmdl",
+   "note": "Dark statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_statue001.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dragon_statue001.vmdl",
+   "note": "Dragon statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_ancient001.vmdl",
+   "note": "Dire Ancient (older)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_statue002.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_statue003.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_column001.vmdl",
+   "note": "Dire column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_column001_broken001.vmdl",
+   "note": "Broken Dire column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_column001_broken002.vmdl",
+   "note": "Broken Dire column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_head001.vmdl",
+   "note": "Giant Dire head carving",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_standard001.vmdl",
+   "note": "Dire war standard",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_wallstatue001a.vmdl",
+   "note": "Dire wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_wallstatue002a.vmdl",
+   "note": "Dire wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_wallstatue003a.vmdl",
+   "note": "Dire wall statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_barracks001_statue001.vmdl",
+   "note": "Dire barracks statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_statue001.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_statue002.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_column001.vmdl",
+   "note": "Dire column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_dragon001.vmdl",
+   "note": "Dragon statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_dragon002.vmdl",
+   "note": "Dragon statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue_dragon003.vmdl",
+   "note": "Dragon statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_river_statue/dire_river_statue.vmdl",
+   "note": "Dire river statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/tower_dragon_black.vmdl",
+   "note": "Black dragon tower (New Bloom)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_fountain001.vmdl",
+   "note": "Dire fountain",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_building001.vmdl",
+   "note": "Dire building",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_buildingwall001.vmdl",
+   "note": "Dire building wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_buttress001.vmdl",
+   "note": "Dire buttress",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/bad_stonewallstatue001.vmdl",
+   "note": "Dire stone wall with statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/bad_stonewall_spikes001.vmdl",
+   "note": "Spiked Dire stone wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_chains001.vmdl",
+   "note": "Hanging Dire chains",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/cage001.vmdl",
+   "note": "Cage",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/skull_dragon001.vmdl",
+   "note": "Dragon skull",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ancient_giant_skeleton.vmdl",
+   "note": "Giant creature skeleton",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/bad_sigil_ancient001.vmdl",
+   "note": "Dire sigil (ancient)",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "clutter": [
+  {
+   "path": "models/props_bones/badside_bones001.vmdl",
+   "note": "Dire-side bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris1.vmdl",
+   "note": "Battle debris (broken weapons/armour)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/dead_head001a.vmdl",
+   "note": "Severed head on stake",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_wildlife/badside_hands001.vmdl",
+   "note": "Grasping hands from ground",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/spike_fence001a.vmdl",
+   "note": "Spiked fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/badside_bones002.vmdl",
+   "note": "Dire bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/badside_bones003.vmdl",
+   "note": "Dire bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/badside_bones004.vmdl",
+   "note": "Dire bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_bones/badside_bones005.vmdl",
+   "note": "Dire bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris2.vmdl",
+   "note": "Battle debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris3.vmdl",
+   "note": "Battle debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris4.vmdl",
+   "note": "Battle debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris5.vmdl",
+   "note": "Battle debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/dead_head002a.vmdl",
+   "note": "Head on stake",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/bad_sticks001.vmdl",
+   "note": "Dire stick bundle",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/bad_sticks002.vmdl",
+   "note": "Dire sticks",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/bad_chains001.vmdl",
+   "note": "Ground chains",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/dire_chain001_tint.vmdl",
+   "note": "Tintable chain",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/skull001.vmdl",
+   "note": "Skull",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/sword002.vmdl",
+   "note": "Sword in ground",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/shield001.vmdl",
+   "note": "Dropped shield",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/spike001.vmdl",
+   "note": "Ground spike",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/spike004.vmdl",
+   "note": "Ground spike",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/spike_fence003a.vmdl",
+   "note": "Spiked fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/metal_spike001.vmdl",
+   "note": "Metal spike",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/metal_spike002.vmdl",
+   "note": "Metal spike",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/badside_roots_path001.vmdl",
+   "note": "Dire roots over path",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/bad_barracks_roots001.vmdl",
+   "note": "Dire roots",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_diretide/gravehands.vmdl",
+   "note": "Hands from grave (Diretide)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_rock/rubble_small_02c.vmdl",
+   "note": "Rubble",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "lights": [
+  {
+   "path": "models/props_structures/bad_column_torch.vmdl",
+   "note": "Dire column with torch",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/vapors_red_001.vmdl",
+   "note": "Red vapour card model (glowing haze)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_bowl_coals_01.vmdl",
+   "note": "Stone bowl of hot coals (jungle temple) - brazier",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/roshan_torch.vmdl",
+   "note": "Tall torch",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/architecture/palace/cf_palace_brazier.vmdl",
+   "note": "Palace brazier (event)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_magic/vapors_red_002.vmdl",
+   "note": "Red vapour card",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/torch001.vmdl",
+   "note": "Torch post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/ancient_caldron001.vmdl",
+   "note": "Cauldron",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sconce_coloseum_000.vmdl",
+   "note": "Wall sconce",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/camp_fire001.vmdl",
+   "note": "Campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern001.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/glow_01.vmdl",
+   "note": "Glow card",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/glow_02.vmdl",
+   "note": "Glow card",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_tower_glow.vmdl",
+   "note": "Dire tower glow piece",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "water_lava": [
+  {
+   "path": "models/effects/ground_crack_molten.vmdl",
+   "note": "Molten ground crack (glowing fissure)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_destruction/lava_flow_clump.vmdl",
+   "note": "Lava flow clump; placed in dire_temple tileset",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/ti11/ti11_lava/ti11_lava_model_fx.vmdl",
+   "note": "TI11 lava fx model (look/scale unchecked)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/particle/lava_spikes/blue_lava_spike_model.vmdl",
+   "note": "Lava spike fx model (blue tint; fx asset)",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "ambient_particles": [
+  {
+   "path": "particles/dire_fx/dire_lava_gloops_10sec.vpcf",
+   "note": "World/base: bubbling lava gloops (Dire base lava)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/pit_lava_glow.vpcf",
+   "note": "World/addon: lava pit glow",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/dire_lava_falling_rocks.vpcf",
+   "note": "World/base: lava falling rocks",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_ash.vpcf",
+   "note": "Weather: falling ash (cosmetic weather)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_ancient_embers.vpcf",
+   "note": "Structure ambient: Dire ancient embers",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/dire_lava_gloops_7sec.vpcf",
+   "note": "World: lava gloops 7s cycle",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/dire_lava_gloops_13sec.vpcf",
+   "note": "World: lava gloops 13s cycle",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/dire_lava_gloops_embers_10sec.vpcf",
+   "note": "World: lava gloop embers",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/pit_lava_smoke.vpcf",
+   "note": "World/addon: lava pit smoke",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/pit_lava_sparks.vpcf",
+   "note": "World/addon: lava pit sparks",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/pit_lava_blast.vpcf",
+   "note": "World/addon: lava pit blast (may be periodic)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_ancient002_pit_lava_glow.vpcf",
+   "note": "Structure: Dire ancient pit lava glow",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_ancient002_pit_lava_smoke.vpcf",
+   "note": "Structure: Dire ancient pit smoke",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_ancient002_pit_lava_sparks.vpcf",
+   "note": "Structure: Dire ancient pit sparks",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_ancient_smoke.vpcf",
+   "note": "Structure: Dire ancient smoke",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/bad_column001_firetorch.vpcf",
+   "note": "Structure: Dire column torch fire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/dire_fx/fire_barracks.vpcf",
+   "note": "Structure: barracks fire",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_ash_b.vpcf",
+   "note": "Weather: ash layer b",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_ash_smoke.vpcf",
+   "note": "Weather: ash smoke",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/neutral_fx/miniboss_pit_dire_lava_embers.vpcf",
+   "note": "Gameplay: miniboss pit lava embers",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/neutral_fx/miniboss_pit_dire_lava_ripple.vpcf",
+   "note": "Gameplay: miniboss pit lava ripple",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fire_camp_02.vpcf",
+   "note": "World: campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/lamp_flame_braser.vpcf",
+   "note": "World: brazier flame",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/items/queenofpain/queenofpain_arcana/debut/particles/lava/heat_haze.vpcf",
+   "note": "Debut scene: heat haze (cosmetic showcase fx)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/items/queenofpain/queenofpain_arcana/debut/particles/lava/lava_bubbling_ambient_burst.vpcf",
+   "note": "Debut scene: lava bubbling bursts",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/items/queenofpain/queenofpain_arcana/debut/particles/lava/lava_pit_smoke_plumes.vpcf",
+   "note": "Debut scene: lava pit smoke plumes",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/backgrounds/models/dragon_knight_persona/particles/dk_persona/slyrak_heat_haze_base.vpcf",
+   "note": "Background scene: heat haze (dashboard bg fx)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "maps/backgrounds/models/dragon_knight_persona/particles/dk_persona/ember_sparks.vpcf",
+   "note": "Background scene: rising ember sparks",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "creatures": [
+  {
+   "path": "models/mh_monsters/rathalos/rathalos.vmdl",
+   "note": "Rathalos, Monster Hunter fire wyvern - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/abyssal_underlord/abyssal_underlord_v2.vmdl",
+   "note": "Underlord hero model - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl",
+   "note": "Black dragon (ancient neutral) - BOSS/ELITE",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/warlock/warlock_demon.vmdl",
+   "note": "Warlock's infernal golem - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_black_drake/n_creep_black_drake.vmdl",
+   "note": "Black drake - MID",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/doom/doom.vmdl",
+   "note": "Doom hero (wings/sword/helm separate wearables) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/invoker/forge_spirit.vmdl",
+   "note": "Forged spirit (fire elemental) - FODDER/MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/brewmaster/brewmaster_firespirit.vmdl",
+   "note": "Brewmaster fire panda spirit - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/nevermore/nevermore.vmdl",
+   "note": "Shadow Fiend (classic full model) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/dragon_knight/dragon_knight_dragon.vmdl",
+   "note": "Dragon Knight dragon form - ELITE/BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/jakiro/jakiro.vmdl",
+   "note": "Jakiro twin-headed dragon (wings separate) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/twin_headed_dragon/twin_headed_dragon.vmdl",
+   "note": "Twin-headed dragon model - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/phoenix/phoenix.vmdl",
+   "note": "Phoenix hero - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/terrorblade/demon.vmdl",
+   "note": "Terrorblade demon (metamorphosis) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl",
+   "note": "Dragonspawn - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl",
+   "note": "Dragonspawn variant - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl",
+   "note": "Rock golem neutral - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl",
+   "note": "Small rock golem - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl",
+   "note": "Satyr tormenter - ELITE caster",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl",
+   "note": "Satyr - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/satyr_boss/satyr_boss.vmdl",
+   "note": "Crownfall satyr boss (event) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/pernicious_firebrand_mount/pernicious_firebrand_mount_enemy.vmdl",
+   "note": "Crownfall fire-brand mount (event) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/creep_dire_ancient_hulk/creep_dire_ancient_hulk_enemy.vmdl",
+   "note": "Dire ancient hulk enemy (event) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/creep_dire_hulk/creep_dire_ancient_hulk.vmdl",
+   "note": "Dire ancient hulk lane creep - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/rock_golem/tower_dire_rock_golem.vmdl",
+   "note": "Dire rock-golem tower model (animation set unchecked) - BOSS candidate",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/roshan_halloween/roshan_halloween.vmdl",
+   "note": "Diretide Roshan - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/shadow_fiend/shadow_fiend.vmdl",
+   "note": "Shadow Fiend new model (arms/head/wings separate) - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/primal_beast/primal_beast_base.vmdl",
+   "note": "Primal Beast base (armor/back/leg separate) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl",
+   "note": "Dire mega melee lane creep - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/lane_creeps/creep_bad_ranged/lane_dire_ranged_mega.vmdl",
+   "note": "Dire mega ranged lane creep - FODDER caster",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "sounds": []
+}

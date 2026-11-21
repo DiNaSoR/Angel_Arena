@@ -50,6 +50,14 @@
 
 //#base "units/boss/npc_boss_sand_king.txt"
 
+//--------------------------------------------------------------
+// Arena biomes (one file per biome; see tools/biomes/README.md)
+//--------------------------------------------------------------
+#base "units/arena/arena_green_units.txt"
+#base "units/arena/arena_desert_units.txt"
+#base "units/arena/arena_ice_units.txt"
+#base "units/arena/arena_lava_units.txt"
+
 "DOTAUnits"
 {
 }

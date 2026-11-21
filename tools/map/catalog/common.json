@@ -1,0 +1,1177 @@
+{
+ "trees": [
+  {
+   "path": "models/props_tree/topiary/topiary001.vmdl",
+   "note": "Topiary bush-tree (formal base gardens); radiant_coloseum_basic tree",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/cypress/tree_cypress009.vmdl",
+   "note": "Cypress; coloseum tilesets",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_oak_01.vmdl",
+   "note": "Default Radiant oak",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/dire_tree004.vmdl",
+   "note": "Default Dire tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/tree_garden001.vmdl",
+   "note": "Garden tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/topiary/topiary002.vmdl",
+   "note": "Topiary variant",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/cypress/tree_cypress010.vmdl",
+   "note": "Cypress",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/tree_garden002.vmdl",
+   "note": "Garden tree",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/hedges_garden001.vmdl",
+   "note": "Hedge",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_tree/tree_cine_02_low.vmdl",
+   "note": "Generic tree used across many tilesets",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "rocks": [
+  {
+   "path": "models/props_stone/stoneblock001a.vmdl",
+   "note": "Cut stone block (arena/ruin building block)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/bad_stoneblock001.vmdl",
+   "note": "Dire cut stone block",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stoneblock005a.vmdl",
+   "note": "Stone block",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/river_rocks001.vmdl",
+   "note": "River rocks (filler everywhere)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_nature/campfire_rocks001.vmdl",
+   "note": "Rock group",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stoneblock008a.vmdl",
+   "note": "Stone block",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stoneblock010a.vmdl",
+   "note": "Stone block",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/bad_stoneblock004.vmdl",
+   "note": "Dire stone block",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "structures": [
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_wall001.vmdl",
+   "note": "Colosseum wall segment - central arena ring",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_fountain001.vmdl",
+   "note": "Radiant fountain structure",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_fountain001.vmdl",
+   "note": "Dire fountain structure",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/column/colosseum_column001.vmdl",
+   "note": "Colosseum column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gate_entrance001.vmdl",
+   "note": "Gate entrance",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_wall002.vmdl",
+   "note": "Colosseum wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_wall003.vmdl",
+   "note": "Colosseum wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_wall004.vmdl",
+   "note": "Colosseum wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_wall005.vmdl",
+   "note": "Colosseum wall",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/colosseum_wall/colosseum_slab01.vmdl",
+   "note": "Colosseum slab",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/column/colosseum_column000.vmdl",
+   "note": "Colosseum column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/column/classical_column001.vmdl",
+   "note": "Classical column",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_fountain001_gold.vmdl",
+   "note": "Gold Radiant fountain",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/radiant_fountain002.vmdl",
+   "note": "Radiant fountain (newer)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/structure_fountain_radiant_basic.vmdl",
+   "note": "Radiant fountain (basic)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/structure_fountain_dire_basic.vmdl",
+   "note": "Dire fountain (basic)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/fountain_of_life/fountain_of_life.vmdl",
+   "note": "Fountain of Life (gameplay prop)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_shop001.vmdl",
+   "note": "Radiant shop",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_shop001.vmdl",
+   "note": "Dire shop",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/secretshop_radiant001.vmdl",
+   "note": "Secret shop",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gate_entrance002.vmdl",
+   "note": "Gate entrance",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/gate_wooden_closed_01.vmdl",
+   "note": "Wooden gate (closed)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/gate_wooden_locked_01.vmdl",
+   "note": "Wooden gate (locked)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stone_bridge01a.vmdl",
+   "note": "Stone bridge",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bridge01a.vmdl",
+   "note": "Bridge",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bridge_wooden001.vmdl",
+   "note": "Wooden bridge",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/bridge_01.vmdl",
+   "note": "Rope/plank bridge",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/bridge_broken_01.vmdl",
+   "note": "Broken bridge",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bridge_statue001.vmdl",
+   "note": "Bridge statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/statue001.vmdl",
+   "note": "Statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/classical_statue001.vmdl",
+   "note": "Classical statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gryphon_statue001.vmdl",
+   "note": "Gryphon statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/stone_guard_statue_001.vmdl",
+   "note": "Stone guardian",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/radiant_statue001.vmdl",
+   "note": "Radiant statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_statue001.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_statue001.vmdl",
+   "note": "Radiant statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_statue001.vmdl",
+   "note": "Dire statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/xp_shrine/xp_shrine.vmdl",
+   "note": "Experience shrine",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/outpost.vmdl",
+   "note": "Outpost",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/wooden_sentry_tower001.vmdl",
+   "note": "Wooden watchtower",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/radiant_tower001.vmdl",
+   "note": "Radiant tower",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/dire_tower001.vmdl",
+   "note": "Dire tower",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_ancient001.vmdl",
+   "note": "Radiant Ancient",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_ancient002.vmdl",
+   "note": "Dire Ancient",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_base_wall001.vmdl",
+   "note": "Radiant base wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/radiant_wall001.vmdl",
+   "note": "Radiant wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_buildingwall002.vmdl",
+   "note": "Dire base wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_stonewall001.vmdl",
+   "note": "Radiant stone wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/bad_stonewall001.vmdl",
+   "note": "Dire stone wall",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_walkways001.vmdl",
+   "note": "Radiant walkway (road/plaza tile)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_stairs001.vmdl",
+   "note": "Radiant stairs",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_stone/stone_stair001a.vmdl",
+   "note": "Stone stairs",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_garden/stairs_garden001.vmdl",
+   "note": "Garden stairs",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone001.vmdl",
+   "note": "Gravestone (graveyard)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone004.vmdl",
+   "note": "Gravestone",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/graveyard_fence001.vmdl",
+   "note": "Graveyard fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/coffin001.vmdl",
+   "note": "Coffin",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_tomb_01.vmdl",
+   "note": "Crypt tomb",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_statue_01.vmdl",
+   "note": "Crypt statue",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_door_01.vmdl",
+   "note": "Crypt door",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_pillar_01.vmdl",
+   "note": "Crypt pillar",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/cathedral001.vmdl",
+   "note": "Cathedral (ruined chapel landmark)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/tombstonea01.vmdl",
+   "note": "Tombstone (gameplay)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/tombstoneb01.vmdl",
+   "note": "Tombstone (gameplay)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/banner_radiant.vmdl",
+   "note": "Radiant banner",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/banner_dire.vmdl",
+   "note": "Dire banner",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/pennant_post_radiant.vmdl",
+   "note": "Radiant pennant post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/pennant_post_dire.vmdl",
+   "note": "Dire pennant post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_standard001.vmdl",
+   "note": "Dire war standard",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_teams/banner_tintable.vmdl",
+   "note": "Tintable banner",
+   "size": "large",
+   "size_verified": false
+  }
+ ],
+ "clutter": [
+  {
+   "path": "models/props_gameplay/treasure_chest001.vmdl",
+   "note": "Treasure chest (closed)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/chest_treasure_02_open.vmdl",
+   "note": "Open treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/coins_tileable.vmdl",
+   "note": "Tileable gold coin pile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/goldcoins_01.vmdl",
+   "note": "Gold coins",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/morokai_treasure.vmdl",
+   "note": "Treasure hoard",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/treasure_chest001_open.vmdl",
+   "note": "Treasure chest (open)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/treasure_chest_gold.vmdl",
+   "note": "Golden treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/chest_treasure_01.vmdl",
+   "note": "Treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/chest_treasure_03.vmdl",
+   "note": "Treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/chest_treasure_04.vmdl",
+   "note": "Treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/gold_bag.vmdl",
+   "note": "Gold bag",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/gold_coin001.vmdl",
+   "note": "Gold coin",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/crown001.vmdl",
+   "note": "Crown",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/gem01.vmdl",
+   "note": "Gem",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/frostivus/frostivus_treasure_chest.vmdl",
+   "note": "Frostivus treasure chest",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "maps/reef_assets/models/props/camp/darkreef_camp_chest_of_booty.vmdl",
+   "note": "Chest of booty (reef)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/calavera/calavera_chest.vmdl",
+   "note": "Calavera chest (event)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001a.vmdl",
+   "note": "Wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence001b.vmdl",
+   "note": "Wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/wood_fence002.vmdl",
+   "note": "Wooden fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/fence_str_wood_01a.vmdl",
+   "note": "Straight wood fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/fence_angle_wood_01a.vmdl",
+   "note": "Angled wood fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/fence001.vmdl",
+   "note": "Fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/m2_fence_01.vmdl",
+   "note": "Fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/spike_fence002a.vmdl",
+   "note": "Spiked fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/graveyard_fence003.vmdl",
+   "note": "Graveyard fence",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone002.vmdl",
+   "note": "Gravestone",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone003.vmdl",
+   "note": "Gravestone",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone005.vmdl",
+   "note": "Gravestone",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone006.vmdl",
+   "note": "Gravestone",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/gravestone007.vmdl",
+   "note": "Gravestone",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_diretide/gravehands.vmdl",
+   "note": "Hands from grave",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/skeleton003.vmdl",
+   "note": "Skeleton",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/skull001b.vmdl",
+   "note": "Skull",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_bones_01.vmdl",
+   "note": "Crypt bones",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/architecture/crypt/crypt_web_01.vmdl",
+   "note": "Cobweb",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/battle_debris6.vmdl",
+   "note": "Battle debris",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/sword001.vmdl",
+   "note": "Sword in ground",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/weapon_rack_00.vmdl",
+   "note": "Weapon rack",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/barrel_01.vmdl",
+   "note": "Barrel",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/crate_00.vmdl",
+   "note": "Crate",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/sack_bag_01.vmdl",
+   "note": "Sack",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/table_wood_01.vmdl",
+   "note": "Wooden table",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/woodpile_stack_01.vmdl",
+   "note": "Woodpile",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/neutral_creep_camp001a.vmdl",
+   "note": "Neutral camp dressing; every tileset",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/merchant_debris_chest001.vmdl",
+   "note": "Merchant chest",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "lights": [
+  {
+   "path": "models/props_structures/torch001.vmdl",
+   "note": "Torch post",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_generic/roshan_torch.vmdl",
+   "note": "Tall torch",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sconce_coloseum_000.vmdl",
+   "note": "Colosseum wall sconce",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/architecture/palace/cf_palace_brazier.vmdl",
+   "note": "Palace brazier (event)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/bad_column_torch.vmdl",
+   "note": "Dire column torch",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/sconce_coloseum_001.vmdl",
+   "note": "Sconce",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern001.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern002.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern002b.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/lantern003.vmdl",
+   "note": "Lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/chinese_lantern003.vmdl",
+   "note": "Paper lantern",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/camp_fire001.vmdl",
+   "note": "Campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candles001.vmdl",
+   "note": "Candles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_debris/candle_wax001.vmdl",
+   "note": "Wax candles",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_gameplay/lantern/lantern_of_sight.vmdl",
+   "note": "Lantern of Sight",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/crownfall_assets/lamps/crownfall_lamp_radiant.vmdl",
+   "note": "Crownfall lamp",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/journey_assets/props/lanterns/lantern_jrny_radiant_1.vmdl",
+   "note": "Journey stone lantern",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "maps/jungle_assets/temple/temple_bowl_coals_01.vmdl",
+   "note": "Coal fire bowl",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "water_lava": [
+  {
+   "path": "models/props_structures/classical_fountain001.vmdl",
+   "note": "Classical fountain",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/fountain_radiant_00.vmdl",
+   "note": "Radiant fountain water fx model",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/fountain_dire_00.vmdl",
+   "note": "Dire fountain water fx model",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/classical_fountain002.vmdl",
+   "note": "Classical fountain",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/effects/fountain_waterfall.vmdl",
+   "note": "Fountain waterfall",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/props_structures/good_ancient_fountain001_water.vmdl",
+   "note": "Ancient fountain water",
+   "size": "medium",
+   "size_verified": false
+  }
+ ],
+ "ambient_particles": [
+  {
+   "path": "particles/world_environmental_fx/fire_torch.vpcf",
+   "note": "World: torch fire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/lamp_flame_braser.vpcf",
+   "note": "World: brazier flame",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/lamp_flame_tintable.vpcf",
+   "note": "Addon: tintable lamp flame (every Valve tileset uses it)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/candle_flame_medium_bl.vpcf",
+   "note": "World: candle flame; every tileset",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fire_camp_01.vpcf",
+   "note": "World: campfire",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/fire_torch_glow_shadowed.vpcf",
+   "note": "Addon: torch glow with shadow light",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/radiant_wisps_stationary.vpcf",
+   "note": "World: Radiant floating wisps",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/fog_lowpatch6_dark.vpcf",
+   "note": "World: dark fog patch (graveyard)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_weather_pestilence_fog_persistent.vpcf",
+   "note": "Weather: pestilence fog (graveyard)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_creature_fx/bats.vpcf",
+   "note": "Creature ambience: bats; Dire tilesets",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/props/roshan_torch_flame_a.vpcf",
+   "note": "Prop: Roshan torch flame",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/base_static/experience_shrine_ambient.vpcf",
+   "note": "Base: XP shrine ambient",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/base_static/team_portal_ambient.vpcf",
+   "note": "Base: team portal ambient",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/addons_gameplay/fountain_tintable_ambient.vpcf",
+   "note": "Addon: tintable fountain ambient",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/radiant_creep_spawn.vpcf",
+   "note": "World: radiant creep spawn glow",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/dire_creep_spawn.vpcf",
+   "note": "World: dire creep spawn glow",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "particles/world_environmental_fx/rune_ambient_01.vpcf",
+   "note": "World: rune spot ambient",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "particles/rain_fx/econ_moonlight.vpcf",
+   "note": "Weather: moonlight",
+   "size": "huge",
+   "size_verified": false
+  }
+ ],
+ "creatures": [
+  {
+   "path": "models/creeps/roshan/roshan.vmdl",
+   "note": "Roshan - BOSS (central arena)",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/roshan_cosmic/roshan_cosmic.vmdl",
+   "note": "Cosmic Roshan - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/roshan_monster/roshan_monster.vmdl",
+   "note": "Roshan monster variant - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/roshan_aghanim/roshan_aghanim.vmdl",
+   "note": "Aghanim's Roshan - BOSS",
+   "size": "huge",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl",
+   "note": "Ghost - MID (graveyard)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl",
+   "note": "Skeleton warrior - FODDER (graveyard)",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl",
+   "note": "Necronomicon warrior - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl",
+   "note": "Necronomicon archer - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/undying/undying_minion.vmdl",
+   "note": "Undying zombie - FODDER (graveyard)",
+   "size": "small",
+   "size_verified": false
+  },
+  {
+   "path": "models/heroes/undying/undying_flesh_golem.vmdl",
+   "note": "Undying flesh golem - ELITE (graveyard)",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/wight_minion/ruin_wight_minion_enemy.vmdl",
+   "note": "Crownfall wight (event) - FODDER",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/events/crownfall/survivors/eidolon_boss/eidolon_boss.vmdl",
+   "note": "Crownfall eidolon boss (event) - BOSS",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl",
+   "note": "Ogre frostmage/large ogre - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl",
+   "note": "Ogre bruiser - MID",
+   "size": "medium",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/mega_greevil/mega_greevil.vmdl",
+   "note": "Mega greevil - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/darkreef/gaoler/darkreef_gaoler.vmdl",
+   "note": "Dark Reef gaoler - ELITE",
+   "size": "large",
+   "size_verified": false
+  },
+  {
+   "path": "models/creeps/baby_rosh_halloween/baby_rosh_dire/baby_rosh_dire.vmdl",
+   "note": "Baby Roshan (dire) - FODDER/critter",
+   "size": "small",
+   "size_verified": false
+  }
+ ],
+ "sounds": []
+}

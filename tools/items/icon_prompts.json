@@ -1,0 +1,695 @@
+[
+  {
+    "name": "tome_vitality",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a thick closed leather tome with a glowing red heart emblem on its cover, crimson ribbon bookmark. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "tome_stoneskin",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a heavy tome bound in grey carved stone plates with iron clasps and a shield emblem. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "tome_slaughter",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a black tome with crossed blood-red swords embossed on the cover, sharp steel corners. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "tome_ascension",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a radiant white and gold tome floating open with a beam of light rising from its pages. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "codex",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an ornate tome with a three-coloured gem, red green and blue, set in a golden laurel wreath on the cover. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "angels_tear",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a small crystal teardrop vial filled with luminous pale-blue liquid, tiny feathered wings on the stopper. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "starlight_phial",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a slender glass phial of deep indigo liquid full of tiny glittering stars, silver cap. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "demons_blood",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a jagged black iron flask of boiling glowing red blood, horned stopper, red steam. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "ironskin_elixir",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a squat steel-banded bottle of thick metallic silver liquid with rivets around the neck. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "ember_flask",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a round glass flask holding a live swirling fireball, glowing orange cracks in the glass, cork wired shut. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "seraph_feather",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a single large white feather with a golden quill, softly glowing, drifting. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "halo_shard",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a curved broken fragment of a glowing golden halo ring, bright cyan light at the fracture. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "demon_horn",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a single curved ridged black demon horn with glowing ember cracks at the base. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "champions_ring",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a heavy gold signet ring engraved with a laurel wreath and a tiny sword. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "titan_knuckle",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a massive spiked knuckle-duster made of ancient bronze and giant bone, glowing red runes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "phantom_quill",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a sleek ghostly green translucent feather quill trailing wisps of mist, silver nib. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "oracle_eye",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a glowing blue crystal eye set in an ornate silver amulet frame with fine chains. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "prism_core",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a faceted crystal prism core splitting light into red green and blue beams, held in a gold cage. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "gilded_buckle",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a broad ornate golden belt buckle with a red gem on a thick leather strap. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hellforged_ingot",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a dark metal ingot glowing molten orange at the edges, stamped with a demonic rune. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "blessed_ingot",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a polished silver-white metal ingot glowing softly, stamped with a winged sigil. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "obsidian_plate",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a thick slab of glossy black obsidian armour plate with sharp facets and iron rivets. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "whetstone",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a worn grey whetstone throwing bright orange sparks, wrapped in red cord. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "wardens_buckler",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a small round steel buckler shield with a bronze boss and a dented rim. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "executioner_axe",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a huge single-bladed executioner axe with a dark crescent blade and a long black haft. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "gladius",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a short broad roman gladius sword with a bronze guard and a red tassel on the pommel. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "spiked_pauldron",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a dark iron shoulder pauldron covered in long sharp spikes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "duelist_glove",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an elegant fingerless leather fencing glove with gold stitching and a steel knuckle guard. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "bone_club",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a crude massive club made from a giant thigh bone bound with leather and iron nails. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "cinder_heart",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a heart-shaped lump of black coal with glowing orange embers inside. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "starlight_thread",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a spool of fine glowing silver-blue thread sparkling with tiny stars. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "blood_vial",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a gothic vial of dark red blood in a black iron frame with small bat wings. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "wind_charm",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a teal jade charm carved as a swirling gust of wind on a leather cord. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "ward_stone",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a smooth river stone carved with glowing violet protective runes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "mist_cloak",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a hooded grey-blue cloak dissolving into drifting mist at its edges. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "lucky_coin",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a large gold coin stamped with a skull on a four-leaf clover, glinting. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "mana_prism",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a floating triangular blue crystal prism crackling with arcane energy. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hourglass",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a small brass hourglass with glowing golden sand flowing upward. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "seraph_plume",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a magnificent long golden-white wing plume with a blazing halo ring around its quill. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "fallen_star",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a jagged chunk of star metal meteorite glowing white-hot at its core with a blue flame trail. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "abyssal_heart",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a huge dark demonic heart wrapped in black chains with glowing magma veins. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "celestial_orb",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a glass orb containing a miniature swirling galaxy held in golden angel-wing clasps. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "dragon_scale",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a large iridescent bronze-green dragon scale shaped like a kite shield. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "titan_core",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a dense glowing orange core of molten rock clamped in cracked ancient bronze bands. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "storm_shard",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a jagged yellow-blue crystal shard crackling with lightning, shaped like a talon. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "void_crystal",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a floating dark violet crystal with a black core that bends the light around it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "dawn_blade",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a slim elegant sword with a pale gold blade glowing with soft sunrise light, white winged crossguard. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "seraph_blade",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a radiant longsword with a blade of bright white light and an ornate golden angel-wing hilt. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "first_light",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a legendary greatsword of blinding golden light with six small wings on the hilt and a halo around the blade. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hellcleaver",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a brutal wide butcher cleaver of blackened iron with a glowing red-hot chipped edge. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "infernal_cleaver",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a massive demonic cleaver wreathed in flames with a jagged obsidian blade and horned guard. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "worldender",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a colossal apocalyptic greataxe of molten lava and black iron with a blazing meteor in its head. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "soul_sickle",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a curved dark sickle with pale ghostly green souls swirling along its blade. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "soul_reaver",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a wicked double-bladed scythe sword with a spectral green glow and screaming ghost faces in the steel. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "harvester_of_kings",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a towering royal war scythe with a crown-shaped guard, black blade, spectral green flames and tiny golden crowns hanging from chains. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "sparkfang",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a short curved dagger shaped like a fang crackling with small blue sparks. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "stormfang",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of crossed fang daggers arcing with bright blue lightning and storm clouds. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "tempest_fang",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a legendary blade made of solid lightning with a thunderbird-head hilt and a swirling tempest around it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "judges_gavel",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a heavy wooden and iron judge's gavel war hammer with a square head. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hammer_of_verdicts",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an ornate gold and steel war hammer engraved with scales of justice, glowing white runes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "final_judgment",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a colossal divine war hammer of white marble and gold with a blazing sun in its head and angel wings on the haft. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "fledgling_wings",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of small downy white feathered wings on a simple leather harness. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "seraph_wings",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of large graceful white angel wings with golden tips, softly glowing. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "archangel_wings",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: six majestic radiant golden-white wings spread wide with a blazing halo above them. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "imp_horns",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of small curved red imp horns on a spiked leather headband. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "demon_lord_horns",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of large twisted black demon horns with glowing lava cracks on a dark iron circlet. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "crown_of_the_abyss",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a terrifying crown of jagged black horns and obsidian spikes burning with hellfire, a red gem at the brow. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "tarnished_halo",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a dull scratched bronze halo ring with a faint warm glow. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "radiant_halo",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a bright polished golden halo ring shining with warm light rays. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "seraphim_halo",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: three concentric blazing golden halo rings rotating around a star of white light with tiny wings. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "brimstone_censer",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a black iron censer on a chain leaking yellow sulphur smoke and embers. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hellfire_brazier",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a horned black iron brazier bowl filled with roaring red and orange hellfire. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "heart_of_the_inferno",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a blazing molten heart of pure hellfire inside a cage of black demonic claws, fire erupting from it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "templar_plate",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a polished steel knight breastplate with a simple engraved cross and leather straps. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "paladin_plate",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an ornate white and gold paladin chest armour with winged shoulder guards and a sun emblem. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "bulwark_of_heaven",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a legendary radiant golden full plate cuirass with large angel wings and a glowing halo behind it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "barbed_hide",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a rough dark leather vest studded all over with iron barbs and hooks. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hellspike_carapace",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a demonic black chitin carapace chest armour covered in long red-tipped spikes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "abyssal_thornmail",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a monstrous suit of black armour bristling with huge glowing magma spikes and chains. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "trollheart_locket",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a green warty heart inside a rough iron locket on a chain. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "hydra_heart",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a large scaly green heart with three snake heads growing from it, pulsing. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "leviathan_heart",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an enormous deep-sea blue heart encrusted with barnacles and coral, glowing teal, water swirling around it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "runed_mantle",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a short violet shoulder mantle embroidered with glowing silver runes. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "spellward_shroud",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a flowing dark blue hooded shroud covered in shifting glowing arcane wards. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "mantle_of_the_void",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a regal cloak made of starless black void with violet lightning at its edges and a crystal clasp. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "wand_of_sparks",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a short wooden wand tipped with a small bright yellow crystal throwing sparks. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "staff_of_sunfire",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a tall golden staff topped with a burning miniature sun held by three prongs. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "solar_scepter",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a magnificent royal scepter of white gold with a blazing sun orb crowned by angel wings and solar flares. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "apprentice_codex",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a small worn blue spellbook with a brass lock and ink stains, a quill tucked in it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "grimoire_of_echoes",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a floating open purple grimoire with glowing runes rising from its pages as echoing rings. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "infinite_verses",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a legendary cosmic tome bound in starlight with endless pages spiralling out of it into a galaxy. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "rimeglass_orb",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a frosted pale-blue glass orb with ice crystals growing on its surface. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "frostbound_orb",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a large orb of swirling blizzard held in a claw of jagged blue ice. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "heart_of_winter",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a huge crystalline frozen heart of deep blue ice radiating a snowstorm, with a white glow at its centre. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "pilgrims_lantern",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a small brass travelling lantern with a warm steady flame on a wooden staff hook. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "beacon_of_hope",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: an ornate golden lantern with a brilliant white flame and light rays, small wings on its top. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "lighthouse_of_souls",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a miniature white marble lighthouse tower with a blazing rotating beam and ghostly blue spirits circling it. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "pilgrim_sandals",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of simple worn leather sandals with a faint golden glow and small wing charms. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  },
+  {
+    "name": "legion_greaves",
+    "model": "gpt-image-2.5-flare",
+    "size": "1536x1024",
+    "quality": "medium",
+    "prompt": "Fantasy RPG game item icon, hand-painted in the style of Warcraft 3 and Dota 2 item icons: a pair of heavy steel plated war boots with red legion cloth and bronze trim. A single object, centred, filling most of a wide frame with a small margin on every side, dramatic rim lighting, rich saturated colour, crisp readable silhouette at small size. Dark softly vignetted background in a colour that complements the object. No text, no letters, no numbers, no border, no frame, no hands, no characters, no watermark."
+  }
+]

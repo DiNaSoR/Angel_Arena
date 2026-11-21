@@ -131,7 +131,8 @@ function GameMode:OnGameInProgress()
     ArenaScore.SetPhase(self, 'in_progress')
 
     print("[Angel Arena] The game has officially begun")
-    InitModule(CreepCamps)
+    -- Biome camps and bosses (arena/index.lua). They replace the CreepCamps spawner in mechanics/camps.
+    InitModule(ArenaWorld)
     welcomemsg()
     Duel:CreateGlobalTimer()
 end

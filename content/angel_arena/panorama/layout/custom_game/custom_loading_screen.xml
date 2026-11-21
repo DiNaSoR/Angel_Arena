@@ -2,6 +2,9 @@
   <styles>
     <include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
   </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_loading_screen.js" />
+  </scripts>
   <Panel class="ArenaLoadingScreen" hittest="false">
     <Image class="ArenaBackdrop" src="file://{images}/custom_game/loading_screen/arena_at_dusk.png" scaling="stretch-to-cover-preserve-aspect" />
     <Panel class="ArenaShade" />
@@ -13,6 +16,14 @@
         <Label class="ArenaObjective" text="#arena_loading_kills" />
         <Label class="ArenaObjective ArenaBossObjective" text="#arena_loading_boss" />
       </Panel>
+    </Panel>
+    <!-- Backdrop for team select. It lives here, under the chat, and fades in when setup begins. -->
+    <Panel class="PledgeScene" hittest="false">
+      <Image class="PledgeBackdrop" src="file://{images}/custom_game/arena_ui/pledge_backdrop.png" scaling="stretch-to-cover-preserve-aspect" />
+      <Panel class="PledgeShade" />
+      <Panel class="PledgeGlow AngelsGlow" />
+      <Panel class="PledgeGlow DemonsGlow" />
+      <Panel class="PledgeFloor" />
     </Panel>
   </Panel>
 </root>

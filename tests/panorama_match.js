@@ -6,40 +6,84 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const panorama = path.join(__dirname, '../content/angel_arena/panorama');
-const layout = fs.readFileSync(path.join(panorama, 'layout/custom_game/arena_match.xml'), 'utf8');
-const script = fs.readFileSync(path.join(panorama, 'scripts/custom_game/arena_match.js'), 'utf8');
-const panelIds = Array.from(layout.matchAll(/\bid="([^"]+)"/g), ([, id]) => id);
+const read = (file) => fs.readFileSync(path.join(panorama, file), 'utf8');
+const skinScript = read('scripts/custom_game/arena_skin.js');
+const matchScript = read('scripts/custom_game/arena_match.js');
+const TEAMS = { DOTA_TEAM_GOODGUYS: 2, DOTA_TEAM_BADGUYS: 3 };
 
-function panel() {
-  return {
-    classes: {},
+// A stand-in for a Panorama panel: enough of the tree API for the skin helpers.
+function panel(id, parent) {
+  const node = {
+    id,
+    text: '',
     style: {},
-    SetHasClass(name, active) {
-      this.classes[name] = active;
+    attributes: {},
+    children: [],
+    actuallayoutwidth: 0,
+    actualxoffset: 0,
+    actualuiscale_x: 1,
+    GetParent: () => parent || null,
+    GetChildCount: () => node.children.length,
+    GetChild: (index) => node.children[index],
+    FindChild: (childId) => node.children.find((child) => child.id === childId) || null,
+    FindChildTraverse(childId) {
+      for (const child of node.children) {
+        const found = child.id === childId ? child : child.FindChildTraverse(childId);
+        if (found) {
+          return found;
+        }
+      }
+      return null;
+    },
+    GetAttributeInt: (name, fallback) => (name in node.attributes ? node.attributes[name] : fallback),
+    SetAttributeInt(name, value) {
+      node.attributes[name] = value;
     }
   };
+  if (parent) {
+    parent.children.push(node);
+  }
+  return node;
 }
 
-function mount(initialState, initialDuel, initialTime = 0) {
-  const root = panel();
-  const panels = Object.fromEntries(panelIds.map((id) => [id, panel()]));
-  const $ = (selector) => panels[selector.slice(1)];
-  $.GetContextPanel = () => root;
-  $.Localize = (token) => token;
+// Dota's top bar, reduced to the panels the script looks for, at a UI scale of 2. Each team
+// has a 1000 pixel container; its row of portraits is 480 wide and stops 20 short of the clock.
+function hud(withTopBar = true) {
+  const root = panel('DotaHud');
+  const context = panel('ArenaMatch', panel('CustomUIContainer_Hud', root));
+  if (withTopBar) {
+    const bar = panel('topbar', root);
+    for (const team of ['Radiant', 'Dire']) {
+      const container = panel(`TopBar${team}TeamContainer`, bar);
+      container.actuallayoutwidth = 1000;
+      const row = panel(`TopBar${team}Players`, container);
+      row.actualxoffset = team === 'Radiant' ? 480 : 0;
+      const players = panel(`${team}TeamScorePlayers`, row);
+      players.actualxoffset = 20;
+      players.actuallayoutwidth = 480;
+      players.actualuiscale_x = 2;
+      panel(`TopBar${team}Score`, players);
+    }
+  }
+  return { root, context };
+}
+
+function mount(initialState, initialDuel, initialTime = 0, withTopBar = true) {
+  const tree = hud(withTopBar);
   let time = initialTime;
   let lastScheduleId = 0;
   const scheduled = new Map();
+  const $ = () => null;
+  $.GetContextPanel = () => tree.context;
+  $.Localize = (token) => token;
+  $.Msg = () => {};
+  $.CreatePanel = (type, parent, id) => panel(id, parent);
   $.Schedule = (_, callback) => {
     const id = ++lastScheduleId;
     scheduled.set(id, callback);
     return id;
   };
   $.CancelScheduled = (id) => assert(scheduled.delete(id));
-  function runScheduled() {
-    const [id, callback] = scheduled.entries().next().value;
-    scheduled.delete(id);
-    callback();
-  }
   let listener;
   const CustomNetTables = {
     SubscribeNetTableListener(table, callback) {
@@ -48,28 +92,29 @@ function mount(initialState, initialDuel, initialTime = 0) {
     },
     GetTableValue(table, key) {
       assert.equal(table, 'arena_match');
-      if (key === 'state') {
-        return initialState;
-      }
-      assert.equal(key, 'duel');
-      return initialDuel;
+      return key === 'state' ? initialState : initialDuel;
     }
   };
-
-  vm.runInNewContext(script, {
+  const context = vm.createContext({
     $,
     CustomNetTables,
     Game: { GetGameTime: () => time },
-    DOTATeam_t: { DOTA_TEAM_GOODGUYS: 2, DOTA_TEAM_BADGUYS: 3 }
+    DOTATeam_t: TEAMS
   });
-  runScheduled();
+  vm.runInContext(skinScript, context);
+  vm.runInContext(matchScript, context);
+  const text = (id) => tree.root.FindChildTraverse(id).text;
   return {
-    root,
-    panels,
+    root: tree.root,
     scheduled,
+    view: vm.runInContext('ArenaMatchView', context),
+    goal: () => [text('ArenaGoalCaption'), text('ArenaGoalValue')],
+    phase: () => [text('ArenaPhaseCaption'), text('ArenaPhaseValue')],
     advance(now) {
       time = now;
-      runScheduled();
+      const [id, callback] = scheduled.entries().next().value;
+      scheduled.delete(id);
+      callback();
     },
     update(state, key = 'state') {
       listener('arena_match', key, state);
@@ -77,68 +122,66 @@ function mount(initialState, initialDuel, initialTime = 0) {
   };
 }
 
+// The captions sit inside Dota's top bar, pushed clear of the portraits.
 const client = mount(null);
-assert.equal(client.root.classes.MatchReady, false);
+const goalBlock = client.root.FindChildTraverse('ArenaGoal');
+assert.equal(goalBlock.GetParent().id, 'TopBarRadiantTeamContainer');
+assert.equal(goalBlock.style.marginRight, '264px');
+assert.equal(client.root.FindChildTraverse('ArenaPhase').style.marginLeft, '264px');
+assert.equal(client.root.FindChildTraverse('TopBarRadiantScore').style.fontFamily, 'Grenze');
+assert.deepEqual(client.goal(), ['', '']);
+assert.equal(client.scheduled.size, 0);
 
 client.update({ angels: 0, demons: 0, kill_limit: 10, phase: 'pre_game' });
-assert.equal(client.root.classes.MatchReady, true);
-assert.equal(client.panels.KillTarget.text, '10');
-assert.equal(client.panels.MatchPhase.text, '#arena_match_waiting');
+assert.deepEqual(client.goal(), ['#arena_kill_target', '10']);
+assert.deepEqual(client.phase(), ['#arena_match_waiting', '']);
 
 client.update({ angels: 3, demons: 5, kill_limit: 10, phase: 'in_progress' });
-assert.equal(client.panels.AngelsScore.text, '3');
-assert.equal(client.panels.DemonsScore.text, '5');
-assert.equal(client.panels.AngelsFill.style.width, '30%');
-assert.equal(client.panels.DemonsFill.style.width, '50%');
-assert.equal(client.panels.Demons.classes.Leading, true);
-assert.equal(client.panels.MatchPhase.text, '#arena_match_live');
+assert.deepEqual(client.phase(), ['#arena_match_live', '']);
+assert.equal(client.scheduled.size, 0);
 
+// A duel clock counts down and keeps the script ticking only while it runs.
 client.update({ phase: 'waiting', deadline: 300 }, 'duel');
-assert.equal(client.panels.MatchPhase.text, '#arena_duel_waiting 5:00');
-assert.equal(client.root.classes.DuelActive, false);
+assert.deepEqual(client.phase(), ['#arena_duel_waiting', '5:00']);
+assert.equal(client.scheduled.size, 1);
 client.advance(27.5);
-assert.equal(client.panels.MatchPhase.text, '#arena_duel_waiting 4:33');
+assert.deepEqual(client.phase(), ['#arena_duel_waiting', '4:33']);
 client.update({ phase: 'active', deadline: 99 }, 'duel');
-assert.equal(client.panels.MatchPhase.text, '#arena_duel_active 1:12');
-assert.equal(client.root.classes.DuelActive, true);
+assert.deepEqual(client.phase(), ['#arena_duel_active', '1:12']);
+assert.equal(client.root.FindChildTraverse('ArenaPhaseValue').style.color, '#ffc8a8');
 assert.equal(client.scheduled.size, 1);
 
 client.update({ angels: 99, kill_limit: 10 }, 'other');
-assert.equal(client.panels.AngelsScore.text, '3');
+assert.deepEqual(client.goal(), ['#arena_kill_target', '10']);
 
 client.update({ angels: 4, demons: 6, kill_limit: 10, winner: 2, victory_reason: 'boss' });
-assert.equal(client.root.classes.MatchFinished, true);
-assert.equal(client.panels.Angels.classes.Leading, true);
-assert.equal(client.panels.Winner.text, '#arena_match_angels_win');
-assert.equal(client.panels.VictoryReason.text, '#arena_match_boss_defeated');
-assert.equal(client.root.classes.DuelActive, false);
+assert.deepEqual(client.goal(), ['#arena_match_angels_win', '']);
+assert.deepEqual(client.phase(), ['#arena_match_boss_defeated', '']);
 assert.equal(client.scheduled.size, 0);
 
 const reconnect = mount({ angels: 2, demons: '12', kill_limit: '10', winner: '3', victory_reason: 'kills' });
-assert.equal(reconnect.root.classes.DemonsWin, true);
-assert.equal(reconnect.panels.DemonsFill.style.width, '100%');
-assert.equal(reconnect.panels.Winner.text, '#arena_match_demons_win');
-assert.equal(reconnect.panels.VictoryReason.text, '#arena_match_target_reached');
-
+assert.deepEqual(reconnect.goal(), ['#arena_match_demons_win', '']);
+assert.deepEqual(reconnect.phase(), ['#arena_match_target_reached', '']);
 reconnect.update(null);
-assert.equal(reconnect.root.classes.MatchReady, false);
+assert.deepEqual(reconnect.goal(), ['', '']);
 
+// With no kill target the goal is the boss.
 const bossOnly = mount(
   { angels: 10, demons: 4, kill_limit: 0, phase: 'in_progress' },
   { phase: 'active', deadline: 420 },
   380
 );
-assert.equal(bossOnly.root.classes.MatchReady, true);
-assert.equal(bossOnly.root.classes.BossOnly, true);
-assert.equal(bossOnly.panels.AngelsFill.style.width, '0%');
-assert.equal(bossOnly.panels.MatchPhase.text, '#arena_duel_active 0:40');
+assert.deepEqual(bossOnly.goal(), ['#arena_boss_only_objective', '']);
+assert.deepEqual(bossOnly.phase(), ['#arena_duel_active', '0:40']);
 bossOnly.update({ phase: 'finished', deadline: 0 }, 'duel');
 assert.equal(bossOnly.scheduled.size, 0);
-assert.equal(bossOnly.panels.MatchPhase.text, '#arena_match_live');
-bossOnly.update({ angels: 10, demons: 4, kill_limit: 0, winner: 3, victory_reason: 'boss' });
-assert.equal(bossOnly.root.classes.MatchReady, true);
-assert.equal(bossOnly.root.classes.MatchFinished, true);
-assert.equal(bossOnly.panels.VictoryReason.text, '#arena_match_boss_defeated');
+assert.deepEqual(bossOnly.phase(), ['#arena_match_live', '']);
+
+// A HUD without the expected top bar is left alone rather than raising errors.
+const bare = mount({ angels: 0, demons: 0, kill_limit: 10, phase: 'in_progress' }, null, 0, false);
+assert.equal(bare.scheduled.size, 0);
+assert.equal(bare.view.describe(null), null);
+assert.equal(bare.view.clock(125), '2:05');
 console.log('Panorama match tests passed');
 
 const notificationScript = fs.readFileSync(path.join(panorama, 'scripts/barebones_notifications.js'), 'utf8');

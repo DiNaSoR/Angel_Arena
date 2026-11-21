@@ -1,0 +1,5 @@
+// Abilities of the lava biome. Not built yet: add them here following tools/biomes/README.md.
+// Keep this file (npc_abilities_custom.txt includes it); an empty block is harmless.
+"DOTAAbilities"
+{
+}
